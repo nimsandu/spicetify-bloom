@@ -4,8 +4,8 @@
   [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).
 </div>
 
-![dark-1](https://github.com/nimsandu/Fluent-Spotify/blob/main/Dark-1.png)
-download (https://github.com/nimsandu/Fluent-Spotify/blob/main/Fluent.zip)
+![dark-1](https://github.com/nimsandu/Fluent-Spicetify/blob/main/Dark-1.png)
+
 
 <br>
 
