@@ -5,7 +5,7 @@
 </div>
 <div align="center">
   <h2>please star and help to shape the future by commenting</h2>
- </dev>
+ </div>
 
 ![dark-1](https://github.com/nimsandu/Fluent-Spicetify/blob/main/Dark-1.png)
 
@@ -24,13 +24,13 @@
 ### Windows (PowerShell)
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/Fluent-Spotify/install.ps1" | Invoke-Expression
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/install.ps1" | Invoke-Expression
 ```
 
 ### Linux/macOS (Bash)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nimsandu/Fluent-Spotify/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/install.sh | sh
 ```
 
 ### OR DOWNLOAD Release script (powershell or shell) and run on your machine
@@ -57,7 +57,7 @@ xpui.js_repl_8008 = ,${1}56,
 apply the theme using these commands
 
 ```
-spicetify current_theme Bloom
+spicetify config current_theme Bloom
 spicetify config color_scheme dark
 spicetify apply
 ```
