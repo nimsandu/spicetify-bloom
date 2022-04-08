@@ -30,6 +30,9 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/F
 curl -fsSL https://raw.githubusercontent.com/nimsandu/Fluent-Spotify/install.sh | sh
 ```
 
+### OR DOWNLOAD Release script (powershell or shell) and run on your machine
+
+
 ### Spicetify Marketplace
 
 You may alternatively install spicetify-fluent from within the Spicetify Marketplace.  
@@ -48,10 +51,11 @@ xpui.js_repl_8008 = ,${1}56,
 
 ## Customization
 
-Four color schemes are available: `light`, `dark`, `dracula`, and `comfy`. Change scheme with commands:
+apply the theme using these commands
 
 ```
-spicetify config color_scheme <scheme_name>
+spicetify current_theme Fluent
+spicetify config color_scheme dark
 spicetify apply
 ```
 
@@ -62,6 +66,7 @@ spicetify apply
 - Use "Sidebar config" in the Spotify profile menu to hide/unhide and stick/unstick the Liked Songs and My Episodes icons in the sidebar.
 
 ## Credits
+special thanks and the concept belongs to williamckha
 customized the theme by williamckha (https://github.com/williamckha/spicetify-fluent)
 Based off [Ziro](https://github.com/schnensch0/ziro) theme by [schnensch](https://github.com/schnensch0)  
 [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
