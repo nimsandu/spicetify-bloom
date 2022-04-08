@@ -1,8 +1,8 @@
 # Enable TLS 1.2 since it is required for connections to GitHub
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-Write-Host "Beginning installation of spicetify-fluent"
-Write-Host "https://github.com/nimsandu/Fluent-Spicetify"
+Write-Host "Beginning installation of spicetify-bloom"
+Write-Host "https://github.com/nimsandu/bloom-Spicetify"
 
 # Give time for user to cancel via CTRL+C
 Start-Sleep -s 3
@@ -15,7 +15,7 @@ if ($null -eq $checkSpice) {
 
 # Check if ~\.spicetify-cli\Themes\Fluent directory exists
 $spicePath = spicetify -c | Split-Path
-$themePath = "$spicePath\Themes\Fluent"
+$themePath = "$spicePath\Themes\Bloom"
 if (-not (Test-Path $themePath)) {
   Write-Host "Creating Fluent theme folder..."
   New-Item -Path $themePath -ItemType Directory | Out-Null
@@ -25,16 +25,16 @@ if (-not (Test-Path $themePath)) {
 }
 
 # Download latest master
-$zipUri = "https://github.com/nimsandu/Fluent-Spicetify/archive/refs/heads/master.zip"
-$zipSavePath = "$themePath\fluent-master.zip"
-Write-Host "Downloading spicetify-fluent latest master..."
+$zipUri = "https://github.com/nimsandu/bloom-Spicetify/archive/refs/heads/master.zip"
+$zipSavePath = "$themePath\bloom-master.zip"
+Write-Host "Downloading spicetify-Bloom latest master..."
 Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
 
 # Extract theme from .zip file
 Write-Host "Extracting..."
 Expand-Archive -Path $zipSavePath -DestinationPath $themePath -Force
-Get-ChildItem "$themePath\spicetify-fluent-master\*" | ForEach-Object { Move-Item $_ $themePath }
-Remove-Item "$themePath\spicetify-fluent-master"
+Get-ChildItem "$themePath\bloom-spicetify-master\*" | ForEach-Object { Move-Item $_ $themePath }
+Remove-Item "$themePath\bloom-spicetify-master"
 
 # Delete .zip file
 Write-Host "Deleting zip file..."
@@ -45,14 +45,14 @@ Set-Location $themePath
 
 # Copy the fluent.js to the Extensions folder
 Copy-Item fluent.js ..\..\Extensions
-Write-Host "+ Installed fluent.js theme"
+Write-Host "+ Installed bloom.js theme"
 
 # Apply the theme with spicetify config calls
 spicetify config extensions fluent.js
 spicetify config current_theme Fluent
 spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
-Write-Host "+ Configured Fluent theme"
+Write-Host "+ Configured Bloom theme"
 
 # Patch the xpui.js for sidebar fixes
 # credit: https://github.com/JulienMaille/dribbblish-dynamic-theme/blob/main/install.ps1
