@@ -48,8 +48,8 @@ Copy-Item fluent.js ..\..\Extensions
 Write-Host "+ Installed bloom.js theme"
 
 # Apply the theme with spicetify config calls
-spicetify config extensions fluent.js
-spicetify config current_theme Fluent
+spicetify config extensions bloom.js
+spicetify config current_theme Bloom
 spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 Write-Host "+ Configured Bloom theme"
