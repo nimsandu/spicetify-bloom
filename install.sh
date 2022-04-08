@@ -3,7 +3,7 @@
 set -e
 
 echo "Beginning installation of spicetify-fluent"
-echo "https://github.com/williamckha/spicetify-fluent"
+echo "https://github.com/nimsandu/Fluent-Spicetify"
 
 # Give time for user to cancel via CTRL+C
 sleep 3s
@@ -20,7 +20,7 @@ else
 fi
 
 # Download latest master
-zipUri="https://github.com/williamckha/spicetify-fluent/archive/refs/heads/master.zip"
+zipUri="https://github.com/nimsandu/Fluent-Spicetify/archive/refs/heads/master.zip"
 zipSavePath="$themePath/fluent-master.zip"
 echo "Downloading spicetify-fluent latest master..."
 curl --fail --location --progress-bar --output "$zipUri" "$zipSavePath"
