@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Fluent</h1>
+  <h1>Bloom</h1>
 
   [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).
 </div>
@@ -57,7 +57,7 @@ xpui.js_repl_8008 = ,${1}56,
 apply the theme using these commands
 
 ```
-spicetify current_theme Fluent
+spicetify current_theme Bloom
 spicetify config color_scheme dark
 spicetify apply
 ```
