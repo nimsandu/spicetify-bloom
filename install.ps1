@@ -2,7 +2,7 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 Write-Host "Beginning installation of spicetify-fluent"
-Write-Host "https://github.com/williamckha/spicetify-fluent"
+Write-Host "https://github.com/nimsandu/Fluent-Spicetify"
 
 # Give time for user to cancel via CTRL+C
 Start-Sleep -s 3
@@ -25,7 +25,7 @@ if (-not (Test-Path $themePath)) {
 }
 
 # Download latest master
-$zipUri = "https://github.com/williamckha/spicetify-fluent/archive/refs/heads/master.zip"
+$zipUri = "https://github.com/nimsandu/Fluent-Spicetify/archive/refs/heads/master.zip"
 $zipSavePath = "$themePath\fluent-master.zip"
 Write-Host "Downloading spicetify-fluent latest master..."
 Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
