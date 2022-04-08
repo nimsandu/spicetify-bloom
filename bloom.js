@@ -1,4 +1,4 @@
-(function fluent() {
+(function bloom() {
 
   function waitForElement(els, func, timeout = 10000) {
     const queries = els.map(el => document.querySelector(el));
