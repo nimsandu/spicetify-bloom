@@ -2,7 +2,7 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 Write-Host "Beginning installation of spicetify-bloom"
-Write-Host "https://github.com/nimsandu/bloom-Spicetify"
+Write-Host "https://github.com/nimsandu/Bloom-Spicetify"
 
 # Give time for user to cancel via CTRL+C
 Start-Sleep -s 3
@@ -25,8 +25,8 @@ if (-not (Test-Path $themePath)) {
 }
 
 # Download latest master
-$zipUri = "https://github.com/nimsandu/bloom-Spicetify/archive/refs/heads/master.zip"
-$zipSavePath = "$themePath\bloom-master.zip"
+$zipUri = "https://github.com/nimsandu/Bloom-Spicetify/archive/refs/heads/master.zip"
+$zipSavePath = "$themePath\Bloom-master.zip"
 Write-Host "Downloading spicetify-Bloom latest master..."
 Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
 
