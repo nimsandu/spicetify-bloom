@@ -3,6 +3,9 @@
 
   [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).
 </div>
+<div align="center">
+  <h2>please star and help to shape the future by commenting</h2>
+ </dev>
 
 ![dark-1](https://github.com/nimsandu/Fluent-Spicetify/blob/main/Dark-1.png)
 
