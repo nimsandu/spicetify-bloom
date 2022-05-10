@@ -1373,14 +1373,14 @@ option {
   background: #1c232b7a;
   padding-right: 6px;
   margin: 0px 13px 13px 13px;
-  width: calc(100% - 26px - 85px); /* 100% - side padding - sidebar width */
+  width: calc(100% - 26px); /* 100% - side padding   */
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.75) !important;
   border-radius: var(--border-radius-1);
   border: 1.7px solid var(--spice-player-border);
   backdrop-filter: blur(50px) !important;
   position: fixed;
   bottom: 0;
-  left: 98px; /* sidebar width + (side padding / 2)*/
+  left: 13px; /* side padding // 2    */
 }
 
 .main-nowPlayingBar-container {
