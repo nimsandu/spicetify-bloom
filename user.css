@@ -1244,7 +1244,8 @@ path[d="M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   color: var(--spice-subtext) !important;
 }
 
-.main-buddyFeed-friendActivity {
+.main-buddyFeed-friendActivity,
+aside[aria-label="Friend Activity"] ol li {
   background-color: var(--spice-card);
   border-radius: var(--border-radius-1);
   margin: 8px;
@@ -1256,12 +1257,14 @@ path[d="M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 }
 
 .main-buddyFeed-buddyFeedRoot,
-.main-buddyFeed-buddyFeed {
+.main-buddyFeed-buddyFeed,
+aside[aria-label="Friend Activity"] {
   width: 280px;
   z-index: 0;
 }
 
-.main-buddyFeed-buddyFeedRoot .main-avatar-avatar {
+.main-buddyFeed-buddyFeedRoot .main-avatar-avatar,
+aside[aria-label="Friend Activity"] .main-avatar-avatar {
   margin-right: 8px;
 }
 
