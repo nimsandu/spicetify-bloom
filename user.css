@@ -524,6 +524,11 @@ button.switch {
   padding-top: 0;
 }
 
+/* Fade effect when scrolling down playlists */
+.Y8edH1Yjo4xrW_58czQj {
+  background: linear-gradient(180deg, rgba(var(--spice-main), .7), transparent);
+}
+
 /* Rounded top-left corner + left/top border for main content window */
 .main-navBar-navBar:before{
   content: '';
