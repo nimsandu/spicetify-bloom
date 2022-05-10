@@ -1381,7 +1381,7 @@ option {
   backdrop-filter: blur(50px) !important;
   position: fixed;
   bottom: 0;
-  left: 13px; /* side padding // 2    */
+  left: 0;
 }
 
 .main-nowPlayingBar-container {
