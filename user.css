@@ -555,6 +555,7 @@ button.switch {
   padding-right: 0px;
   margin-bottom: 4px;
   text-align: center;
+  position: relative;
 }
 
 .main-navBar-navBarLink span,
@@ -570,6 +571,13 @@ button.switch {
 
 .main-navBar-navBarLinkActive span {
   display: none;
+}
+/* Center Icon */
+.main-navBar-navBarLinkActive svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .main-navBar-navBarLinkActive > .icon,
@@ -594,12 +602,13 @@ button.switch {
 }
 
 .navBar-navBarLink-accent {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 4px;
   height: 25px;
   background-color: var(--spice-accent);
   border-radius: var(--border-radius-2);
-  bottom: 3px;
   display: none;
 }
 
