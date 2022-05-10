@@ -55,14 +55,16 @@ html {
 }
 
 .main-home-homeHeader,
-.main-actionBarBackground-background {
+.main-actionBarBackground-background,
+.n87ifzfQlmGX8vkeYGDL {
   background-image: none;
 }
 
 .main-actionBarBackground-background,
 .main-home-homeHeader,
 .x-entityHeader-overlay,
-.x-actionBarBackground-background {
+.x-actionBarBackground-background,
+.n87ifzfQlmGX8vkeYGDL {
   background-color: var(--spice-main) !important;
 }
 
