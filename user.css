@@ -20,6 +20,12 @@
   -webkit-mask-size: contain;
 }
 
+/* Fix Overflow off Screen */
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 .Root__main-view {
   z-index: 0;
   background-color: var(--spice-main);
