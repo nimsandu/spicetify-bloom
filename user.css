@@ -1636,19 +1636,19 @@ option {
   height: 22px !important;
 }
 
-.j4TkiByCgwfJawuHfzsd { /* Skip back 15 sec */
+[aria-label="Skip back 15 seconds"] { /* Skip back 15 sec */
   -webkit-mask-image: url('./fluentui-system-icons/ic_fluent_skip_backward_15_24_filled.svg');
   background-color: var(--spice-text) !important; 
   height: 22px !important;
 }
 
-.Kvxb6GUtWNNo5mFeKfMn { /* Skip forward 15 sec */
+[aria-label="Skip forward 15 seconds"] { /* Skip forward 15 sec */
   -webkit-mask-image: url('./fluentui-system-icons/ic_fluent_skip_forward_15_24_filled.svg');
   background-color: var(--spice-text) !important; 
   height: 22px !important;
 }
 
-.Y0lBew4O9_Ma84_Lnnsq { /* Speed icon for podcasts */
+[aria-label="Change speed"] { /* Speed icon for podcasts */
   -webkit-mask-image: url('./fluentui-system-icons/ic_fluent_top_speed_24_filled.svg');
   background-color: var(--spice-text) !important; 
   height: 22px !important;
@@ -1689,6 +1689,11 @@ option {
 /*Like button*/
 .control-button-heart[aria-checked=true] {
   color: var(--spice-accent);
+}
+
+/*Remove gradient in name*/
+.eSMjmiD29Ox35O95waw6:after, .eSMjmiD29Ox35O95waw6:before{
+  width: 0 !important;
 }
 
 /* ads */
