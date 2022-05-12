@@ -5,9 +5,9 @@
 </div>
 <div align="center">
   <h2>please star and help to shape the future by commenting</h2>
- </div>
+ </dev>
 
-![dark-1](https://github.com/nimsandu/Fluent-Spicetify/blob/main/Dark-1.png)
+![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/Dark-1.png)
 
 
 <br>
@@ -33,6 +33,10 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/s
 curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | sh
 ```
 
+### Important
+
+if you install theme using above command you dont need to do anything else to apply the theme
+
 ### OR DOWNLOAD Release script (powershell or shell) and run on your machine
 
 
@@ -41,6 +45,25 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
 You may alternatively install spicetify-fluent from within the Spicetify Marketplace.  
 Simply install the [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
 installation instructions and look for and install the theme from within the Marketplace Button.
+
+### Important
+if you are experiencing bugs after installing theme via marketplace then
+proceed following steps
+1-reset the marketplace by clicking the settings icon on marketplace>scroll all the way down>click [reset marketplace]
+2run following commands on appropriate shell
+<    
+# Windows (PowerShell)
+
+```powershell
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.ps1" | Invoke-Expression
+```
+
+# Linux/macOS (Bash)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | sh
+```
+  >
 
 ### Important
 
@@ -70,7 +93,7 @@ spicetify apply
 
 ## Credits
 special thanks and the concept belongs to williamckha
-thanx to @dilith
+another thanx for @dilith the milkgod
 customized the theme by williamckha (https://github.com/williamckha/spicetify-fluent)
 Based off [Ziro](https://github.com/schnensch0/ziro) theme by [schnensch](https://github.com/schnensch0)  
 [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
