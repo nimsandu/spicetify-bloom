@@ -1691,11 +1691,6 @@ option {
   color: var(--spice-accent);
 }
 
-/*Remove gradient in name*/
-.eSMjmiD29Ox35O95waw6:after, .eSMjmiD29Ox35O95waw6:before{
-  width: 0 !important;
-}
-
 /* ads */
 
 .main-leaderboardComponent-container,
