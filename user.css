@@ -324,8 +324,8 @@ h3,
   display: block;
 }
 
-.main-addButton-active:focus, .main-addButton-active:hover
-,main-addButton-active{
+.main-addButton-active:focus, .main-addButton-active:hover,
+.main-addButton-active{
   color:var(--spice-accent)!important;
 }
 
@@ -699,7 +699,7 @@ button.switch {
   --left-sidebar-item-height: 48px;
   --left-sidebar-padding-left: 18px;
   --left-sidebar-padding-right: 18px;
-  padding-bottom: 240px;  /* don't go below player controls */
+  /* padding-bottom: 240px;  don't go below player controls */
 }
 
 .main-rootlist-rootlistItemLink {
@@ -1843,4 +1843,44 @@ option {
 .wCl7pMTEE68v1xuZeZiB,
 .w6j_vX6SF5IxSXrrkYw5 {
   color: var(--spice-subtext);
+}
+
+/* lyrics pages fix */
+
+.XhqhT8BYwh_Ebk_zFHvA {
+  /* height: calc(100% + 300px); */
+  padding-bottom: 300px;
+  background-color: var(--lyrics-color-background);
+  padding-right: 50px;
+}
+
+.hW9km7ku6_iggdWDR_Lg{
+  margin-top: 0;
+}
+
+
+/* some small fix */
+.Bwc9jlVb7HWs8JJupnBB,
+.bFQ9NOIn1bDs8tTH0ebQ {
+  height: 36px;
+  width: 36px;
+}
+
+.K8PtC1Way9XetxDGwCGx {
+  background-color: var(--spice-main);
+  color: var(--spice-text);
+}
+
+.hKccLC {
+  background-color: var(--spice-accent);
+  color: var(--spice-alt-text);
+  border-radius: var(--border-radius-3);
+}
+
+.ksogXh:hover{
+  color: var(--spice-rgb-subtext);
+}
+.awGNDbf1c8TGBAFR0pv8 button:focus {
+  outline: 0px auto #3673d4; 
+  outline-offset: 0px;
 }
