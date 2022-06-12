@@ -702,6 +702,10 @@ button.switch {
   /* padding-bottom: 240px;  don't go below player controls */
 }
 
+.tojGvx6tcIBmKlICMJAZ{
+  height: calc(100% - 330px);
+}
+
 .main-rootlist-rootlistItemLink {
   padding: 8px;
 }
@@ -1847,11 +1851,9 @@ option {
 
 /* lyrics pages fix */
 
-.XhqhT8BYwh_Ebk_zFHvA {
-  /* height: calc(100% + 300px); */
-  padding-bottom: 300px;
-  background-color: var(--lyrics-color-background);
-  padding-right: 100px;
+.Q2RPoHcoxygOoPLXLMww{
+  padding-bottom: 350px;
+  padding-right: 150px;
 }
 
 .hW9km7ku6_iggdWDR_Lg{
@@ -1883,4 +1885,15 @@ option {
 .awGNDbf1c8TGBAFR0pv8 button:focus {
   outline: 0px auto #3673d4; 
   outline-offset: 0px;
+}
+
+.main-view-container__scroll-node-child{
+  padding-bottom: 118px;
+}
+
+.jvWzgRWM_y_9FFTYRCcB{
+  padding: 6px;
+}
+.Z35BWOA10YGn5uc9YgAp .WWDxafTPs4AgThdcX5jN{
+  border-radius:var(--border-radius-3) ;
 }
