@@ -12,7 +12,7 @@
 }
 
 * {
-  font-family: 'Segoe UI Variable Display','Segoe UI Variable Text',sans-serif !important;
+  font-family: 'Segoe UI Variable Display','Segoe UI Variable Text', 'Microsoft Ya Hei', sans-serif !important;
   line-height: normal;
   box-shadow: none !important;
   -webkit-mask-repeat: no-repeat;
