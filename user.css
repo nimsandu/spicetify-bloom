@@ -726,6 +726,7 @@ button.switch {
   --left-sidebar-item-height: 48px;
   --left-sidebar-padding-left: 10px;
   --left-sidebar-padding-right: 10px;
+  --left-sidebar-item-indentation-width: 1px;
   margin-top: 0;
   /* padding-bottom: 240px;  don't go below player controls */
 }
@@ -738,6 +739,7 @@ button.switch {
   padding-left: 8px;
   padding-right: 8px;
 }
+
 .whXv9jYuEgS1DPTmPCe_{
   padding-top: 4px;
   padding-bottom: 4px;
