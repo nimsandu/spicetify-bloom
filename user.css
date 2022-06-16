@@ -1848,3 +1848,52 @@ option {
 .w6j_vX6SF5IxSXrrkYw5 {
   color: var(--spice-subtext);
 }
+
+/* lyrics pages fix */
+
+.Q2RPoHcoxygOoPLXLMww{
+  padding-bottom: 350px;
+  padding-right: 150px;
+}
+
+.hW9km7ku6_iggdWDR_Lg{
+  margin-top: 0;
+}
+
+
+/* some small fix */
+.Bwc9jlVb7HWs8JJupnBB,
+.bFQ9NOIn1bDs8tTH0ebQ {
+  height: 36px;
+  width: 36px;
+}
+
+.K8PtC1Way9XetxDGwCGx {
+  background-color: var(--spice-main);
+  color: var(--spice-text);
+}
+
+.hKccLC {
+  background-color: var(--spice-accent);
+  color: var(--spice-alt-text);
+  border-radius: var(--border-radius-3);
+}
+
+.ksogXh:hover{
+  color: var(--spice-rgb-subtext);
+}
+.awGNDbf1c8TGBAFR0pv8 button:focus {
+  outline: 0px auto #3673d4; 
+  outline-offset: 0px;
+}
+
+.main-view-container__scroll-node-child{
+  padding-bottom: 118px;
+}
+
+.jvWzgRWM_y_9FFTYRCcB{
+  padding: 6px;
+}
+.Z35BWOA10YGn5uc9YgAp .WWDxafTPs4AgThdcX5jN{
+  border-radius:var(--border-radius-3) ;
+}
