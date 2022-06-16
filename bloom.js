@@ -10,7 +10,7 @@
   }
 
   waitForElement([
-    ".main-rootlist-rootlistItemLink"
+    "K8Rs3qAYirS8wJ1hR8gn"
   ], function () {
     function replacePlaylistIcons() {
       const playListItems = document.getElementsByClassName("main-rootlist-rootlistItemLink");
