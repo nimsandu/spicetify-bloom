@@ -10,10 +10,10 @@
   }
 
   waitForElement([
-    "K8Rs3qAYirS8wJ1hR8gn"
+    ".whXv9jYuEgS1DPTmPCe_"
   ], function () {
     function replacePlaylistIcons() {
-      const playListItems = document.getElementsByClassName("main-rootlist-rootlistItemLink");
+      const playListItems = document.getElementsByClassName("utSR0FVkHnII_aL8TOcu");
 
       for (const item of playListItems) {
         const link = item.pathname;
@@ -21,7 +21,7 @@
         if (link.search("playlist") !== -1) {
           uri = Spicetify.URI.playlistV2URI(link.split("/").pop());
         } else if (link.search("folder") !== -1) {
-          item.style.content = "url('./fluentui-system-icons/ic_fluent_folder_24_filled.svg')"
+          item.style.WebkitMaskImage = "url('./fluentui-system-icons/ic_fluent_folder_24_filled.svg')"
           continue;
         }
 
@@ -34,7 +34,7 @@
         ).then(res => {
           const meta = res.metadata;
           if (meta.picture === "") {
-            item.style.content = "url('./fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg')"
+            item.style.backgroundImage = "url('./fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg')"
           } else {
             item.style.backgroundImage = "url(" + meta.picture + ")";
             item.style.content = "";
@@ -43,7 +43,7 @@
       };
 
     };
-
+    
     replacePlaylistIcons();
     const observer = new MutationObserver(replacePlaylistIcons);
     waitForElement(["#spicetify-playlist-list"], () => {
