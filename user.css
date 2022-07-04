@@ -1781,13 +1781,13 @@ option {
 }
 
 /* Shuffle disabled */
-.KVKoQ3u4JpKTvSSFtd6J {
+.main-shuffleButton-button {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/shuffle.svg');
   background-color: var(--spice-subtext) !important;
   height: 22px !important;
 }
 /* Shuffle enabled */
-.KVKoQ3u4JpKTvSSFtd6J[aria-checked="true"] {
+.main-shuffleButton-button[aria-checked="true"] {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/shuffle-bold.svg');
   background-color: var(--spice-text) !important;
   height: 22px !important;
