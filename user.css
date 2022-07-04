@@ -375,7 +375,7 @@ h3,
 }
 
 .main-navBar-navBarLink[href="/lyrics-plus"] > .collection-active-icon {
-  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
@@ -732,7 +732,7 @@ button.switch {
 }
 
 .tojGvx6tcIBmKlICMJAZ{
-  height: calc(100% - 300px);
+  height: calc(100% - 250px);
 }
 
 .JUa6JJNj7R_Y3i4P8YUX {
@@ -1949,4 +1949,8 @@ option {
 
 .main-trackList-column{
   padding-left: 15px;
+}
+
+.npv-background-image__overlay {
+  background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
 }
