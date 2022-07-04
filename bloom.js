@@ -10,10 +10,10 @@
   }
 
   waitForElement([
-    ".whXv9jYuEgS1DPTmPCe_"
+    ".main-rootlist-rootlistItem"
   ], function () {
     function replacePlaylistIcons() {
-      const playListItems = document.getElementsByClassName("utSR0FVkHnII_aL8TOcu");
+      const playListItems = document.getElementsByClassName("main-rootlist-rootlistItemLink");
 
       for (const item of playListItems) {
         const link = item.pathname;

@@ -722,7 +722,7 @@ button.switch {
   padding: 0px 0px !important;
 }
 
-.LKgm9fCDTO7wqig_5U1q {
+.main-rootlist-rootlist {
   --left-sidebar-item-height: 48px;
   --left-sidebar-padding-left: 10px;
   --left-sidebar-padding-right: 10px;
@@ -740,13 +740,13 @@ button.switch {
   padding-right: 8px;
 }
 
-.whXv9jYuEgS1DPTmPCe_{
+.main-rootlist-rootlistItem{
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-.utSR0FVkHnII_aL8TOcu:link,
-.utSR0FVkHnII_aL8TOcu:visited,
+.main-rootlist-rootlistItemLink:link,
+.main-rootlist-rootlistItemLink:visited,
 .main-rootlist-rootlistPlaylistHeader {
   color: var(--spice-text);
   background-color: var(--spice-card);
@@ -760,8 +760,8 @@ button.switch {
   margin-bottom: 8px;
 }
 
-.VjIb8SfYTkc4wMpqqj3f,
-.g_jOSq3pLY5p4tldskrw {
+.main-rootlist-textWrapper,
+.main-rootlist-statusIcon {
   display: none;
 }
 
