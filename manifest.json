@@ -1,16 +1,16 @@
 {
-    "name": "Fluent",
+    "name": "Bloom",
     "description": "Spicetify theme inspired by Microsoft's Fluent Design",
-    "preview": "https://raw.githubusercontent.com/williamckha/spicetify-fluent/master/screenshots/dark-1.png",
+    "preview": "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/Dark-1.png",
     "readme": "README.md",
     "usercss": "user.css",
     "schemes": "color.ini",
-    "include": ["https://raw.githubusercontent.com/williamckha/spicetify-fluent/master/fluent.js"],
-    "branch": "master",
+    "include": ["https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom.js"],
+    "branch": "main",
     "authors": [
         {
-            "name": "William Ha",
-            "url": "https://github.com/williamckha"
+            "name": "Nimsandu Kottage",
+            "url": "https://github.com/nimsandu"
         }
     ]
 }
