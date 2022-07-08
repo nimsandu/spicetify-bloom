@@ -1802,6 +1802,13 @@ option {
   color: var(--spice-subtext);
 }
 
+/*Removes download progress bar and icon on playlist*/
+.L3vU7A1LzZSa3DcQcnmK,
+.PJuB4n2TjjZFBiWAW2zx,
+.gtuJjD43VjwtP8ii3H3P {
+  display: none !important;
+}
+
 /*Remove gradient in name*/
 .eSMjmiD29Ox35O95waw6:after, .eSMjmiD29Ox35O95waw6:before{
   width: 0 !important;
