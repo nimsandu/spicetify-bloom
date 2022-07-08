@@ -14,6 +14,13 @@
   ], function () {
     function replacePlaylistIcons() {
       const playListItems = document.getElementsByClassName("main-rootlist-rootlistItemLink");
+      const playListOverlay = document.querySelector(".JUa6JJNj7R_Y3i4P8YUX");
+
+      setInterval(() => {
+        waitForElement([".JUa6JJNj7R_Y3i4P8YUX"], () => {
+          playListOverlay.style.height = `${playListItems.length * 63}px`;
+        })
+      }, 100);
 
       for (const item of playListItems) {
         const link = item.pathname;

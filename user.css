@@ -745,6 +745,10 @@ button.switch {
   padding-bottom: 4px;
 }
 
+.main-rootlist-rootlistItemLink {
+  background-position: center;
+}
+
 .main-rootlist-rootlistItemLink:link,
 .main-rootlist-rootlistItemLink:visited,
 .main-rootlist-rootlistPlaylistHeader {
@@ -1960,4 +1964,8 @@ option {
 
 .npv-background-image__overlay {
   background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
+}
+
+.JUa6JJNj7R_Y3i4P8YUX > :nth-child(2) {
+  transform: translateY(0) !important;
 }
