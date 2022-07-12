@@ -31,9 +31,10 @@ mv "$spicePath/spicetify-bloom-main/" "$themePath"
 echo "Deleting zip file..."
 rm "$zipSavePath"
 
-# Copy the fluent.js to the Extensions folder
+# Link the bloom.js to the Extensions folder
 mkdir -p "$spicePath/Extensions"
-cp "$themePath/bloom.js" "$spicePath/Extensions"
+[[ -f "$spicePath/Extensions/bloom.js" ]] && rm "$spicePath/Extensions/bloom.js"
+ln -sf "../Themes/bloom/bloom.js" "$spicePath/Extensions/bloom.js" 
 echo "+ Installed bloom.js extension"
 
 # Apply the theme with spicetify config calls
