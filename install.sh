@@ -5,8 +5,9 @@ set -e
 echo "Beginning installation of spicetify-bloom"
 echo "https://github.com/nimsandu/spicetify-bloom"
 
-# Give time for user to cancel via CTRL+C
-sleep 3s
+printf "\nPress any key to continue or Ctrl+C to cancel"
+read -sn1 < /dev/tty
+printf "\n\n"
 
 # Check if $spicePath\Themes\bloom directory exists
 spicePath="$(dirname "$(spicetify -c)")"
