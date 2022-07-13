@@ -16,27 +16,20 @@ if [ -d "$themePath" ]; then
     rm -rf "$themePath"
 fi
 
-# If there is a '.git' directory in the same directory as this script
-if [ -d "$(dirname "$0")/.git" ]; then
-    # Copy directory containing this script to $themePath
-    echo "Copying '$(dirname "$0")' to '$themePath'"
-    cp -r "$(dirname "$0")" $themePath
-else
-    # Download latest master
-    zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
-    zipSavePath="/tmp/bloom-main.zip"
-    echo "Downloading bloom-spicetify latest master..."
-    curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
+# Download latest master
+zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
+zipSavePath="/tmp/bloom-main.zip"
+echo "Downloading bloom-spicetify latest master..."
+curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
 
-    # Extract theme from .zip file
-    echo "Extracting..."
-    unzip -q "$zipSavePath" -d "$spicePath"
-    mv "$spicePath/spicetify-bloom-main/" "$themePath"
+# Extract theme from .zip file
+echo "Extracting..."
+unzip -q "$zipSavePath" -d "$spicePath"
+mv "$spicePath/spicetify-bloom-main/" "$themePath"
 
-    # Delete .zip file
-    echo "Deleting zip file..."
-    rm "$zipSavePath"
-fi
+# Delete .zip file
+echo "Deleting zip file..."
+rm "$zipSavePath"
 
 # Link the bloom.js to the Extensions folder
 mkdir -p "$spicePath/Extensions"
