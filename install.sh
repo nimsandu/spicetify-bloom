@@ -5,8 +5,9 @@ set -e
 echo "Beginning installation of spicetify-bloom"
 echo "https://github.com/nimsandu/spicetify-bloom"
 
-# Give time for user to cancel via CTRL+C
-sleep 3s
+printf "\nPress any key to continue or Ctrl+C to cancel"
+read -sn1 < /dev/tty
+printf "\n\n"
 
 # Check if $spicePath\Themes\bloom directory exists
 spicePath="$(dirname "$(spicetify -c)")"
@@ -30,9 +31,10 @@ mv "$spicePath/spicetify-bloom-main/" "$themePath"
 echo "Deleting zip file..."
 rm "$zipSavePath"
 
-# Copy the fluent.js to the Extensions folder
+# Link the bloom.js to the Extensions folder
 mkdir -p "$spicePath/Extensions"
-cp "$themePath/bloom.js" "$spicePath/Extensions"
+[[ -f "$spicePath/Extensions/bloom.js" ]] && rm "$spicePath/Extensions/bloom.js"
+ln -sf "../Themes/bloom/bloom.js" "$spicePath/Extensions/bloom.js" 
 echo "+ Installed bloom.js extension"
 
 # Apply the theme with spicetify config calls
@@ -47,7 +49,7 @@ echo "+ Configured Bloom theme"
 PATCH='[Patch]
 xpui.js_find_8008 = ,(\\w+=)32,
 xpui.js_repl_8008 = ,\${1}58,'
-if cat config-xpui.ini | grep -o '\[Patch\]'; then
+if cat "$spicePath/config-xpui.ini" | grep -o '\[Patch\]'; then
     perl -i -0777 -pe "s/\[Patch\].*?($|(\r*\n){2})/$PATCH\n\n/s" "$spicePath/config-xpui.ini"
 else
     echo -e "\n$PATCH" >> "$spicePath/config-xpui.ini"
