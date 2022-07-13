@@ -1,7 +1,7 @@
 # Enable TLS 1.2 since it is required for connections to GitHub
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-Write-Host "Beginning installation of spicetify-fluent"
+Write-Host "Beginning installation of spicetify-bloom"
 Write-Host "https://github.com/nimsandu/spicetify-bloom"
 
 # Give time for user to cancel via CTRL+C
