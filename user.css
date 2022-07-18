@@ -736,7 +736,7 @@ button.switch {
   height: calc(100% - 250px);
 }
 
-.JUa6JJNj7R_Y3i4P8YUX {
+.main-rootlist-wrapper {
   padding-left: 8px;
   padding-right: 8px;
 }
@@ -1967,6 +1967,10 @@ option {
   background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
 }
 
-nav .JUa6JJNj7R_Y3i4P8YUX > :nth-child(2) {
+nav .main-rootlist-wrapper > :nth-child(2) {
   transform: translateY(0) !important;
+}
+
+.main-rootlist-rootlistItemOverlay {
+  display: none;
 }
