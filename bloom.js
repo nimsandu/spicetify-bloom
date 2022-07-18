@@ -14,10 +14,10 @@
   ], function () {
     function replacePlaylistIcons() {
       const playListItems = document.getElementsByClassName("main-rootlist-rootlistItemLink");
-      const playListOverlay = document.querySelector("nav .JUa6JJNj7R_Y3i4P8YUX");
+      const playListOverlay = document.querySelector("nav .main-rootlist-wrapper");
 
       setInterval(() => {
-        waitForElement(["nav .JUa6JJNj7R_Y3i4P8YUX"], () => {
+        waitForElement(["nav .main-rootlist-wrapper"], () => {
           playListOverlay.style.height = `${playListItems.length * 63}px`;
         })
       }, 100);
