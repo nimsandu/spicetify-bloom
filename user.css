@@ -454,7 +454,7 @@ h3,
 
 .main-likedSongsButton-likedSongsIcon,
 .main-yourEpisodesButton-yourEpisodesIcon,
-.main-collectionLinkButton-collectionLinkButton .ot6VAZq1Xfbw2Vh8Qt_A {
+.main-collectionLinkButton-collectionLinkButton .main-collectionLinkButton-collectionLinkText {
   display: none !important;
 }
 
@@ -1935,6 +1935,7 @@ option {
 .ksogXh:hover{
   color: var(--spice-rgb-subtext);
 }
+
 .awGNDbf1c8TGBAFR0pv8 button:focus {
   outline: 0px auto #3673d4;
   outline-offset: 0px;
@@ -1947,12 +1948,17 @@ option {
 .jvWzgRWM_y_9FFTYRCcB{
   padding: 6px;
 }
+
 .Z35BWOA10YGn5uc9YgAp .WWDxafTPs4AgThdcX5jN{
   border-radius:var(--border-radius-3) ;
 }
 
 .main-trackList-playsHeader{
-  text-align: center;
+  width: 12.8ch;
+}
+
+.main-trackList-durationHeader{
+  margin-left: 30px;
 }
 
 .main-trackList-rowSectionEnd{
@@ -1960,7 +1966,7 @@ option {
 }
 
 .main-trackList-column{
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .npv-background-image__overlay {
