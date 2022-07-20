@@ -734,7 +734,7 @@ button.switch {
 }
 
 .main-rootlist-rootlistPlaylistsScrollNode {
-  height: calc(100% - 250px);
+  height: calc(100% - 240px);
 }
 
 .main-rootlist-wrapper {
