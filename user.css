@@ -431,6 +431,7 @@ h3,
   margin: auto;
   margin-bottom: 8px;
   justify-content: center;
+  border-radius: var(--border-radius-2) !important;
 }
 
 .main-collectionLinkButton-collectionLinkButton[href="/collection/tracks"] {
