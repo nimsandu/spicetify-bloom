@@ -793,7 +793,7 @@ button.switch {
 }
 
 .main-rootlist-statusIcons {
-  margin-inline-start: -24px;
+  margin-inline-start: -20px;
   position: relative;
   right: 8px;
 }
