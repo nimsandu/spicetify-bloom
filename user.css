@@ -1809,10 +1809,8 @@ option {
   color: var(--spice-subtext);
 }
 
-/*Removes download progress bar and icon on playlist*/
-.L3vU7A1LzZSa3DcQcnmK,
-.PJuB4n2TjjZFBiWAW2zx,
-.gtuJjD43VjwtP8ii3H3P {
+/* Removes download progress bar and icon on playlist (spicetify-dependent) */
+.main-card-DownloadStatusIndicator {
   display: none !important;
 }
 
