@@ -1810,7 +1810,7 @@ option {
 }
 
 /* Removes download progress bar and icon on playlist (spicetify-dependent) */
-.main-card-DownloadStatusIndicator {
+.main-card-DownloadStatusIndicator,.gtuJjD43VjwtP8ii3H3P {
   display: none !important;
 }
 
