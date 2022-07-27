@@ -1051,11 +1051,9 @@ button.switch {
 
 .main-entityHeader-topbarTitle,
 .main-topBar-topbarTitle {
-  font-size: 16px;
-  font-weight: 400;
-  padding-left: 4px;
-  position: relative;
-  top: 5px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding-left: 10px;
 }
 
 .main-playButton-PlayButton.main-playButton-primary {
