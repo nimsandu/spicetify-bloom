@@ -1676,6 +1676,19 @@ option {
   margin-right: 8px;
 }
 
+.main-skipBackButton-button:hover, .main-skipForwardButton-button:hover {
+  background-color: hsla(0,0%,100%,.7) !important;
+}
+
+.main-skipBackButton-button:focus:not(:focus-visible):not(:hover), .main-skipForwardButton-button:focus:not(:focus-visible):not(:hover) {
+  background-color: var(--spice-text) !important;
+}
+
+.main-skipBackButton-button:active, .main-skipForwardButton-button:active {
+  transform: scale(.89);
+  transition: none;
+}
+
 .main-playPauseButton-button,
 .player-controls__buttons button:not(.main-playPauseButton-button) {
   --button-size: 28px !important;
