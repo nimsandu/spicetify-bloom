@@ -185,7 +185,6 @@ html {
   transition-duration: 150ms;
 }
 
-
 /* headers */
 
 .Root__top-bar {
@@ -925,6 +924,11 @@ button.switch {
 .main-trackList-rowImageWithPlay .main-trackList-rowPlayPauseButton {
   width: 24px;
   height: 24px;
+}
+
+.main-trackList-rowImageWithPlay .main-trackList-rowImagePlayPauseButton {
+  background: rgba(0,0,0,.5);
+  border-radius: var(--border-radius-3);
 }
 
 /* headers */
