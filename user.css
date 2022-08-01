@@ -1997,6 +1997,11 @@ option {
   padding-left: 14.5px;
 }
 
+.main-trackList-rowSectionVariable[aria-colindex="3"] .main-trackList-rowPlayCount {
+  padding-left: 0px;
+}
+
+
 .npv-background-image__overlay {
   background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
 }
