@@ -1989,6 +1989,14 @@ option {
   padding-left: 10px;
 }
 
+.main-trackList-rowSectionVariable[aria-colindex="3"] .ebHsEf, .main-trackList-rowSectionVariable[aria-colindex="3"] .jsV182e49Puwz9SIYt2J {
+  padding-left: 8.5px;
+}
+
+.main-trackList-rowSectionVariable[aria-colindex="4"] .hHrtFe {
+  padding-left: 14.5px;
+}
+
 .npv-background-image__overlay {
   background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
 }
