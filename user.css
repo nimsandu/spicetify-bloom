@@ -2001,6 +2001,10 @@ option {
   padding-left: 0px;
 }
 
+.Kujbn0F68QOf_o44cNxw {
+  background-color: var(--spice-accent) !important;
+  border: 2px solid var(--spice-main) !important;
+}
 
 .npv-background-image__overlay {
   background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
