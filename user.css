@@ -2017,3 +2017,7 @@ option {
 nav .main-rootlist-wrapper > :nth-child(2) {
   transform: translateY(0) !important;
 }
+
+.main-rootlist-rootlistItemOverlay {
+  display: none;
+}
