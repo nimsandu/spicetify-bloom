@@ -811,6 +811,10 @@ button.switch {
   color: var(--spice-shadow);
 }
 
+.main-rootlist-statusIcons {
+  display: none !important;
+}
+
 /* tracklist */
 
 .main-trackList-indexable .main-virtualScrollList-wrapper,
@@ -2012,8 +2016,4 @@ option {
 
 nav .main-rootlist-wrapper > :nth-child(2) {
   transform: translateY(0) !important;
-}
-
-.main-rootlist-rootlistItemOverlay {
-  display: none;
 }
