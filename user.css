@@ -811,6 +811,10 @@ button.switch {
   color: var(--spice-shadow);
 }
 
+.main-rootlist-statusIcons > div {
+  margin-left: 8px;
+}
+
 /* tracklist */
 
 .main-trackList-indexable .main-virtualScrollList-wrapper,
