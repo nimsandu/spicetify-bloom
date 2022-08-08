@@ -811,8 +811,8 @@ button.switch {
   color: var(--spice-shadow);
 }
 
-.main-rootlist-statusIcons {
-  display: none !important;
+.main-rootlist-statusIcons > div {
+  margin-left: 8px;
 }
 
 /* tracklist */
