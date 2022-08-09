@@ -2010,6 +2010,14 @@ option {
   border: 2px solid var(--spice-main) !important;
 }
 
+input:checked~.x-toggle-indicatorWrapper {
+  background-color: var(--spice-accent) !important;
+}
+
+.x-toggle-indicator {
+  background-color: var(--spice-text) !important;
+}
+
 .npv-background-image__overlay {
   background-color: rgba(var(--spice-rgb-layer-shadow),.7) !important;
 }
