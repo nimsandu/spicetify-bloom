@@ -7,7 +7,7 @@
   <h2>Please star and help to shape the future by commenting</h2>
 </div>
 
-![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom cover.jpg)
+![dark-1]"(https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom cover.jpg")
 
 
 <br>
