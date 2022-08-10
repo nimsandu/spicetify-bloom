@@ -7,11 +7,15 @@
   <h2>Please star and help to shape the future by commenting</h2>
 </div>
 
-![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/Dark-1.png)
+![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom cover.jpg)
 
 
 <br>
 
+
+![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/Dark-1.png)
+
+<br>
 
 ## Dependencies
 
