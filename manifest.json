@@ -1,7 +1,7 @@
 {
     "name": "Bloom",
-    "description": "Spicetify theme inspired by Microsoft's Fluent Design",
-    "preview": "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/Dark-1.png",
+    "description": "Spicetify theme inspired by Microsoft's Fluent Design and Windows 11 UI",
+    "preview": "https://github.com/nimsandu/spicetify-bloom/blob/7dae1f5e254037201bff4626b77add69e2fe8108/bloom_cover.jpg",
     "readme": "README.md",
     "usercss": "user.css",
     "schemes": "color.ini",
