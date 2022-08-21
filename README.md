@@ -19,7 +19,7 @@
 
 ## Dependencies
 
-- [Spicetify](https://github.com/khanhas/spicetify-cli) version 2.7.0 or newer, latest version always recommended.
+- Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows Vista and newer.
   Segoe UI versions older than 5.37 (older than Windows 8.0) are not officially supported but may work.
 
@@ -37,37 +37,16 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/s
 curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | sh
 ```
 
-### Important
-
-if you install theme using above command you dont need to do anything else to apply the theme
-
-### OR DOWNLOAD Release script (powershell or shell) and run on your machine
-
+...or if you don't want to use the above methods, you can download the installation scripts within the repository.
 
 ### Spicetify Marketplace
 
-You may alternatively install spicetify-fluent from within the Spicetify Marketplace.  
-Simply install the [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
-installation instructions and look for and install the theme from within the Marketplace Button.
+You may also install the theme from the Spicetify Marketplace.
+Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
+installation instructions. Look for `spicetify-bloom`, and install it.
 
-### Important
-if you are experiencing bugs after installing theme via marketplace then
-proceed following steps
-1-reset the marketplace by clicking the settings icon on marketplace>scroll all the way down>click [reset marketplace]
-2run following commands on appropriate shell
-<    
-# Windows (PowerShell)
-
-```powershell
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.ps1" | Invoke-Expression
-```
-
-# Linux/macOS (Bash)
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | sh
-```
-  >
+### Notes
+If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the PowerShell/Bash methods or by downloading the installation scripts from the repository.
 
 ### Important
 
