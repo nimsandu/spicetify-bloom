@@ -2,9 +2,7 @@
   <h1>Bloom</h1>
 
   [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).
-</div>
-<div align="center">
-  <h2>Please star and help to shape the future by commenting</h2>
+  **Consider starring us, and suggest stuff by submitting a comment!**
 </div>
 
 ![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom_cover.jpg)
@@ -37,7 +35,7 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/s
 curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | sh
 ```
 
-...or if you don't want to use the above methods, you can download the installation scripts within the repository.
+...or if you don't want to use shell commands, you can download the installation scripts within the repository.
 
 ### Spicetify Marketplace
 
