@@ -25,7 +25,7 @@
 
 ## Installation
 
-### Windows (PowerShell)
+### Windows (Powershell)
 
 ```powershell
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.ps1" | Invoke-Expression
@@ -45,10 +45,8 @@ You may also install the theme from the Spicetify Marketplace.
 Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
 installation instructions. Look for `spicetify-bloom`, and install it.
 
-### Notes
-If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the PowerShell/Bash methods or by downloading the installation scripts from the repository.
 
-### Important
+## Important
 
 For the sidebar playlists to show properly, ensure that these two lines are added in the Patch section of your `config-xpui.ini` file:
 
@@ -60,24 +58,25 @@ xpui.js_repl_8008 = ,${1}56,
 
 ## Customization
 
-apply the theme using these commands
-
+Currently, the only available color scheme is: `dark`, apply it using the following commands:
 ```
-spicetify config current_theme Bloom
 spicetify config color_scheme dark
 spicetify apply
 ```
-
 ### More Options
 
 - You can change the accent color in the theme folder's color.ini file.  
-- If you are using Windows, you can hide the window controls by adding the flag `--transparent-window-controls` after Spotify.exe in your Spotify shortcut.  
-- Use "Sidebar config" in the Spotify profile menu to hide/unhide and stick/unstick the Liked Songs and My Episodes icons in the sidebar.
+- If you're using Windows, you can hide the window controls by adding the flag `--transparent-window-controls` after Spotify.exe in your Spotify shortcut.  
+
+## Troubleshooting
+<details>
+  <summary><b>Experiencing issues after installing via Spicetify Marketplace?</b></summary>
+<blockquote> If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the PowerShell/Bash methods or by downloading the installation scripts from the repository. </blockquote>
+</details>
 
 ## Credits
-special thanks and the concept belongs to williamckha
-another thanx for @dilith the milkgod
-customized the theme by williamckha (https://github.com/williamckha/spicetify-fluent)
+Original concept by [williamckha](https://github.com/williamckha), based off [spicetify-fluent](https://github.com/williamckha/spicetify-fluent)  
+Special thanks to dilith the milkgod for customizing the theme!  
 Based off [Ziro](https://github.com/schnensch0/ziro) theme by [schnensch](https://github.com/schnensch0)  
 [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
 [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
