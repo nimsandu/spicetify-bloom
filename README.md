@@ -45,7 +45,6 @@ You may also install the theme from the Spicetify Marketplace.
 Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
 installation instructions. Look for `spicetify-bloom`, and install it.
 
-
 ## Important
 
 For the sidebar playlists to show properly, ensure that these two lines are added in the Patch section of your `config-xpui.ini` file:
@@ -63,6 +62,7 @@ Currently, the only available color scheme is: `dark`, apply it using the follow
 spicetify config color_scheme dark
 spicetify apply
 ```
+
 ### More Options
 
 - You can change the accent color in the theme folder's color.ini file.  
@@ -71,13 +71,16 @@ spicetify apply
 ## Troubleshooting
 <details>
   <summary><b>Experiencing issues after installing via Spicetify Marketplace?</b></summary>
-<blockquote> If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the PowerShell/Bash methods or by downloading the installation scripts from the repository. </blockquote>
+<blockquote> If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace settings, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the PowerShell/Bash methods or by downloading the installation scripts from the repository. </blockquote>
+</details>
+
+<details>
+  <summary><b>Theme is broken, some visual elements are missing, etc.</b></summary>
+<blockquote> Spotify releases updates very frequently, and when that happens, it's common for things to break. Generally, we'll be able to fix these issues, but there are certain issues that are out of our control. If you experience such an issue, please report them via the repository's issues page.
 </details>
 
 ## Credits
-Original concept by [williamckha](https://github.com/williamckha), based off [spicetify-fluent](https://github.com/williamckha/spicetify-fluent)  
-Special thanks to dilith the milkgod for customizing the theme!  
-Based off [Ziro](https://github.com/schnensch0/ziro) theme by [schnensch](https://github.com/schnensch0)  
+Based off [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
 [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
 [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
 
