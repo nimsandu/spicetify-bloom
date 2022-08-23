@@ -19,8 +19,7 @@
 
 ## Dependencies
 
-- Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
-- Desktop version of Spotify. Microsoft Store version not supported.
+- [Spicetify](https://github.com/spicetify/spicetify-cli) version 2.11.1 or newer. Latest version recommended.
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows Vista and newer.
   Segoe UI versions older than 5.37 (older than Windows 8.0) are not officially supported but may work.
 
@@ -123,7 +122,7 @@ spicetify apply
 ## Troubleshooting
 <details>
   <summary><b>Experiencing issues after installing via Spicetify Marketplace?</b></summary>
-<blockquote> If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace settings, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the PowerShell/Bash methods or by downloading the installation scripts from the repository. </blockquote>
+<blockquote> If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace settings, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the instation methods shown above. </blockquote>
 </details>
 
 <details>
@@ -132,9 +131,9 @@ spicetify apply
 </details>
 
 ## Credits
-Based off [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
-[Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
-[Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
+- Based off [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
+- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
+- [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
 
 ## License
 
