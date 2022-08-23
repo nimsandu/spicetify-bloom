@@ -1,9 +1,11 @@
 <div align="center">
   <h1>Bloom</h1>
 
-  [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).
-  **Consider starring us, and suggest stuff by submitting a comment!**
+  [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).  
+  ### **Consider starring us, and suggest stuff by submitting a comment!**
 </div>
+
+<br>
 
 ![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom_cover.jpg)
 
@@ -41,7 +43,7 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
 
 You may also install the theme from the Spicetify Marketplace.
 Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
-installation instructions. Look for `spicetify-bloom`, and install it.
+installation instructions. Look for `Bloom` theme and install it.
 
 ## Important
 
@@ -55,9 +57,9 @@ xpui.js_repl_8008 = ,${1}56,
 
 ## Customization
 
-Currently, the only available color scheme is: `dark`, apply it using the following commands:
+The available color schemes are: `light` and `dark`. Apply one using the following commands:
 ```
-spicetify config color_scheme dark
+spicetify config color_scheme <color scheme>
 spicetify apply
 ```
 
