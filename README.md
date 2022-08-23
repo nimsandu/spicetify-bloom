@@ -20,10 +20,11 @@
 ## Dependencies
 
 - Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
+- Desktop version of Spotify. Microsoft Store version not supported.
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows Vista and newer.
   Segoe UI versions older than 5.37 (older than Windows 8.0) are not officially supported but may work.
 
-## Installation
+## Automated Installation
 
 ### Windows (Powershell)
 
@@ -44,6 +45,57 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
 You may also install the theme from the Spicetify Marketplace.
 Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
 installation instructions. Look for `Bloom` theme and install it.
+
+## Manual Installation
+Use this guide to install if you're having trouble using the shell commands/installation scripts.
+
+### Step 1
+- Download the theme [ZIP file](https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/main.zip) via the GitHub repository page.
+
+### Step 2
+- Navigate to Spicetify's Theme directory.
+
+| Platform            | Path                              |
+| ------------------- | --------------------------------- |
+| **Windows**         | `%appdata%\spicetify\Themes`      |
+| **Linux**/**MacOS** | `~/.config/spicetify/Themes`      |
+
+### Step 3
+- In the directory, create a new folder called `Bloom`.
+
+### Step 4
+- Open the downloaded theme ZIP file, and extract the following files **highlighted in the screenshot below** to the Bloom folder you created.
+![image](https://user-images.githubusercontent.com/51394649/186077104-ba2d5953-2746-407c-b30f-f854cbc6da21.png)
+
+### Step 5
+- Navigate to Spicetify's Extensions directory.
+
+| Platform            | Path                              |
+| ------------------- | --------------------------------- |
+| **Windows**         | `%appdata%\spicetify\Extensions`      |
+| **Linux**/**MacOS** | `~/.config/spicetify/Extensions`      |
+
+### Step 6
+- Go back to the downloaded ZIP file, and extract `bloom.js` to the Extensions directory.
+
+### Step 7
+- Open a terminal/command prompt window and type the following commands:
+```bash
+spicetify config current_theme Bloom
+spicetify config color_scheme dark
+spicetify config extensions bloom.js
+```
+...and then apply the theme by typing `spicetify apply`. And you should be done!
+
+<br>
+
+If you encounter any buggy artifacts after applying, type these following commands:
+```sh
+spicetify config inject_css 1
+spotify config replace_colors 1
+spicetify config overwrite_assets 1
+```
+..then type `spicetify apply` to apply the theme.
 
 ## Important
 
