@@ -91,7 +91,7 @@ spicetify config extensions bloom.js
 If you encounter any buggy artifacts after applying, type these following commands:
 ```sh
 spicetify config inject_css 1
-spotify config replace_colors 1
+spicetify config replace_colors 1
 spicetify config overwrite_assets 1
 ```
 ..then type `spicetify apply` to apply the theme.
