@@ -29,7 +29,7 @@ html {
 }
 
 .encore-dark-theme .encore-bright-accent-set{
-  width: auto;
+  width: 20px;
   --background-highlight: var(--spice-accent);
   --background-press: var(--spice-accent);
 }
