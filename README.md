@@ -134,8 +134,8 @@ spicetify apply
   <summary><b>Uninstallation</b></summary>
   <blockquote>
 1.  Restore spotify to original state
-![image](https://user-images.githubusercontent.com/80559769/188782496-a38e4195-089d-4a73-80d7-eb7493db280e.png)
-
+![image](https://user-images.githubusercontent.com/80559769/188782730-24c13c8a-3264-4fe9-808b-62b6beb0f7d7.png)
+    
 2. Delete spicetify files in appdata. Local and roaming 
 ![image](https://user-images.githubusercontent.com/80559769/188782730-24c13c8a-3264-4fe9-808b-62b6beb0f7d7.png)
 
