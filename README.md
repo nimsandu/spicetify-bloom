@@ -130,6 +130,28 @@ spicetify apply
 <blockquote> Spotify releases updates very frequently, and when that happens, it's common for things to break. Generally, we'll be able to fix these issues, but there are certain issues that are out of our control. If you experience such an issue, please report them via the repository's issues page.
 </details>
 
+<details>
+  <summary><b>Uninstallation</b></summary>
+  <blockquote> 1.  Restore spotify to original state
+![image](https://user-images.githubusercontent.com/80559769/188782496-a38e4195-089d-4a73-80d7-eb7493db280e.png)
+
+2. Delete spicetify files in appdata. Local and roaming 
+![image](https://user-images.githubusercontent.com/80559769/188782730-24c13c8a-3264-4fe9-808b-62b6beb0f7d7.png)
+
+![image](https://user-images.githubusercontent.com/80559769/188782810-776ce017-de18-449d-b0b3-3523e3d02f45.png)
+
+3. Use powershell to install spicetify and bloom 
+![image](https://user-images.githubusercontent.com/80559769/188782914-c5e9e66d-de83-4b83-9f35-f2b0d78a062b.png)
+
+4. Restart and apply to spotify
+![image](https://user-images.githubusercontent.com/80559769/188783021-dd9e683a-c433-4d42-975a-e3c685d75f96.png)
+
+## credit [@Georgetheasian](https://github.com/Georgetheasian). for unistallation guide
+
+ </details>
+ 
+## If you Uninstall BLOOM let us know why to shape our future
+
 ## Credits
 - Based off [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
