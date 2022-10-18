@@ -140,7 +140,6 @@ spicetify apply
     
   2. Delete spicetify files in appdata. Local and roaming 
     ![image](https://user-images.githubusercontent.com/80559769/188782730-24c13c8a-3264-4fe9-808b-62b6beb0f7d7.png)
-
     ![image](https://user-images.githubusercontent.com/80559769/188782810-776ce017-de18-449d-b0b3-3523e3d02f45.png)
 
   3. Use powershell to install spicetify and bloom 
