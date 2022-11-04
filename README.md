@@ -131,6 +131,12 @@ spicetify apply
 </details>
 
 <details>
+  <summary><b>Theme breaks after installing a Spicetify addon/app.</b></summary>
+<blockquote> This occurs rather because the custom app doesnt exist. Check Spicetify repositories if it indeed exists in that exact package name and open an issue on this repo if it does for a more extended testing. </blockquote>
+#### credit [@windowz414](https://github.com/windowz414). for troubleshooting
+</details>
+
+<details>
   <summary><b>Uninstallation</b></summary>
   <blockquote>uninstallation
     
