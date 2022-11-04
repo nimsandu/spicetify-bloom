@@ -2,6 +2,16 @@
 
 set -e
 
+if [ -z "$(which spicetify)" ]; then
+    echo "Spicetify isn't installed or doesn't exist in your PATH."
+    echo "Bloom relies on it to work properly."
+    echo "Please install Spicetify (https://spicetify.app) and run this script again to continue."
+    echo "If Spicetify is already installed, add it to your PATH variable and rerun this script."
+    echo "Example command for adding to PATH: export PATH=/opt/spicetify:\$PATH"
+    echo "\nAbort!"
+    return 1
+fi
+
 echo "Beginning installation of spicetify-bloom"
 echo "https://github.com/nimsandu/spicetify-bloom"
 
