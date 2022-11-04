@@ -66,5 +66,9 @@ else
 fi
 echo "+ Patched xpui.js for Sidebar fixes"
 
-spicetify apply
+spicetify apply \
+|| echo "Spicetify failed! Attempt to recover!" \
+&& spicetify backup apply \
+|| echo "Still failing! See output for more info!" \
+&& return 1
 echo "+ Applied Theme"
