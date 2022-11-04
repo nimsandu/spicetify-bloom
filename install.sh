@@ -9,7 +9,9 @@ if [ -z "$(which spicetify)" ]; then
     echo "If Spicetify is already installed, add it to your PATH variable and rerun this script."
     echo "Example command for adding to PATH: export PATH=/opt/spicetify:\$PATH"
     echo "\nAbort!"
-    return 1
+    # Exit approach seems to work better.
+    # b/126
+    exit 1
 fi
 
 echo "Beginning installation of spicetify-bloom"
