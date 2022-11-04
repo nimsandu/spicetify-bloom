@@ -68,9 +68,19 @@ else
 fi
 echo "+ Patched xpui.js for Sidebar fixes"
 
-spicetify apply \
-|| echo "Spicetify failed! Attempt to recover!" \
-&& spicetify backup apply \
-|| echo "Still failing! See output for more info!" \
-&& return 1
+# We need to do function approach instead apparently.
+function recover_from_failure() {
+    echo "? Spicetify failed! Attempt to recover!"
+    spicetify backup apply
+    if [ $? != 0 ]; then
+        echo "! Still failing! See output for more info!"
+        # b/126
+        exit 2
+    fi
+}
+
+spicetify apply
+if [ $? != 0 ]; then
+    recover_from_failure
+fi
 echo "+ Applied Theme"
