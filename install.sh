@@ -8,8 +8,10 @@ if [ -z "$(which spicetify)" ]; then
     echo "Please install Spicetify (https://spicetify.app) and run this script again to continue."
     echo "If Spicetify is already installed, add it to your PATH variable and rerun this script."
     echo "Example command for adding to PATH: export PATH=/opt/spicetify:\$PATH"
-    echo "\nAbort!"
-    return 1
+    echo -e "\nAbort!"
+    # Exit approach seems to work better.
+    # b/126
+    exit 1
 fi
 
 echo "Beginning installation of spicetify-bloom"
@@ -66,9 +68,19 @@ else
 fi
 echo "+ Patched xpui.js for Sidebar fixes"
 
-spicetify apply \
-|| echo "Spicetify failed! Attempt to recover!" \
-&& spicetify backup apply \
-|| echo "Still failing! See output for more info!" \
-&& return 1
+# We need to do function approach instead apparently.
+function recover_from_failure() {
+    echo "\? Spicetify failed! Attempt to recover!"
+    spicetify backup apply
+    if [ $? != 0 ]; then
+        echo "\! Still failing! See output for more info!"
+        # b/126
+        exit 2
+    fi
+}
+
+spicetify apply
+if [ $? != 0 ]; then
+    recover_from_failure
+fi
 echo "+ Applied Theme"
