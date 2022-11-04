@@ -37,6 +37,14 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/s
 curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | bash
 ```
 
+<details>
+    <summary>Special script for Debian users</summary>
+<p>Replace `install.sh` in the above command with `install_debian.sh`. Spotify made a derp that it doesn't work on some Debian installations. Passing `--no-zygote` flag to it will fix this issue, which also means we also need to add it to launcher entry. `install_debian.sh` script's whole purpose is to run the `install.sh` as usual, then applying the fix. Issues about it are welcome!</p>
+
+#### credit [@windowz414](https://github.com/windowz414). for the script
+
+</details>
+
 ...or if you don't want to use shell commands, you can download the installation scripts within the repository.
 
 ### Spicetify Marketplace
@@ -133,7 +141,9 @@ spicetify apply
 <details>
   <summary><b>Theme breaks after installing a Spicetify addon/app.</b></summary>
 <blockquote> This occurs rather because the custom app doesnt exist. Check Spicetify repositories if it indeed exists in that exact package name and open an issue on this repo if it does for a more extended testing. </blockquote>
+
 #### credit [@windowz414](https://github.com/windowz414). for troubleshooting
+
 </details>
 
 <details>
