@@ -21,6 +21,12 @@
   -webkit-mask-size: contain;
 }
 
+/* fix window controls, hides profile*/
+.main-userWidget-box {
+  bottom: 5px;
+  right: 150px;
+}
+
 /* Fix Overflow off Screen */
 html {
   max-width: 100vw;
