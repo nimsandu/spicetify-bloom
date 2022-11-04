@@ -34,7 +34,7 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/s
 ### Linux/macOS (Bash)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | bash
 ```
 
 ...or if you don't want to use shell commands, you can download the installation scripts within the repository.
