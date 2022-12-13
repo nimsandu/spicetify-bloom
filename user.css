@@ -1876,7 +1876,7 @@ option {
 /* play buttons */
 
 .main-playButton-button,
-.main-playButton-PlayButton button,
+.main-playButton-PlayButton>button,
 .main-trackList-rowPlayPauseButton {
  background-color: var(--spice-text) !important;
  -webkit-mask-image: url("https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg");
@@ -1887,12 +1887,12 @@ option {
  background-color: transparent;
 }
 
-.main-playButton-PlayButton button {
+.main-playButton-PlayButton>button {
  width: var(--size);
  height: var(--size);
 }
 
-.main-playButton-PlayButton button span {
+.main-playButton-PlayButton>button>span {
  display: none;
 }
 
