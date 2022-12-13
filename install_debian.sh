@@ -79,3 +79,4 @@ fi
 
 # We can do sudo even as root, no worries on that.
 sudo sed -i '/^Exec=/ s/spotify/spotify --no-zygote/' /usr/local/share/applications/spotify.desktop
+sudo sed -i '/^Exec=/ s/spotify/spotify --no-zygote/' /usr/share/applications/spotify.desktop
