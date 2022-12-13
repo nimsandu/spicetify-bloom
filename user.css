@@ -21,11 +21,7 @@
   -webkit-mask-size: contain;
 }
 
-/* fix window controls, hides profile*/
-.main-userWidget-box {
-  bottom: 5px;
-  right: 150px;
-}
+
 
 /* Fix Overflow off Screen */
 html {
@@ -256,6 +252,10 @@ h3,
   transition: background-color ease-out 167ms;
 }
 
+.main-topBar-historyButtons {
+  align-items: center;
+}
+
 .main-topBar-historyButtons button:nth-child(1) {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg');
   margin-left: 60px;
@@ -271,6 +271,7 @@ h3,
   padding: 5px;
   width: 24px !important;
   height: 24px !important;
+  margin-right: 13px;
 }
 
 .main-userWidget-displayName,
@@ -1062,7 +1063,10 @@ button.switch {
 .main-topBar-button,
 .main-userWidget-box {
   background-color: var(--spice-sidebar);
+  width: 28px !important;
+  height: 28px !important;
 }
+
 
 .main-entityHeader-topbarTitle,
 .main-topBar-topbarTitle {
@@ -1282,8 +1286,8 @@ path[d="M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 
 
 /* friend activity */
-.spotify__container--is-desktop.spotify__os--is-windows.buddyfeed-visible .main-topBar-container {
-  padding-inline-end: 170px;
+.spotify__container--is-desktop.spotify__os--is-windows .Root__top-container--right-sidebar-visible .main-topBar-container {
+  padding-inline-end: 167px;
 }
 
 .main-connectToFacebook-container {
@@ -1872,12 +1876,25 @@ option {
 /* play buttons */
 
 .main-playButton-button,
-.main-playButton-PlayButton,
-.main-trackList-rowPlayPauseButton{
-  background-color: var(--spice-text) !important;
-  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg');
+.main-playButton-PlayButton>button,
+.main-trackList-rowPlayPauseButton {
+ background-color: var(--spice-text) !important;
+ -webkit-mask-image: url("https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg");
 }
 
+.main-playButton-PlayButton:focus,
+.main-playButton-PlayButton:hover {
+ background-color: transparent;
+}
+
+.main-playButton-PlayButton>button {
+ width: var(--size);
+ height: var(--size);
+}
+
+.main-playButton-PlayButton>button>span {
+ display: none;
+}
 
 /* error content */
 

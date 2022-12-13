@@ -1,6 +1,6 @@
 (function bloom() {
 
-  function waitForElement(els, func, timeout = 10000) {
+  function waitForElement(els, func, timeout = 100) {
     const queries = els.map(el => document.querySelector(el));
     if (queries.every(a => a)) {
       func();
@@ -89,17 +89,16 @@
     ) return;
     clearInterval(interval);
     var playButtonStyle = document.createElement('style');
-    playButtonStyle.type = 'text/css';
     playButtonStyle.innerHTML = `
       .main-playButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-playButton-PlayButton[aria-label="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.play}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
       .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.play}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
       }
       .main-playButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-playButton-PlayButton[aria-label="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.pause}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
       .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.pause}"] {
         background-color: var(--spice-text) !important;
