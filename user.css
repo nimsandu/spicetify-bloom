@@ -21,11 +21,7 @@
   -webkit-mask-size: contain;
 }
 
-/* fix window controls, hides profile*/
-.main-userWidget-box {
-  bottom: 5px;
-  right: 150px;
-}
+
 
 /* Fix Overflow off Screen */
 html {
@@ -254,6 +250,10 @@ h3,
 
 .queue-tabBar-headerItemLink {
   transition: background-color ease-out 167ms;
+}
+
+.main-topBar-historyButtons {
+  align-items: center;
 }
 
 .main-topBar-historyButtons button:nth-child(1) {
@@ -1064,6 +1064,11 @@ button.switch {
   background-color: var(--spice-sidebar);
 }
 
+.main-userWidget-box figure, .main-userWidget-box figure div {
+  width: 40px !important;
+  height: 40px !important;
+}
+
 .main-entityHeader-topbarTitle,
 .main-topBar-topbarTitle {
   font-size: 1.4rem;
@@ -1872,12 +1877,25 @@ option {
 /* play buttons */
 
 .main-playButton-button,
-.main-playButton-PlayButton,
-.main-trackList-rowPlayPauseButton{
-  background-color: var(--spice-text) !important;
-  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg');
+.main-playButton-PlayButton button,
+.main-trackList-rowPlayPauseButton {
+ background-color: var(--spice-text) !important;
+ -webkit-mask-image: url("https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg");
 }
 
+.main-playButton-PlayButton:focus,
+.main-playButton-PlayButton:hover {
+ background-color: transparent;
+}
+
+.main-playButton-PlayButton button {
+ width: var(--size);
+ height: var(--size);
+}
+
+.main-playButton-PlayButton button span {
+ display: none;
+}
 
 /* error content */
 
