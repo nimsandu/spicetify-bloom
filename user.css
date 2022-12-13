@@ -271,6 +271,7 @@ h3,
   padding: 5px;
   width: 24px !important;
   height: 24px !important;
+  margin-right: 13px;
 }
 
 .main-userWidget-displayName,
@@ -1062,12 +1063,10 @@ button.switch {
 .main-topBar-button,
 .main-userWidget-box {
   background-color: var(--spice-sidebar);
+  width: 28px !important;
+  height: 28px !important;
 }
 
-.main-userWidget-box figure, .main-userWidget-box figure div {
-  width: 40px !important;
-  height: 40px !important;
-}
 
 .main-entityHeader-topbarTitle,
 .main-topBar-topbarTitle {
