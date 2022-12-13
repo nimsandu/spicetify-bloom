@@ -1888,8 +1888,8 @@ option {
 }
 
 .main-playButton-PlayButton>button {
- width: var(--size);
- height: var(--size);
+ width: 40px;
+ height: 40px;
 }
 
 .main-playButton-PlayButton>button>span {
