@@ -19,6 +19,7 @@
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
+  max-width: 100%;
 }
 
 
