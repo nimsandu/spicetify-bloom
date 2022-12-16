@@ -2054,3 +2054,19 @@ nav .main-rootlist-wrapper > :nth-child(2) {
 .main-rootlist-rootlistItemOverlay {
   display: none;
 }
+
+/* Fix Spotify moving up caused by lyric page */
+
+.Root__top-container {
+  position: fixed;
+}
+
+/* Fix lyrics get covered by controls */
+
+.lyrics-lyrics-container {
+  margin: 0 !important;
+}
+
+.lyrics-lyrics-contentContainer {
+  margin-bottom: 120px;
+}
