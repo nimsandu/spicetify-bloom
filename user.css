@@ -1066,6 +1066,7 @@ button.switch {
   background-color: var(--spice-sidebar);
   width: 28px !important;
   height: 28px !important;
+  padding: 0;
 }
 
 
