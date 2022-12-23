@@ -12,7 +12,7 @@
 
 # Preliminary checks
 echo "Checking your distribution as a safeguard..."
-DISTRO_REL="$(grep 'ID' /etc/os-release | sed 's/.*=//')"
+DISTRO_REL="$(grep '^ID=' /etc/os-release | sed 's/.*=//')"
 # TODO: We really need to maintain a list for this and use it instead.
 if [ -z "$DISTRO_REL" ]; then
     echo "Your distrobution could not be determined."
@@ -21,7 +21,7 @@ if [ -z "$DISTRO_REL" ]; then
     echo "This script is strictly for Debian and its derivatives, excluding Ubuntu and its derivatives."
     echo "If your distribution doesn't fall in this category this script was made for, please use generic installation instead."
     echo -e "\nAbort!"
-    exit 2
+    exit 3
 elif [ "$DISTRO_REL" == "ubuntu" ]; then
     echo "Your distribution is Ubuntu."
     echo -e "Distro author: Canonical\n"
@@ -29,6 +29,13 @@ elif [ "$DISTRO_REL" == "ubuntu" ]; then
     echo "Please use generic installation method instead, it would work on it."
     echo -e "\nAbort!"
     exit 1
+elif [ "$DISTRO_REL" == "pop" ]; then
+    echo "Your distribution is Pop_OS!."
+    echo -e "Distro author: System76\n"
+    echo "Pop is a derivative of Ubuntu and doesn't have any derps of Spotify."
+    echo "Please use generic installation method instead, it would work on it."
+    echo -e "\nAbort!"
+    exit 2
 elif [ "$DISTRO_REL" == "pardus" ]; then
     echo "Your distribution is Pardus, which is a derivative of Debian. Continue."
     echo -e "Distro author: TÜBİTAK ULAKBİLİM\n"
