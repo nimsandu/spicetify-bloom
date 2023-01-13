@@ -13,9 +13,16 @@
 <br>
 
 
+## First Look
+<br>
+
+#### **Default Dark**
+
 ![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/dark-new.png)
 
 <br>
+
+#### **Default Light**
 
 ![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/light-new.png)
 
