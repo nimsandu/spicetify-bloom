@@ -7,15 +7,20 @@
 
 <br>
 
-![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom_cover.jpg)
+![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom_cover.jpg)
 
 
 <br>
 
 
-![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/Dark-1.png)
+![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/dark-new.png)
 
 <br>
+
+![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/light-new.png)
+
+<br>
+
 
 ## Dependencies
 
