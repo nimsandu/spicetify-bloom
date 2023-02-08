@@ -8,73 +8,97 @@
       setTimeout(waitForElement, 300, els, func, timeout--);
     }
   }
-
   waitForElement([
     ".main-rootlist-rootlistItem"
   ], function () {
-    function replacePlaylistIcons() {
-      const playListItems = document.getElementsByClassName("main-rootlist-rootlistItemLink");
-      const playListOverlay = document.querySelector("nav .main-rootlist-wrapper");
-
-      setInterval(() => {
-        waitForElement(["nav .main-rootlist-wrapper"], () => {
-          playListOverlay.style.height = `${playListItems.length * 63}px`;
-        })
-      }, 100);
-
-      for (const item of playListItems) {
-        const link = item.pathname;
-        let uri;
-        if (link.search("playlist") !== -1) {
-          uri = Spicetify.URI.playlistV2URI(link.split("/").pop());
-        } else if (link.search("folder") !== -1) {
-          item.style.WebkitMaskImage = "url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg')"
-          continue;
-        }
-
-        Spicetify.CosmosAsync.get(
-          `sp://core-playlist/v1/playlist/${uri.toString()}/metadata`, {
-          policy: {
-            picture: true
-          }
-        }
-        ).then(res => {
-          const meta = res.metadata;
-          if (meta.picture === "") {
-            item.style.backgroundImage = "url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg')"
-          } else {
-            item.style.backgroundImage = "url(" + meta.picture + ")";
-            item.style.content = "";
-          }
-        });
-      };
-
-    };
-
-    replacePlaylistIcons();
-    const observer = new MutationObserver(replacePlaylistIcons);
-    waitForElement(["#spicetify-playlist-list"], () => {
-      const rootList = document.querySelector("#spicetify-playlist-list");
-      observer.observe(rootList, {
-        childList: true,
-        subtree: true
-      });
-    });
-  });
-
-  waitForElement([
-    ".main-navBar-navBarLink",
-    "[href='/collection'] > span"
-  ], () => {
-    const navBarItems = document.getElementsByClassName("main-navBar-navBarLink");
-    for (const item of navBarItems) {
-      let div = document.createElement("div");
-      div.classList.add("navBar-navBarLink-accent");
-      item.appendChild(div);
+    const mainRootlistWrapper = document.getElementsByClassName("main-rootlist-wrapper")[0];
+mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px";
+    const cache = new Map();
+    async function fetchPlaylistData(url) {
+    const response = await Spicetify.CosmosAsync.get(url);
+    const { items, next } = response;
+    return [...items, ...(next ? await fetchPlaylistData(next) : [])];
+    } 
+  
+    async function addPlaylistIcons() {
+    while (!Spicetify || !Spicetify.Platform || !Spicetify.CosmosAsync) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
     }
-    document.querySelector("[href='/collection'] > span").innerHTML = "Library";
-  });
-
+  
+    const playlistList = await new Promise((resolve) => {
+      const interval = setInterval(() => {
+        const element = document.querySelector("#spicetify-playlist-list");
+        if (element) {
+          clearInterval(interval);
+          resolve(element);
+        }
+      }, 100);
+    });
+    const playlistData = await fetchPlaylistData("https://api.spotify.com/v1/me/playlists?limit=50");
+    const observer = new MutationObserver(async () => {
+      observer.disconnect();
+      await updatePlaylistList(playlistData);
+      observer.observe(playlistList, { childList: true, subtree: true });
+    });
+  
+    await updatePlaylistList(playlistData);
+    observer.observe(playlistList, { childList: true, subtree: true });
+    }
+  
+    async function updatePlaylistList(playlistData) {
+    const playlistElements = await new Promise((resolve) => {
+      const interval = setInterval(() => {
+        const elements = document.querySelectorAll("#spicetify-playlist-list li a");
+        if (elements.length > 0) {
+          clearInterval(interval);
+          resolve(Array.from(elements));
+        }
+      }, 100);
+    });
+  
+    for (const element of playlistElements) {
+      const [id] = element.href.split("/").slice(-1);
+      const [type] = element.href.split("/").slice(-2, -1);
+      let icon = cache.get(id);
+      if (!icon) {
+        switch (type) {
+          case "playlist":
+            const playlist = playlistData.find((p) => p.id === id);
+            const image = playlist ? playlist.images[0] || {} : {};
+            console.log("image:"+ image)
+            
+            icon = {
+              src: image.url || "https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg",
+              size: "72px",
+            };
+            if (!image.url) {
+              icon.size = "50px";
+              }
+            cache.set(id, icon);
+            break;
+          case "folder":
+            icon = {
+              src: "https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg",
+              size: "72px",
+            };
+            cache.set(id, icon);
+            break;
+        }
+      }
+  
+      if (icon.src) {
+        element.style.backgroundImage = `url('${icon.src}')`;
+        element.style.backgroundRepeat = "no-repeat";
+        element.style.backgroundSize = `${icon.size}`;
+        element.style.backgroundPosition = "center";
+      }
+    }
+  
+  }
+  addPlaylistIcons();
+  
+});
+  
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
   if (textColor == " #000000") {
     document.documentElement.style.setProperty('--filter-brightness', 0);
