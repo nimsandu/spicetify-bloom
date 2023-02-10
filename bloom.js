@@ -72,7 +72,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
               size: "72px",
             };
             if (!image.url) {
-              icon.size = "50px";
+              icon.size = "44px";
               }
             cache.set(id, icon);
             break;
