@@ -69,7 +69,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
             
             icon = {
               src: image.url || "https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg",
-              size: "60px",
+              size: "50px",
             };
             if (!image.url) {
               icon.size = "50px";
@@ -79,7 +79,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
           case "folder":
             icon = {
               src: "https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg",
-              size: "60x",
+              size: "50x",
             };
             cache.set(id, icon);
             break;
