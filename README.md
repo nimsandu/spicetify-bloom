@@ -28,6 +28,12 @@
 
 <br>
 
+#### **Dark Mono**
+
+![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/darkmono.png)
+By [@SunsetTechuila](https://github.com/SunsetTechuila)
+<br>
+
 
 ## Dependencies
 
@@ -128,11 +134,13 @@ xpui.js_repl_8008 = ,${1}56,
 
 ## Customization
 
-The available color schemes are: `light` and `dark`. Apply one using the following commands:
+The scheme `dark` is applied by default during installation process 
+The available color schemes are: `light` `darkmono` and `dark`. Apply one using the following commands:
 ```
 spicetify config color_scheme <color scheme>
 spicetify apply
 ```
+Credits:For the scheme Dark Mono [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ### More Options
 
@@ -186,6 +194,7 @@ spicetify apply
 - Based off [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
 - [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
+- For the Scheme *Dark Mono* [@SunsetTechuila](https://github.com/SunsetTechuila) 
 
 ## License
 
