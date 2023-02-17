@@ -8,6 +8,15 @@ Write-Host -Object "https://github.com/nimsandu/spicetify-bloom"
 # Give time for user to cancel via CTRL+C
 Start-Sleep -Seconds 3
 
+# Check if Spotify installed
+if ( -not (Test-Path -Path "$env:APPDATA/Spotify") ) {
+  if ( -not (Get-AppxPackage | Where-Object -Property Name -Match "^SpotifyAB") ) {
+    Write-Host "Spotify not installed!" -ForegroundColor Red
+    Start-Sleep -Second 3
+    exit
+  }
+}
+
 if ( -not (Get-Command -Name spicetify -ErrorAction SilentlyContinue) ) {
   Write-Host -Object "Spicetify not found. Installing it for you..." -ForegroundColor Red
   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.ps1" -UseBasicParsing | Invoke-Expression
