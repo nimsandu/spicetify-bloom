@@ -43,6 +43,11 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ## Automated Installation
 
+### Spicetify Marketplace
+
+Simply install Spicetify Marketplace by following it's
+[installation instructions](https://github.com/spicetify/spicetify-marketplace/wiki/Installation). Look for `Bloom` theme and install it.
+
 ### Windows (Powershell)
 
 ```powershell
@@ -64,12 +69,6 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
 </details>
 
 ...or if you don't want to use shell commands, you can download the installation scripts within the repository.
-
-### Spicetify Marketplace
-
-You may also install the theme from the Spicetify Marketplace.
-Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
-installation instructions. Look for `Bloom` theme and install it.
 
 ## Manual Installation
 Use this guide to install if you're having trouble using the shell commands/installation scripts.
