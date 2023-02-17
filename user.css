@@ -1597,6 +1597,11 @@ option {
   border-radius: var(--border-radius-1)!important;
 }
 
+.fsd-button {
+  margin-left: 19px;
+  margin-right: -6px;
+}
+
 .Q4cc5RktWgz2H8_vDrIS {
   display: none;
   border-radius: var(--border-radius-1)!important;
