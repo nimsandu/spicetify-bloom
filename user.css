@@ -1767,6 +1767,7 @@ option {
 .control-button,
 .bxwPwV {
   color:var(--spice-text);
+  margin-right: 2px;
 }
 
 .control-button--active{
