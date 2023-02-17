@@ -12,7 +12,7 @@ Start-Sleep -Seconds 3
 if ( -not (Test-Path -Path "$env:APPDATA/Spotify") ) {
   if ( -not (Get-AppxPackage | Where-Object -Property Name -Match "^SpotifyAB") ) {
     Write-Host "Spotify not installed!" -ForegroundColor Red
-    Start-Sleep -Second 3
+    Start-Sleep -Seconds 3
     exit
   }
 }
