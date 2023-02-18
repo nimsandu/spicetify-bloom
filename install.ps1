@@ -11,7 +11,7 @@ Start-Sleep -Seconds 3
 # Check if Spotify installed
 if ( -not (Test-Path -Path "$env:APPDATA/Spotify") ) {
   if ( -not (Get-AppxPackage | Where-Object -Property Name -Match "^SpotifyAB") ) {
-    Write-Host "Spotify not installed!" -ForegroundColor Red
+    Write-Host -Object "Spotify not installed!" -ForegroundColor Red
     Start-Sleep -Seconds 3
     exit
   }
@@ -63,7 +63,7 @@ Write-Host -Object "Configured bloom theme"
 
 # Patch the xpui.js for sidebar fixes
 # credit: https://github.com/JulienMaille/dribbblish-dynamic-theme/blob/main/install.ps1
-$configFile = Get-Content "$spicePath\config-xpui.ini"
+$configFile = Get-Content -Path "$spicePath\config-xpui.ini"
 if ($configFile -notmatch "xpui.js_find_8008") {
   $rep = @"
 [Patch]
