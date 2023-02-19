@@ -8,6 +8,15 @@ Write-Host -Object "https://github.com/nimsandu/spicetify-bloom"
 # Give time for user to cancel via CTRL+C
 Start-Sleep -Seconds 3
 
+# Check if Spotify installed
+if ( -not (Test-Path -Path "$env:APPDATA/Spotify") ) {
+  if ( -not (Get-AppxPackage | Where-Object -Property Name -Match "^SpotifyAB") ) {
+    Write-Host -Object "Spotify not installed!" -ForegroundColor Red
+    Start-Sleep -Seconds 3
+    exit
+  }
+}
+
 if ( -not (Get-Command -Name spicetify -ErrorAction SilentlyContinue) ) {
   Write-Host -Object "Spicetify not found. Installing it for you..." -ForegroundColor Red
   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.ps1" -UseBasicParsing | Invoke-Expression
@@ -43,14 +52,14 @@ Remove-Item -Path $zipSavePath
 
 # Copy the bloom.js to the Extensions folder
 Copy-Item -Path "$themePath\bloom.js" -Destination "$spicePath\Extensions"
-Write-Host -Object "Installed bloom.js theme"
+Write-Host -Object "+ Installed bloom.js theme"
 
 # Apply the theme with spicetify config calls
 spicetify config extensions bloom.js
 spicetify config current_theme bloom
 spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
-Write-Host -Object "Configured bloom theme"
+Write-Host -Object "+ Configured bloom theme"
 
 # Patch the xpui.js for sidebar fixes
 # credit: https://github.com/JulienMaille/dribbblish-dynamic-theme/blob/main/install.ps1
@@ -68,7 +77,7 @@ xpui.js_repl_8008 = , `${1}58,
   $configFile = $configFile -replace "\[Patch\]", $rep
   Set-Content -Path "$spicePath\config-xpui.ini" -Value $configFile
 }
-Write-Host -Object "Patched xpui.js for Sidebar fixes"
+Write-Host -Object "+ Patched xpui.js for Sidebar fixes"
 
 # backup apply or just apply where necessary
 $configFile | ForEach-Object {
@@ -83,4 +92,4 @@ if ($version) {
 else {
   spicetify backup apply
 }
-Write-Host -Object "Applied Theme"
+Write-Host -Object "+ Applied Theme"
