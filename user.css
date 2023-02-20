@@ -1369,7 +1369,7 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 }
 
 .main-buddyFeed-activityMetadata {
-  max-width: 120px;
+  max-width: 100vw;
 }
 
 /* settings */
