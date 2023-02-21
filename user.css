@@ -601,6 +601,10 @@ button.switch {
   background: linear-gradient(180deg, rgba(var(--spice-main), .7), transparent);
 }
 
+.playlist-playlist-playlistDescription {
+  color: var(--spice-subtext) !important;
+}
+
 /* Rounded top-left corner + left/top border for main content window */
 .main-navBar-navBar:before{
   content: '';
