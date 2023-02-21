@@ -195,7 +195,7 @@ html {
   width: 100vw !important;
   grid-area: none;
   z-index: 4 !important;
-  background: var(--spice-sidebar);
+  background-color: rgba(var(--spice-rgb-sidebar), 0.65);
 }
 
 .main-topBar-container {
