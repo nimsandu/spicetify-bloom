@@ -237,7 +237,7 @@ h3,
 .main-topBar-topbarContent {
   position: absolute;
   display: -webkit-box;
-  left: 50%;
+  left: 47%;
   top: 5px;
   transform: translate(-50%, 0%);
   padding: 6px;
@@ -1109,6 +1109,10 @@ a[class*='-tabBar-headerItemLink']:active {
 
 /* search */
 
+.main-topBar-searchBar {
+  flex: 0 1 400px;
+}
+
 .x-searchInput-searchInputInput,
 .dIwMadpRrW1PwEwEeAbN,
 .G9iUss4eOSpJyn2VBzsS {
@@ -1116,7 +1120,7 @@ a[class*='-tabBar-headerItemLink']:active {
   color: var(--spice-text) !important;
   border: 1px solid var(--spice-light-border);
   border-radius: var(--border-radius-2) !important;
-  padding-right: 0px;
+  padding-right: 72px;
   padding-left: 12px;
   transition: background-color ease-in 167ms;
 }
