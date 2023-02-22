@@ -158,7 +158,8 @@ html {
 .main-tag-container {
   font-weight: 400;
   font-size: 10px;
-  color: #463d3d !important;
+  color: var(--spice-main) !important;
+  background-color: var(--spice-button);
 }
 
 .main-heroCardTag-root, ._8PRqRiYMqnyy_gN_fUD ._AxyaXOKl3GkvT212Vco {
@@ -1037,6 +1038,11 @@ button.switch {
 
 
 /* podcasts */
+
+._q93agegdE655O5zPz6l, .z7Yl7CIT1AB0y91f_moh,
+.UyzJidwrGk3awngSGIwv, .poz9gZKE7xqFwgk231J4, .xWm_uA0Co4SXVxaO7wlB {
+  color: var(--spice-subtext);
+}
 
 .show-trailer-container,
 .show-episodeBlock-episodeBlock,
