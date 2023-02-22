@@ -1378,6 +1378,10 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 /* settings */
 
+.dvSMET {
+  margin-left: 14px;
+}
+
 .main-dropDown-dropDown,
 option {
   background-color: var(--spice-card) !important;
