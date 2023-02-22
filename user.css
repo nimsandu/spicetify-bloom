@@ -1162,7 +1162,6 @@ a[class*='-tabBar-headerItemLink']:active {
 .x-searchInput-searchInputClearButton {
   margin-left: 5px;
   margin-right: 12px;
-  height: 20px;
 }
 
 .x-searchInput-searchInputClearButton path,
