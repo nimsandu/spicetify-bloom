@@ -1117,6 +1117,7 @@ a[class*='-tabBar-headerItemLink']:active {
 
 .main-topBar-searchBar {
   flex: 0 1 400px;
+  left: -37%;
 }
 
 .x-searchInput-searchInputInput,
