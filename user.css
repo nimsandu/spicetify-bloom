@@ -159,7 +159,7 @@ html {
   font-weight: 400;
   font-size: 10px;
   color: var(--spice-main) !important;
-  background-color: var(--spice-button);
+  background-color: var(--spice-accent);
 }
 
 .main-heroCardTag-root, ._8PRqRiYMqnyy_gN_fUD ._AxyaXOKl3GkvT212Vco {
