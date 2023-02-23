@@ -1381,6 +1381,10 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 /* settings */
 
+.dvSMET {
+  margin-left: 14px;
+}
+
 .main-dropDown-dropDown,
 option {
   background-color: var(--spice-card) !important;
@@ -2051,10 +2055,6 @@ option {
 
 input:checked~.x-toggle-indicatorWrapper {
   background-color: var(--spice-accent) !important;
-}
-
-.x-toggle-indicator {
-  background-color: var(--spice-text) !important;
 }
 
 .npv-background-image__overlay {
