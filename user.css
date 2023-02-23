@@ -238,7 +238,7 @@ h3,
 .main-topBar-topbarContent {
   position: absolute;
   display: -webkit-box;
-  left: 47%;
+  left: 50%;
   top: 5px;
   transform: translate(-50%, 0%);
   padding: 6px;
