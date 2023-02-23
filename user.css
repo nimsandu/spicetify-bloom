@@ -1943,6 +1943,10 @@ option {
   padding: 0px;
 }
 
+.toggle-module__toggle-input___ceLM4_marketplace:checked~.toggle-module__toggle-indicator-wrapper___6Lcp0_marketplace {
+  background-color: var(--spice-accent);
+}
+
 /* spicetify extensions */
 
 .main-topBar-button[title="Popup Lyrics"],
