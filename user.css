@@ -1947,6 +1947,10 @@ option {
   background-color: var(--spice-accent);
 }
 
+.toggle-module__toggle-indicator___nCxwE_marketplace {
+  background: var(--spice-card) !important;
+}
+
 /* spicetify extensions */
 
 .main-topBar-button[title="Popup Lyrics"],
