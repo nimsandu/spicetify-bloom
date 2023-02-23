@@ -1387,6 +1387,10 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 /* settings */
 
+.x-settings-crossFadeContainer {
+  padding-right: 16px;
+}
+
 .main-dropDown-dropDown,
 option {
   background-color: var(--spice-card) !important;
