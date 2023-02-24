@@ -286,10 +286,6 @@ h3,
   display: none !important;
 }
 
-.lyrics-tabBar-header {
-  display: inline-block;
-}
-
 /* menus */
 
 .main-contextMenu-menuItemButton,
@@ -1119,10 +1115,6 @@ a[class*='-tabBar-headerItemLink']:hover {
 
 a[class*='-tabBar-headerItemLink']:active {
   background-color: rgba(var(--spice-rgb-selected-row), 0.5);
-}
-
-.lyrics-tabBar-nav {
-  width: auto;
 }
 
 /* search */
