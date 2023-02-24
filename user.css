@@ -236,12 +236,8 @@ h3,
 }
 
 .main-topBar-topbarContent {
-  position: absolute;
-  display: -webkit-box;
-  left: 47%;
-  top: 5px;
-  transform: translate(-50%, 0%);
-  padding: 6px;
+  position: relative;
+  justify-content: center;
 }
 
 .queue-tabBar-header {
@@ -281,6 +277,9 @@ h3,
   display: none !important;
 }
 
+.lyrics-tabBar-header {
+  display: inline-block;
+}
 
 /* menus */
 
@@ -1113,6 +1112,9 @@ a[class*='-tabBar-headerItemLink']:active {
   background-color: rgba(var(--spice-rgb-selected-row), 0.5);
 }
 
+.lyrics-tabBar-nav {
+  width: auto;
+}
 
 /* search */
 
