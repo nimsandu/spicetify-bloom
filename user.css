@@ -337,6 +337,10 @@ h3,
 
 /* buttons */
 
+.main-topBar-button {
+	background-color: var(--spice-selected-row) !important;
+}
+
 .icon, .gSLhUO, .hDgDGI {
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
