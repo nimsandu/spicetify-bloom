@@ -144,7 +144,18 @@ html {
   height: 215px;
   filter: blur(60px);
   background-size: cover;
-  background-blend-mode: luminosity;	
+  background-blend-mode: luminosity;
+  opacity: 0;
+  animation: fadeIn 500ms ease-in-out forwards;  
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .Z35BWOA10YGn5uc9YgAp{
