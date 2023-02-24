@@ -140,8 +140,8 @@ html {
 
 .x-categoryCard-backdrop {
   position: absolute;
-  width: 215px;
-  height: 215px;
+  width: 100%;
+  height: 100%;
   filter: blur(60px);
   background-size: cover;
   background-blend-mode: luminosity;	
