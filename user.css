@@ -994,6 +994,10 @@ button.switch {
 
 /* artist page */
 
+.artist-artistOffers-info .artist-artistOffers-description {
+  color: var(--spice-subtext);
+}
+
 .artist-artistOverview-heading,
 .artist-artistPick-heading,
 .J6CYfp0Tj6MkWJCdssuA,
