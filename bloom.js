@@ -1,5 +1,7 @@
-(function bloom() {
-
+function bloom() {
+	
+  return new Promise(resolve => {
+	  
   function waitForElement(els, func, timeout = 100) {
     const queries = els.map(el => document.querySelector(el));
     if (queries.every(a => a)) {
@@ -162,15 +164,34 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     return;
   }, 10);
   
-  waitForElement([".x-categoryCard-CategoryCard"], () => {
-    const cards = document.querySelectorAll(".x-categoryCard-CategoryCard");
-    const cardImages = document.querySelectorAll(".x-categoryCard-image");
-    for (let i = 0; i < cards.length; i++) {
-	  const cardBackdrop = document.createElement("div");
-	  cardBackdrop.classList.add("x-categoryCard-backdrop");
-	  cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
-	  cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
-	  cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
-    }
-  }, 10);
-})();
+  resolve("done");
+  
+  });
+  
+}
+
+function addCategoryCardBackdrop() {
+	return new Promise(resolve => {
+		var intervalTime = 100;
+		const interval = setInterval(() => {
+			const cards = document.querySelectorAll(".x-categoryCard-CategoryCard");
+			if (cards.length > 0) {
+				const backdropDiv = document.querySelectorAll(".x-categoryCard-backdrop");
+				if (backdropDiv.length === 0) {
+					const cardImages = document.querySelectorAll(".x-categoryCard-image");
+					for (let i = 0; i < cards.length; i++) {
+						const cardBackdrop = document.createElement("div");
+						cardBackdrop.classList.add("x-categoryCard-backdrop");
+						cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
+						cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
+						cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
+					}
+				}
+				intervalTime = 1000;
+				resolve("done");
+			}
+	    }, intervalTime);
+	});
+}
+
+Promise.all([bloom(), addCategoryCardBackdrop()])
