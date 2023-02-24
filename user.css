@@ -254,6 +254,7 @@ h3,
 }
 
 .main-topBar-historyButtons {
+  background-color: var(--spice-selected-row);
   align-items: center;
 }
 
