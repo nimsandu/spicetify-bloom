@@ -2119,3 +2119,7 @@ nav .main-rootlist-wrapper > :nth-child(2) {
 .lyrics-lyrics-contentContainer {
   margin-bottom: 120px;
 }
+
+.lyrics-config-button-container {
+  padding-bottom: 20px;
+}
