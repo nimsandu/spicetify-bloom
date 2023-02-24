@@ -1390,8 +1390,8 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 /* settings */
 
-.dvSMET {
-  margin-left: 14px;
+.x-settings-crossFadeContainer {
+  padding-right: 16px;
 }
 
 .main-dropDown-dropDown,
