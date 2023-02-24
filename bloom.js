@@ -158,6 +158,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
   
   waitForElement([".volume-percent"], () => {
     const element = document.querySelector(".volume-percent");
-	element.style.paddingLeft = "20px";
+    element.style.paddingLeft = "20px";
+    return;
   }, 10);
 })();
