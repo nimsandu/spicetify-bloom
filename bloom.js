@@ -161,4 +161,16 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     element.style.paddingLeft = "20px";
     return;
   }, 10);
+  
+  waitForElement([".x-categoryCard-CategoryCard"], () => {
+    const cards = document.querySelectorAll(".x-categoryCard-CategoryCard");
+    const cardImages = document.querySelectorAll(".x-categoryCard-image");
+    for (let i = 0; i < cards.length; i++) {
+	  const cardBackdrop = document.createElement("div");
+	  cardBackdrop.classList.add("x-categoryCard-backdrop");
+	  cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
+	  cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
+	  cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
+    }
+  }, 10);
 })();

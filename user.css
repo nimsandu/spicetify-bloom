@@ -131,10 +131,20 @@ html {
 .main-card-card,
 .x-heroCategoryCard-HeroCategoryCard,
 .x-categoryCard-CategoryCard,
+.x-categoryCard-image,
 .main-heroCard-card,
 .OALAQFKvC7XQOVYpklB4,
 .g3f_cI5usQX7ZOQyDtA9{
   border-radius: var(--border-radius-1);
+}
+
+.x-categoryCard-backdrop {
+  position: absolute;
+  width: 215px;
+  height: 215px;
+  filter: blur(60px);
+  background-size: cover;
+  background-blend-mode: luminosity;	
 }
 
 .Z35BWOA10YGn5uc9YgAp{
