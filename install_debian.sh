@@ -30,6 +30,10 @@ elif [ "$DISTRO_REL" == "linuxmint" ]; then
     echo "Your distribution is Linux Mint, which is a derivative of Debian. Continue."
     echo -e "Distro author: Linux Mark Institute\n"
     continue
+elif [ "$DISTRO_REL" == "ubuntu" ]; then
+    echo "Your distribution is Ubuntu, which is a derivative of Debian. Continue."
+    echo -e "Distro author: Canonical\n"
+    continue
 elif [ "$DISTRO_REL" != "debian" ]; then
     echo "Your distribution doesn't seem to be Debian or its derivative."
     echo "If this is a mistake, please open a GitHub issue with the ID detected: $DISTRO_REL"
