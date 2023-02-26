@@ -2,6 +2,17 @@
 
 set -e
 
+if [ -z "$(which spotify)" ]; then
+    echo "Spotify isn't installed or doesn't exist in your PATH."
+    echo "Bloom is a Spotify theme, and so it's an essential."
+    echo "Please install Spotify (https://spotify.com/download) and run this script again to continue."
+    echo "If Spotify is already installed, add it to your PATH variable and rerun this script."
+    echo "Example command for adding to PATH: export PATH=~/spotify:\$PATH"
+    echo -e "\nAbort!"
+    # b/126
+    exit 3
+fi
+
 if [ -z "$(which spicetify)" ]; then
     echo "Spicetify isn't installed or doesn't exist in your PATH."
     echo "Bloom relies on it to work properly."
