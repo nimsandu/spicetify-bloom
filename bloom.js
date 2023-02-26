@@ -158,8 +158,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
   
   waitForElement([".volume-percent"], () => {
     const element = document.querySelector(".volume-percent");
-    element.style.paddingLeft = "20px";
-    return;
+	element.style.paddingLeft = "20px";
   }, 10);
   
   waitForElement([".x-categoryCard-CategoryCard"], () => {
