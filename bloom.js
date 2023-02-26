@@ -162,15 +162,30 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     return;
   }, 10);
   
-  waitForElement([".x-categoryCard-CategoryCard"], () => {
-    const cards = document.querySelectorAll(".x-categoryCard-CategoryCard");
-    const cardImages = document.querySelectorAll(".x-categoryCard-image");
-    for (let i = 0; i < cards.length; i++) {
-	  const cardBackdrop = document.createElement("div");
-	  cardBackdrop.classList.add("x-categoryCard-backdrop");
-	  cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
-	  cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
-	  cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
+  waitForElement(["main"], () => {
+    const element = document.querySelector("main");
+    const observer = new MutationObserver(callback);
+    const observerConfig = {
+      attributes: true,
+      attributeFilter: ["aria-label"],
+      childList: false
+    };
+    observer.observe(element, observerConfig);
+    function callback(mutationsList, observer) {
+      for (let mutation of mutationsList) {
+        waitForElement([".x-categoryCard-image"], () => {
+	  const cards = document.querySelectorAll(".x-categoryCard-CategoryCard");
+          const cardImages = document.querySelectorAll(".x-categoryCard-image");
+          for (let i = 0; i < cards.length; i++) {
+            const cardBackdrop = document.createElement("div");
+            cardBackdrop.classList.add("x-categoryCard-backdrop");
+            cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
+            cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
+            cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
+          }
+        }, 10)
+      }
     }
   }, 10);
+	
 })();
