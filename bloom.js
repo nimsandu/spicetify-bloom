@@ -5,7 +5,7 @@
     if (queries.every(a => a)) {
       func();
     } else if (timeout > 0) {
-      setTimeout(waitForElement, 300, els, func, timeout--);
+      setTimeout(waitForElement, 300, els, func, timeout-1);
     }
   }
   waitForElement([
