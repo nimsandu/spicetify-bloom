@@ -2005,6 +2005,11 @@ option {
   margin-top: -64px;
 }
 
+.lyrics-lyricsContainer-LyricsBackground {
+  margin-bottom: -110px;
+  margin-top: -10px;
+}
+
 .Q2RPoHcoxygOoPLXLMww{
   padding-bottom: 350px;
   padding-right: 150px;
@@ -2109,4 +2114,8 @@ nav .main-rootlist-wrapper > :nth-child(2) {
 
 .lyrics-lyrics-contentContainer {
   margin-bottom: 120px;
+}
+
+.lyrics-config-button-container {
+  padding-bottom: 20px;
 }
