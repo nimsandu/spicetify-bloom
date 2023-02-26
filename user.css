@@ -144,7 +144,21 @@ html {
   height: 215px;
   filter: blur(60px);
   background-size: cover;
-  background-blend-mode: luminosity;	
+  background-blend-mode: luminosity;
+  opacity: 0;
+  animation: scale-in 750ms ease-out forwards;
+  transform-origin: center center;
+}
+
+@keyframes scale-in {
+  from {
+	opacity: 0;
+    transform: scale(0);
+  }
+  to {
+	opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .Z35BWOA10YGn5uc9YgAp{
