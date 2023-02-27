@@ -1567,6 +1567,11 @@ option {
 
 }
 
+.x-progressBar-progressBarBg {
+  background-color: rgba(var(--spice-rgb-text), 0.2);
+  background-blend-mode: luminosity;
+}
+
 .playback-bar,
 .progress-bar,
 .progress-bar__fg_wrapper {
