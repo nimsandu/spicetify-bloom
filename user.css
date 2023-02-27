@@ -328,6 +328,10 @@ div#context-menu:before,
   background-color: rgba(var(--spice-rgb-card), 0.8) !important;
 }
 
+.i8EjndRQjYlli0aLGYEm {
+  height: 100%;
+}
+
 .main-contextMenu-menuItemButton,
 .main-userWidget-dropDownMenuItemButton {
   border-radius: var(--border-radius-3);
@@ -1592,6 +1596,11 @@ option {
   transform: translateX(0px) !important;
   border-radius: var(--border-radius-1)!important;
 
+}
+
+.x-progressBar-progressBarBg {
+  background-color: rgba(var(--spice-rgb-text), 0.2);
+  background-blend-mode: luminosity;
 }
 
 .playback-bar,
