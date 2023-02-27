@@ -215,6 +215,15 @@ html {
 
 /* headers */
 
+[dir=ltr] .queue-tabBar-header,
+.marketplace-tabBar-nav  {
+  text-align: center !important;
+}
+
+.lyrics-tabBar-header {
+  justify-content: center;
+}
+
 .Root__top-bar {
   position: absolute !important;
   width: 100vw !important;
