@@ -1296,8 +1296,13 @@ path[d="M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 .main-playlistEditDetailsModal-container,
 .profile-userEditDetails-container,
 .artist-artistAbout-modal {
-  background-color: var(--spice-main) !important;
+  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
+  backdrop-filter: blur(50px);
   border-radius: var(--border-radius-1) !important;
+}
+
+.uJjmxe0T11dUVeW6Biz8 {
+  background-color: unset;	
 }
 
 .main-playlistEditDetailsModal-titleInput,
