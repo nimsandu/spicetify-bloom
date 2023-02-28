@@ -311,6 +311,23 @@ h3,
 
 /* menus */
 
+div#context-menu:before,
+.main-contextMenu-menu:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-1);
+  backdrop-filter: blur(20px);
+}
+
+.main-contextMenu-menu {
+  background-color: rgba(var(--spice-rgb-card), 0.8) !important;
+}
+
 .i8EjndRQjYlli0aLGYEm {
   height: 100%;
 }
@@ -324,8 +341,10 @@ h3,
 }
 
 .main-contextMenu-menuItemButton:hover,
-.main-userWidget-dropDownMenuItemButton:hover {
-  background-color: var(--spice-tab-active) !important;
+.main-userWidget-dropDownMenuItemButton:hover,
+.main-contextMenu-menuItemButton[aria-expanded=true] {
+  background-color: rgba(var(--spice-rgb-text),0.1) !important;
+  backdrop-filter: luminosity;
 }
 
 .main-contextMenu-menuItem,
@@ -1010,7 +1029,15 @@ button.switch {
 }
 
 .x-filterBox-filterInput {
-  background-color: var(--spice-card);
+  background-color: rgba(var(--spice-rgb-card), 0.6);
+  color: var(--spice-text);
+}
+
+.x-filterBox-filterInput::placeholder {
+  color: var(--spice-subtext);
+}
+
+.x-filterBox-searchIconContainer {
   color: var(--spice-text);
 }
 
