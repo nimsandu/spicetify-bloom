@@ -1722,7 +1722,7 @@ option {
 .rVxzkDirgkuRPv5V1HYF,
 .main-coverSlotCollapsed-container {
   position: fixed;
-  top: -12px;
+  top: auto;
   left: 0px;
   width: 56px;
   height: 56px;
