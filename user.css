@@ -36,6 +36,11 @@ html {
   --background-press: var(--spice-accent);
 }
 
+.encore-light-theme {
+  --background-base: var(--spice-main);
+  --text-base: var(--spice-text);
+}
+
 .Root__main-view {
   z-index: 0;
   background-color: var(--spice-main);
