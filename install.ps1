@@ -57,7 +57,10 @@ Write-Host -Object "+ Installed bloom.js theme"
 # Apply the theme with spicetify config calls
 spicetify config extensions bloom.js
 spicetify config current_theme bloom
-spicetify config color_scheme dark
+switch (Get-ItemPropertyValue -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme) {
+  0 {spicetify config color_scheme dark}
+  1 {spicetify config color_scheme light}
+}
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 Write-Host -Object "+ Configured bloom theme"
 
