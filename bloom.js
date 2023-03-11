@@ -161,6 +161,118 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
 	element.style.paddingLeft = "20px";
   }, 10);
   
+  function updateLyricsBackdrop() {
+    waitForElement(["#lyrics-backdrop"], () => {
+      const lyricsBackdrop = document.getElementById("lyrics-backdrop");
+      const context = lyricsBackdrop.getContext("2d");
+      const lyricsBackdropImage = new Image();
+      lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_url;
+      lyricsBackdropImage.onload = () => {
+        context.filter = "blur(20px)";
+        const centerX = lyricsBackdrop.width / 2;
+        const centerY = lyricsBackdrop.height / 2;
+        let radius = 0;
+        const aspectRatio = lyricsBackdrop.width / lyricsBackdrop.height;
+        const maxRadius = Math.min(lyricsBackdrop.width, lyricsBackdrop.height) / 1.75;
+        function animate() {
+          if (radius >= maxRadius) {
+            return;
+          }
+          context.drawImage(lyricsBackdropImage, centerX - radius * aspectRatio, centerY - radius, 2 * radius * aspectRatio, 2 * radius);
+          radius += 2.5;
+          requestAnimationFrame(animate);
+        }
+        animate();
+      }
+    }, 10);
+  }
+
+  let activeLine;
+
+  function setActiveLine() {
+    waitForElement([".lyrics-lyricsContent-lyric"], () => {
+      activeLine = document.querySelector(".lyrics-lyricsContent-active");
+      if (activeLine == null) {
+        activeLine = document.querySelectorAll(".lyrics-lyricsContent-lyric");
+        activeLine = activeLine[0];
+      }
+    }, 10);
+  }
+
+  function lyricsCallback(mutationsList, lyricsObserver) {
+    for (let mutation of mutationsList) {
+      if (mutation.target.className.includes("lyrics-lyricsContent-active") && mutation.target !== activeLine) {
+        previousActiveLine = activeLine;
+        activeLine = mutation.target;
+        previousActiveLine.classList.toggle("previous");
+      }
+      else if (Spicetify.Player.getProgress() < 200) {
+        setActiveLine();
+      }
+    }
+  }
+
+  const lyricsObserver = new MutationObserver(lyricsCallback);
+
+  function pbRightCallback(mutationsList, pbRightObserver) {
+    for (let mutation of mutationsList) {
+      let lyricsBackdrop = document.querySelector("#lyrics-backdrop");
+      const lyricsButton = document.querySelector(".Xmv2oAnTB85QE4sqbK00");
+      if (lyricsButton != null) {
+        const lyricsActive = lyricsButton.getAttribute("data-active");
+        if (lyricsActive === "true") {
+
+          waitForElement([".lyrics-lyrics-container"], () => {
+            const lyricsContainer = document.querySelector(".lyrics-lyrics-container");
+            const lyricsObserverConfig = {
+              attributes: true,
+              attributeFilter: ["class"],
+              childList: true,
+              subtree: true
+            };
+            setActiveLine();
+            lyricsObserver.observe(lyricsContainer, lyricsObserverConfig);
+          }, 10);
+
+          if (lyricsBackdrop == null) {
+            waitForElement([".main-view-container__scroll-node > div.os-padding"], () => {
+              const osPadding = document.querySelector(".main-view-container__scroll-node > div.os-padding");
+              lyricsBackdrop = document.createElement("canvas");
+              lyricsBackdrop.id = "lyrics-backdrop";
+              osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
+              updateLyricsBackdrop();
+            }, 10);
+          }
+          else {
+            lyricsBackdrop.style.visibility = "visible";
+          }
+		  
+        }
+        else if (lyricsBackdrop != null) {
+          lyricsObserver.disconnect();
+          lyricsBackdrop.style.visibility = "hidden";
+        }
+      }
+      else if (lyricsBackdrop != null) {
+        lyricsObserver.disconnect();
+        lyricsBackdrop.style.visibility = "hidden";
+      }
+    }
+  }
+
+  waitForElement([".mwpJrmCgLlVkJVtWjlI1"], () => {
+    const pbRight = document.querySelector(".mwpJrmCgLlVkJVtWjlI1");
+    const pbRightObserver = new MutationObserver(pbRightCallback);
+    const pbRightObserverConfig = {
+      attributes: true,
+      childList: true,
+      subtree: true
+    };
+    pbRightObserver.observe(pbRight, pbRightObserverConfig);
+  }, 100);
+
+  Spicetify.Player.addEventListener("songchange", updateLyricsBackdrop);
+  
   waitForElement(["main"], () => {
     const element = document.querySelector("main");
     const observer = new MutationObserver(callback);
