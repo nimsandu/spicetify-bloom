@@ -82,6 +82,21 @@ xpui.js_repl_8008 = , `${1}58,
 }
 Write-Host -Object "+ Patched xpui.js for Sidebar fixes"
 
+$files = @(
+  "$env:SystemRoot\Fonts\SegUIVar.ttf",
+  "$env:SystemRoot\Fonts\SegoeUI-VF.ttf",
+  "$env:LOCALAPPDATA\Microsoft\Windows\Fonts\SegoeUI-VF.ttf"
+)
+if ( -not ( ($files | Test-Path -PathType Leaf) -contains $true ) ) {
+  $choice = $host.UI.PromptForChoice("", "Install Segoe UI Variable font for better look?", ("&Yes", "&No"), 0)
+  if ($choice -eq 0) {
+    Invoke-WebRequest -Uri https://aka.ms/SegoeUIVariable -UseBasicParsing -OutFile $env:TEMP\SegoeUI-VF.zip
+    Expand-Archive -Path $env:TEMP\SegoeUI-VF.zip -DestinationPath $env:TEMP\SegoeUI-VF\ -Force
+    (New-Object -ComObject Shell.Application).Namespace(0x14).CopyHere("$env:TEMP\SegoeUI-VF\SegoeUI-VF.ttf", 0x10)
+    Remove-Item -Path $env:TEMP\SegoeUI-VF.zip, $env:TEMP\SegoeUI-VF -Recurse -Force
+  }
+}
+
 # backup apply or just apply where necessary
 $configFile | ForEach-Object {
   if ($_ -match "^version = (.+)$") {
