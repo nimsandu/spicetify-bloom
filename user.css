@@ -847,6 +847,7 @@ button.switch {
 
 
 .main-rootlist-statusIcons {
+  display: none;
   right: 17px !important;
   top: -4px;
 }
