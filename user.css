@@ -382,8 +382,13 @@ div#context-menu:before,
   color: var(--spice-text) !important;
 }
 
-
 /* buttons */
+
+.x-downloadButton-button,
+.x-filterBox-expandButton,
+.x-contributorButton-ContributorButton {
+  color: var(--spice-subtext) !important;
+}
 
 .main-topBar-button {
 	background-color: var(--spice-selected-row) !important;
