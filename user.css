@@ -1792,7 +1792,8 @@ option {
 }
 
 .playback-bar__progress-time,
-.main-playbackBarRemainingTime-container {
+.main-playbackBarRemainingTime-container,
+.playback-bar__progress-time-elapsed {
   color: var(--spice-text) !important;
 }
 
