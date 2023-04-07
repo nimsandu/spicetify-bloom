@@ -1810,7 +1810,7 @@ option {
 }
 
 .main-skipBackButton-button:hover, .main-skipForwardButton-button:hover, .main-repeatButton-button[aria-checked="false"]:hover, .main-shuffleButton-button:hover {
-  background-color: hsla(0,0%,100%,.7) !important;
+  background-color: var(--spice-subtext) !important;
 }
 
 .main-skipBackButton-button:focus:not(:focus-visible):not(:hover), .main-skipForwardButton-button:focus:not(:focus-visible):not(:hover) {
