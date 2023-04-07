@@ -113,18 +113,24 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     ) return;
     clearInterval(interval);
     var playButtonStyle = document.createElement('style');
+    var playlistPlayLabel = Spicetify.Platform.Translations['playlist.a11y.play'];
+    playlistPlayLabel = playlistPlayLabel.slice(0, -5);
+    var playlistPauseLabel = Spicetify.Platform.Translations['playlist.a11y.pause'];
+    playlistPauseLabel = playlistPauseLabel.slice(0, -5);
     playButtonStyle.innerHTML = `
       .main-playButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
       .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.play}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.play}"] {
+      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-PlayButton>button[aria-label*="${playlistPlayLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
       }
       .main-playButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
       .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.pause}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.pause}"] {
+      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
       }`;
