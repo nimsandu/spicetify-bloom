@@ -1165,6 +1165,10 @@ button.switch {
   padding-left: 10px;
 }
 
+.main-playButton-PlayButton {
+  transition: opacity .5s,visibility .5s !important;
+}
+
 .main-playButton-PlayButton.main-playButton-primary {
   padding: 12px;
   padding-bottom: 0px;
