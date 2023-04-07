@@ -72,15 +72,15 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
               size: "50px",
             };
             if (!image.url) {
-              icon.size = "50px";
+              icon.size = "45px";
               }
             cache.set(id, icon);
             break;
           case "folder":
             icon = {
               src: "https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg",
-              size: "50x",
             };
+            icon.size = "45px";
             cache.set(id, icon);
             break;
         }
