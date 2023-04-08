@@ -235,7 +235,7 @@ html {
   grid-area: none;
   z-index: 4 !important;
   background-color: rgba(var(--spice-rgb-sidebar), 0.65);
-  backdrop-filter: blur(60px) saturate(2.5)
+  backdrop-filter: blur(60px) saturate(2)
 }
 
 .main-topBar-container {
