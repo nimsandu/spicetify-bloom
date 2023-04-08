@@ -1472,6 +1472,10 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 /* settings */
 
+.x-settings-equalizerContainer {
+  border-radius: var(--border-radius-2);
+}
+
 .x-settings-crossFadeContainer {
   padding-right: 16px;
 }
