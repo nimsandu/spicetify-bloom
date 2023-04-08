@@ -384,6 +384,11 @@ div#context-menu:before,
 
 /* buttons */
 
+.ButtonInner-md {
+  width: auto;
+  padding: 10px;
+}
+
 .x-downloadButton-button,
 .x-filterBox-expandButton,
 .x-contributorButton-ContributorButton {
