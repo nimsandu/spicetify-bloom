@@ -2263,3 +2263,43 @@ nav .main-rootlist-wrapper > :nth-child(2) {
 .lyrics-config-button-container {
   padding-bottom: 20px;
 }
+
+/* Spicetify power bar */
+
+#power-bar-container {
+  border-radius: var(--border-radius-3) !important;
+}
+
+#power-bar-wrapper {
+  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
+  backdrop-filter: blur(50px);
+}
+
+#power-bar-search.has-suggestions {
+  border-bottom: none !important;
+  width: 100% !important;
+}
+
+#power-bar-search:focus-visible {
+  border-bottom: 2px solid var(--spice-accent) !important;
+  border-radius: var(--border-radius-3) !important;
+}
+
+#suggestions-container h5 {
+  font-size: 1.1em !important;
+  color: var(--spice-subtext) !important;
+}
+
+.suggestions-category {
+  border: none !important;
+  padding-bottom: 0 !important;
+}
+
+.suggestion-item__active {
+  background-color: var(--spice-accent) !important;
+  border-radius: var(--border-radius-3) !important;
+}
+
+.suggestion-item__img {
+  border-radius: 10% !important;
+}
