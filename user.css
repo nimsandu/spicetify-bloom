@@ -60,6 +60,16 @@ html {
   margin-right: 2px;
 }
 
+.os-scrollbar-vertical {
+  width: 6px !important;
+  transition: width 150ms ease !important;
+}
+
+.os-scrollbar-vertical:hover,
+.os-scrollbar-vertical:active {
+  width: 9px !important;
+}
+
 .os-scrollbar-horizontal {
   display: none;
 }
