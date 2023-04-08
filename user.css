@@ -1651,33 +1651,25 @@ option {
   margin-left: -10px;
 }
 
-.slider-dot {
-  width: 3px;
-  height: 3px;
+.progress-bar__slider:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
   background-color: var(--spice-accent);
-  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 5px solid var(--spice-accent);
   border-radius: 50%;
-  transition: border-width 75ms ease;
+  transition: transform 300ms cubic-bezier(0.1, 0.9, 0.2, 1)
 }
 
-.progress-bar__slider:hover .slider-dot:not(:hover) {
-  border-width: 7px;
+.progress-bar__slider:hover:after {
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
-.slider-dot:hover {
-  border-width: 7px;
-}
-
-.progress-bar__slider:active .slider-dot:not(:active) {
-  border-width: 4px !important;
-}
-
-.slider-dot:active {
-  border-width: 4px !important;
+.progress-bar__slider:active:after {
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 .main-nowPlayingWidget-nowPlaying>.ellipsis-one-line,
