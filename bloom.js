@@ -98,6 +98,19 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
   addPlaylistIcons();
   
 });
+
+  waitForElement([
+    ".main-navBar-navBarLink",
+    "[href='/collection'] > span"
+  ], () => {
+    const navBarItems = document.getElementsByClassName("main-navBar-navBarLink");
+    for (const item of navBarItems) {
+      let div = document.createElement("div");
+      div.classList.add("navBar-navBarLink-accent");
+      item.appendChild(div);
+    }
+    document.querySelector("[href='/collection'] > span").innerHTML = "Library";
+  });
   
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
   if (textColor == " #000000") {
