@@ -384,6 +384,14 @@ div#context-menu:before,
 
 /* buttons */
 
+.main-genericButton-buttonActive:after {
+  background-color: var(--spice-accent) !important;
+}
+
+.main-genericButton-buttonActive {
+  color: var(--spice-accent) !important;
+}
+
 .ButtonInner-md {
   width: auto;
   padding: 10px;
