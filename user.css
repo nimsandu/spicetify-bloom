@@ -1993,8 +1993,11 @@ option {
   display: none !important;
 }
 
-
 /* play buttons */
+
+.main-card-imageContainer>.main-card-PlayButtonContainer>.main-playButton-PlayButton>button {
+  background-color: white !important;
+}
 
 .main-playButton-button,
 .main-playButton-PlayButton>button,
