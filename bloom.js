@@ -126,27 +126,45 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     ) return;
     clearInterval(interval);
     var playButtonStyle = document.createElement('style');
+
+    function cleanLabel (label) {
+      label = label.replace(/[{0}{1}«»”“]/g, '').trim();
+      return label;
+    }
+
     var playlistPlayLabel = Spicetify.Platform.Translations['playlist.a11y.play'];
-    playlistPlayLabel = playlistPlayLabel.slice(0, -5);
+    playlistPlayLabel = cleanLabel(playlistPlayLabel);
     var playlistPauseLabel = Spicetify.Platform.Translations['playlist.a11y.pause'];
-    playlistPauseLabel = playlistPauseLabel.slice(0, -5);
+    playlistPauseLabel = cleanLabel(playlistPauseLabel);
+
     var tracklistPlayLabel = Spicetify.Platform.Translations['tracklist.a11y.play'];
-    tracklistPlayLabel = tracklistPlayLabel.slice(0, tracklistPlayLabel.indexOf('«') - tracklistPlayLabel.length);
+    if (["zh-CN", "zh-TW", "am", "fi"].includes(Spicetify.Locale._locale)) {
+      var tracklistPlayLabel_1 = tracklistPlayLabel.split("{1}")[0];
+      var tracklistPlayLabel_2 = tracklistPlayLabel.split("{1}")[1];
+    } else {
+      var tracklistPlayLabel_1 = tracklistPlayLabel.split("{0}")[0];
+      var tracklistPlayLabel_2 = tracklistPlayLabel.split("{0}")[1];
+    }
+    tracklistPlayLabel_1 = cleanLabel(tracklistPlayLabel_1);
+    tracklistPlayLabel_2 = cleanLabel(tracklistPlayLabel_2);
+
     playButtonStyle.innerHTML = `
-      .main-playButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.play}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabel}"],
+      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations['playback-control.play']}"],
+      .main-trackList-rowPlayPauseButton[aria-label*="${Spicetify.Platform.Translations.play}"],
+      .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabel_1}"][aria-label*="${tracklistPlayLabel_2}"],
       .main-playButton-PlayButton>button[aria-label*="${playlistPlayLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
       }
-      .main-playButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.pause}"],
-      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-trackList-rowImagePlayButton[aria-label="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playPauseButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations['playback-control.pause']}"],
+      .main-trackList-rowPlayPauseButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-trackList-rowImagePlayButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
       .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
