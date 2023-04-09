@@ -1918,6 +1918,10 @@ option {
   height: 22px !important;
 }
 
+.volume-percent {
+  padding-left: 20px !important;
+}
+
 /* Disabled */
 .main-repeatButton-button[aria-checked="false"]{
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_off_24_regular.svg');

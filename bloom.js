@@ -150,11 +150,6 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
   }, 10)
 
-  waitForElement([".volume-percent"], () => {
-    const volumePercent = document.querySelector(".volume-percent")
-    volumePercent.style.paddingLeft = "20px"
-  }, 10)
-
   function updateLyricsBackdrop () {
     waitForElement(["#lyrics-backdrop"], () => {
       const lyricsBackdrop = document.getElementById("lyrics-backdrop")
