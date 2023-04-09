@@ -206,7 +206,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
 
   function pbRightCallback (mutationsList, pbRightObserver) {
     let lyricsBackdrop = document.querySelector("#lyrics-backdrop")
-    const lyricsButton = document.querySelector(".Xmv2oAnTB85QE4sqbK00")
+    const lyricsButton = document.querySelector(".ZMXGDTbwxKJhbmEDZlYy")
     if (lyricsButton != null) {
       const lyricsActive = lyricsButton.getAttribute("data-active")
       if (lyricsActive === "true") {
@@ -249,16 +249,66 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     }
   }
 
-  waitForElement([".mwpJrmCgLlVkJVtWjlI1"], () => {
-    const pbRight = document.querySelector(".mwpJrmCgLlVkJVtWjlI1")
+  function lyricsCinemaCallback (mutationsList, lyricsCinemaObserver) {
+    let lyricsBackdrop = document.querySelector("#lyrics-backdrop")
+    const lyricsCinema = mutationsList[0].target
+    if (lyricsCinema.classList.contains("AptbKyUcObu7QQ1sxqgb")) {
+      waitForElement([".lyrics-lyrics-container"], () => {
+        const lyricsContainer = document.querySelector(".lyrics-lyrics-container")
 
-    const pbRightObserver = new MutationObserver(pbRightCallback)
-    const pbRightObserverConfig = {
-      attributes: true,
-      childList: true,
-      subtree: true
+        const lyricsObserverConfig = {
+          attributes: true,
+          attributeFilter: ["class"],
+          childList: true,
+          subtree: true
+        }
+
+        setActiveLine()
+
+        lyricsObserver.observe(lyricsContainer, lyricsObserverConfig)
+      }, 10)
+
+      if (lyricsBackdrop == null) {
+        waitForElement([".main-view-container__scroll-node > div.os-padding"], () => {
+          lyricsBackdrop = document.createElement("canvas")
+          lyricsBackdrop.id = "lyrics-backdrop"
+
+          const container = document.querySelector(".y7xcnM6yyOOrMwI77d5t")
+          lyricsCinema.insertBefore(lyricsBackdrop, container)
+
+          updateLyricsBackdrop()
+        }, 10)
+      } else {
+        lyricsBackdrop.style.visibility = "visible"
+      }
+    } else if (lyricsBackdrop != null) {
+      lyricsObserver.disconnect()
+      lyricsBackdrop.style.visibility = "hidden"
     }
-    pbRightObserver.observe(pbRight, pbRightObserverConfig)
+  }
+
+  waitForElement([".mwpJrmCgLlVkJVtWjlI1"], () => {
+    const features = JSON.parse(localStorage.getItem("spicetify-exp-features"))
+    if (features.enableRightSidebarLyrics.value === false || features.enableRightSidebar.value === false) {
+      const pbRight = document.querySelector(".mwpJrmCgLlVkJVtWjlI1")
+      const pbRightObserver = new MutationObserver(pbRightCallback)
+      const pbRightObserverConfig = {
+        attributes: true,
+        childList: true,
+        subtree: true
+      }
+      pbRightObserver.observe(pbRight, pbRightObserverConfig)
+    } else {
+      const lyricsCinema = document.querySelector(".Root__lyrics-cinema")
+      const lyricsCinemaObserver = new MutationObserver(lyricsCinemaCallback)
+      const lyricsCinemaObserverConfig = {
+        attributes: true,
+        attributeFilter: ["class"],
+        childList: false,
+        subtree: false
+      }
+      lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig)
+    }
   }, 100)
 
   Spicetify.Player.addEventListener("songchange", updateLyricsBackdrop)
