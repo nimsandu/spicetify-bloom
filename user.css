@@ -1015,7 +1015,7 @@ button.switch {
 }
 
 .main-trackList-selected .main-trackList-playingIcon {
-  background: var(--spice-shadow);
+  background: var(--spice-text);
 }
 
 .main-trackList-rowImageWithPlay .main-trackList-rowPlayPauseButton {
