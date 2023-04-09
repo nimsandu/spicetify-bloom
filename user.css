@@ -1487,6 +1487,7 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 .x-settings-equalizerContainer {
   border-radius: var(--border-radius-2);
+  background-color: var(--spice-card);
 }
 
 .x-settings-crossFadeContainer {
