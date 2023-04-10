@@ -72,15 +72,15 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
               size: "50px",
             };
             if (!image.url) {
-              icon.size = "50px";
+              icon.size = "45px";
               }
             cache.set(id, icon);
             break;
           case "folder":
             icon = {
               src: "https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg",
-              size: "50x",
             };
+            icon.size = "45px";
             cache.set(id, icon);
             break;
         }
@@ -98,6 +98,19 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
   addPlaylistIcons();
   
 });
+
+  waitForElement([
+    ".main-navBar-navBarLink",
+    "[href='/collection'] > span"
+  ], () => {
+    const navBarItems = document.getElementsByClassName("main-navBar-navBarLink");
+    for (const item of navBarItems) {
+      let div = document.createElement("div");
+      div.classList.add("navBar-navBarLink-accent");
+      item.appendChild(div);
+    }
+    document.querySelector("[href='/collection'] > span").innerHTML = "Library";
+  });
   
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
   if (textColor == " #000000") {
@@ -113,52 +126,50 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     ) return;
     clearInterval(interval);
     var playButtonStyle = document.createElement('style');
+
+    function cleanLabel (label) {
+      label = label.replace(/[{0}{1}«»”“]/g, '').trim();
+      return label;
+    }
+
+    var playlistPlayLabel = Spicetify.Platform.Translations['playlist.a11y.play'];
+    playlistPlayLabel = cleanLabel(playlistPlayLabel);
+    var playlistPauseLabel = Spicetify.Platform.Translations['playlist.a11y.pause'];
+    playlistPauseLabel = cleanLabel(playlistPauseLabel);
+
+    var tracklistPlayLabel = Spicetify.Platform.Translations['tracklist.a11y.play'];
+    if (["zh-CN", "zh-TW", "am", "fi"].includes(Spicetify.Locale._locale)) {
+      var tracklistPlayLabel_1 = tracklistPlayLabel.split("{1}")[0];
+      var tracklistPlayLabel_2 = tracklistPlayLabel.split("{1}")[1];
+    } else {
+      var tracklistPlayLabel_1 = tracklistPlayLabel.split("{0}")[0];
+      var tracklistPlayLabel_2 = tracklistPlayLabel.split("{0}")[1];
+    }
+    tracklistPlayLabel_1 = cleanLabel(tracklistPlayLabel_1);
+    tracklistPlayLabel_2 = cleanLabel(tracklistPlayLabel_2);
+
     playButtonStyle.innerHTML = `
-      .main-playButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.play}"],
       .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.play}"] {
+      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations['playback-control.play']}"],
+      .main-trackList-rowPlayPauseButton[aria-label*="${Spicetify.Platform.Translations.play}"],
+      .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabel_1}"][aria-label*="${tracklistPlayLabel_2}"],
+      .main-playButton-PlayButton>button[aria-label*="${playlistPlayLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
       }
-      .main-playButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-playButton-PlayButton>button[aria-label~="${Spicetify.Platform.Translations.pause}"],
-      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.pause}"],
-      .main-trackList-rowPlayPauseButton[aria-label="${Spicetify.Platform.Translations.pause}"] {
+      .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playPauseButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations['playback-control.pause']}"],
+      .main-trackList-rowPlayPauseButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-trackList-rowImagePlayButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
       }`;
     document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
-  }, 10)
-
-  waitForElement([".progress-bar__slider"], () => {
-    const sliders = document.getElementsByClassName("progress-bar__slider");
-    for (const slider of sliders) {
-      const dot = document.createElement("div");
-      dot.classList.add("slider-dot");
-      slider.appendChild(dot);
-    }
-  }, 10);
-
-  waitForElement([".ExtraControls"], () => {
-    const element = document.querySelector(".ExtraControls");
-    element.addEventListener("click", () => {
-      waitForElement([".npv-main-container .progress-bar__slider"], () => {
-        const sliders = document.getElementsByClassName("npv-main-container")[0].getElementsByClassName("progress-bar__slider");
-        for (const slider of sliders) {
-          if (slider.dataset.dot === "true") { continue; }
-          slider.dataset.dot = "true";
-          const dot = document.createElement("div");
-          dot.classList.add("slider-dot");
-          slider.appendChild(dot);
-        }
-      }, 10)
-    })
-  }, 10);
-
-  waitForElement([".volume-percent"], () => {
-    const volumePercent = document.querySelector(".volume-percent")
-    volumePercent.style.paddingLeft = "20px"
   }, 10)
 
   function updateLyricsBackdrop () {
@@ -217,7 +228,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
 
   function pbRightCallback (mutationsList, pbRightObserver) {
     let lyricsBackdrop = document.querySelector("#lyrics-backdrop")
-    const lyricsButton = document.querySelector(".Xmv2oAnTB85QE4sqbK00")
+    const lyricsButton = document.querySelector(".ZMXGDTbwxKJhbmEDZlYy")
     if (lyricsButton != null) {
       const lyricsActive = lyricsButton.getAttribute("data-active")
       if (lyricsActive === "true") {
@@ -260,16 +271,66 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     }
   }
 
-  waitForElement([".mwpJrmCgLlVkJVtWjlI1"], () => {
-    const pbRight = document.querySelector(".mwpJrmCgLlVkJVtWjlI1")
+  function lyricsCinemaCallback (mutationsList, lyricsCinemaObserver) {
+    let lyricsBackdrop = document.querySelector("#lyrics-backdrop")
+    const lyricsCinema = mutationsList[0].target
+    if (lyricsCinema.classList.contains("AptbKyUcObu7QQ1sxqgb")) {
+      waitForElement([".lyrics-lyrics-container"], () => {
+        const lyricsContainer = document.querySelector(".lyrics-lyrics-container")
 
-    const pbRightObserver = new MutationObserver(pbRightCallback)
-    const pbRightObserverConfig = {
-      attributes: true,
-      childList: true,
-      subtree: true
+        const lyricsObserverConfig = {
+          attributes: true,
+          attributeFilter: ["class"],
+          childList: true,
+          subtree: true
+        }
+
+        setActiveLine()
+
+        lyricsObserver.observe(lyricsContainer, lyricsObserverConfig)
+      }, 10)
+
+      if (lyricsBackdrop == null) {
+        waitForElement([".main-view-container__scroll-node > div.os-padding"], () => {
+          lyricsBackdrop = document.createElement("canvas")
+          lyricsBackdrop.id = "lyrics-backdrop"
+
+          const container = document.querySelector(".y7xcnM6yyOOrMwI77d5t")
+          lyricsCinema.insertBefore(lyricsBackdrop, container)
+
+          updateLyricsBackdrop()
+        }, 10)
+      } else {
+        lyricsBackdrop.style.visibility = "visible"
+      }
+    } else if (lyricsBackdrop != null) {
+      lyricsObserver.disconnect()
+      lyricsBackdrop.style.visibility = "hidden"
     }
-    pbRightObserver.observe(pbRight, pbRightObserverConfig)
+  }
+
+  waitForElement([".mwpJrmCgLlVkJVtWjlI1"], () => {
+    const features = JSON.parse(localStorage.getItem("spicetify-exp-features"))
+    if (features.enableRightSidebarLyrics.value === false || features.enableRightSidebar.value === false) {
+      const pbRight = document.querySelector(".mwpJrmCgLlVkJVtWjlI1")
+      const pbRightObserver = new MutationObserver(pbRightCallback)
+      const pbRightObserverConfig = {
+        attributes: true,
+        childList: true,
+        subtree: true
+      }
+      pbRightObserver.observe(pbRight, pbRightObserverConfig)
+    } else {
+      const lyricsCinema = document.querySelector(".Root__lyrics-cinema")
+      const lyricsCinemaObserver = new MutationObserver(lyricsCinemaCallback)
+      const lyricsCinemaObserverConfig = {
+        attributes: true,
+        attributeFilter: ["class"],
+        childList: false,
+        subtree: false
+      }
+      lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig)
+    }
   }, 100)
 
   Spicetify.Player.addEventListener("songchange", updateLyricsBackdrop)
@@ -290,11 +351,14 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
         const cards = document.querySelectorAll(".x-categoryCard-CategoryCard")
         const cardImages = document.querySelectorAll(".x-categoryCard-image")
         for (let i = 0; i < cards.length; i++) {
-          const cardBackdrop = document.createElement("div")
-          cardBackdrop.classList.add("x-categoryCard-backdrop")
-          cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`
-          cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`
-          cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i])
+          let cardBackdrop = cardImages[i].previousSibling
+          if (cardBackdrop == null) {
+            cardBackdrop = document.createElement("div")
+            cardBackdrop.classList.add("x-categoryCard-backdrop")
+            cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`
+            cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`
+            cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i])
+          }
         }
       }, 10)
     }

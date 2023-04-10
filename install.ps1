@@ -67,14 +67,14 @@ Write-Host -Object "+ Configured bloom theme"
 # Patch the xpui.js for sidebar fixes
 # credit: https://github.com/JulienMaille/dribbblish-dynamic-theme/blob/main/install.ps1
 $configFile = Get-Content -Path "$spicePath\config-xpui.ini"
-if ($configFile -notmatch "xpui.js_find_8008") {
+if (-not($configFile -match "xpui.js_find_8008")) {
   $rep = @"
 [Patch]
 xpui.js_find_8008 = , (\w+=)32,
 xpui.js_repl_8008 = , `${1}58,
 "@
   # In case missing Patch section
-  if ($configFile -notmatch "\[Patch\]") {
+  if (-not($configFile -match "\[Patch\]")) {
     $configFile += "`n[Patch]`n"
   }
   $configFile = $configFile -replace "\[Patch\]", $rep

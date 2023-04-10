@@ -245,7 +245,7 @@ html {
   grid-area: none;
   z-index: 4 !important;
   background-color: rgba(var(--spice-rgb-sidebar), 0.65);
-  backdrop-filter: blur(60px) saturate(2.5)
+  backdrop-filter: blur(60px) saturate(2)
 }
 
 .main-topBar-container {
@@ -392,8 +392,26 @@ div#context-menu:before,
   color: var(--spice-text) !important;
 }
 
-
 /* buttons */
+
+.main-genericButton-buttonActive:after {
+  background-color: var(--spice-accent) !important;
+}
+
+.main-genericButton-buttonActive {
+  color: var(--spice-accent) !important;
+}
+
+.ButtonInner-md {
+  width: auto;
+  padding: 10px;
+}
+
+.x-downloadButton-button,
+.x-filterBox-expandButton,
+.x-contributorButton-ContributorButton {
+  color: var(--spice-subtext) !important;
+}
 
 .main-topBar-button {
 	background-color: var(--spice-selected-row) !important;
@@ -1007,7 +1025,7 @@ button.switch {
 }
 
 .main-trackList-selected .main-trackList-playingIcon {
-  background: var(--spice-shadow);
+  background: var(--spice-text);
 }
 
 .main-trackList-rowImageWithPlay .main-trackList-rowPlayPauseButton {
@@ -1168,6 +1186,10 @@ button.switch {
   font-size: 1.4rem;
   font-weight: 700;
   padding-left: 10px;
+}
+
+.main-playButton-PlayButton {
+  transition: opacity .5s,visibility .5s !important;
 }
 
 .main-playButton-PlayButton.main-playButton-primary {
@@ -1473,6 +1495,11 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 
 /* settings */
 
+.x-settings-equalizerContainer {
+  border-radius: var(--border-radius-2);
+  background-color: var(--spice-card);
+}
+
 .x-settings-crossFadeContainer {
   padding-right: 16px;
 }
@@ -1652,33 +1679,25 @@ option {
   margin-left: -10px;
 }
 
-.slider-dot {
-  width: 3px;
-  height: 3px;
+.progress-bar__slider:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
   background-color: var(--spice-accent);
-  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 5px solid var(--spice-accent);
   border-radius: 50%;
-  transition: border-width 75ms ease;
+  transition: transform 300ms cubic-bezier(0.1, 0.9, 0.2, 1)
 }
 
-.progress-bar__slider:hover .slider-dot:not(:hover) {
-  border-width: 7px;
+.progress-bar__slider:hover:after {
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
-.slider-dot:hover {
-  border-width: 7px;
-}
-
-.progress-bar__slider:active .slider-dot:not(:active) {
-  border-width: 4px !important;
-}
-
-.slider-dot:active {
-  border-width: 4px !important;
+.progress-bar__slider:active:after {
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 .main-nowPlayingWidget-nowPlaying>.ellipsis-one-line,
@@ -1797,7 +1816,8 @@ option {
 }
 
 .playback-bar__progress-time,
-.main-playbackBarRemainingTime-container {
+.main-playbackBarRemainingTime-container,
+.playback-bar__progress-time-elapsed {
   color: var(--spice-text) !important;
 }
 
@@ -1810,7 +1830,7 @@ option {
 }
 
 .main-skipBackButton-button:hover, .main-skipForwardButton-button:hover, .main-repeatButton-button[aria-checked="false"]:hover, .main-shuffleButton-button:hover {
-  background-color: hsla(0,0%,100%,.7) !important;
+  background-color: var(--spice-subtext) !important;
 }
 
 .main-skipBackButton-button:focus:not(:focus-visible):not(:hover), .main-skipForwardButton-button:focus:not(:focus-visible):not(:hover) {
@@ -1917,6 +1937,10 @@ option {
   height: 22px !important;
 }
 
+.volume-percent {
+  padding-left: 20px !important;
+}
+
 /* Disabled */
 .main-repeatButton-button[aria-checked="false"]{
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_off_24_regular.svg');
@@ -1988,8 +2012,11 @@ option {
   display: none !important;
 }
 
-
 /* play buttons */
+
+.main-card-imageContainer>.main-card-PlayButtonContainer>.main-playButton-PlayButton>button {
+  background-color: white !important;
+}
 
 .main-playButton-button,
 .main-playButton-PlayButton>button,
