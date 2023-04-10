@@ -2128,8 +2128,24 @@ option {
   color: rgb(255 255 255 / 30%) !important;
 }
 
+.lyrics-lyricsContent-lyric {
+  transform-origin: left;
+  padding: 2px;
+}
+
+.lyrics-lyricsContent-highlight,
+.C3pBU1DsOUJJOAv89ZFT {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.lyrics-lyricsContent-unsynced,
+.lyrics-lyricsContent-active,
+.lyrics-lyricsContent-lyric:hover {
+  color: rgb(255 255 255) !important;
+}
+
 .lyrics-lyricsContent-lyric:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
   transition: transform 50ms ease-in;
 }
 
@@ -2138,24 +2154,13 @@ option {
   transition: transform 50ms ease-out;
 }
 
-.lyrics-lyricsContent-highlight,
-.C3pBU1DsOUJJOAv89ZFT {
-  color: rgba(255, 255, 255, 0.75) !important;
+.lyrics-lyricsContent-active {
+  animation: lyric-active 400ms ease-out forwards;
 }
 
 .lyrics-lyricsContent-highlight.previous,
 .lyrics-lyricsContent-lyric.previous {
   animation: lyric-previous 400ms ease-in forwards;
- }
-
-.lyrics-lyricsContent-unsynced,
-.lyrics-lyricsContent-active,
-.lyrics-lyricsContent-lyric:hover {
-  color: rgb(255 255 255) !important;
-}
-
-.lyrics-lyricsContent-active {
-  animation: lyric-active 400ms ease-out forwards;
 }
 
 @keyframes lyric-active {
@@ -2163,17 +2168,19 @@ option {
     text-shadow: none;
     scale: 1
   }
+
   to {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    scale: 1.05
+    scale: 1.1
   }
 }
 
 @keyframes lyric-previous {
   from {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    scale: 1.05
+    scale: 1.1
   }
+
   to {
     text-shadow: none;
     scale: 1
