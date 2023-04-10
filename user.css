@@ -2308,6 +2308,12 @@ nav .main-rootlist-wrapper > :nth-child(2) {
   padding-bottom: 20px;
 }
 
+/* Right bar lyrics fix */
+
+.hzUuLPdH48AzgQun5NYQ>.lyrics-lyricsContent-lyric {
+  max-width: 90%;
+}
+
 /* Spicetify power bar */
 
 #power-bar-container {
