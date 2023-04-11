@@ -153,6 +153,14 @@ html {
   border-radius: var(--border-radius-1);
 }
 
+.main-card-card:hover {
+  transform: translateY(-3px);
+}
+
+.main-card-card:hover:after {
+  transform: translateY(0px);
+}
+
 .x-categoryCard-backdrop {
   position: absolute;
   width: 100%;
@@ -223,8 +231,12 @@ html {
 
 /* transitions */
 
-.main-card-card {
+/* .main-card-card {
   transition: background-color 150ms ease;
+} */
+
+.main-card-card {
+  transition: transform 400ms cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
 .link-subtle {
