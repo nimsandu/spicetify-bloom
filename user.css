@@ -9,6 +9,7 @@
   --scrollbar-vertical-size: 6px;
   --filter-brightness: 1;
   --green: #00ffa1;
+  --ms-motion-timing-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
 * {
@@ -236,7 +237,7 @@ html {
 } */
 
 .main-card-card {
-  transition: transform 400ms cubic-bezier(0.1, 0.9, 0.2, 1);
+  transition: transform 400ms var(--ms-motion-timing-decelerate);
 }
 
 .link-subtle {
@@ -1717,7 +1718,7 @@ option {
   left: 50%;
   translate: -50% -50%;
   border-radius: 50%;
-  transition: transform 300ms cubic-bezier(0.1, 0.9, 0.2, 1);
+  transition: transform 300ms var(--ms-motion-timing-decelerate);
 }
 
 .progress-bar__slider:hover:after {
