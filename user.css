@@ -154,11 +154,15 @@ html {
   border-radius: var(--border-radius-1);
 }
 
-.main-card-card:hover {
+.main-card-card:hover,
+.x-categoryCard-CategoryCard:hover,
+.main-heroCard-card:hover {
   transform: translateY(-3px);
 }
 
-.main-card-card:hover:after {
+.main-card-card:hover:after,
+.x-categoryCard-CategoryCard:hover:after,
+.main-heroCard-card:hover:after {
   transform: translateY(0px);
 }
 
@@ -236,7 +240,9 @@ html {
   transition: background-color 150ms ease;
 } */
 
-.main-card-card {
+.main-card-card,
+.x-categoryCard-CategoryCard,
+.main-heroCard-card {
   transition: transform 400ms var(--ms-motion-timing-decelerate);
 }
 
