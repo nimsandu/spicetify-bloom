@@ -2026,6 +2026,15 @@ option {
   color: var(--spice-subtext);
 }
 
+/* Built-in full screen mode fixes */
+.main-playPauseButton-button,
+.main-skipBackButton-button,
+.main-skipForwardButton,
+.main-repeatButton-button,
+.main-shuffleButton-button {
+  color: transparent !important;
+}
+
 /*Removes download progress bar and icon on playlist*/
 .L3vU7A1LzZSa3DcQcnmK,
 .PJuB4n2TjjZFBiWAW2zx,
