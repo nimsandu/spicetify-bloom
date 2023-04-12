@@ -1686,10 +1686,6 @@ option {
   --bg-color: var(--spice-player-bar-bg);
 }
 
-.playback-progressbar {
-  margin: 0px 8px;
-}
-
 .prog-tooltip {
   width: 140px;
   display: none;
@@ -1754,8 +1750,7 @@ option {
 }
 
 .fsd-button {
-  margin-left: 19px;
-  margin-right: -6px;
+  padding-left: 8px !important;
 }
 
 .Q4cc5RktWgz2H8_vDrIS {
@@ -1856,7 +1851,11 @@ option {
 }
 
 .volume-bar {
-  margin-right: 8px;
+  padding-right: 8px !important;
+}
+
+.volume-bar__icon-button {
+  padding-right: 5px !important;
 }
 
 .main-skipBackButton-button:hover,
@@ -1979,7 +1978,7 @@ option {
 }
 
 .volume-percent {
-  padding-left: 20px !important;
+  padding-left: 15px !important;
 }
 
 /* Disabled */
