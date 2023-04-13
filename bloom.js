@@ -178,7 +178,7 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
       const context = lyricsBackdrop.getContext("2d")
 
       const lyricsBackdropImage = new Image()
-      lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_url
+      lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url
 
       lyricsBackdropImage.onload = () => {
         context.filter = "blur(20px)"
