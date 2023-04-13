@@ -1724,6 +1724,14 @@ option {
   transform: scale(0.8);
 }
 
+.playback-bar__progress-time-elapsed {
+  padding-right: 6px;
+}
+
+.main-playbackBarRemainingTime-container {
+  padding-left: 6px;
+}
+
 .main-nowPlayingWidget-nowPlaying>.ellipsis-one-line,
 .main-trackInfo-container {
   margin-left: 74px;
