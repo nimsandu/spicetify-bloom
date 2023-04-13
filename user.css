@@ -1528,7 +1528,7 @@ aside[aria-label="Friend Activity"] .main-avatar-avatar {
 }
 
 .x-settings-crossFadeContainer {
-  padding-right: 16px;
+  padding-right: 10px;
 }
 
 .main-dropDown-dropDown,
@@ -1863,7 +1863,7 @@ option {
 }
 
 .volume-bar__icon-button {
-  padding-right: 5px !important;
+  padding-right: 6px;
 }
 
 .main-skipBackButton-button:hover,
