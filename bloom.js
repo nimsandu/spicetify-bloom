@@ -99,17 +99,13 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
   
 });
 
-  waitForElement([
-    ".main-navBar-navBarLink",
-    "[href='/collection'] > span"
-  ], () => {
+  waitForElement([".main-navBar-navBarLink"], () => {
     const navBarItems = document.getElementsByClassName("main-navBar-navBarLink");
     for (const item of navBarItems) {
       let div = document.createElement("div");
       div.classList.add("navBar-navBarLink-accent");
       item.appendChild(div);
     }
-    document.querySelector("[href='/collection'] > span").innerHTML = "Library";
   });
   
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
