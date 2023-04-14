@@ -196,53 +196,12 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     }, 10)
   }
 
-  let activeLine
-
-  function setActiveLine () {
-    waitForElement([".lyrics-lyricsContent-lyric"], () => {
-      activeLine = document.querySelector(".lyrics-lyricsContent-active")
-      if (activeLine == null) {
-        activeLine = document.querySelectorAll(".lyrics-lyricsContent-lyric")
-        activeLine = activeLine[0]
-      }
-    }, 10)
-  }
-
-  function lyricsCallback (mutationsList, lyricsObserver) {
-    for (const mutation of mutationsList) {
-      if (mutation.target.className.includes("lyrics-lyricsContent-active") && mutation.target !== activeLine) {
-        const previousActiveLine = activeLine
-        activeLine = mutation.target
-        previousActiveLine.classList.toggle("previous")
-      } else if (Spicetify.Player.getProgress() < 200) {
-        setActiveLine()
-      }
-    }
-  }
-
-  const lyricsObserver = new MutationObserver(lyricsCallback)
-
   function pbRightCallback (mutationsList, pbRightObserver) {
     let lyricsBackdrop = document.querySelector("#lyrics-backdrop")
     const lyricsButton = document.querySelector(".ZMXGDTbwxKJhbmEDZlYy")
     if (lyricsButton != null) {
       const lyricsActive = lyricsButton.getAttribute("data-active")
       if (lyricsActive === "true") {
-        waitForElement([".lyrics-lyrics-container"], () => {
-          const lyricsContainer = document.querySelector(".lyrics-lyrics-container")
-
-          const lyricsObserverConfig = {
-            attributes: true,
-            attributeFilter: ["class"],
-            childList: true,
-            subtree: true
-          }
-
-          setActiveLine()
-
-          lyricsObserver.observe(lyricsContainer, lyricsObserverConfig)
-        }, 10)
-
         if (lyricsBackdrop == null) {
           waitForElement([".main-view-container__scroll-node > div.os-padding"], () => {
             const osPadding = document.querySelector(".main-view-container__scroll-node > div.os-padding")
@@ -258,11 +217,9 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
           lyricsBackdrop.style.visibility = "visible"
         }
       } else if (lyricsBackdrop != null) {
-        lyricsObserver.disconnect()
         lyricsBackdrop.style.visibility = "hidden"
       }
     } else if (lyricsBackdrop != null) {
-      lyricsObserver.disconnect()
       lyricsBackdrop.style.visibility = "hidden"
     }
   }
@@ -271,21 +228,6 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     let lyricsBackdrop = document.querySelector("#lyrics-backdrop")
     const lyricsCinema = mutationsList[0].target
     if (lyricsCinema.classList.contains("AptbKyUcObu7QQ1sxqgb")) {
-      waitForElement([".lyrics-lyrics-container"], () => {
-        const lyricsContainer = document.querySelector(".lyrics-lyrics-container")
-
-        const lyricsObserverConfig = {
-          attributes: true,
-          attributeFilter: ["class"],
-          childList: true,
-          subtree: true
-        }
-
-        setActiveLine()
-
-        lyricsObserver.observe(lyricsContainer, lyricsObserverConfig)
-      }, 10)
-
       if (lyricsBackdrop == null) {
         waitForElement([".main-view-container__scroll-node > div.os-padding"], () => {
           lyricsBackdrop = document.createElement("canvas")
@@ -300,7 +242,6 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
         lyricsBackdrop.style.visibility = "visible"
       }
     } else if (lyricsBackdrop != null) {
-      lyricsObserver.disconnect()
       lyricsBackdrop.style.visibility = "hidden"
     }
   }

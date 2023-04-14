@@ -2192,6 +2192,9 @@ option {
 .lyrics-lyricsContent-lyric {
   transform-origin: left;
   padding: 2px;
+  transform: scale(1);
+  text-shadow: none;
+  transition: transform 400ms ease, text-shadow 400ms ease, color 100ms ease;
 }
 
 .lyrics-lyricsContent-highlight,
@@ -2206,46 +2209,12 @@ option {
 }
 
 .lyrics-lyricsContent-lyric:active {
-  transform: scale(0.95);
-  transition: transform 50ms ease-in;
-}
-
-.lyrics-lyricsContent-lyric:active::after {
-  transform: scale(1);
-  transition: transform 50ms ease-out;
+  transform: scale(0.9);
 }
 
 .lyrics-lyricsContent-active {
-  animation: lyric-active 400ms ease-out forwards;
-}
-
-.lyrics-lyricsContent-highlight.previous,
-.lyrics-lyricsContent-lyric.previous {
-  animation: lyric-previous 400ms ease-in forwards;
-}
-
-@keyframes lyric-active {
-  from {
-    text-shadow: none;
-    scale: 1
-  }
-
-  to {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    scale: 1.1
-  }
-}
-
-@keyframes lyric-previous {
-  from {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    scale: 1.1
-  }
-
-  to {
-    text-shadow: none;
-    scale: 1
-  }
+  transform: scale(1.1);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
 /* lyrics pages fix */
