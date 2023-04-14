@@ -168,6 +168,35 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
     document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
   }, 10)
 
+  let fac
+
+  function loadFastAverageColor () {
+    const facScript = document.createElement("script")
+    facScript.src = "https://unpkg.com/fast-average-color/dist/index.browser.min.js"
+    facScript.defer = true
+    facScript.type = "text/javascript"
+
+    document.body.appendChild(facScript)
+
+    facScript.onload = function () {
+      fac = new FastAverageColor()
+    }
+  }
+
+  waitForElement(["body"], loadFastAverageColor)
+
+  function calculateNormalizedBrightness (image) {
+    if (!fac) {
+      return 100
+    }
+
+    averageColor = fac.getColor(image)
+    brightness = Math.max(...averageColor.value)
+    brightness = Math.round(brightness / 255 * 100)
+
+    return brightness > 60 ? 100 - (brightness - 60) : 100
+  }
+
   function updateLyricsBackdrop () {
     waitForElement(["#lyrics-backdrop"], () => {
       const lyricsBackdrop = document.getElementById("lyrics-backdrop")
@@ -177,7 +206,8 @@ mainRootlistWrapper.style.height = (mainRootlistWrapper.offsetHeight * 2) + "px"
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url
 
       lyricsBackdropImage.onload = () => {
-        context.filter = "blur(20px)"
+        normalizedBrightness = calculateNormalizedBrightness(lyricsBackdropImage)
+        context.filter = `blur(20px) brightness(${normalizedBrightness}%)`
         const centerX = lyricsBackdrop.width / 2
         const centerY = lyricsBackdrop.height / 2
         let radius = 0
