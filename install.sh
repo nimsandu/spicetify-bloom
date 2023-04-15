@@ -39,6 +39,12 @@ if [ -d "$themePath" ]; then
     rm -rf "$themePath"
 fi
 
+# Remove old extension
+spicetify config extensions bloom.js- -q
+if [[ -e "$spicePath/Extensions/bloom.js" ]]; then
+  rm "$spicePath/Extensions/bloom.js"
+fi
+
 # Download latest master
 zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
 zipSavePath="/tmp/bloom-main.zip"
