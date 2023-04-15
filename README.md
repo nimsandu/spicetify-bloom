@@ -90,25 +90,13 @@ Use this guide to install if you're having trouble using the shell commands/inst
 
 ### Step 4
 - Open the downloaded theme ZIP file, and extract the following files **highlighted in the screenshot below** to the Bloom folder you created.
-![image](https://user-images.githubusercontent.com/51394649/186077104-ba2d5953-2746-407c-b30f-f854cbc6da21.png)
+![image](https://user-images.githubusercontent.com/22730962/232251328-580b1420-cedd-459f-b0e4-677c325f2abe.png)
 
 ### Step 5
-- Navigate to Spicetify's Extensions directory.
-
-| Platform            | Path                              |
-| ------------------- | --------------------------------- |
-| **Windows**         | `%appdata%\spicetify\Extensions`      |
-| **Linux**/**MacOS** | `~/.config/spicetify/Extensions`      |
-
-### Step 6
-- Go back to the downloaded ZIP file, and extract `bloom.js` to the Extensions directory.
-
-### Step 7
 - Open a terminal/command prompt window and type the following commands:
 ```bash
 spicetify config current_theme Bloom
 spicetify config color_scheme dark
-spicetify config extensions bloom.js
 ```
 ...and then apply the theme by typing `spicetify apply`. And you should be done!
 
@@ -119,6 +107,7 @@ If you encounter any buggy artifacts after applying, type these following comman
 spicetify config inject_css 1
 spicetify config replace_colors 1
 spicetify config overwrite_assets 1
+spicetify config inject_theme_js 1
 ```
 ..then type `spicetify apply` to apply the theme.
 
