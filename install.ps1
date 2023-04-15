@@ -36,9 +36,7 @@ else {
 
 # Remove old extension
 spicetify config extensions bloom.js- -q
-if (Test-Path -Path "$spicePath\Extensions\bloom.js") {
-  Remove-Item "$spicePath\Extensions\bloom.js"
-}
+Remove-Item -Path "$spicePath\Extensions\bloom.js" -Force -ErrorAction SilentlyContinue
 
 # Download latest master
 $zipUri      = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
