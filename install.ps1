@@ -34,6 +34,12 @@ else {
   New-Item -Path $themePath -ItemType Directory | Out-Null
 }
 
+# Remove old extension
+spicetify config extensions bloom.js- -q
+if (Test-Path -Path "$spicePath\Extensions\bloom.js") {
+  Remove-Item "$spicePath\Extensions\bloom.js"
+}
+
 # Download latest master
 $zipUri      = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
 $zipSavePath = "$themePath\bloom-main.zip"
