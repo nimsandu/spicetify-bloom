@@ -193,6 +193,7 @@ Credits:For the scheme Dark Mono [@SunsetTechuila](https://github.com/SunsetTech
 - @kyrie25 [Nam Anh](https://github.com/kyrie25)
 - @windowz414 [Beru Hinode](https://github.com/windowz414)
 - @SunsetTechuila [Sunset](https://github.com/SunsetTechuila)
+#### And For Every Contributor, stargazer and Bloomer.
 
 ## License
 
