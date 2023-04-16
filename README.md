@@ -185,7 +185,7 @@ Credits:For the scheme Dark Mono [@SunsetTechuila](https://github.com/SunsetTech
 - [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
 - For the Scheme *Dark Mono* [@SunsetTechuila](https://github.com/SunsetTechuila) 
 
-## Spacial Thanks
+## Special Thanks
 - @ohitstom [Thomas Fitzpatrick](https://github.com/ohitstom) For Implementing the new Theme Script Feature
 - @Dilith-Dahanayake [Milky](https://github.com/Dilith-Dahanayake) For Beta-Testing
 
