@@ -5,7 +5,7 @@
     "readme": "README.md",
     "usercss": "user.css",
     "schemes": "color.ini",
-    "include": ["https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom.js"],
+    "include": ["https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/theme.js"],
     "branch": "main",
     "authors": [
         {

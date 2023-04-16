@@ -39,6 +39,12 @@ if [ -d "$themePath" ]; then
     rm -rf "$themePath"
 fi
 
+# Remove old extension
+spicetify config extensions bloom.js- -q
+if [[ -e "$spicePath/Extensions/bloom.js" ]]; then
+  rm "$spicePath/Extensions/bloom.js"
+fi
+
 # Download latest master
 zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
 zipSavePath="/tmp/bloom-main.zip"
@@ -54,17 +60,10 @@ mv "$spicePath/spicetify-bloom-main/" "$themePath"
 echo "Deleting zip file..."
 rm "$zipSavePath"
 
-# Link the bloom.js to the Extensions folder
-mkdir -p "$spicePath/Extensions"
-[[ -f "$spicePath/Extensions/bloom.js" ]] && rm "$spicePath/Extensions/bloom.js"
-ln -sf "../Themes/bloom/bloom.js" "$spicePath/Extensions/bloom.js" 
-echo "+ Installed bloom.js extension"
-
 # Apply the theme with spicetify config calls
-spicetify config extensions bloom.js
 spicetify config current_theme bloom
 spicetify config color_scheme dark
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 echo "+ Configured Bloom theme"
 
 # Patch the xpui.js for sidebar fixes

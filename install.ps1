@@ -34,6 +34,10 @@ else {
   New-Item -Path $themePath -ItemType Directory | Out-Null
 }
 
+# Remove old extension
+spicetify config extensions bloom.js- -q
+Remove-Item -Path "$spicePath\Extensions\bloom.js" -Force -ErrorAction SilentlyContinue
+
 # Download latest master
 $zipUri      = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
 $zipSavePath = "$themePath\bloom-main.zip"
@@ -50,18 +54,13 @@ Remove-Item -Path "$themePath\spicetify-bloom-main"
 Write-Host -Object "Deleting zip file..."
 Remove-Item -Path $zipSavePath
 
-# Copy the bloom.js to the Extensions folder
-Copy-Item -Path "$themePath\bloom.js" -Destination "$spicePath\Extensions"
-Write-Host -Object "+ Installed bloom.js theme"
-
 # Apply the theme with spicetify config calls
-spicetify config extensions bloom.js
 spicetify config current_theme bloom
 switch (Get-ItemPropertyValue -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme) {
   0 {spicetify config color_scheme dark}
   1 {spicetify config color_scheme light}
 }
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 Write-Host -Object "+ Configured bloom theme"
 
 # Patch the xpui.js for sidebar fixes
