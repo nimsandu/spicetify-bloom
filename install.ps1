@@ -55,10 +55,15 @@ Write-Host -Object "Deleting zip file..."
 Remove-Item -Path $zipSavePath
 
 # Apply the theme with spicetify config calls
-spicetify config current_theme bloom
-switch (Get-ItemPropertyValue -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme) {
-  0 {spicetify config color_scheme dark}
-  1 {spicetify config color_scheme light}
+$currentTheme = (spicetify config current_theme)
+$colorScheme = (spicetify config color_scheme)
+if (($currentTheme -ne "bloom") -or ($colorScheme -notin @("dark", "light", "darkmono"))) {
+  spicetify config current_theme bloom
+  $appsUseLightTheme = Get-ItemPropertyValue -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme
+  switch ($appsUseLightTheme) {
+    0 { spicetify config color_scheme dark }
+    1 { spicetify config color_scheme light }
+  }
 }
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 Write-Host -Object "+ Configured bloom theme"
