@@ -2180,10 +2180,10 @@ option {
 /* New lyrics style */
 
 #lyrics-backdrop {
-  filter: saturate(1.3);
   position: absolute;
   width: 100%;
   height: 100%;
+  display: none;
 }
 
 .lyrics-lyrics-background {
@@ -2201,12 +2201,12 @@ option {
   padding: 2px;
   transform: scale(1);
   text-shadow: none;
-  transition: transform 400ms ease, text-shadow 400ms ease, color 100ms ease;
+  transition: transform 400ms ease, text-shadow 400ms ease, color 50ms ease;
 }
 
 .lyrics-lyricsContent-highlight,
 .C3pBU1DsOUJJOAv89ZFT {
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .lyrics-lyricsContent-unsynced,

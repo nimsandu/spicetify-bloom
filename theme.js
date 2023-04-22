@@ -174,76 +174,169 @@
     document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
   }, 10);
 
-  let fac;
-
-  function loadFastAverageColor() {
+  waitForElement(['body'], () => {
     const facScript = document.createElement('script');
     facScript.src = 'https://unpkg.com/fast-average-color/dist/index.browser.min.js';
     facScript.defer = true;
     facScript.type = 'text/javascript';
-
     document.body.appendChild(facScript);
+  });
 
-    facScript.onload = () => {
-      fac = new FastAverageColor();
-    };
+  async function calculateBrightnessCoefficient(image) {
+    try {
+      const fac = new FastAverageColor();
+      // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
+      const averageColor = await fac.getColorAsync(image, { ignoredColor: [[0, 0, 0, 255, 125]] });
+      fac.destroy();
+
+      // slice(0, 3) - remove alpha channel value
+      let brightness = Math.max(...averageColor.value.slice(0, 3));
+      brightness = (brightness / 255).toFixed(1);
+
+      return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
+    } catch (error) {
+      return 1;
+    }
   }
 
-  waitForElement(['body'], loadFastAverageColor);
-
-  function calculateNormalizedBrightness(image) {
-    if (!fac) {
-      return 100;
+  async function calculateSaturationCoefficient(originalImage, canvasImage) {
+    function getSaturation(color) {
+      const { value } = color;
+      const max = Math.max(...value.slice(0, 3));
+      const min = Math.min(...value.slice(0, 3));
+      const delta = max - min;
+      return max !== 0 ? (delta / max) : 0;
     }
 
-    const averageColor = fac.getColor(image);
-    let brightness = Math.max(...averageColor.value);
-    brightness = Math.round((brightness / 255) * 100);
+    try {
+      const fac = new FastAverageColor();
+      const [averageOriginalColor, averageCanvasColor] = await Promise.all([
+        // ignore almost black colors
+        fac.getColorAsync(originalImage, { ignoredColor: [[0, 0, 0, 255, 10]] }),
+        fac.getColorAsync(canvasImage), { ignoredColor: [[0, 0, 0, 255, 10]] },
+      ]);
+      fac.destroy();
 
-    return brightness > 60 ? 100 - (brightness - 60) : 100;
+      const [averageOriginalSaturation, averageCanvasSaturation] = [
+        getSaturation(averageOriginalColor),
+        getSaturation(averageCanvasColor),
+      ];
+
+      let saturationCoefficient;
+
+      if (averageCanvasSaturation < averageOriginalSaturation) {
+        saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
+      } else {
+        // do not change saturation if backdrop is more saturated than the original artwork or equal
+        saturationCoefficient = 1;
+      }
+
+      const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(2);
+
+      // try to detect and fix oversaturated backdrop
+      if (finalSaturation > 0.75) {
+        saturationCoefficient = 1 - (averageCanvasSaturation - 0.75);
+      }
+
+      // try to detect and fix undersaturated backdrop
+      if (finalSaturation < 0.45 && averageOriginalSaturation > 0.1) {
+        saturationCoefficient += 0.45 - finalSaturation;
+      }
+
+      // coefficient threshold
+      if (saturationCoefficient > 1.5) {
+        saturationCoefficient = 1.5;
+      }
+
+      return saturationCoefficient.toFixed(1);
+    } catch (error) {
+      return 1;
+    }
   }
 
-  function updateLyricsBackdrop() {
+  async function updateLyricsBackdrop() {
     waitForElement(['#lyrics-backdrop'], () => {
-      const lyricsBackdrop = document.getElementById('lyrics-backdrop');
+      const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
+      const contextPrevious = lyricsBackdropPrevious.getContext('2d');
+      contextPrevious.globalCompositeOperation = 'destination-out';
+
+      const lyricsBackdrop = document.createElement('canvas');
+      lyricsBackdrop.id = 'lyrics-backdrop';
+      lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
       const context = lyricsBackdrop.getContext('2d');
+      context.imageSmoothingEnabled = false;
+      const blur = 20;
+      context.filter = `blur(${blur}px)`;
+
+      // keep the original display style
+      const { display } = lyricsBackdropPrevious.style.display;
 
       const lyricsBackdropImage = new Image();
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
 
-      lyricsBackdropImage.onload = () => {
-        const normalizedBrightness = calculateNormalizedBrightness(lyricsBackdropImage);
-        context.filter = `blur(20px) brightness(${normalizedBrightness}%)`;
+      lyricsBackdropImage.onload = async () => {
+        // necessary because backdrop edges become transparent due to blurring
+        const drawWidth = lyricsBackdrop.width + blur * 3;
+        const drawHeight = lyricsBackdrop.height + blur * 3;
+        const drawX = 0 - blur * 1.5;
+        const drawY = 0 - blur * 1.5;
+        context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
-        const centerX = lyricsBackdrop.width / 2;
-        const centerY = lyricsBackdrop.height / 2;
-        let radius = 0;
-        const aspectRatio = lyricsBackdrop.width / lyricsBackdrop.height;
-        const maxRadius = Math.min(lyricsBackdrop.width, lyricsBackdrop.height) / 1.75;
+        const lyricsBackdropDataUrl = lyricsBackdrop.toDataURL();
+        const lyricsBackdropCanvasImage = new Image();
+        lyricsBackdropCanvasImage.src = lyricsBackdropDataUrl;
+
+        const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
+          calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
+          calculateSaturationCoefficient(lyricsBackdropImage, lyricsBackdropCanvasImage),
+        ]);
+
+        lyricsBackdrop.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
+
+        // eslint-disable-next-line max-len
+        const maxRadius = Math.ceil(Math.sqrt((lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2)) / 2);
+        const centerX = (lyricsBackdropPrevious.width / 2);
+        const centerY = (lyricsBackdropPrevious.height / 2);
+        let radius = 5;
 
         function animate() {
           if (radius >= maxRadius) {
+            lyricsBackdropPrevious.remove();
+            lyricsBackdrop.style.display = display;
             return;
           }
 
-          const dx = centerX - radius * aspectRatio;
-          const dy = centerY - radius;
-          const dWidth = 2 * radius * aspectRatio;
-          const dHeight = 2 * radius;
+          contextPrevious.beginPath();
+          contextPrevious.arc(centerX, centerY, radius, 0, Math.PI * 2);
+          contextPrevious.closePath();
+          contextPrevious.fill();
 
-          context.drawImage(lyricsBackdropImage, dx, dy, dWidth, dHeight);
-
-          radius += 2.5;
+          radius += 5;
           requestAnimationFrame(animate);
         }
         animate();
       };
-    }, 10);
+    });
+  }
+
+  // necessary for the first animation
+  function fillBackdrop(backdrop) {
+    const context = backdrop.getContext('2d');
+    context.filter = 'blur(20px)';
+    const rootStyles = getComputedStyle(document.documentElement);
+    const spiceMain = rootStyles.getPropertyValue('--spice-rgb-main').split(',');
+    context.fillStyle = `rgb(
+      ${spiceMain[0].trim()},
+      ${spiceMain[1]},
+      ${spiceMain[2]}
+      )`;
+    context.fillRect(0, 0, backdrop.width, backdrop.height);
   }
 
   function pbRightCallback() {
-    let lyricsBackdrop = document.querySelector('#lyrics-backdrop');
+    let lyricsBackdrop = document.getElementById('lyrics-backdrop');
     const lyricsButton = document.querySelector('.ZMXGDTbwxKJhbmEDZlYy');
+
     if (lyricsButton != null) {
       const lyricsActive = lyricsButton.getAttribute('data-active');
       if (lyricsActive === 'true') {
@@ -253,49 +346,57 @@
 
             lyricsBackdrop = document.createElement('canvas');
             lyricsBackdrop.id = 'lyrics-backdrop';
+            lyricsBackdrop.style.display = 'unset';
 
             osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
+
+            fillBackdrop(lyricsBackdrop);
 
             updateLyricsBackdrop();
           }, 10);
         } else {
-          lyricsBackdrop.style.visibility = 'visible';
+          lyricsBackdrop.style.display = 'unset';
         }
       } else if (lyricsBackdrop != null) {
-        lyricsBackdrop.style.visibility = 'hidden';
+        lyricsBackdrop.style.display = 'none';
       }
     } else if (lyricsBackdrop != null) {
-      lyricsBackdrop.style.visibility = 'hidden';
+      lyricsBackdrop.style.display = 'none';
     }
   }
 
   function lyricsCinemaCallback(mutationsList) {
-    let lyricsBackdrop = document.querySelector('#lyrics-backdrop');
+    let lyricsBackdrop = document.getElementById('lyrics-backdrop');
     const lyricsCinema = mutationsList[0].target;
+
     if (lyricsCinema.classList.contains('AptbKyUcObu7QQ1sxqgb')) {
       if (lyricsBackdrop == null) {
-        waitForElement(['.main-view-container__scroll-node > div.os-padding'], () => {
+        waitForElement(['.y7xcnM6yyOOrMwI77d5t'], () => {
           lyricsBackdrop = document.createElement('canvas');
           lyricsBackdrop.id = 'lyrics-backdrop';
+          lyricsBackdrop.style.display = 'unset';
 
           const container = document.querySelector('.y7xcnM6yyOOrMwI77d5t');
           lyricsCinema.insertBefore(lyricsBackdrop, container);
 
+          fillBackdrop(lyricsBackdrop);
+
           updateLyricsBackdrop();
-        }, 10);
+        });
       } else {
-        lyricsBackdrop.style.visibility = 'visible';
+        lyricsBackdrop.style.display = 'unset';
       }
     } else if (lyricsBackdrop != null) {
-      lyricsBackdrop.style.visibility = 'hidden';
+      lyricsBackdrop.style.display = 'none';
     }
   }
 
-  waitForElement(['.mwpJrmCgLlVkJVtWjlI1'], () => {
-    const features = JSON.parse(localStorage.getItem('spicetify-exp-features'));
-    const rightSidebarLyricsEnabled = features.enableRightSidebarLyrics.value;
-    const rightSidebarEnabled = features.enableRightSidebar.value;
-    if (rightSidebarLyricsEnabled === false || rightSidebarEnabled === false) {
+  const features = JSON.parse(localStorage.getItem('spicetify-exp-features'));
+  const rightSidebarLyricsEnabled = features.enableRightSidebarLyrics.value;
+  const rightSidebarEnabled = features.enableRightSidebar.value;
+
+  if (rightSidebarLyricsEnabled === false || rightSidebarEnabled === false) {
+    waitForElement(['.mwpJrmCgLlVkJVtWjlI1'], () => {
       const pbRight = document.querySelector('.mwpJrmCgLlVkJVtWjlI1');
       const pbRightObserver = new MutationObserver(pbRightCallback);
       const pbRightObserverConfig = {
@@ -304,7 +405,9 @@
         subtree: true,
       };
       pbRightObserver.observe(pbRight, pbRightObserverConfig);
-    } else {
+    });
+  } else {
+    waitForElement(['.Root__lyrics-cinema'], () => {
       const lyricsCinema = document.querySelector('.Root__lyrics-cinema');
       const lyricsCinemaObserver = new MutationObserver(lyricsCinemaCallback);
       const lyricsCinemaObserverConfig = {
@@ -314,8 +417,8 @@
         subtree: false,
       };
       lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig);
-    }
-  }, 100);
+    });
+  }
 
   Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
 
@@ -334,7 +437,7 @@
             cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
           }
         }
-      }, 10);
+      });
     }
 
     const mainElement = document.querySelector('main');
@@ -346,5 +449,5 @@
       subtree: false,
     };
     mainObserver.observe(mainElement, mainObserverConfig);
-  }, 10);
+  });
 }());
