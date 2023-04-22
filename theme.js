@@ -195,7 +195,7 @@
 
       return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
     } catch (error) {
-      return 1;
+      return 0.65;
     }
   }
 
@@ -250,7 +250,7 @@
 
       return saturationCoefficient.toFixed(1);
     } catch (error) {
-      return 1;
+      return 1.4;
     }
   }
 
