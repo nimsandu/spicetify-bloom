@@ -182,81 +182,83 @@
     document.body.appendChild(facScript);
   });
 
-  async function calculateBrightnessCoefficient(image) {
-    try {
-      const fac = new FastAverageColor();
-      // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
-      const averageColor = await fac.getColorAsync(image, { ignoredColor: [[0, 0, 0, 255, 125]] });
-      fac.destroy();
-
-      // slice(0, 3) - remove alpha channel value
-      let brightness = Math.max(...averageColor.value.slice(0, 3));
-      brightness = (brightness / 255).toFixed(1);
-
-      return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
-    } catch (error) {
-      return 0.65;
-    }
-  }
-
-  async function calculateSaturationCoefficient(originalImage, canvasImage) {
-    function getSaturation(color) {
-      const { value } = color;
-      const max = Math.max(...value.slice(0, 3));
-      const min = Math.min(...value.slice(0, 3));
-      const delta = max - min;
-      return max !== 0 ? (delta / max) : 0;
-    }
-
-    try {
-      const fac = new FastAverageColor();
-      const [averageOriginalColor, averageCanvasColor] = await Promise.all([
-        // ignore almost black colors
-        fac.getColorAsync(originalImage, { ignoredColor: [[0, 0, 0, 255, 10]] }),
-        fac.getColorAsync(canvasImage), { ignoredColor: [[0, 0, 0, 255, 10]] },
-      ]);
-      fac.destroy();
-
-      const [averageOriginalSaturation, averageCanvasSaturation] = [
-        getSaturation(averageOriginalColor),
-        getSaturation(averageCanvasColor),
-      ];
-
-      let saturationCoefficient;
-
-      if (averageCanvasSaturation < averageOriginalSaturation) {
-        saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
-      } else {
-        // do not change saturation if backdrop is more saturated than the original artwork or equal
-        saturationCoefficient = 1;
-      }
-
-      const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(2);
-
-      // try to detect and fix oversaturated backdrop
-      if (finalSaturation > 0.75) {
-        saturationCoefficient = 1 - (averageCanvasSaturation - 0.75);
-      }
-
-      // try to detect and fix undersaturated backdrop
-      if (finalSaturation < 0.45 && averageOriginalSaturation > 0.1) {
-        saturationCoefficient += 0.45 - finalSaturation;
-      }
-
-      // coefficient threshold
-      if (saturationCoefficient > 1.5) {
-        saturationCoefficient = 1.5;
-      }
-
-      return saturationCoefficient.toFixed(1);
-    } catch (error) {
-      return 1.4;
-    }
-  }
-
   let previousAlbumUri;
 
   async function updateLyricsBackdrop() {
+    async function calculateBrightnessCoefficient(image) {
+      try {
+        const fac = new FastAverageColor();
+        // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
+        const averageColor = await fac.getColorAsync(image, {
+          ignoredColor: [[0, 0, 0, 255, 125]],
+        });
+        fac.destroy();
+
+        // slice(0, 3) - remove alpha channel value
+        let brightness = Math.max(...averageColor.value.slice(0, 3));
+        brightness = (brightness / 255).toFixed(1);
+
+        return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
+      } catch (error) {
+        return 0.65;
+      }
+    }
+
+    async function calculateSaturationCoefficient(originalImage, canvasImage) {
+      function getSaturation(color) {
+        const { value } = color;
+        const max = Math.max(...value.slice(0, 3));
+        const min = Math.min(...value.slice(0, 3));
+        const delta = max - min;
+        return max !== 0 ? (delta / max) : 0;
+      }
+
+      try {
+        const fac = new FastAverageColor();
+        const [averageOriginalColor, averageCanvasColor] = await Promise.all([
+          // ignore almost black colors
+          fac.getColorAsync(originalImage, { ignoredColor: [[0, 0, 0, 255, 10]] }),
+          fac.getColorAsync(canvasImage), { ignoredColor: [[0, 0, 0, 255, 10]] },
+        ]);
+        fac.destroy();
+
+        const [averageOriginalSaturation, averageCanvasSaturation] = [
+          getSaturation(averageOriginalColor),
+          getSaturation(averageCanvasColor),
+        ];
+
+        let saturationCoefficient;
+
+        if (averageCanvasSaturation < averageOriginalSaturation) {
+          saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
+        } else {
+          // do not change saturation if backdrop is more saturated than the original artwork or equal
+          saturationCoefficient = 1;
+        }
+
+        const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(2);
+
+        // try to detect and fix oversaturated backdrop
+        if (finalSaturation > 0.75) {
+          saturationCoefficient = 1 - (averageCanvasSaturation - 0.75);
+        }
+
+        // try to detect and fix undersaturated backdrop
+        if (finalSaturation < 0.45 && averageOriginalSaturation > 0.1) {
+          saturationCoefficient += 0.45 - finalSaturation;
+        }
+
+        // coefficient threshold
+        if (saturationCoefficient > 1.5) {
+          saturationCoefficient = 1.5;
+        }
+
+        return saturationCoefficient.toFixed(1);
+      } catch (error) {
+        return 1.4;
+      }
+    }
+
     // necessary because backdrop edges become transparent due to blurring
     async function calculateContextDrawValues(blur, canvas) {
       const drawWidth = canvas.width + blur * 2;
