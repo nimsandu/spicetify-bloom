@@ -254,32 +254,59 @@
     }
   }
 
+  let previousAlbumUri;
+
   async function updateLyricsBackdrop() {
+    // necessary because backdrop edges become transparent due to blurring
+    async function calculateContextDrawValues(blur, canvas) {
+      const drawWidth = canvas.width + blur * 2;
+      const drawHeight = canvas.height + blur * 2;
+      const drawX = 0 - blur;
+      const drawY = 0 - blur;
+      return [drawWidth, drawHeight, drawX, drawY];
+    }
+
     waitForElement(['#lyrics-backdrop'], () => {
+      // don't animate backdrop if artwork didn't change
+      if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
+        return;
+      }
+      previousAlbumUri = Spicetify.Player.data.track.metadata.album_uri;
+
       const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
       const contextPrevious = lyricsBackdropPrevious.getContext('2d');
-      contextPrevious.globalCompositeOperation = 'destination-out';
+      const blur = 20;
+
+      // don't animate backdrop if it is hidden
+      // if skip the image change completely, then if the user tries to quickly hide the lyrics immediately after changing the track and opening the lyrics, the backdrop will be hidden with a delay
+      if (lyricsBackdropPrevious.style.display === 'none') {
+        const lyricsBackdropImage = new Image();
+        lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
+        lyricsBackdropImage.onload = async () => {
+          const [
+            drawWidth, drawHeight, drawX, drawY,
+          ] = await calculateContextDrawValues(blur, lyricsBackdropPrevious);
+          contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
+        };
+        return;
+      }
 
       const lyricsBackdrop = document.createElement('canvas');
       lyricsBackdrop.id = 'lyrics-backdrop';
       lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
       const context = lyricsBackdrop.getContext('2d');
-      context.imageSmoothingEnabled = false;
-      const blur = 20;
-      context.filter = `blur(${blur}px)`;
 
-      // keep the original display style
-      const { display } = lyricsBackdropPrevious.style.display;
+      contextPrevious.globalCompositeOperation = 'destination-out';
+      context.imageSmoothingEnabled = false;
+      context.filter = `blur(${blur}px)`;
 
       const lyricsBackdropImage = new Image();
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = async () => {
-        // necessary because backdrop edges become transparent due to blurring
-        const drawWidth = lyricsBackdrop.width + blur * 3;
-        const drawHeight = lyricsBackdrop.height + blur * 3;
-        const drawX = 0 - blur * 1.5;
-        const drawY = 0 - blur * 1.5;
+        const [
+          drawWidth, drawHeight, drawX, drawY,
+        ] = await calculateContextDrawValues(blur, lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
         const lyricsBackdropDataUrl = lyricsBackdrop.toDataURL();
@@ -302,7 +329,6 @@
         function animate() {
           if (radius >= maxRadius) {
             lyricsBackdropPrevious.remove();
-            lyricsBackdrop.style.display = display;
             return;
           }
 
@@ -346,7 +372,6 @@
 
             lyricsBackdrop = document.createElement('canvas');
             lyricsBackdrop.id = 'lyrics-backdrop';
-            lyricsBackdrop.style.display = 'unset';
 
             osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
 
@@ -356,6 +381,8 @@
           }, 10);
         } else {
           lyricsBackdrop.style.display = 'unset';
+
+          updateLyricsBackdrop();
         }
       } else if (lyricsBackdrop != null) {
         lyricsBackdrop.style.display = 'none';
@@ -374,7 +401,6 @@
         waitForElement(['.y7xcnM6yyOOrMwI77d5t'], () => {
           lyricsBackdrop = document.createElement('canvas');
           lyricsBackdrop.id = 'lyrics-backdrop';
-          lyricsBackdrop.style.display = 'unset';
 
           const container = document.querySelector('.y7xcnM6yyOOrMwI77d5t');
           lyricsCinema.insertBefore(lyricsBackdrop, container);
@@ -385,6 +411,8 @@
         });
       } else {
         lyricsBackdrop.style.display = 'unset';
+
+        updateLyricsBackdrop();
       }
     } else if (lyricsBackdrop != null) {
       lyricsBackdrop.style.display = 'none';
