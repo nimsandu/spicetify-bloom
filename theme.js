@@ -268,6 +268,12 @@
       return [drawWidth, drawHeight, drawX, drawY];
     }
 
+    async function getImageFromCanvas(canvas) {
+      const image = new Image();
+      image.src = canvas.toDataURL();
+      return image;
+    }
+
     waitForElement(['#lyrics-backdrop'], () => {
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
@@ -289,6 +295,14 @@
             drawWidth, drawHeight, drawX, drawY,
           ] = await calculateContextDrawValues(blur, lyricsBackdropPrevious);
           contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
+
+          // update filters
+          const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdropPrevious);
+          const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
+            calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
+            calculateSaturationCoefficient(lyricsBackdropImage, lyricsBackdropCanvasImage),
+          ]);
+          lyricsBackdropPrevious.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
         };
         return;
       }
@@ -311,9 +325,7 @@
         ] = await calculateContextDrawValues(blur, lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
-        const lyricsBackdropDataUrl = lyricsBackdrop.toDataURL();
-        const lyricsBackdropCanvasImage = new Image();
-        lyricsBackdropCanvasImage.src = lyricsBackdropDataUrl;
+        const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdrop);
 
         const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
           calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
