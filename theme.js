@@ -294,6 +294,8 @@
           const [
             drawWidth, drawHeight, drawX, drawY,
           ] = await calculateContextDrawValues(blur, lyricsBackdropPrevious);
+          // eslint-disable-next-line max-len
+          contextPrevious.clearRect(0, 0, lyricsBackdropPrevious.width, lyricsBackdropPrevious.height);
           contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
           // update filters
