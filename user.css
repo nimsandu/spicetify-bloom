@@ -264,7 +264,7 @@ html {
 .Root__top-bar {
   position: absolute !important;
   width: 100vw !important;
-  grid-area: none;
+  grid-area: main-view;
   z-index: 4 !important;
   background-color: rgba(var(--spice-rgb-sidebar), 0.65);
   backdrop-filter: blur(60px) saturate(2)
@@ -1202,55 +1202,6 @@ button.switch {
   background-color: var(--spice-card) !important;
 }
 
-
-/* top bar */
-
-.main-topBar-button,
-.main-userWidget-box {
-  background-color: var(--spice-sidebar);
-  width: 28px !important;
-  height: 28px !important;
-  padding: 0;
-}
-
-
-.main-entityHeader-topbarTitle,
-.main-topBar-topbarTitle {
-  font-size: 1.4rem;
-  font-weight: 700;
-  padding-left: 10px;
-}
-
-.main-playButton-PlayButton {
-  transition: opacity .5s, visibility .5s !important;
-}
-
-.main-playButton-PlayButton.main-playButton-primary {
-  padding: 12px;
-  padding-bottom: 0px;
-  padding-top: 0px;
-  height: auto;
-}
-
-.main-topBar-topbarContent>.main-playButton-PlayButton.main-playButton-primary {
-  margin-top: 10px;
-}
-
-
-/* tab bars */
-
-a[class*='-tabBar-active'] {
-  background-color: rgba(var(--spice-rgb-selected-row), 1) !important;
-}
-
-a[class*='-tabBar-headerItemLink']:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
-}
-
-a[class*='-tabBar-headerItemLink']:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.5);
-}
-
 /* search */
 
 .main-topBar-searchBar {
@@ -2183,7 +2134,6 @@ option {
   position: absolute;
   width: 100%;
   height: 100%;
-  display: none;
 }
 
 .lyrics-lyrics-background {
@@ -2193,7 +2143,7 @@ option {
 .lyrics-lyricsContent-lyric,
 .lyrics-lyricsContent-description,
 .lyrics-lyricsContent-provider {
-  color: rgb(255 255 255 / 30%) !important;
+  color: rgb(255 255 255 / 35%) !important;
 }
 
 .lyrics-lyricsContent-lyric {
