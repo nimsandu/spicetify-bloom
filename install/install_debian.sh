@@ -44,7 +44,7 @@ fi
 # First, let's execute the main script as things are practically the
 # same.
 echo -e "Getting main script and running it...\n"
-curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/install.sh | bash
 
 # Let's see if an abortion occurred. If so, abort with it.
 if [ $? != 0 ]; then
