@@ -182,109 +182,152 @@
     document.body.appendChild(facScript);
   });
 
-  async function calculateBrightnessCoefficient(image) {
-    try {
-      const fac = new FastAverageColor();
-      // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
-      const averageColor = await fac.getColorAsync(image, { ignoredColor: [[0, 0, 0, 255, 125]] });
-      fac.destroy();
-
-      // slice(0, 3) - remove alpha channel value
-      let brightness = Math.max(...averageColor.value.slice(0, 3));
-      brightness = (brightness / 255).toFixed(1);
-
-      return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
-    } catch (error) {
-      return 1;
-    }
-  }
-
-  async function calculateSaturationCoefficient(originalImage, canvasImage) {
-    function getSaturation(color) {
-      const { value } = color;
-      const max = Math.max(...value.slice(0, 3));
-      const min = Math.min(...value.slice(0, 3));
-      const delta = max - min;
-      return max !== 0 ? (delta / max) : 0;
-    }
-
-    try {
-      const fac = new FastAverageColor();
-      const [averageOriginalColor, averageCanvasColor] = await Promise.all([
-        // ignore almost black colors
-        fac.getColorAsync(originalImage, { ignoredColor: [[0, 0, 0, 255, 10]] }),
-        fac.getColorAsync(canvasImage), { ignoredColor: [[0, 0, 0, 255, 10]] },
-      ]);
-      fac.destroy();
-
-      const [averageOriginalSaturation, averageCanvasSaturation] = [
-        getSaturation(averageOriginalColor),
-        getSaturation(averageCanvasColor),
-      ];
-
-      let saturationCoefficient;
-
-      if (averageCanvasSaturation < averageOriginalSaturation) {
-        saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
-      } else {
-        // do not change saturation if backdrop is more saturated than the original artwork or equal
-        saturationCoefficient = 1;
-      }
-
-      const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(2);
-
-      // try to detect and fix oversaturated backdrop
-      if (finalSaturation > 0.75) {
-        saturationCoefficient = 1 - (averageCanvasSaturation - 0.75);
-      }
-
-      // try to detect and fix undersaturated backdrop
-      if (finalSaturation < 0.45 && averageOriginalSaturation > 0.1) {
-        saturationCoefficient += 0.45 - finalSaturation;
-      }
-
-      // coefficient threshold
-      if (saturationCoefficient > 1.5) {
-        saturationCoefficient = 1.5;
-      }
-
-      return saturationCoefficient.toFixed(1);
-    } catch (error) {
-      return 1;
-    }
-  }
+  let previousAlbumUri;
 
   async function updateLyricsBackdrop() {
+    async function calculateBrightnessCoefficient(image) {
+      try {
+        const fac = new FastAverageColor();
+        // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
+        const averageColor = await fac.getColorAsync(image, {
+          ignoredColor: [[0, 0, 0, 255, 125]],
+        });
+        fac.destroy();
+
+        // slice(0, 3) - remove alpha channel value
+        let brightness = Math.max(...averageColor.value.slice(0, 3));
+        brightness = (brightness / 255).toFixed(1);
+
+        return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
+      } catch (error) {
+        return 0.65;
+      }
+    }
+
+    async function calculateSaturationCoefficient(originalImage, canvasImage) {
+      function getSaturation(color) {
+        const { value } = color;
+        const max = Math.max(...value.slice(0, 3));
+        const min = Math.min(...value.slice(0, 3));
+        const delta = max - min;
+        return max !== 0 ? (delta / max) : 0;
+      }
+
+      try {
+        const fac = new FastAverageColor();
+        const [averageOriginalColor, averageCanvasColor] = await Promise.all([
+          // ignore almost black colors
+          fac.getColorAsync(originalImage, { ignoredColor: [[0, 0, 0, 255, 10]] }),
+          fac.getColorAsync(canvasImage), { ignoredColor: [[0, 0, 0, 255, 10]] },
+        ]);
+        fac.destroy();
+
+        const [averageOriginalSaturation, averageCanvasSaturation] = [
+          getSaturation(averageOriginalColor),
+          getSaturation(averageCanvasColor),
+        ];
+
+        let saturationCoefficient;
+
+        if (averageCanvasSaturation < averageOriginalSaturation) {
+          saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
+        } else {
+          // do not change saturation if backdrop is more saturated than the original artwork or equal
+          saturationCoefficient = 1;
+        }
+
+        const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(2);
+
+        // try to detect and fix oversaturated backdrop
+        if (finalSaturation > 0.75) {
+          saturationCoefficient = 1 - (averageCanvasSaturation - 0.75);
+        }
+
+        // try to detect and fix undersaturated backdrop
+        if (finalSaturation < 0.45 && averageOriginalSaturation > 0.1) {
+          saturationCoefficient += 0.45 - finalSaturation;
+        }
+
+        // coefficient threshold
+        if (saturationCoefficient > 1.5) {
+          saturationCoefficient = 1.5;
+        }
+
+        return saturationCoefficient.toFixed(1);
+      } catch (error) {
+        return 1.4;
+      }
+    }
+
+    // necessary because backdrop edges become transparent due to blurring
+    async function calculateContextDrawValues(blur, canvas) {
+      const drawWidth = canvas.width + blur * 2;
+      const drawHeight = canvas.height + blur * 2;
+      const drawX = 0 - blur;
+      const drawY = 0 - blur;
+      return [drawWidth, drawHeight, drawX, drawY];
+    }
+
+    async function getImageFromCanvas(canvas) {
+      const image = new Image();
+      image.src = canvas.toDataURL();
+      return image;
+    }
+
     waitForElement(['#lyrics-backdrop'], () => {
+      // don't animate backdrop if artwork didn't change
+      if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
+        return;
+      }
+      previousAlbumUri = Spicetify.Player.data.track.metadata.album_uri;
+
       const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
       const contextPrevious = lyricsBackdropPrevious.getContext('2d');
-      contextPrevious.globalCompositeOperation = 'destination-out';
+      const blur = 20;
+
+      // don't animate backdrop if it is hidden
+      // if skip the image change completely, then if the user tries to quickly hide the lyrics immediately after changing the track and opening the lyrics, the backdrop will be hidden with a delay
+      if (lyricsBackdropPrevious.style.display === 'none') {
+        const lyricsBackdropImage = new Image();
+        lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
+        lyricsBackdropImage.onload = async () => {
+          const [
+            drawWidth, drawHeight, drawX, drawY,
+          ] = await calculateContextDrawValues(blur, lyricsBackdropPrevious);
+          // eslint-disable-next-line max-len
+          contextPrevious.clearRect(0, 0, lyricsBackdropPrevious.width, lyricsBackdropPrevious.height);
+          contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
+
+          // update filters
+          const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdropPrevious);
+          const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
+            calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
+            calculateSaturationCoefficient(lyricsBackdropImage, lyricsBackdropCanvasImage),
+          ]);
+          lyricsBackdropPrevious.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
+        };
+        return;
+      }
 
       const lyricsBackdrop = document.createElement('canvas');
       lyricsBackdrop.id = 'lyrics-backdrop';
       lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
       const context = lyricsBackdrop.getContext('2d');
-      context.imageSmoothingEnabled = false;
-      const blur = 20;
-      context.filter = `blur(${blur}px)`;
 
-      // keep the original display style
-      const { display } = lyricsBackdropPrevious.style.display;
+      contextPrevious.globalCompositeOperation = 'destination-out';
+      context.imageSmoothingEnabled = false;
+      context.filter = `blur(${blur}px)`;
 
       const lyricsBackdropImage = new Image();
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = async () => {
-        // necessary because backdrop edges become transparent due to blurring
-        const drawWidth = lyricsBackdrop.width + blur * 3;
-        const drawHeight = lyricsBackdrop.height + blur * 3;
-        const drawX = 0 - blur * 1.5;
-        const drawY = 0 - blur * 1.5;
+        const [
+          drawWidth, drawHeight, drawX, drawY,
+        ] = await calculateContextDrawValues(blur, lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
-        const lyricsBackdropDataUrl = lyricsBackdrop.toDataURL();
-        const lyricsBackdropCanvasImage = new Image();
-        lyricsBackdropCanvasImage.src = lyricsBackdropDataUrl;
+        const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdrop);
 
         const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
           calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
@@ -302,7 +345,6 @@
         function animate() {
           if (radius >= maxRadius) {
             lyricsBackdropPrevious.remove();
-            lyricsBackdrop.style.display = display;
             return;
           }
 
@@ -346,7 +388,6 @@
 
             lyricsBackdrop = document.createElement('canvas');
             lyricsBackdrop.id = 'lyrics-backdrop';
-            lyricsBackdrop.style.display = 'unset';
 
             osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
 
@@ -356,6 +397,8 @@
           }, 10);
         } else {
           lyricsBackdrop.style.display = 'unset';
+
+          updateLyricsBackdrop();
         }
       } else if (lyricsBackdrop != null) {
         lyricsBackdrop.style.display = 'none';
@@ -374,7 +417,6 @@
         waitForElement(['.y7xcnM6yyOOrMwI77d5t'], () => {
           lyricsBackdrop = document.createElement('canvas');
           lyricsBackdrop.id = 'lyrics-backdrop';
-          lyricsBackdrop.style.display = 'unset';
 
           const container = document.querySelector('.y7xcnM6yyOOrMwI77d5t');
           lyricsCinema.insertBefore(lyricsBackdrop, container);
@@ -385,6 +427,8 @@
         });
       } else {
         lyricsBackdrop.style.display = 'unset';
+
+        updateLyricsBackdrop();
       }
     } else if (lyricsBackdrop != null) {
       lyricsBackdrop.style.display = 'none';

@@ -18,7 +18,7 @@ if [ -z "$DISTRO_REL" ]; then
     echo "Your distribution could not be determined."
     echo "Please check if you have /etc/os-release present."
     echo "If not, please see if there's a way to determine your distribution and open an issue."
-    echo "This script is strictly for Debian and its derivatives, excluding Ubuntu and its derivatives."
+    echo "This script is strictly for Debian and its derivatives, including Ubuntu and its derivatives."
     echo "If your distribution doesn't fall in this category this script was made for, please use generic installation instead."
     echo -e "\nAbort!"
     exit 3

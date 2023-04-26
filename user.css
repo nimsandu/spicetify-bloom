@@ -2033,6 +2033,10 @@ option {
 
 /* play buttons */
 
+[dir=ltr] .main-card-PlayButtonContainer {
+  filter: drop-shadow(0 0 5px rgba(0 0 0 / 30%));
+}
+
 .main-card-imageContainer>.main-card-PlayButtonContainer>.main-playButton-PlayButton>button {
   background-color: white !important;
 }

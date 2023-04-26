@@ -59,7 +59,7 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
     <summary>Special script for Debian users</summary>
 <p>Replace `install.sh` in the above command with `install_debian.sh`. Spotify made a derp that it doesn't work on some Debian installations. Passing `--no-zygote` flag to it will fix this issue, which also means we also need to add it to launcher entry. `install_debian.sh` script's whole purpose is to run the `install.sh` as usual, then applying the fix. Issues about it are welcome!</p>
 
-#### credit [@windowz414](https://github.com/windowz414). for the script
+#### credit [@windowz414](https://github.com/windowz414) for the script
 
 </details>
 
@@ -67,9 +67,9 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
 
 ### Spicetify Marketplace
 
-You may also install the theme from the Spicetify Marketplace.
+You can also install the theme from the Spicetify Marketplace.
 Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
-installation instructions. Look for `Bloom` theme and install it.
+[installation instructions](https://github.com/spicetify/spicetify-marketplace/wiki/Installation). Look for `Bloom` theme and install it.
 
 ## Manual Installation
 Use this guide to install if you're having trouble using the shell commands/installation scripts.
@@ -78,7 +78,7 @@ Use this guide to install if you're having trouble using the shell commands/inst
 - Download the theme [ZIP file](https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/main.zip) via the GitHub repository page.
 
 ### Step 2
-- Navigate to Spicetify's Theme directory.
+- Navigate to the Spicetify's `Themes` directory.
 
 | Platform            | Path                              |
 | ------------------- | --------------------------------- |
@@ -123,13 +123,14 @@ xpui.js_repl_8008 = ,${1}56,
 
 ## Customization
 
-The scheme `dark` is applied by default during installation process 
+The `dark` color scheme is applied by default during the installation process. If you install Bloom via PowerShell the installed color scheme depends on your Windows settings.
+
 The available color schemes are: `light` `darkmono` and `dark`. Apply one using the following commands:
 ```
 spicetify config color_scheme <color scheme>
 spicetify apply
 ```
-Credits:For the scheme Dark Mono [@SunsetTechuila](https://github.com/SunsetTechuila)
+Credit for the scheme Dark Mono: [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ### More Options
 
@@ -151,7 +152,7 @@ Credits:For the scheme Dark Mono [@SunsetTechuila](https://github.com/SunsetTech
   <summary><b>Theme breaks after installing a Spicetify addon/app.</b></summary>
 <blockquote> This occurs rather because the custom app doesnt exist. Check Spicetify repositories if it indeed exists in that exact package name and open an issue on this repo if it does for a more extended testing. </blockquote>
 
-#### credit [@windowz414](https://github.com/windowz414). for troubleshooting
+#### credit [@windowz414](https://github.com/windowz414) for the troubleshooting
 
 </details>
 
@@ -160,34 +161,34 @@ Credits:For the scheme Dark Mono [@SunsetTechuila](https://github.com/SunsetTech
   <blockquote>uninstallation
     
     
-  1.  Restore spotify to original state
+  1. Restore Spotify to original state
     ![image](https://user-images.githubusercontent.com/80559769/188782496-a38e4195-089d-4a73-80d7-eb7493db280e.png)
     
   2. Delete spicetify files in appdata. Local and roaming 
     ![image](https://user-images.githubusercontent.com/80559769/188782730-24c13c8a-3264-4fe9-808b-62b6beb0f7d7.png)
     ![image](https://user-images.githubusercontent.com/80559769/188782810-776ce017-de18-449d-b0b3-3523e3d02f45.png)
 
-  3. Use powershell to install spicetify and bloom 
+  3. Use PowerShell to install spicetify and Bloom 
     ![image](https://user-images.githubusercontent.com/80559769/188782914-c5e9e66d-de83-4b83-9f35-f2b0d78a062b.png)
 
-  4. Restart and apply to spotify
+  4. Restart and apply to Spotify
     ![image](https://user-images.githubusercontent.com/80559769/188783021-dd9e683a-c433-4d42-975a-e3c685d75f96.png)
 
-#### credit [@Georgetheasian](https://github.com/Georgetheasian). for uninstallation guide
+#### credit [@Georgetheasian](https://github.com/Georgetheasian) for the uninstallation guide
 
  </details>
  
-## If you Uninstall BLOOM let us know why to shape our future
+## If you uninstall Bloom let us know how to shape our future
 
 ## Credits
-- Based off [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
+- Based on [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
 - [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
-- For the Scheme *Dark Mono* [@SunsetTechuila](https://github.com/SunsetTechuila) 
+- For the scheme *Dark Mono*: [@SunsetTechuila](https://github.com/SunsetTechuila) 
 
 ## Special Thanks
-- @ohitstom [Thomas Fitzpatrick](https://github.com/ohitstom) For Implementing the new Theme Script Feature
-- @Dilith-Dahanayake [Milky](https://github.com/Dilith-Dahanayake) For Beta-Testing
+- @ohitstom [Thomas Fitzpatrick](https://github.com/ohitstom) for implementing the new theme script feature
+- @Dilith-Dahanayake [Milky](https://github.com/Dilith-Dahanayake) for beta testing
 
 #### To appreciate your sacrifice of time and long-term dedication,
 - @kyrie25 [Nam Anh](https://github.com/kyrie25)
