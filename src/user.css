@@ -872,11 +872,6 @@ button.switch {
   height: calc(100% - 240px);
 }
 
-.main-rootlist-wrapper {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .main-rootlist-rootlistItem {
   padding-top: 4px;
   padding-bottom: 4px;
