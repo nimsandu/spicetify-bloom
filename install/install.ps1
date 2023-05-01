@@ -48,7 +48,7 @@ Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
 Write-Host -Object "Extracting..."
 Expand-Archive -Path $zipSavePath -DestinationPath $themePath -Force
 Move-Item -Path "$themePath\spicetify-bloom-main\src\*" -Destination $themePath
-Remove-Item -Path "$themePath\spicetify-bloom-main"
+Remove-Item -Path "$themePath\spicetify-bloom-main" -Recurse -Force
 
 # Delete .zip file
 Write-Host -Object "Deleting zip file..."
