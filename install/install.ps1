@@ -2,6 +2,8 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $ErrorActionPreference = "Stop"
 
+Clear-Host
+
 Write-Host -Object "Beginning installation of spicetify-bloom"
 Write-Host -Object "https://github.com/nimsandu/spicetify-bloom"
 
@@ -39,7 +41,7 @@ spicetify config extensions bloom.js- -q
 Remove-Item -Path "$spicePath\Extensions\bloom.js" -Force -ErrorAction SilentlyContinue
 
 # Download latest master
-$zipUri      = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
+$zipUri = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
 $zipSavePath = "$themePath\bloom-main.zip"
 Write-Host -Object "Downloading spicetify-bloom latest master..."
 Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
@@ -105,6 +107,23 @@ if ( -not ( ($files | Test-Path -PathType Leaf) -contains $true ) ) {
 $configFile | ForEach-Object {
   if ($_ -match "^version = (.+)$") {
     $version = $matches[1]
+  }
+}
+
+# Ask about auto-update task if it's not already registered
+if (-not (Get-ScheduledTask -TaskName "Bloom Updater" -ErrorAction SilentlyContinue)) {
+  $choice = $host.UI.PromptForChoice("", "Check theme updates once a week?", ("&Yes", "&No"), 0)
+  if ($choice -eq 0) {
+    $ArgumentList = "-ExecutionPolicy Bypass -WindowStyle Hidden -Command IWR -UseB 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/update.ps1' | IEx"
+    $updateTaskRegister = Start-Process -FilePath powershell -Verb runAs -ArgumentList $ArgumentList -PassThru
+    $updateTaskRegister.WaitForExit()
+    
+    if ($updateTaskRegister.ExitCode -eq 0) {
+      Write-Host -Object "+ Registered Update Task"
+    }
+    else {
+      Write-Error -Message "x Can't register Update Task"
+    }
   }
 }
 
