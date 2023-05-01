@@ -8,9 +8,7 @@
     }
   }
 
-  waitForElement([
-    '.main-rootlist-rootlistItem',
-  ], () => {
+  waitForElement(['.main-rootlist-rootlistItem'], () => {
     const mainRootlistWrapper = document.getElementsByClassName('main-rootlist-wrapper')[0];
     mainRootlistWrapper.style.height = `${mainRootlistWrapper.offsetHeight * 2}px`;
     const cache = new Map();
@@ -48,7 +46,9 @@
                 const playlist = playlistData.find((p) => p.id === id);
                 const image = playlist ? playlist.images[0] || {} : {};
                 icon = {
-                  src: image.url || 'https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg',
+                  src:
+                    image.url ||
+                    'https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg',
                   size: '50px',
                 };
                 if (!image.url) {
@@ -90,7 +90,9 @@
         }, 100);
       });
 
-      const playlistData = await fetchPlaylistData('https://api.spotify.com/v1/me/playlists?limit=50');
+      const playlistData = await fetchPlaylistData(
+        'https://api.spotify.com/v1/me/playlists?limit=50'
+      );
       const observer = new MutationObserver(async () => {
         observer.disconnect();
         await updatePlaylistList(playlistData);
@@ -119,11 +121,11 @@
 
   const interval = setInterval(() => {
     if (
-      typeof Spicetify.Platform === 'undefined' || (
-        typeof Spicetify.Platform.Translations.play === 'undefined'
-        && typeof Spicetify.Platform.Translations.pause === 'undefined'
-      )
-    ) return;
+      typeof Spicetify.Platform === 'undefined' ||
+      (typeof Spicetify.Platform.Translations.play === 'undefined' &&
+        typeof Spicetify.Platform.Translations.pause === 'undefined')
+    )
+      return;
     clearInterval(interval);
     const playButtonStyle = document.createElement('style');
 
@@ -203,7 +205,9 @@
       try {
         const fac = new FastAverageColor();
         // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
-        const averageColor = await fac.getColorAsync(image, { ignoredColor: [0, 0, 0, 255, 125] });
+        const averageColor = await fac.getColorAsync(image, {
+          ignoredColor: [0, 0, 0, 255, 125],
+        });
         fac.destroy();
 
         // slice(0, 3) - remove alpha channel value
@@ -222,15 +226,18 @@
         const max = Math.max(...value.slice(0, 3));
         const min = Math.min(...value.slice(0, 3));
         const delta = max - min;
-        return max !== 0 ? (delta / max) : 0;
+        return max !== 0 ? delta / max : 0;
       }
 
       try {
         const fac = new FastAverageColor();
         const [averageOriginalColor, averageCanvasColor] = await Promise.all([
           // ignore almost black colors
-          fac.getColorAsync(originalImage, { ignoredColor: [0, 0, 0, 255, 10] }),
-          fac.getColorAsync(canvasImage), { ignoredColor: [0, 0, 0, 255, 10] },
+          fac.getColorAsync(originalImage, {
+            ignoredColor: [0, 0, 0, 255, 10],
+          }),
+          fac.getColorAsync(canvasImage),
+          { ignoredColor: [0, 0, 0, 255, 10] },
         ]);
         fac.destroy();
 
@@ -292,6 +299,7 @@
         calculateBrightnessCoefficient(canvasImage),
         calculateSaturationCoefficient(image, canvasImage),
       ]);
+      // eslint-disable-next-line no-param-reassign
       canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
     }
 
@@ -299,7 +307,9 @@
       waitForElement(['.lyrics-lyricsContent-provider'], () => {
         const lyricsContentWrapper = document.querySelector('.lyrics-lyrics-contentWrapper');
         const lyricsContentContainer = document.querySelector('.lyrics-lyrics-contentContainer');
-        const offset = lyricsContentWrapper.offsetLeft + parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
+        const offset =
+          lyricsContentWrapper.offsetLeft +
+          parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
         const maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
         lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
       });
@@ -323,8 +333,15 @@
         const lyricsBackdropImage = new Image();
         lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
         lyricsBackdropImage.onload = async () => {
-          const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(lyricsBackdropPrevious);
-          contextPrevious.clearRect(0, 0, lyricsBackdropPrevious.width, lyricsBackdropPrevious.height);
+          const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(
+            lyricsBackdropPrevious
+          );
+          contextPrevious.clearRect(
+            0,
+            0,
+            lyricsBackdropPrevious.width,
+            lyricsBackdropPrevious.height
+          );
           contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
           updateFilters(lyricsBackdropPrevious, lyricsBackdropImage);
         };
@@ -345,13 +362,17 @@
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = async () => {
-        const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(lyricsBackdrop);
+        const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(
+          lyricsBackdrop
+        );
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
         updateFilters(lyricsBackdrop, lyricsBackdropImage);
 
-        const maxRadius = Math.ceil(Math.sqrt((lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2)) / 2);
-        const centerX = (lyricsBackdropPrevious.width / 2);
-        const centerY = (lyricsBackdropPrevious.height / 2);
+        const maxRadius = Math.ceil(
+          Math.sqrt(lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2) / 2
+        );
+        const centerX = lyricsBackdropPrevious.width / 2;
+        const centerY = lyricsBackdropPrevious.height / 2;
         let radius = 5;
 
         function animate() {
@@ -443,7 +464,9 @@
   if (rightSidebarLyricsEnabled === false || rightSidebarEnabled === false) {
     waitForHistoryAPI(() => {
       Spicetify.Platform.History.listen(onPageChange);
-      if (Spicetify.Platform.History.location.pathname === '/lyrics') { onPageChange(); }
+      if (Spicetify.Platform.History.location.pathname === '/lyrics') {
+        onPageChange();
+      }
     });
   } else {
     waitForElement(['.Root__lyrics-cinema'], () => {
@@ -489,4 +512,4 @@
     };
     mainObserver.observe(mainElement, mainObserverConfig);
   });
-}());
+})();
