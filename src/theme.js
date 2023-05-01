@@ -1,4 +1,3 @@
-/* global Spicetify, FastAverageColor */
 (function bloom() {
   function waitForElement(els, func, timeout = 100) {
     const queries = els.map((el) => document.querySelector(el));
@@ -204,9 +203,7 @@
       try {
         const fac = new FastAverageColor();
         // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
-        const averageColor = await fac.getColorAsync(image, {
-          ignoredColor: [[0, 0, 0, 255, 125]],
-        });
+        const averageColor = await fac.getColorAsync(image, { ignoredColor: [0, 0, 0, 255, 125] });
         fac.destroy();
 
         // slice(0, 3) - remove alpha channel value
@@ -232,8 +229,8 @@
         const fac = new FastAverageColor();
         const [averageOriginalColor, averageCanvasColor] = await Promise.all([
           // ignore almost black colors
-          fac.getColorAsync(originalImage, { ignoredColor: [[0, 0, 0, 255, 10]] }),
-          fac.getColorAsync(canvasImage), { ignoredColor: [[0, 0, 0, 255, 10]] },
+          fac.getColorAsync(originalImage, { ignoredColor: [0, 0, 0, 255, 10] }),
+          fac.getColorAsync(canvasImage), { ignoredColor: [0, 0, 0, 255, 10] },
         ]);
         fac.destroy();
 
@@ -297,13 +294,11 @@
       ]);
       canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
     }
-	
+
     function setLyricsMaxWidth() {
       waitForElement(['.lyrics-lyricsContent-provider'], () => {
         const lyricsContentWrapper = document.querySelector('.lyrics-lyrics-contentWrapper');
         const lyricsContentContainer = document.querySelector('.lyrics-lyrics-contentContainer');
-
-        // eslint-disable-next-line max-len
         const offset = lyricsContentWrapper.offsetLeft + parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
         const maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
         lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
@@ -328,13 +323,9 @@
         const lyricsBackdropImage = new Image();
         lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
         lyricsBackdropImage.onload = async () => {
-          const [
-            drawWidth, drawHeight, drawX, drawY,
-          ] = await calculateContextDrawValues(lyricsBackdropPrevious);
-          // eslint-disable-next-line max-len
+          const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(lyricsBackdropPrevious);
           contextPrevious.clearRect(0, 0, lyricsBackdropPrevious.width, lyricsBackdropPrevious.height);
           contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
-
           updateFilters(lyricsBackdropPrevious, lyricsBackdropImage);
         };
         return;
@@ -354,14 +345,10 @@
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = async () => {
-        const [
-          drawWidth, drawHeight, drawX, drawY,
-        ] = await calculateContextDrawValues(lyricsBackdrop);
+        const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
-
         updateFilters(lyricsBackdrop, lyricsBackdropImage);
 
-        // eslint-disable-next-line max-len
         const maxRadius = Math.ceil(Math.sqrt((lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2)) / 2);
         const centerX = (lyricsBackdropPrevious.width / 2);
         const centerY = (lyricsBackdropPrevious.height / 2);
@@ -441,10 +428,6 @@
     }
   }
 
-  const features = JSON.parse(localStorage.getItem('spicetify-exp-features'));
-  const rightSidebarLyricsEnabled = features.enableRightSidebarLyrics.value;
-  const rightSidebarEnabled = features.enableRightSidebar.value;
-
   function waitForHistoryAPI(func, timeout = 100) {
     if (Spicetify.Platform?.History) {
       func();
@@ -452,6 +435,10 @@
       setTimeout(waitForHistoryAPI, 100, func, timeout - 1);
     }
   }
+
+  const features = JSON.parse(localStorage.getItem('spicetify-exp-features'));
+  const rightSidebarLyricsEnabled = features.enableRightSidebarLyrics.value;
+  const rightSidebarEnabled = features.enableRightSidebar.value;
 
   if (rightSidebarLyricsEnabled === false || rightSidebarEnabled === false) {
     waitForHistoryAPI(() => {

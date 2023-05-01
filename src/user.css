@@ -57,7 +57,7 @@ html {
   background: var(--spice-subtext) !important;
 }
 
-.os-theme-spotify>.os-scrollbar-vertical {
+.os-theme-spotify > .os-scrollbar-vertical {
   margin-right: 2px;
 }
 
@@ -197,7 +197,7 @@ html {
 
 .main-card-card,
 .main-heroCard-card,
-.x-searchResultsTracks-root>.main-gridContainer-gridContainer,
+.x-searchResultsTracks-root > .main-gridContainer-gridContainer,
 .main-trackList-indexable,
 .view-homeShortcutsGrid-shortcut,
 .OALAQFKvC7XQOVYpklB4,
@@ -386,12 +386,12 @@ div#context-menu:before,
 }
 
 .main-contextMenu-menuItem,
-._60cb742e518d084c3c959007b9463b51-scss>li {
+._60cb742e518d084c3c959007b9463b51-scss > li {
   margin: 1px 1px;
 }
 
 .main-contextMenu-menuItem:first-child,
-._60cb742e518d084c3c959007b9463b51-scss> :first-child {
+._60cb742e518d084c3c959007b9463b51-scss > :first-child {
   margin: 1px 1px 1px;
 }
 
@@ -399,7 +399,7 @@ div#context-menu:before,
   margin: 1px 1px 1px;
 }
 
-._60cb742e518d084c3c959007b9463b51-scss> :last-child {
+._60cb742e518d084c3c959007b9463b51-scss > :last-child {
   margin: 1px 1px 1px;
 }
 
@@ -455,7 +455,7 @@ div#context-menu:before,
 }
 
 .main-navBar-navBarLink .gSLhUO path,
-.icon>svg,
+.icon > svg,
 .x-searchInput-searchInputIconContainer path,
 .show-episodeBlock-playerActions svg,
 .main-playButton-PlayButton polygon,
@@ -493,22 +493,22 @@ div#context-menu:before,
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/lyrics-plus"]>.collection-icon {
+.main-navBar-navBarLink[href="/lyrics-plus"] > .collection-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/lyrics-plus"]>.collection-active-icon {
+.main-navBar-navBarLink[href="/lyrics-plus"] > .collection-active-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/marketplace"]>.collection-icon {
+.main-navBar-navBarLink[href="/marketplace"] > .collection-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/marketplace"]>.collection-active-icon {
+.main-navBar-navBarLink[href="/marketplace"] > .collection-active-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
@@ -543,7 +543,7 @@ div#context-menu:before,
   display: block !important;
 }
 
-.main-createPlaylistButton-createPlaylistIcon>svg,
+.main-createPlaylistButton-createPlaylistIcon > svg,
 .main-createPlaylistButton-text {
   display: none !important;
 }
@@ -778,9 +778,9 @@ button.switch {
   transform: translate(-50%, -50%);
 }
 
-.main-navBar-navBarLinkActive>.icon,
+.main-navBar-navBarLinkActive > .icon,
 .main-navBar-navBarLinkActive .gSLhUO,
-.main-navBar-navBarLinkActive>.hDgDGI {
+.main-navBar-navBarLinkActive > .hDgDGI {
   position: relative;
   top: 50%;
   transform: translate(0, -50%);
@@ -814,7 +814,7 @@ button.switch {
   display: none;
 }
 
-.main-navBar-navBarLinkActive>.navBar-navBarLink-accent {
+.main-navBar-navBarLinkActive > .navBar-navBarLink-accent {
   display: block !important;
 }
 
@@ -933,15 +933,15 @@ button.switch {
   filter: brightness(50%);
 }
 
-.main-rootlist-statusIcons>button {
+.main-rootlist-statusIcons > button {
   color: var(--spice-text);
 }
 
-.main-rootlist-rootlistItemLinkActive~.main-rootlist-statusIcons>button {
+.main-rootlist-rootlistItemLinkActive ~ .main-rootlist-statusIcons > button {
   color: var(--spice-shadow);
 }
 
-.main-rootlist-statusIcons>div {
+.main-rootlist-statusIcons > div {
   margin-left: 8px;
 }
 
@@ -1181,7 +1181,7 @@ button.switch {
 
 .show-trailer-container,
 .show-episodeBlock-episodeBlock,
-.show-show-episodes> :last-child {
+.show-show-episodes > :last-child {
   border-radius: var(--border-radius-1) !important;
 }
 
@@ -1193,12 +1193,12 @@ button.switch {
   background-color: rgba(var(--spice-rgb-selected-row), .1);
 }
 
-.show-show-episodes> :last-child {
+.show-show-episodes > :last-child {
   padding: 8px 24px;
 }
 
 .show-trailer-container,
-.show-show-episodes> :last-child {
+.show-show-episodes > :last-child {
   background-color: var(--spice-card) !important;
 }
 
@@ -1232,7 +1232,7 @@ button.switch {
   height: auto;
 }
 
-.main-topBar-topbarContent>.main-playButton-PlayButton.main-playButton-primary {
+.main-topBar-topbarContent > .main-playButton-PlayButton.main-playButton-primary {
   margin-top: 10px;
 }
 
@@ -1435,8 +1435,8 @@ path[d="M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   color: var(--spice-button);
 }
 
-.main-deletePlaylistDialog-buttonContainer>:last-child,
-.main-deleteFolderDialog-buttonContainer>:last-child {
+.main-deletePlaylistDialog-buttonContainer > :last-child,
+.main-deleteFolderDialog-buttonContainer > :last-child {
   background-color: var(--spice-notification-error);
 }
 
@@ -1739,7 +1739,7 @@ option {
   padding-left: 6px;
 }
 
-.main-nowPlayingWidget-nowPlaying>.ellipsis-one-line,
+.main-nowPlayingWidget-nowPlaying > .ellipsis-one-line,
 .main-trackInfo-container {
   margin-left: 74px;
   border-radius: var(--border-radius-1) !important;
@@ -2086,12 +2086,12 @@ option {
   filter: drop-shadow(0 0 5px rgba(0 0 0 / 30%));
 }
 
-.main-card-imageContainer>.main-card-PlayButtonContainer>.main-playButton-PlayButton>button {
+.main-card-imageContainer > .main-card-PlayButtonContainer > .main-playButton-PlayButton > button {
   background-color: white !important;
 }
 
 .main-playButton-button,
-.main-playButton-PlayButton>button,
+.main-playButton-PlayButton > button,
 .main-trackList-rowPlayPauseButton {
   background-color: var(--spice-text) !important;
   -webkit-mask-image: url("https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg");
@@ -2102,12 +2102,12 @@ option {
   background-color: transparent;
 }
 
-.main-playButton-PlayButton>button {
+.main-playButton-PlayButton > button {
   width: 40px;
   height: 40px;
 }
 
-.main-playButton-PlayButton>button>span {
+.main-playButton-PlayButton > button > span {
   display: none;
 }
 
@@ -2129,11 +2129,11 @@ option {
   top: -60px !important;
 }
 
-#spicetify-show-list>* {
+#spicetify-show-list > * {
   padding: 0px;
 }
 
-.toggle-module__toggle-input___ceLM4_marketplace:checked~.toggle-module__toggle-indicator-wrapper___6Lcp0_marketplace {
+.toggle-module__toggle-input___ceLM4_marketplace:checked ~ .toggle-module__toggle-indicator-wrapper___6Lcp0_marketplace {
   background-color: var(--spice-accent);
 }
 
@@ -2235,7 +2235,7 @@ option {
   max-width: var(--lyrics-active-max-width);
 }
 
-.hzUuLPdH48AzgQun5NYQ>.lyrics-lyricsContent-lyric {
+.hzUuLPdH48AzgQun5NYQ > .lyrics-lyricsContent-lyric {
   max-width: 90% !important;
 }
 
@@ -2325,7 +2325,7 @@ option {
   border: 2px solid var(--spice-main) !important;
 }
 
-input:checked~.x-toggle-indicatorWrapper {
+input:checked ~ .x-toggle-indicatorWrapper {
   background-color: var(--spice-accent) !important;
 }
 
@@ -2333,7 +2333,7 @@ input:checked~.x-toggle-indicatorWrapper {
   background-color: rgba(var(--spice-rgb-layer-shadow), .7) !important;
 }
 
-nav .main-rootlist-wrapper> :nth-child(2) {
+nav .main-rootlist-wrapper > :nth-child(2) {
   transform: translateY(0) !important;
 }
 
