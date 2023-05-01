@@ -375,54 +375,58 @@
     context.fillRect(0, 0, backdrop.width, backdrop.height);
   }
 
+  function initLyricsBackdrop(isCinema) {
+    let element;
+
+    if (isCinema) {
+      element = 'y7xcnM6yyOOrMwI77d5t';
+    } else {
+      element = 'under-main-view';
+    }
+
+    waitForElement([`.${element}`], () => {
+      element = document.querySelector(`.${element}`);
+      const lyricsBackdropContainer = document.createElement('div');
+      lyricsBackdropContainer.id = 'lyrics-backdrop-container';
+      element.prepend(lyricsBackdropContainer);
+
+      const lyricsBackdrop = document.createElement('canvas');
+      lyricsBackdrop.id = 'lyrics-backdrop';
+      lyricsBackdropContainer.appendChild(lyricsBackdrop);
+
+      fillBackdrop(lyricsBackdrop);
+      updateLyricsBackdrop();
+    });
+  }
+
   function onPageChange() {
-    let lyricsBackdrop = document.getElementById('lyrics-backdrop');
+    const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
 
     if (Spicetify.Platform.History.location.pathname === '/lyrics') {
-      if (lyricsBackdrop == null) {
-        waitForElement(['.main-view-container__scroll-node > div.os-padding'], () => {
-          const osPadding = document.querySelector('.main-view-container__scroll-node > div.os-padding');
-
-          lyricsBackdrop = document.createElement('canvas');
-          lyricsBackdrop.id = 'lyrics-backdrop';
-
-          osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
-
-          fillBackdrop(lyricsBackdrop);
-
-          updateLyricsBackdrop();
-        }, 10);
+      if (lyricsBackdropContainer == null) {
+        initLyricsBackdrop(false);
       } else {
-        lyricsBackdrop.style.display = 'unset';
+        lyricsBackdropContainer.style.display = 'unset';
         updateLyricsBackdrop();
       }
-    } else if (lyricsBackdrop != null) {
-      lyricsBackdrop.style.display = 'none';
+    } else if (lyricsBackdropContainer != null) {
+      lyricsBackdropContainer.style.display = 'none';
     }
   }
 
   function lyricsCinemaCallback(mutationsList) {
-    let lyricsBackdrop = document.getElementById('lyrics-backdrop');
+    const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
     const lyricsCinema = mutationsList[0].target;
 
     if (lyricsCinema.classList.contains('AptbKyUcObu7QQ1sxqgb')) {
-      if (lyricsBackdrop == null) {
-        waitForElement(['.y7xcnM6yyOOrMwI77d5t'], () => {
-          lyricsBackdrop = document.createElement('canvas');
-          lyricsBackdrop.id = 'lyrics-backdrop';
-
-          const container = document.querySelector('.y7xcnM6yyOOrMwI77d5t');
-          lyricsCinema.insertBefore(lyricsBackdrop, container);
-
-          fillBackdrop(lyricsBackdrop);
-          updateLyricsBackdrop();
-        });
+      if (lyricsBackdropContainer == null) {
+        initLyricsBackdrop(true);
       } else {
-        lyricsBackdrop.style.display = 'unset';
+        lyricsBackdropContainer.style.display = 'unset';
         updateLyricsBackdrop();
       }
-    } else if (lyricsBackdrop != null) {
-      lyricsBackdrop.style.display = 'none';
+    } else if (lyricsBackdropContainer != null) {
+      lyricsBackdropContainer.style.display = 'none';
     }
   }
 
