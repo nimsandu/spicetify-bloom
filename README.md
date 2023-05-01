@@ -2,38 +2,39 @@
   <h1>Bloom</h1>
 
   [Spicetify](https://github.com/khanhas/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).  
-  ### **Consider starring us, and suggest stuff by submitting a comment!**
+
+### **Consider starring us, and suggest stuff by submitting a comment!**
+
 </div>
 
 <br>
 
-![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/bloom_cover.jpg)
-
+![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/bloom_cover.jpg)
 
 <br>
 
-
 ## First Look
+
 <br>
 
 #### **Default Dark**
 
-![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/dark-new.png)
+![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/dark.png)
 
 <br>
 
 #### **Default Light**
 
-![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/light-new.png)
+![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/light.png)
 
 <br>
 
 #### **Dark Mono**
 
-![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/darkmono.png)
+![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/darkmono.png)
 By [@SunsetTechuila](https://github.com/SunsetTechuila)
-<br>
 
+<br>
 
 ## Dependencies
 
@@ -46,13 +47,13 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 ### Windows (Powershell)
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.ps1" | Invoke-Expression
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/install.ps1" | Invoke-Expression
 ```
 
 ### Linux/macOS (Bash)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/install.sh | bash
 ```
 
 <details>
@@ -72,12 +73,15 @@ Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-ma
 [installation instructions](https://github.com/spicetify/spicetify-marketplace/wiki/Installation). Look for `Bloom` theme and install it.
 
 ## Manual Installation
+
 Use this guide to install if you're having trouble using the shell commands/installation scripts.
 
 ### Step 1
+
 - Download the theme [ZIP file](https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/main.zip) via the GitHub repository page.
 
 ### Step 2
+
 - Navigate to the Spicetify's `Themes` directory.
 
 | Platform            | Path                              |
@@ -86,29 +90,35 @@ Use this guide to install if you're having trouble using the shell commands/inst
 | **Linux**/**MacOS** | `~/.config/spicetify/Themes`      |
 
 ### Step 3
+
 - In the directory, create a new folder called `Bloom`.
 
 ### Step 4
-- Open the downloaded theme ZIP file, and extract the following files **highlighted in the screenshot below** to the Bloom folder you created.
-![image](https://user-images.githubusercontent.com/22730962/232251328-580b1420-cedd-459f-b0e4-677c325f2abe.png)
+
+- Open the downloaded theme ZIP file, and extract all of the files from the `src` subfolder to the Bloom folder you created.
 
 ### Step 5
+
 - Open a terminal/command prompt window and type the following commands:
+
 ```bash
 spicetify config current_theme Bloom
 spicetify config color_scheme dark
 ```
+
 ...and then apply the theme by typing `spicetify apply`. And you should be done!
 
 <br>
 
 If you encounter any buggy artifacts after applying, type these following commands:
+
 ```sh
 spicetify config inject_css 1
 spicetify config replace_colors 1
 spicetify config overwrite_assets 1
 spicetify config inject_theme_js 1
 ```
+
 ..then type `spicetify apply` to apply the theme.
 
 ## Important
@@ -126,10 +136,12 @@ xpui.js_repl_8008 = ,${1}56,
 The `dark` color scheme is applied by default during the installation process. If you install Bloom via PowerShell the installed color scheme depends on your Windows settings.
 
 The available color schemes are: `light` `darkmono` and `dark`. Apply one using the following commands:
+
 ```
 spicetify config color_scheme <color scheme>
 spicetify apply
 ```
+
 Credit for the scheme Dark Mono: [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ### More Options
@@ -138,6 +150,7 @@ Credit for the scheme Dark Mono: [@SunsetTechuila](https://github.com/SunsetTech
 - If you're using Windows, you can hide the window controls by adding the flag `--transparent-window-controls` after Spotify.exe in your Spotify shortcut.  
 
 ## Troubleshooting
+
 <details>
   <summary><b>Experiencing issues after installing via Spicetify Marketplace?</b></summary>
 <blockquote> If you're experiencing issues after installing the theme via the Spicetify Marketplace, reset it by going to the Spicetify Marketplace settings, then scroll all the way down until you see the "Reset Marketplace" button. After that, proceed to install the theme using the instation methods shown above. </blockquote>
@@ -159,16 +172,15 @@ Credit for the scheme Dark Mono: [@SunsetTechuila](https://github.com/SunsetTech
 <details>
   <summary><b>Uninstallation</b></summary>
   <blockquote>uninstallation
-    
-    
+
   1. Restore Spotify to original state
     ![image](https://user-images.githubusercontent.com/80559769/188782496-a38e4195-089d-4a73-80d7-eb7493db280e.png)
-    
-  2. Delete spicetify files in appdata. Local and roaming 
+
+  2. Delete spicetify files in appdata. Local and roaming
     ![image](https://user-images.githubusercontent.com/80559769/188782730-24c13c8a-3264-4fe9-808b-62b6beb0f7d7.png)
     ![image](https://user-images.githubusercontent.com/80559769/188782810-776ce017-de18-449d-b0b3-3523e3d02f45.png)
 
-  3. Use PowerShell to install spicetify and Bloom 
+  3. Use PowerShell to install spicetify and Bloom
     ![image](https://user-images.githubusercontent.com/80559769/188782914-c5e9e66d-de83-4b83-9f35-f2b0d78a062b.png)
 
   4. Restart and apply to Spotify
@@ -177,24 +189,28 @@ Credit for the scheme Dark Mono: [@SunsetTechuila](https://github.com/SunsetTech
 #### credit [@Georgetheasian](https://github.com/Georgetheasian) for the uninstallation guide
 
  </details>
- 
+
 ## If you uninstall Bloom let us know how to shape our future
 
 ## Credits
+
 - Based on [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
 - [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
-- For the scheme *Dark Mono*: [@SunsetTechuila](https://github.com/SunsetTechuila) 
+- For the scheme *Dark Mono*: [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ## Special Thanks
+
 - @ohitstom [Thomas Fitzpatrick](https://github.com/ohitstom) for implementing the new theme script feature
 - @Dilith-Dahanayake [Milky](https://github.com/Dilith-Dahanayake) for beta testing
 
-#### To appreciate your sacrifice of time and long-term dedication,
+#### To appreciate your sacrifice of time and long-term dedication
+
 - @kyrie25 [Nam Anh](https://github.com/kyrie25)
 - @windowz414 [Beru Hinode](https://github.com/windowz414)
 - @SunsetTechuila [Sunset](https://github.com/SunsetTechuila)
-#### And For Every Contributor, stargazer and Bloomer.
+
+#### And For Every Contributor, stargazer and Bloomer
 
 ## License
 
