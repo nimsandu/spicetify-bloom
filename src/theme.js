@@ -297,8 +297,22 @@
       ]);
       canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
     }
+	
+    function setLyricsMaxWidth() {
+      waitForElement(['.lyrics-lyricsContent-provider'], () => {
+        const lyricsContentWrapper = document.querySelector('.lyrics-lyrics-contentWrapper');
+        const lyricsContentContainer = document.querySelector('.lyrics-lyrics-contentContainer');
+
+        // eslint-disable-next-line max-len
+        const offset = lyricsContentWrapper.offsetLeft + parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
+        const maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
+        lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
+      });
+    }
 
     waitForElement(['#lyrics-backdrop'], () => {
+      setLyricsMaxWidth();
+
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
         return;

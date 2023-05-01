@@ -2232,6 +2232,11 @@ option {
 .lyrics-lyricsContent-active {
   transform: scale(1.1);
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  max-width: var(--lyrics-active-max-width);
+}
+
+.hzUuLPdH48AzgQun5NYQ>.lyrics-lyricsContent-lyric {
+  max-width: 90% !important;
 }
 
 /* lyrics pages fix */
@@ -2354,12 +2359,6 @@ nav .main-rootlist-wrapper> :nth-child(2) {
 
 .lyrics-config-button-container {
   padding-bottom: 20px;
-}
-
-/* Right bar lyrics fix */
-
-.hzUuLPdH48AzgQun5NYQ>.lyrics-lyricsContent-lyric {
-  max-width: 90%;
 }
 
 /* Spicetify power bar */
