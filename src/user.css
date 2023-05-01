@@ -166,6 +166,12 @@ html {
   transform: translateY(0px);
 }
 
+.main-card-card:active,
+.x-categoryCard-CategoryCard:active,
+.main-heroCard-card:active {
+  transform: translateY(0px);
+}
+
 .x-categoryCard-backdrop {
   position: absolute;
   width: 100%;
