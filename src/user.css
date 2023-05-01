@@ -2225,7 +2225,7 @@ option {
   color: rgb(255 255 255) !important;
 }
 
-.lyrics-lyricsContent-lyric:active {
+.lyrics-lyricsContent-lyric:not(.lyrics-lyricsContent-unsynced):active {
   transform: scale(0.9);
 }
 
