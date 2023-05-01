@@ -182,6 +182,21 @@
     document.body.appendChild(facScript);
   });
 
+  const blur = 20;
+
+  function fillBackdrop(backdrop) {
+    const context = backdrop.getContext('2d');
+    const rootStyles = getComputedStyle(document.documentElement);
+    const spiceMain = rootStyles.getPropertyValue('--spice-rgb-main').split(',');
+    context.fillStyle = `rgb(
+      ${spiceMain[0].trim()},
+      ${spiceMain[1]},
+      ${spiceMain[2]}
+      )`;
+    context.fillRect(0, 0, backdrop.width, backdrop.height);
+    context.filter = `blur(${blur}px)`;
+  }
+
   let previousAlbumUri;
 
   async function updateLyricsBackdrop() {
@@ -260,7 +275,7 @@
     }
 
     // necessary because backdrop edges become transparent due to blurring
-    async function calculateContextDrawValues(blur, canvas) {
+    async function calculateContextDrawValues(canvas) {
       const drawWidth = canvas.width + blur * 2;
       const drawHeight = canvas.height + blur * 2;
       const drawX = 0 - blur;
@@ -283,7 +298,6 @@
 
       const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
       const contextPrevious = lyricsBackdropPrevious.getContext('2d');
-      const blur = 20;
 
       // don't animate backdrop if it is hidden
       // if skip the image change completely, then if the user tries to quickly hide the lyrics immediately after changing the track and opening the lyrics, the backdrop will be hidden with a delay
@@ -293,7 +307,7 @@
         lyricsBackdropImage.onload = async () => {
           const [
             drawWidth, drawHeight, drawX, drawY,
-          ] = await calculateContextDrawValues(blur, lyricsBackdropPrevious);
+          ] = await calculateContextDrawValues(lyricsBackdropPrevious);
           // eslint-disable-next-line max-len
           contextPrevious.clearRect(0, 0, lyricsBackdropPrevious.width, lyricsBackdropPrevious.height);
           contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
@@ -313,6 +327,7 @@
       lyricsBackdrop.id = 'lyrics-backdrop';
       lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
       const context = lyricsBackdrop.getContext('2d');
+      fillBackdrop(lyricsBackdrop);
 
       contextPrevious.globalCompositeOperation = 'destination-out';
       context.imageSmoothingEnabled = false;
@@ -324,7 +339,7 @@
       lyricsBackdropImage.onload = async () => {
         const [
           drawWidth, drawHeight, drawX, drawY,
-        ] = await calculateContextDrawValues(blur, lyricsBackdrop);
+        ] = await calculateContextDrawValues(lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
         const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdrop);
@@ -359,20 +374,6 @@
         animate();
       };
     });
-  }
-
-  // necessary for the first animation
-  function fillBackdrop(backdrop) {
-    const context = backdrop.getContext('2d');
-    context.filter = 'blur(20px)';
-    const rootStyles = getComputedStyle(document.documentElement);
-    const spiceMain = rootStyles.getPropertyValue('--spice-rgb-main').split(',');
-    context.fillStyle = `rgb(
-      ${spiceMain[0].trim()},
-      ${spiceMain[1]},
-      ${spiceMain[2]}
-      )`;
-    context.fillRect(0, 0, backdrop.width, backdrop.height);
   }
 
   function initLyricsBackdrop(isCinema) {
