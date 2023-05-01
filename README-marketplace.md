@@ -38,7 +38,7 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ## Dependencies
 
-- [Spicetify](https://github.com/spicetify/spicetify-cli) version 2.11.1 or newer. Latest version recommended.
+- [Spicetify](https://github.com/spicetify/spicetify-cli) version 2.17.2 or newer. Latest version recommended.
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows Vista and newer.
   Segoe UI versions older than 5.37 (older than Windows 8.0) are not officially supported but may work.
 
