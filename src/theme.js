@@ -375,33 +375,26 @@
     context.fillRect(0, 0, backdrop.width, backdrop.height);
   }
 
-  function pbRightCallback() {
+  function onPageChange() {
     let lyricsBackdrop = document.getElementById('lyrics-backdrop');
-    const lyricsButton = document.querySelector('.ZMXGDTbwxKJhbmEDZlYy');
 
-    if (lyricsButton != null) {
-      const lyricsActive = lyricsButton.getAttribute('data-active');
-      if (lyricsActive === 'true') {
-        if (lyricsBackdrop == null) {
-          waitForElement(['.main-view-container__scroll-node > div.os-padding'], () => {
-            const osPadding = document.querySelector('.main-view-container__scroll-node > div.os-padding');
+    if (Spicetify.Platform.History.location.pathname === '/lyrics') {
+      if (lyricsBackdrop == null) {
+        waitForElement(['.main-view-container__scroll-node > div.os-padding'], () => {
+          const osPadding = document.querySelector('.main-view-container__scroll-node > div.os-padding');
 
-            lyricsBackdrop = document.createElement('canvas');
-            lyricsBackdrop.id = 'lyrics-backdrop';
+          lyricsBackdrop = document.createElement('canvas');
+          lyricsBackdrop.id = 'lyrics-backdrop';
 
-            osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
+          osPadding.parentNode.insertBefore(lyricsBackdrop, osPadding);
 
-            fillBackdrop(lyricsBackdrop);
-
-            updateLyricsBackdrop();
-          }, 10);
-        } else {
-          lyricsBackdrop.style.display = 'unset';
+          fillBackdrop(lyricsBackdrop);
 
           updateLyricsBackdrop();
-        }
-      } else if (lyricsBackdrop != null) {
-        lyricsBackdrop.style.display = 'none';
+        }, 10);
+      } else {
+        lyricsBackdrop.style.display = 'unset';
+        updateLyricsBackdrop();
       }
     } else if (lyricsBackdrop != null) {
       lyricsBackdrop.style.display = 'none';
@@ -422,12 +415,10 @@
           lyricsCinema.insertBefore(lyricsBackdrop, container);
 
           fillBackdrop(lyricsBackdrop);
-
           updateLyricsBackdrop();
         });
       } else {
         lyricsBackdrop.style.display = 'unset';
-
         updateLyricsBackdrop();
       }
     } else if (lyricsBackdrop != null) {
@@ -439,16 +430,18 @@
   const rightSidebarLyricsEnabled = features.enableRightSidebarLyrics.value;
   const rightSidebarEnabled = features.enableRightSidebar.value;
 
+  function waitForHistoryAPI(func, timeout = 100) {
+    if (Spicetify.Platform?.History) {
+      func();
+    } else if (timeout > 0) {
+      setTimeout(waitForHistoryAPI, 100, func, timeout - 1);
+    }
+  }
+
   if (rightSidebarLyricsEnabled === false || rightSidebarEnabled === false) {
-    waitForElement(['.mwpJrmCgLlVkJVtWjlI1'], () => {
-      const pbRight = document.querySelector('.mwpJrmCgLlVkJVtWjlI1');
-      const pbRightObserver = new MutationObserver(pbRightCallback);
-      const pbRightObserverConfig = {
-        attributes: true,
-        childList: true,
-        subtree: true,
-      };
-      pbRightObserver.observe(pbRight, pbRightObserverConfig);
+    waitForHistoryAPI(() => {
+      Spicetify.Platform.History.listen(onPageChange);
+      if (Spicetify.Platform.History.location.pathname === '/lyrics') { onPageChange(); }
     });
   } else {
     waitForElement(['.Root__lyrics-cinema'], () => {
