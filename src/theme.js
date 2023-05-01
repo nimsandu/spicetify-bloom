@@ -289,6 +289,15 @@
       return image;
     }
 
+    async function updateFilters(canvas, image) {
+      const canvasImage = await getImageFromCanvas(canvas);
+      const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
+        calculateBrightnessCoefficient(canvasImage),
+        calculateSaturationCoefficient(image, canvasImage),
+      ]);
+      canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
+    }
+
     waitForElement(['#lyrics-backdrop'], () => {
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
@@ -312,13 +321,7 @@
           contextPrevious.clearRect(0, 0, lyricsBackdropPrevious.width, lyricsBackdropPrevious.height);
           contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
-          // update filters
-          const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdropPrevious);
-          const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
-            calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
-            calculateSaturationCoefficient(lyricsBackdropImage, lyricsBackdropCanvasImage),
-          ]);
-          lyricsBackdropPrevious.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
+          updateFilters(lyricsBackdropPrevious, lyricsBackdropImage);
         };
         return;
       }
@@ -342,14 +345,7 @@
         ] = await calculateContextDrawValues(lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
 
-        const lyricsBackdropCanvasImage = await getImageFromCanvas(lyricsBackdrop);
-
-        const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
-          calculateBrightnessCoefficient(lyricsBackdropCanvasImage),
-          calculateSaturationCoefficient(lyricsBackdropImage, lyricsBackdropCanvasImage),
-        ]);
-
-        lyricsBackdrop.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
+        updateFilters(lyricsBackdrop, lyricsBackdropImage);
 
         // eslint-disable-next-line max-len
         const maxRadius = Math.ceil(Math.sqrt((lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2)) / 2);
