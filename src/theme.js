@@ -236,21 +236,21 @@
           saturationCoefficient = 1;
         }
 
-        const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(2);
+        const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(1);
 
         // try to detect and fix oversaturated backdrop
-        if (finalSaturation > 0.75) {
-          saturationCoefficient = 1 - (averageCanvasSaturation - 0.75);
+        if (finalSaturation > 0.8) {
+          saturationCoefficient = 1 - (finalSaturation - 0.8);
         }
 
         // try to detect and fix undersaturated backdrop
-        if (finalSaturation < 0.45 && averageOriginalSaturation > 0.1) {
-          saturationCoefficient += 0.45 - finalSaturation;
+        if (finalSaturation < 0.5 && averageOriginalSaturation > 0.05) {
+          saturationCoefficient += 0.5 - finalSaturation;
         }
 
         // coefficient threshold
-        if (saturationCoefficient > 1.5) {
-          saturationCoefficient = 1.5;
+        if (saturationCoefficient > 1.7) {
+          saturationCoefficient = 1.7;
         }
 
         return saturationCoefficient.toFixed(1);
