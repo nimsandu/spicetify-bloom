@@ -195,7 +195,6 @@
       ${spiceMain[2]}
       )`;
     context.fillRect(0, 0, backdrop.width, backdrop.height);
-    context.filter = `blur(${blur}px)`;
   }
 
   let previousAlbumUri;
@@ -326,35 +325,14 @@
 
       const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
       const contextPrevious = lyricsBackdropPrevious.getContext('2d');
-
-      // don't animate backdrop if it is hidden
-      // if skip the image change completely, then if the user tries to quickly hide the lyrics immediately after changing the track and opening the lyrics, the backdrop will be hidden with a delay
-      if (lyricsBackdropPrevious.style.display === 'none') {
-        const lyricsBackdropImage = new Image();
-        lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
-        lyricsBackdropImage.onload = async () => {
-          const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(
-            lyricsBackdropPrevious
-          );
-          contextPrevious.clearRect(
-            0,
-            0,
-            lyricsBackdropPrevious.width,
-            lyricsBackdropPrevious.height
-          );
-          contextPrevious.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
-          updateFilters(lyricsBackdropPrevious, lyricsBackdropImage);
-        };
-        return;
-      }
+      contextPrevious.globalCompositeOperation = 'destination-out';
+      contextPrevious.filter = `blur(${blur}px)`;
 
       const lyricsBackdrop = document.createElement('canvas');
       lyricsBackdrop.id = 'lyrics-backdrop';
+      fillBackdrop(lyricsBackdrop);
       lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
       const context = lyricsBackdrop.getContext('2d');
-      fillBackdrop(lyricsBackdrop);
-
-      contextPrevious.globalCompositeOperation = 'destination-out';
       context.imageSmoothingEnabled = false;
       context.filter = `blur(${blur}px)`;
 
