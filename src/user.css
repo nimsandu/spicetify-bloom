@@ -1475,6 +1475,7 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 
 .main-buddyFeed-friendsFeedContainer {
   margin-top: 25px;
+  height: calc(100% - 140px);
 }
 
 .main-buddyFeed-findFriendsIcon,
