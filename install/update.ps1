@@ -11,7 +11,7 @@ $UpdaterTask = @"
 `$lastWriteTime = Get-Date -Date (`$themeFolder.LastWriteTime | Select-Object -Last 1)
 
 `$commitsHistory = (Invoke-WebRequest -Uri 'https://github.com/nimsandu/spicetify-bloom/commits/main' -UseBasicParsing).RawContent
-`$commitsHistory -match '.+Commits on (.+)</h2>' | Out-Null
+`$commitsHistory -match '<relative-time datetime="(.+)" class' | Out-Null
 `$lastCommitDate = Get-Date -Date `$matches[1]
 
 if (`$lastCommitDate -gt `$lastWriteTime) {
