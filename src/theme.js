@@ -396,6 +396,23 @@
     });
   }
 
+  function addCategoryCardBackdrop() {
+    waitForElement(['.x-categoryCard-image'], () => {
+      const cards = document.querySelectorAll('.x-categoryCard-CategoryCard');
+      const cardImages = document.querySelectorAll('.x-categoryCard-image');
+      for (let i = 0; i < cards.length; i += 1) {
+        let cardBackdrop = cardImages[i].previousSibling;
+        if (cardBackdrop == null) {
+          cardBackdrop = document.createElement('div');
+          cardBackdrop.classList.add('x-categoryCard-backdrop');
+          cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
+          cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
+          cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
+        }
+      }
+    });
+  }
+
   function onPageChange() {
     const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
 
@@ -406,8 +423,13 @@
         lyricsBackdropContainer.style.display = 'unset';
         updateLyricsBackdrop();
       }
-    } else if (lyricsBackdropContainer != null) {
-      lyricsBackdropContainer.style.display = 'none';
+    } else {
+      if (lyricsBackdropContainer != null) {
+        lyricsBackdropContainer.style.display = 'none';
+      }
+      if (Spicetify.Platform.History.location.pathname === '/search') {
+        addCategoryCardBackdrop();
+      }
     }
   }
 
@@ -463,31 +485,6 @@
   Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
 
   waitForElement(['main'], () => {
-    function mainCallback() {
-      waitForElement(['.x-categoryCard-image'], () => {
-        const cards = document.querySelectorAll('.x-categoryCard-CategoryCard');
-        const cardImages = document.querySelectorAll('.x-categoryCard-image');
-        for (let i = 0; i < cards.length; i += 1) {
-          let cardBackdrop = cardImages[i].previousSibling;
-          if (cardBackdrop == null) {
-            cardBackdrop = document.createElement('div');
-            cardBackdrop.classList.add('x-categoryCard-backdrop');
-            cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
-            cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
-            cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
-          }
-        }
-      });
-    }
-
-    const mainElement = document.querySelector('main');
-    const mainObserver = new MutationObserver(mainCallback);
-    const mainObserverConfig = {
-      attributes: true,
-      attributeFilter: ['aria-label'],
-      childList: false,
-      subtree: false,
-    };
-    mainObserver.observe(mainElement, mainObserverConfig);
+    addCategoryCardBackdrop();
   });
 })();
