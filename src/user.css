@@ -827,11 +827,11 @@ button.switch {
 }
 
 .main-navBar-navBarLink:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.6);
 }
 
 .main-navBar-navBarLink:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.5);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.8);
 }
 
 .main-navBar-navBarLinkActive,
@@ -970,11 +970,11 @@ button.switch {
 }
 
 .main-trackList-trackListRow:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.05);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.2);
 }
 
 .main-trackList-trackListRow:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.4);
 }
 
 .main-trackList-trackListRow.main-trackList-selected,
