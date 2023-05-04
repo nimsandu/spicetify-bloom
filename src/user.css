@@ -971,11 +971,11 @@ button.switch {
 }
 
 .main-trackList-trackListRow:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.05);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.2);
 }
 
 .main-trackList-trackListRow:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.1);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.4);
 }
 
 .main-trackList-trackListRow.main-trackList-selected,
