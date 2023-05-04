@@ -1649,6 +1649,10 @@ option {
   left: 0;
 }
 
+.main-nowPlayingBar-nowPlayingBar {
+  height: 90px !important;
+}
+
 .main-nowPlayingBar-container {
   background: transparent;
   border-radius: var(--border-radius-1);
