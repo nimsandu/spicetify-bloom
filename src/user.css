@@ -495,22 +495,26 @@ div#context-menu:before,
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-icon {
+.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-active-icon {
+.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-active-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href='/marketplace'] > .collection-icon {
+.main-navBar-navBarLink[href='/marketplace'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/marketplace'] > .home-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href='/marketplace'] > .collection-active-icon {
+.main-navBar-navBarLink[href='/marketplace'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/marketplace'] > .home-active-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
