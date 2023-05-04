@@ -823,11 +823,11 @@ button.switch {
 }
 
 .main-navBar-navBarLink:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.6);
 }
 
 .main-navBar-navBarLink:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.5);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.8);
 }
 
 .main-navBar-navBarLinkActive,
