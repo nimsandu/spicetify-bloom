@@ -2326,10 +2326,6 @@ input:checked ~ .x-toggle-indicatorWrapper {
   background-color: rgba(var(--spice-rgb-layer-shadow), 0.7) !important;
 }
 
-nav .main-rootlist-wrapper > :nth-child(2) {
-  transform: translateY(0) !important;
-}
-
 .main-rootlist-rootlistItemOverlay {
   display: none;
 }
