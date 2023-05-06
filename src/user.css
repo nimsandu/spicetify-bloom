@@ -515,6 +515,18 @@ div#context-menu:before,
   background-color: var(--spice-accent) !important;
 }
 
+.main-navBar-navBarLink[href='/eternal-jukebox'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/eternal-jukebox'] > .home-icon {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/infinity.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/eternal-jukebox'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/eternal-jukebox'] > .home-active-icon {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/infinity-bold.svg');
+  background-color: var(--spice-accent) !important;
+}
+
 .home-icon path,
 .search-icon path,
 .collection-icon path,
@@ -1868,7 +1880,7 @@ option {
 
 .main-skipBackButton-button:hover,
 .main-skipForwardButton-button:hover,
-.main-repeatButton-button[aria-checked='false']:hover,
+.main-repeatButton-button[aria-checked='false']:not([aria-label='Activer jukebox']):hover,
 .main-shuffleButton-button:hover {
   background-color: var(--spice-subtext) !important;
 }
@@ -2020,6 +2032,20 @@ option {
 /* Shuffle enabled */
 .main-shuffleButton-button[aria-checked='true'] {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/shuffle-bold.svg');
+  background-color: var(--spice-accent) !important;
+  height: 22px !important;
+}
+
+/* Eternal Jukebox disabled */
+.main-repeatButton-button[aria-label='Activer jukebox'] {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/infinity.svg');
+  background-color: var(--spice-subtext) !important;
+  height: 22px !important;
+}
+
+/* Eternal Jukebox enabled */
+.main-repeatButton-active[aria-label='Activer jukebox'] {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/infinity-bold.svg');
   background-color: var(--spice-accent) !important;
   height: 22px !important;
 }
