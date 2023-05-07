@@ -1535,9 +1535,13 @@ aside[aria-label='Friend Activity'] .main-avatar-avatar {
 
 /* settings */
 
-.x-settings-equalizerContainer {
+.x-settings-equalizerSection {
   border-radius: var(--border-radius-2);
   background-color: var(--spice-card);
+}
+
+.x-settings-equalizerPresetsContainer > span > .main-dropDown-dropDown {
+  background-color: var(--spice-selected-row) !important;
 }
 
 .x-settings-crossFadeContainer {
