@@ -376,13 +376,13 @@
     let element;
 
     if (isCinema) {
-      element = 'y7xcnM6yyOOrMwI77d5t';
+      element = '#lyrics-cinema';
     } else {
-      element = 'under-main-view';
+      element = '.under-main-view';
     }
 
-    waitForElement([`.${element}`], () => {
-      element = document.querySelector(`.${element}`);
+    waitForElement([`${element}`], () => {
+      element = document.querySelector(`${element}`);
       const lyricsBackdropContainer = document.createElement('div');
       lyricsBackdropContainer.id = 'lyrics-backdrop-container';
       element.prepend(lyricsBackdropContainer);
@@ -437,7 +437,7 @@
     const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
     const lyricsCinema = mutationsList[0].target;
 
-    if (lyricsCinema.classList.contains('AptbKyUcObu7QQ1sxqgb')) {
+    if (lyricsCinema.classList.contains('main-lyricsCinema-lyricsCinemaVisible')) {
       if (lyricsBackdropContainer == null) {
         initLyricsBackdrop(true);
       } else {
