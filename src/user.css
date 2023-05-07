@@ -211,6 +211,10 @@ html {
   border: 1px var(--spice-contour) solid;
 }
 
+.marketplace-card--installed {
+  border: 1px rgba(var(--spice-rgb-accent), 0.7) solid !important;
+}
+
 .main-tag-container {
   font-weight: 400;
   font-size: 10px;
