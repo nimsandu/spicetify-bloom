@@ -82,7 +82,7 @@
 
       const playlistList = await new Promise((resolve) => {
         const interval = setInterval(() => {
-          const element = document.querySelector('#spicetify-playlist-list');
+          const element = document.getElementById('spicetify-playlist-list');
           if (element) {
             clearInterval(interval);
             resolve(element);
@@ -304,8 +304,8 @@
 
     function setLyricsMaxWidth() {
       waitForElement(['.lyrics-lyricsContent-provider'], () => {
-        const lyricsContentWrapper = document.querySelector('.lyrics-lyrics-contentWrapper');
-        const lyricsContentContainer = document.querySelector('.lyrics-lyrics-contentContainer');
+        const lyricsContentWrapper = document.getElementsByClassName('lyrics-lyrics-contentWrapper')[0];
+        const lyricsContentContainer = document.getElementsByClassName('lyrics-lyrics-contentContainer')[0];
         const offset =
           lyricsContentWrapper.offsetLeft +
           parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
@@ -398,8 +398,8 @@
 
   function addCategoryCardBackdrop() {
     waitForElement(['.x-categoryCard-image'], () => {
-      const cards = document.querySelectorAll('.x-categoryCard-CategoryCard');
-      const cardImages = document.querySelectorAll('.x-categoryCard-image');
+      const cards = document.getElementsByClassName('x-categoryCard-CategoryCard');
+      const cardImages = document.getElementsByClassName('x-categoryCard-image');
       for (let i = 0; i < cards.length; i += 1) {
         let cardBackdrop = cardImages[i].previousSibling;
         if (cardBackdrop == null) {
@@ -470,7 +470,7 @@
     });
   } else {
     waitForElement(['.Root__lyrics-cinema'], () => {
-      const lyricsCinema = document.querySelector('.Root__lyrics-cinema');
+      const lyricsCinema = document.getElementsByClassName('Root__lyrics-cinema')[0];
       const lyricsCinemaObserver = new MutationObserver(lyricsCinemaCallback);
       const lyricsCinemaObserverConfig = {
         attributes: true,
