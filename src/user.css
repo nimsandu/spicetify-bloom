@@ -1580,6 +1580,10 @@ option {
   border-color: var(--spice-button-active);
 }
 
+.TypeElement-viola-textSubdued-type {
+  color: var(--spice-subtext);
+}
+
 /* connect device menu */
 
 ._9eb5acf729a98d62135ca21777fef244-scss,
