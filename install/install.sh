@@ -48,18 +48,19 @@ fi
 
 # Download latest master
 zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
-zipSavePath="/tmp/bloom-main.zip"
+zipSavePath=`mktemp`
+zipExtractPath=`mktemp -d`
 echo "Downloading bloom-spicetify latest master..."
 curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
 
 # Extract theme from .zip file
 echo "Extracting..."
-unzip -q "$zipSavePath" -d "$spicePath"
-mv "$spicePath/spicetify-bloom-main/src/" "$themePath"
+unzip -q "$zipSavePath" -d "$zipExtractPath"
+mv "$zipExtractPath/spicetify-bloom-main/src/" "$themePath"
 
 # Delete .zip file
 echo "Deleting zip file..."
-rm "$zipSavePath"
+rm "$zipSavePath" -rf "$zipExtractPath"
 
 # Apply the theme with spicetify config calls
 spicetify config current_theme bloom
