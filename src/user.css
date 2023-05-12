@@ -905,7 +905,7 @@ button.switch {
 }
 
 .main-rootlist-rootlistPlaylistsScrollNode {
-  height: calc(100% - 240px);
+  height: calc(100% - 220px);
 }
 
 .main-rootlist-wrapper {
@@ -1515,7 +1515,7 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 
 .Root__right-sidebar {
   margin-top: 25px;
-  height: calc(100% - 140px);
+  height: calc(100% - 135px);
 }
 
 .main-buddyFeed-findFriendsIcon,
