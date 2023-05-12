@@ -55,7 +55,7 @@ curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
 
 # Extract theme from .zip file
 echo "Extracting..."
-unzip -q "$zipSavePath" -d "$zipExtractPath"
+unzip -oq "$zipSavePath" -d "$zipExtractPath" < /dev/tty
 mv "$zipExtractPath/spicetify-bloom-main/src/" "$themePath"
 
 # Delete .zip file
