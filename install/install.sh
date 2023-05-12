@@ -29,6 +29,16 @@ if [ -z "$(which spicetify)" ]; then
     exit 1
 fi
 
+if [ -z "$(which mktemp)" ]; then
+    printf "\x1B[1;31m"
+    echo "mktemp isn't installed or doesn't exist in your PATH."
+    echo "Mktemp is used to generate temporal paths to place the files, and so it's an essential."
+    echo -e "\nAbort!"
+    printf "\x1B[0m"
+    # b/126
+    exit 5
+fi
+
 echo "Beginning installation of spicetify-bloom"
 echo "https://github.com/nimsandu/spicetify-bloom"
 
