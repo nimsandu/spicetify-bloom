@@ -41,7 +41,8 @@ fi
 
 # Remove old extension
 spicetify config extensions bloom.js- -q
-if [[ -e "$spicePath/Extensions/bloom.js" ]]; then
+extensionPath="$spicePath/Extensions/bloom.js"
+if [[ -e "$extensionPath" || -h "$extensionPath" ]]; then
   rm "$spicePath/Extensions/bloom.js"
 fi
 
