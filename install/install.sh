@@ -3,23 +3,27 @@
 set -e
 
 if [ -z "$(which spotify)" ]; then
+    printf "\x1B[1;31m"
     echo "Spotify isn't installed or doesn't exist in your PATH."
     echo "Bloom is a Spotify theme, and so it's an essential."
     echo "Please install Spotify (https://spotify.com/download) and run this script again to continue."
     echo "If Spotify is already installed, add it to your PATH variable and rerun this script."
     echo "Example command for adding to PATH: export PATH=~/spotify:\$PATH"
     echo -e "\nAbort!"
+    printf "\x1B[0m"
     # b/126
     exit 3
 fi
 
 if [ -z "$(which spicetify)" ]; then
+    printf "\x1B[1;31m"
     echo "Spicetify isn't installed or doesn't exist in your PATH."
     echo "Bloom relies on it to work properly."
     echo "Please install Spicetify (https://spicetify.app) and run this script again to continue."
     echo "If Spicetify is already installed, add it to your PATH variable and rerun this script."
     echo "Example command for adding to PATH: export PATH=/opt/spicetify:\$PATH"
     echo -e "\nAbort!"
+    printf "\x1B[0m"
     # Exit approach seems to work better.
     # b/126
     exit 1
