@@ -531,6 +531,30 @@ div#context-menu:before,
   background-color: var(--spice-accent) !important;
 }
 
+.main-navBar-navBarLink[href='/new-releases'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/new-releases'] > .home-icon {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/new-releases'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/new-releases'] > .home-active-icon {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
+.main-navBar-navBarLink[href='/reddit'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/reddit'] > .home-icon {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/reddit/reddit_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/reddit'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/reddit'] > .home-active-icon {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/reddit/reddit_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
 .home-icon path,
 .search-icon path,
 .collection-icon path,
