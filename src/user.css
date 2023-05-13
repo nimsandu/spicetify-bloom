@@ -1040,6 +1040,11 @@ button.switch {
   color: var(--spice-text) !important;
 }
 
+.main-trackList-rowDuration,
+.main-trackList-rowSectionVariable > .TypeElement-mesto-textSubdued-type {
+  color: var(--spice-subtext) !important;
+}
+
 .main-trackList-trackListRow.main-trackList-selected span,
 .main-trackList-trackListRow.main-trackList-selected:hover span,
 .main-trackList-trackListRow.main-trackList-selected:active span,
