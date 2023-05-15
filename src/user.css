@@ -2101,12 +2101,17 @@ option {
 }
 
 /* Built-in full screen mode fixes */
+
 .main-playPauseButton-button,
 .main-skipBackButton-button,
 .main-skipForwardButton,
 .main-repeatButton-button,
 .main-shuffleButton-button {
   color: transparent !important;
+}
+
+.npv-header__metadata {
+  color: rgba(var(--spice-rgb-text), 0.6) !important;
 }
 
 /*Removes download progress bar and icon on playlist*/
