@@ -441,8 +441,13 @@ div#context-menu:before,
   color: var(--spice-subtext) !important;
 }
 
-.main-topBar-button {
+.main-topBar-button,
+.IAyWaeDamLJLjxuPeVKw {
   background-color: var(--spice-selected-row) !important;
+}
+
+.IAyWaeDamLJLjxuPeVKw {
+  color: var(--spice-text) !important;
 }
 
 .icon,
