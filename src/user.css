@@ -2104,7 +2104,7 @@ option {
 
 .main-playPauseButton-button,
 .main-skipBackButton-button,
-.main-skipForwardButton,
+.main-skipForwardButton-button,
 .main-repeatButton-button,
 .main-shuffleButton-button {
   color: transparent !important;
