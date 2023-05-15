@@ -272,14 +272,11 @@ html {
   width: 100vw !important;
   grid-area: none;
   z-index: 4 !important;
-  background-color: rgba(var(--spice-rgb-sidebar), 0.65);
-  backdrop-filter: blur(60px) saturate(2);
+  background-color: rgba(var(--spice-rgb-sidebar), 0.85);
+  backdrop-filter: blur(80px) saturate(2);
 }
 
 .main-topBar-container {
-  background: transparent;
-  max-width: 100vw;
-  backdrop-filter: blur(70px) !important;
 }
 
 .main-entityHeader-withBackgroundImage {
