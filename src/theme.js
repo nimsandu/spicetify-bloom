@@ -487,4 +487,30 @@
   waitForElement(['main'], () => {
     addCategoryCardBackdrop();
   });
+
+  function centerTopbar() {
+    waitForElement(['.main-topBar-topbarContentWrapper'], () => {
+      const topBarContentWrapper = document.getElementsByClassName(
+        'main-topBar-topbarContentWrapper'
+      )[0];
+
+      const left = topBarContentWrapper.offsetLeft;
+      const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
+
+      let diff;
+      if (topBarContentWrapper.style.marginLeft !== '') {
+        diff = right - left + parseInt(topBarContentWrapper.style.marginLeft);
+      } else {
+        diff = right - left;
+      }
+
+      diff !== 0 ? (topBarContentWrapper.style.marginLeft = diff + 'px') : null;
+    });
+  }
+  window.addEventListener('load', centerTopbar);
+
+  async function onResize() {
+    centerTopbar();
+  }
+  window.onresize = onResize;
 })();

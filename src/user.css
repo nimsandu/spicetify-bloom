@@ -277,6 +277,7 @@ html {
 }
 
 .main-topBar-container {
+  padding-inline-end: 167px !important;
 }
 
 .main-entityHeader-withBackgroundImage {
@@ -314,7 +315,6 @@ h3,
 }
 
 .main-topBar-topbarContent {
-  position: relative;
   justify-content: center;
 }
 
