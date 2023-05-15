@@ -278,6 +278,7 @@ html {
 
 .main-topBar-container {
   padding-inline-end: 167px !important;
+  overflow: hidden;
 }
 
 .main-entityHeader-withBackgroundImage {
