@@ -2114,6 +2114,20 @@ option {
   color: rgba(var(--spice-rgb-text), 0.6) !important;
 }
 
+.Gw7E7MkWci1ttQhb4EK0,
+.Lgyj1e9c3lrdgVGlMIyV:hover {
+  color: var(--spice-text) !important;
+}
+
+.Gw7E7MkWci1ttQhb4EK0:hover,
+.Lgyj1e9c3lrdgVGlMIyV {
+  color: var(--spice-subtext) !important;
+}
+
+.Lgyj1e9c3lrdgVGlMIyV.main-genericButton-buttonActive {
+  color: var(--spice-accent) !important;
+}
+
 /*Removes download progress bar and icon on playlist*/
 .L3vU7A1LzZSa3DcQcnmK,
 .PJuB4n2TjjZFBiWAW2zx,
