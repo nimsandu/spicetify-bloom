@@ -375,8 +375,8 @@ div#context-menu:before,
   background-color: rgba(var(--spice-rgb-card), 0.8) !important;
 }
 
-.i8EjndRQjYlli0aLGYEm {
-  height: 100%;
+.main-contextMenu-filterPlaylistSearchContainer {
+  height: auto;
 }
 
 .main-contextMenu-menuItemButton,
