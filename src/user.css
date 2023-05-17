@@ -2015,14 +2015,14 @@ option {
 
 /* Shuffle disabled */
 .main-shuffleButton-button {
-  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/shuffle.svg');
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg');
   background-color: var(--spice-subtext) !important;
   height: 22px !important;
 }
 
 /* Shuffle enabled */
 .main-shuffleButton-button[aria-checked='true'] {
-  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/phosphor-icons/shuffle-bold.svg');
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
   background-color: var(--spice-accent) !important;
   height: 22px !important;
 }
