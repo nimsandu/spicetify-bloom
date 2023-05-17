@@ -370,7 +370,8 @@ div#context-menu:before,
   backdrop-filter: blur(25px) saturate(1.5);
 }
 
-.main-contextMenu-menu {
+.main-contextMenu-menu,
+.main-contextMenu-tippy {
   background-color: rgba(var(--spice-rgb-card), 0.8) !important;
 }
 
