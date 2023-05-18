@@ -2193,6 +2193,16 @@ option {
 
 /* New lyrics style */
 
+/* Needed for lyrics cinema */
+.Root__top-bar {
+  z-index: 5 !important;
+  display: unset !important;
+}
+
+.main-lyricsCinema-controls {
+  top: 80px !important;
+}
+
 #lyrics-backdrop {
   position: absolute;
   width: 100%;
@@ -2211,10 +2221,10 @@ option {
 }
 
 .lyrics-lyrics-container {
-    --lyrics-color-active: rgb(255, 255, 255) !important;
-    --lyrics-color-inactive: rgba(255, 255, 255, 0.35) !important;
-    --lyrics-color-passed: rgba(255, 255, 255, 0.8) !important;
-    --lyrics-color-messaging: rgba(255, 255, 255, 0.45) !important;
+  --lyrics-color-active: rgb(255, 255, 255) !important;
+  --lyrics-color-inactive: rgba(255, 255, 255, 0.35) !important;
+  --lyrics-color-passed: rgba(255, 255, 255, 0.8) !important;
+  --lyrics-color-messaging: rgba(255, 255, 255, 0.45) !important;
 }
 
 .lyrics-lyricsContent-lyric {
@@ -2247,6 +2257,48 @@ option {
 /* right sidebar lyrics */
 .hzUuLPdH48AzgQun5NYQ > .lyrics-lyricsContent-lyric {
   max-width: 90% !important;
+}
+
+/* New Lyrics Plus style */
+
+.lyrics-lyricsContainer-LyricsBackground {
+  visibility: hidden !important;
+}
+
+/* hide horizontal scrollbar */
+.lyrics-lyricsContainer-SyncedLyricsPage {
+  overflow-x: hidden;
+}
+
+.lyrics-lyricsContainer-LyricsContainer {
+  --lyrics-color-active: white !important;
+  --lyrics-color-inactive: rgba(255, 255, 255, 0.5) !important;
+}
+
+.lyrics-lyricsContainer-LyricsLine {
+  text-shadow: none;
+}
+
+.lyrics-lyricsContainer-SyncedLyrics .lyrics-lyricsContainer-LyricsLine {
+  transition-property: transform, color, opacity, text-shadow !important;
+}
+
+.lyrics-lyricsContainer-Karaoke-Word {
+  transition: var(--word-duration) color ease, var(--word-duration) text-shadow ease !important;
+  text-shadow: none;
+}
+
+.lyrics-lyricsContainer-Karaoke-WordActive,
+.lyrics-lyricsContainer-SyncedLyrics .lyrics-lyricsContainer-LyricsLine-active {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.lyrics-lyricsContainer-LyricsUnavailableMessage {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.lyrics-lyricsContainer-Provider {
+  background: none !important;
 }
 
 /* lyrics pages fix */
