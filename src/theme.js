@@ -501,6 +501,11 @@
       const left = topBarContentWrapper.offsetLeft;
       const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
 
+      max = window.innerWidth / 2;
+      if (left <= 0 || right <= 0 || left > max || right > max) {
+        return;
+      }
+
       let diff;
       if (topBarContentWrapper.style.marginLeft !== '') {
         diff = right - left + parseInt(topBarContentWrapper.style.marginLeft);
