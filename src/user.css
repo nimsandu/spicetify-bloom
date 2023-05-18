@@ -503,22 +503,26 @@ div#context-menu:before,
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-icon {
+.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-active-icon {
+.main-navBar-navBarLink[href='/lyrics-plus'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-active-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href='/marketplace'] > .collection-icon {
+.main-navBar-navBarLink[href='/marketplace'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/marketplace'] > .home-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href='/marketplace'] > .collection-active-icon {
+.main-navBar-navBarLink[href='/marketplace'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/marketplace'] > .home-active-icon {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
@@ -858,15 +862,18 @@ button.switch {
   display: none;
 }
 
-.main-navBar-navBarLinkActive > .navBar-navBarLink-accent {
+.main-navBar-navBarLinkActive > .navBar-navBarLink-accent,
+.main-yourLibraryX-navLinkActive > .main-yourLibraryX-navLink-accent {
   display: block !important;
 }
 
-.main-navBar-navBarLink:hover {
+.main-navBar-navBarLink:hover,
+.main-yourLibraryX-navLink:hover {
   background-color: rgba(var(--spice-rgb-selected-row), 0.6);
 }
 
-.main-navBar-navBarLink:active {
+.main-navBar-navBarLink:active,
+.main-yourLibraryX-navLink:active {
   background-color: rgba(var(--spice-rgb-selected-row), 0.8);
 }
 
@@ -1685,6 +1692,11 @@ option {
   border-radius: var(--border-radius-1) !important;
 }
 
+.main-nowPlayingBar-nowPlayingBar {
+  height: 90px !important;
+  margin-right: 16px;
+}
+
 .now-playing--cover-expanded {
   transform: translateX(0px) !important;
   border-radius: var(--border-radius-1) !important;
@@ -1759,7 +1771,8 @@ option {
   background-color: transparent !important;
 }
 
-.main-coverSlotExpanded-container {
+.main-coverSlotExpanded-container,
+.main-coverSlotExpanded-containerExpanding {
   position: fixed;
   top: calc(100% - 320px);
   left: calc(100% - 220px);
@@ -2444,4 +2457,214 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 .suggestion-item__img {
   border-radius: 10% !important;
+}
+
+/* LibraryX */
+
+/* Topbar */
+
+.nav-ylx .Root__top-bar {
+  padding-top: 32px;
+}
+
+.nav-ylx .main-topBar-container {
+  margin-top: -32px;
+}
+
+.main-topBar-container > *:not(button),
+.nav-ylx .main-topBar-topbarContent {
+  -webkit-app-region: drag !important;
+}
+
+/* Main view */
+
+.nav-ylx .Root__main-view {
+  border-radius: var(--border-radius-1) !important;
+  top: 25px;
+  height: 97%;
+}
+
+/* Left navbar */
+
+.Root__nav-bar.hasYLXSidebar {
+  max-width: unset !important;
+  height: calc(100% - 120px);
+  top: 25px;
+}
+
+.main-yourLibraryX-libraryContainer {
+  padding-bottom: 0 !important;
+}
+
+.main-yourLibraryX-entryPoints {
+  border-radius: var(--border-radius-1);
+}
+
+.main-yourLibraryX-navItem {
+  padding: 2px 0px !important;
+}
+
+.main-yourLibraryX-navLink {
+  border-radius: var(--border-radius-2);
+  min-height: 49px;
+  min-width: 49px;
+  padding-left: 13px;
+  transition: all ease 100ms;
+}
+
+.main-yourLibraryX-navLink:hover > .home-icon,
+.main-yourLibraryX-navLink:hover > .search-icon {
+  background-color: var(--spice-text) !important;
+}
+
+.main-yourLibraryX-navLinkActive > .home-active-icon,
+.main-yourLibraryX-navLinkActive > .search-active-icon {
+  animation: bounce 175ms ease-out forwards;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(0, -25%);
+  }
+
+  50% {
+    transform: translate(0, 25%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.main-yourLibraryX-navLinkActive.active {
+  background-color: var(--spice-selected-row);
+}
+
+.main-yourLibraryX-navLink-accent {
+  position: absolute;
+  width: 4px;
+  height: 25px;
+  background-color: var(--spice-accent);
+  border-radius: var(--border-radius-2);
+  left: 12px;
+  display: none;
+}
+
+.home-icon,
+.search-icon {
+  transition: background-color linear 200ms;
+}
+
+.main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
+  > .main-yourLibraryX-button {
+  color: var(--spice-subtext);
+  }
+
+.main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
+  > .main-yourLibraryX-button
+  > span
+  > svg {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
+  background-color: var(--spice-subtext);
+  color: transparent;
+}
+
+.main-yourLibraryX-collapseButton > .main-yourLibraryX-button {
+  color: var(--spice-text);
+}
+
+.main-yourLibraryX-collapseButton > .main-yourLibraryX-button > span > svg {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
+  background-color: var(--spice-text);
+  color: transparent;
+}
+
+.nav-ylx .main-rootlist-wrapper {
+  padding-left: unset;
+  padding-right: unset;
+}
+
+.BoxComponent-group-tinted-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px.main-yourLibraryX-listItemGroup {
+  background-color: var(--spice-selected-row) !important;
+}
+
+.main-yourLibraryX-libraryContainer {
+  --background-highlight: var(--spice-selected-row) !important;
+  --text-bright-accent: var(--spice-accent) !important;
+}
+
+.main-yourLibraryX-listRowSubtitleLeadingWrapper > svg {
+  fill: var(--spice-accent);
+}
+
+.main-yourLibraryX-listRowEntityImage {
+  border-radius: var(--border-radius-2);
+}
+
+/* Player bar */
+
+[dir='ltr'] .nav-ylx .main-coverSlotCollapsed-navAltContainer {
+  transform: none !important;
+}
+
+/* Search */
+
+.nav-ylx .search-searchBrowse-SearchBrowse {
+  margin-top: -20px;
+}
+
+.nav-ylx .x-searchInput-searchInputInput {
+  padding-left: 18px;
+  padding-right: 62px;
+}
+
+/* Right sidebar */
+
+.nav-ylx .Root__right-sidebar {
+  height: calc(100% - 120px);
+}
+
+/* Friends activity */
+
+.nav-ylx .main-buddyFeed-container {
+  border-radius: var(--border-radius-1);
+}
+
+.nav-ylx .main-buddyFeed-content {
+  margin-top: 0px !important;
+}
+
+.nav-ylx .main-buddyFeed-header {
+  padding-inline-start: 12px;
+}
+
+/* Lyrics */
+
+.nav-ylx .lyrics-lyrics-coverTopBar {
+  padding-top: 0;
+}
+
+.nav-ylx .lyrics-lyrics-contentContainer {
+  margin-top: 0;
+}
+
+.nav-ylx .main-lyricsCinema-controls {
+  top: 50px !important;
+}
+
+/* Lyrics Plus */
+
+.nav-ylx .lyrics-lyricsContainer-LyricsBackground {
+  margin-bottom: -160px;
+}
+
+.nav-ylx .lyrics-config-button-container {
+  padding-bottom: 50px;
+}
+
+/* Track list */
+
+.nav-ylx .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
+  background: transparent;
+  top: 0 !important;
 }
