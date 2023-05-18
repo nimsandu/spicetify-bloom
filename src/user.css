@@ -2211,10 +2211,11 @@ option {
   visibility: hidden !important;
 }
 
-.lyrics-lyricsContent-lyric,
-.lyrics-lyricsContent-description,
-.lyrics-lyricsContent-provider {
-  color: rgb(255 255 255 / 35%) !important;
+.lyrics-lyrics-container {
+    --lyrics-color-active: rgb(255, 255, 255) !important;
+    --lyrics-color-inactive: rgba(255, 255, 255, 0.35) !important;
+    --lyrics-color-passed: rgba(255, 255, 255, 0.8) !important;
+    --lyrics-color-messaging: rgba(255, 255, 255, 0.45) !important;
 }
 
 .lyrics-lyricsContent-lyric {
@@ -2225,18 +2226,16 @@ option {
   transition: transform 400ms ease, text-shadow 400ms ease, color 50ms ease;
 }
 
-.lyrics-lyricsContent-highlight,
+/* lyrics not available message */
 .C3pBU1DsOUJJOAv89ZFT {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: var(--lyrics-color-passed) !important;
 }
 
-.lyrics-lyricsContent-unsynced,
-.lyrics-lyricsContent-active,
 .lyrics-lyricsContent-lyric:hover {
-  color: rgb(255 255 255) !important;
+  color: var(--lyrics-color-active) !important;
 }
 
-.lyrics-lyricsContent-lyric:not(.lyrics-lyricsContent-unsynced):active {
+.lyrics-lyricsContent-isInteractive:active {
   transform: scale(0.9);
 }
 
@@ -2246,6 +2245,7 @@ option {
   max-width: var(--lyrics-active-max-width);
 }
 
+/* right sidebar lyrics */
 .hzUuLPdH48AzgQun5NYQ > .lyrics-lyricsContent-lyric {
   max-width: 90% !important;
 }
