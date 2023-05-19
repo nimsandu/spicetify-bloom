@@ -2229,7 +2229,7 @@ option {
 
 .lyrics-lyricsContent-lyric {
   transform-origin: left;
-  padding: 2px;
+  padding: 0.15rem 0;
   transform: scale(1);
   text-shadow: none;
   transition: transform 400ms ease, text-shadow 400ms ease, color 50ms ease;
