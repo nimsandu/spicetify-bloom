@@ -367,7 +367,8 @@ div#context-menu:before,
 }
 
 .main-contextMenu-menu,
-.main-contextMenu-tippy {
+.main-contextMenu-tippy,
+.aCtCKL9BxAoHeVZS0uRs {
   background-color: rgba(var(--spice-rgb-card), 0.8) !important;
 }
 
