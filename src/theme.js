@@ -572,4 +572,33 @@
     ([uri]) => Spicetify.URI.isFolder(uri),
     'edit'
   ).register();
+
+  // fix backdrop-filter for some flyouts and menus
+  // see https://github.com/nimsandu/spicetify-bloom/issues/220#issuecomment-1555071865
+  function bodyCallback(mutationsList) {
+    for (let i = 0; i < mutationsList.length; i += 1) {
+      if (mutationsList[i].addedNodes[0]?.id?.includes('tippy')) {
+        const tippy = mutationsList[i].addedNodes[0];
+        const body = document.querySelector('body');
+        if (tippy.parentNode != body) {
+          // inherit colors
+          tippy.classList.add('encore-dark-theme');
+          body.appendChild(tippy);
+          // trigger element postition correction
+          window.dispatchEvent(new Event('resize'));
+        }
+      }
+    }
+  }
+
+  waitForElement(['body'], () => {
+    const body = document.querySelector('body');
+    const bodyObserver = new MutationObserver(bodyCallback);
+    const bodyObserverConfig = {
+      attributes: false,
+      childList: true,
+      subtree: true,
+    };
+    bodyObserver.observe(body, bodyObserverConfig);
+  });
 })();
