@@ -226,8 +226,9 @@
       const maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
 
       lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
-      lyricsContentWrapper.style.maxWidth = `${lyricsContentWrapper.offsetWidth}px`;
-      lyricsContentWrapper.style.width = `${lyricsContentWrapper.offsetWidth}px`;
+      const lyricsContentWrapperWidth = lyricsContentWrapper.getBoundingClientRect().width;
+      lyricsContentWrapper.style.maxWidth = `${lyricsContentWrapperWidth}px`;
+      lyricsContentWrapper.style.width = `${lyricsContentWrapperWidth}px`;
     }
 
     function lyricsCallback(mutationsList, lyricsObserver) {
