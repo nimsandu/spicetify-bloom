@@ -207,19 +207,53 @@
     context.fillRect(0, 0, backdrop.width, backdrop.height);
   }
 
-  function setLyricsMaxWidth() {
-    waitForElement(['.lyrics-lyricsContent-provider'], () => {
+  // fixes container shifting & active line clipping
+  function updateLyricsMaxWidth() {
+    function setLyricsMaxWidth() {
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
       )[0];
       const lyricsContentContainer = document.getElementsByClassName(
         'lyrics-lyrics-contentContainer'
       )[0];
+
+      lyricsContentWrapper.style.maxWidth = '';
+      lyricsContentWrapper.style.width = '';
+
       const offset =
         lyricsContentWrapper.offsetLeft +
         parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
       const maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
+
       lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
+      lyricsContentWrapper.style.maxWidth = `${lyricsContentWrapper.offsetWidth}px`;
+      lyricsContentWrapper.style.width = `${lyricsContentWrapper.offsetWidth}px`;
+    }
+
+    function lyricsCallback(mutationsList, lyricsObserver) {
+      for (let i = 0; i < mutationsList.length; i += 1) {
+        for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
+          if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
+            setLyricsMaxWidth();
+          }
+        }
+      }
+      lyricsObserver.disconnect;
+    }
+
+    waitForElement(['.lyrics-lyricsContent-provider'], () => {
+      setLyricsMaxWidth();
+
+      const lyricsContentWrapper = document.getElementsByClassName(
+        'lyrics-lyrics-contentWrapper'
+      )[0];
+      const lyricsObserver = new MutationObserver(lyricsCallback);
+      const lyricsObserverConfig = {
+        attributes: false,
+        childList: true,
+        subtree: false,
+      };
+      lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
     });
   }
 
@@ -329,7 +363,7 @@
     }
 
     waitForElement(['#lyrics-backdrop'], () => {
-      setLyricsMaxWidth();
+      updateLyricsMaxWidth();
 
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
@@ -428,7 +462,7 @@
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
-        setLyricsMaxWidth();
+        updateLyricsMaxWidth();
       }
     } else {
       if (lyricsBackdropContainer != null) {
@@ -449,7 +483,7 @@
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
-        setLyricsMaxWidth();
+        updateLyricsMaxWidth();
       }
     } else if (
       lyricsBackdropContainer != null &&
@@ -512,7 +546,7 @@
 
   async function onResize() {
     centerTopbar();
-    setLyricsMaxWidth();
+    updateLyricsMaxWidth();
   }
   window.onresize = onResize;
 
