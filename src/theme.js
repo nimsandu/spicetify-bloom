@@ -624,7 +624,8 @@
       if (mutationsList[i].addedNodes[0]?.id?.includes('tippy')) {
         const tippy = mutationsList[i].addedNodes[0];
         const body = document.querySelector('body');
-        if (tippy.parentNode != body) {
+        const parentNode = tippy.parentNode;
+        if (parentNode !== body && !(parentNode.classList?.contains('lyrics-tooltip-wrapper'))) {
           // inherit colors
           tippy.classList.add('encore-dark-theme');
           body.appendChild(tippy);
