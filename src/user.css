@@ -2273,7 +2273,7 @@ option {
 }
 
 /* right sidebar lyrics */
-.hzUuLPdH48AzgQun5NYQ > .lyrics-lyricsContent-lyric {
+.main-nowPlayingView-lyricsContent > .lyrics-lyricsContent-lyric {
   max-width: 90% !important;
 }
 
