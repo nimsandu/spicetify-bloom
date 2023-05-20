@@ -124,6 +124,15 @@
     }
   });
 
+  waitForElement(['.main-yourLibraryX-navItem'], () => {
+    const navItemsLibraryX = document.getElementsByClassName('main-yourLibraryX-navLink');
+    for (let i = 0; i < navItemsLibraryX.length; i += 1) {
+      const div = document.createElement('div');
+      div.classList.add('main-yourLibraryX-navLink-accent');
+      navItemsLibraryX[i].appendChild(div);
+    }
+  });
+
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
   if (textColor === ' #000000') {
     document.documentElement.style.setProperty('--filter-brightness', 0);
