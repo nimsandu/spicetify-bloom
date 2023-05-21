@@ -2497,6 +2497,11 @@ input:checked ~ .x-toggle-indicatorWrapper {
   height: 97%;
 }
 
+.nav-ylx .main-entityHeader-background,
+.nav-ylx .main-entityHeader-background.main-entityHeader-gradient {
+  margin-top: 0;
+}
+
 /* Left navbar */
 
 .Root__nav-bar.hasYLXSidebar {
