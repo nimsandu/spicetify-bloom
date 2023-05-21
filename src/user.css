@@ -384,11 +384,19 @@ div#context-menu:before,
   padding-left: 8px;
 }
 
+.main-contextMenu-disabled {
+  color: var(--spice-subtext) !important;
+}
+
 .main-contextMenu-menuItemButton:hover,
 .main-userWidget-dropDownMenuItemButton:hover,
 .main-contextMenu-menuItemButton[aria-expanded='true'] {
   background-color: rgba(var(--spice-rgb-text), 0.1) !important;
   backdrop-filter: luminosity;
+}
+
+.main-contextMenu-disabled:hover {
+  background-color: transparent !important;
 }
 
 .main-contextMenu-menuItem,
