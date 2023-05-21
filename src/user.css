@@ -2583,28 +2583,27 @@ input:checked ~ .x-toggle-indicatorWrapper {
   transition: background-color linear 200ms;
 }
 
+.main-yourLibraryX-button path {
+  display: none !important;
+}
+
 .main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
   > .main-yourLibraryX-button {
   color: var(--spice-subtext);
 }
 
-.main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
-  > .main-yourLibraryX-button
-  > span
-  > svg {
+.main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed svg {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
   background-color: var(--spice-subtext);
-  color: transparent;
 }
 
 .main-yourLibraryX-collapseButton > .main-yourLibraryX-button {
   color: var(--spice-text);
 }
 
-.main-yourLibraryX-collapseButton > .main-yourLibraryX-button > span > svg {
+.main-yourLibraryX-collapseButton svg {
   -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
   background-color: var(--spice-text);
-  color: transparent;
 }
 
 .nav-ylx .main-rootlist-wrapper {
@@ -2621,7 +2620,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
   --text-bright-accent: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-listRowSubtitleLeadingWrapper > svg {
+.main-yourLibraryX-listRowSubtitleLeadingWrapper svg {
   fill: var(--spice-accent);
 }
 
