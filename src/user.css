@@ -1909,7 +1909,9 @@ option {
 .main-skipBackButton-button:hover,
 .main-skipForwardButton-button:hover,
 .main-repeatButton-button[aria-checked='false']:not([aria-label='Activer jukebox']):hover,
-.main-shuffleButton-button:hover {
+.main-shuffleButton-button:hover,
+.MRfNcNMd_djj3KOg_VOB:hover,
+.XGCdw_LcXQHrxmvpxjwi:hover {
   background-color: var(--spice-subtext) !important;
 }
 
@@ -1924,7 +1926,9 @@ option {
 }
 
 .main-skipBackButton-button:active,
-.main-skipForwardButton-button:active {
+.main-skipForwardButton-button:active,
+.MRfNcNMd_djj3KOg_VOB:active,
+.XGCdw_LcXQHrxmvpxjwi:active {
   transform: scale(0.89);
   transition: none;
 }
@@ -2076,13 +2080,15 @@ option {
 }
 
 /* Built-in full screen mode fixes */
-
-.main-playPauseButton-button,
-.main-skipBackButton-button,
-.main-skipForwardButton-button,
-.main-repeatButton-button,
-.main-shuffleButton-button {
-  color: transparent !important;
+.main-playPauseButton-button path,
+.main-skipBackButton-button path,
+.main-skipForwardButton-button path,
+.main-repeatButton-button path,
+.main-shuffleButton-button path,
+.Ww5ppB6W74laf1c0H_pR path,
+.XGCdw_LcXQHrxmvpxjwi path,
+.MRfNcNMd_djj3KOg_VOB path {
+  display: none !important;
 }
 
 .npv-header__metadata {
@@ -2576,7 +2582,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
   > .main-yourLibraryX-button {
   color: var(--spice-subtext);
-  }
+}
 
 .main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
   > .main-yourLibraryX-button
