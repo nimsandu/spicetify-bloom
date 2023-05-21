@@ -2500,7 +2500,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .nav-ylx .Root__main-view {
   border-radius: var(--border-radius-1) !important;
   top: 25px;
-  height: 97%;
+  height: calc(100% - 22px);
 }
 
 .nav-ylx .main-view-container__scroll-node-child-spacer {
