@@ -2335,6 +2335,10 @@ option {
 
 /* lyrics pages fix */
 
+.main-lyricsCinema-nonDisplayedArea .main-topBar-topbarContent {
+  display: none;
+}
+
 .lyrics-lyricsContainer-LyricsBackground {
   margin-bottom: -110px;
   margin-top: -10px;
