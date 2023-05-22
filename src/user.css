@@ -997,6 +997,33 @@ button.switch {
   margin-left: 8px;
 }
 
+/* Right sidebar  */
+
+.main-nowPlayingView-panelOpenDiv .main-trackInfo-container {
+  margin-left: 0 !important;
+}
+
+.main-nowPlayingView-panelOpenDiv
+  .main-nowPlayingView-section:not(.main-nowPlayingView-lyricsGradient) {
+  background-color: var(--spice-card) !important;
+}
+
+.main-nowPlayingView-panelOpenDiv .TypeElement-ballad-textBase-type {
+  color: var(--spice-text) !important;
+}
+
+.main-nowPlayingView-panelOpenDiv .TypeElement-mesto-textSubdued-type,
+.main-nowPlayingView-panelOpenDiv .artist-artistOnTour-timeAndVenue.artist-artistOnTour-condensed,
+.main-nowPlayingView-panelOpenDiv .main-nowPlayingView-openQueue,
+.main-nowPlayingView-panelOpenDiv .svHFeMC3Ef_TpSdRyvsM {
+  color: var(--spice-subtext) !important;
+}
+
+.main-nowPlayingView-panelOpenDiv .main-nowPlayingView-openQueue:hover,
+.main-nowPlayingView-panelOpenDiv .svHFeMC3Ef_TpSdRyvsM:hover {
+  color: var(--spice-text) !important;
+}
+
 /* tracklist */
 
 .main-trackList-indexable .main-virtualScrollList-wrapper,
