@@ -22,7 +22,7 @@ body:
       description: Please make sure the theme is the source of the problem and not another extension/custom app or the Spotify app itself.
       options:
         - label: I have checked the app behavior without the theme and it is different
-        - label: I have problems with a theme custom function that Spotify doesn't have
+        - label: I have problem with a theme custom feature
   - type: textarea
     attributes:
       label: Environment & Computer Info
