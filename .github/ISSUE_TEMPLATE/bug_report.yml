@@ -1,0 +1,71 @@
+name: Bug report
+description: Report errors or unexpected behavior
+labels: [bug]
+body:
+  - type: checkboxes
+    attributes:
+      label: Did you read the README?
+      description: Please carefully read the README and make sure the theme is installed and configured according to it. Also check the "Troubleshooting" section.
+      options:
+        - label: I have read the README, the theme is installed/configured correctly and the "Troubleshooting" section contains no information related to my problem
+          required: true
+  - type: checkboxes
+    attributes:
+      label: Is there already an issue for your problem?
+      description: Please make sure you are not creating an already submitted <a href="https://github.com/nimsandu/spicetify-bloom/issues">issue</a>. Check closed issues as well.
+      options:
+        - label: I have checked older issues, open and closed
+          required: true
+  - type: checkboxes
+    attributes:
+      label: Is your problem definitely caused by the theme?
+      description: Please make sure the theme is the source of the problem and not another extension/custom app or the Spotify app itself.
+      options:
+        - label: I have checked the app behavior without the theme and it is different
+        - label: I have problems with a theme custom function that Spotify doesn't have
+  - type: textarea
+    attributes:
+      label: Environment & Computer Info
+      description: |
+        Please provide the details of the system Spicetify Bloom is running on:
+          - Copy the information from the "About" window (`⋯` button -> Help -> About -> expand -> click the Copy to Clipboard button)
+          - Write where you got the Spotify app
+
+        Please also tell us how you installed the theme.
+      value: |
+        - Spotify version:
+        - Installed from: (Windows Store, Spotify site, Flatpak, etc)
+        - Spicetify version:
+        - Color scheme:
+        - Extensions:
+        - Custom apps:
+        - Bloom installation method: (Spicetify Marketplace/PowerShell script/Shell script/Manual)
+      placeholder: |
+        - Spotify version: for Windows 1.2.11.916.geb595a67
+        - Installed from: Spotify site
+        - Spicetify version: v2.18.1
+        - Color scheme: darkmono
+        - Extensions: fullAlbumDate.js, adblock.js
+        - Custom apps: marketplace, lyrics-plus
+        - Bloom installation method: Spicetify Marketplace
+      render: Markdown
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        List steps to reproduce the error and details on what happens and what you expected to happen.
+      placeholder: |
+        1. Please number your steps like so.
+        2. This helps readability of your instructions.
+
+        Feel free to write down additional notes you may want us to know.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: Place any screenshots of the issue here if needed
+    validations:
+      required: false
