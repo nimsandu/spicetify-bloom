@@ -51,7 +51,7 @@
                     src:
                       image.url ||
                       'https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg',
-                    size: '50px',
+                    size: 'cover',
                   };
                   if (!image.url) {
                     icon.size = '45px';
@@ -66,7 +66,7 @@
                     src:
                       base64 ||
                       'https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg',
-                    size: '50px',
+                    size: 'cover',
                   };
                   if (!base64) {
                     icon.size = '45px';
