@@ -2512,6 +2512,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
   margin-top: 0;
 }
 
+.nav-ylx .main-entityHeader-container {
+  margin-top: 24px;
+}
+
 /* Left navbar */
 
 .Root__nav-bar.hasYLXSidebar {
