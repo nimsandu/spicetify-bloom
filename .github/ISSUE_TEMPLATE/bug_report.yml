@@ -11,6 +11,13 @@ body:
           required: true
   - type: checkboxes
     attributes:
+      label: Do you have the latest versions of Spicetify, Spotify and Bloom?
+      description: It is difficult to support all versions of Spicetify/Spotify, so we only provide support for the latest versions. And don't forget to update the theme itself if you've installed it locally, your issue may already have been fixed.
+      options:
+        - label: I'm using the latest versions of Spicetify, Spotify and Bloom
+          required: true
+  - type: checkboxes
+    attributes:
       label: Is there already an issue for your problem?
       description: Please make sure you are not creating an already submitted <a href="https://github.com/nimsandu/spicetify-bloom/issues">issue</a>. Check closed issues as well.
       options:
