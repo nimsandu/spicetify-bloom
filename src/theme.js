@@ -192,6 +192,35 @@
         -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
       }`;
     document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
+
+    const libraryXButtonsStyle = document.createElement('style');
+    libraryXButtonsStyle.innerHTML = `
+      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.enlarge-your-library']}"] span {
+        background-color: var(--spice-text) !important;
+        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg') !important;
+        width: 18px;
+        height: 18px;
+      }
+      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.reduce-your-library']}"] span {
+        background-color: var(--spice-text) !important;
+        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg') !important;
+        width: 18px;
+        height: 18px;
+      }
+      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.grid-view']}"] span {
+        background-color: var(--spice-text) !important;
+        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_table_simple_24_regular.svg') !important;
+        width: 18px;
+        height: 18px;
+      }
+      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.list-view']}"] span {
+        background-color: var(--spice-text) !important;
+        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_text_bullet_list_ltr_24_filled.svg') !important;
+        width: 18px;
+        height: 18px;
+      }
+    `;
+    document.getElementsByTagName('head')[0].appendChild(libraryXButtonsStyle);
   }, 10);
 
   waitForElement(['body'], () => {

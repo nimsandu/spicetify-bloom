@@ -2648,6 +2648,13 @@ input:checked ~ .x-toggle-indicatorWrapper {
   background-color: var(--spice-text);
 }
 
+.main-yourLibraryX-createButton span {
+  -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_add_24_filled.svg');
+  background-color: var(--spice-text);
+  width: 18px;
+  height: 18px;
+}
+
 .nav-ylx .main-rootlist-wrapper {
   padding-left: unset;
   padding-right: unset;
