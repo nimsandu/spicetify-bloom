@@ -445,7 +445,8 @@ div#context-menu:before,
 .x-downloadButton-button,
 .x-filterBox-expandButton,
 .x-contributorButton-ContributorButton,
-.x-filterBox-clearButton {
+.x-filterBox-clearButton,
+.playlist-inlineSearchBox-clearButton {
   color: var(--spice-subtext) !important;
 }
 
@@ -1179,6 +1180,7 @@ button.switch {
   color: var(--spice-text);
 }
 
+.playlist-inlineSearchBox-filterInput::placeholder,
 .x-filterBox-filterInput::placeholder {
   color: var(--spice-subtext);
 }
@@ -1386,7 +1388,9 @@ a[class*='-tabBar-headerItemLink']:active {
 }
 
 .x-searchInput-searchInputSearchIcon,
+.playlist-inlineSearchBox-searchIcon,
 .x-searchInput-searchInputInput::placeholder,
+.playlist-inlineSearchBox-filterInput,
 .x-searchInput-searchInputClearButton {
   color: var(--spice-text) !important;
 }
