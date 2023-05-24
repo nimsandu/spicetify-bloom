@@ -1542,12 +1542,12 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   opacity: 1 !important;
 }
 
-.Root__right-sidebar {
+.Root__nav-right-sidebar {
   margin-top: 25px;
   height: calc(100% - 135px);
 }
 
-.Root__right-sidebar .LayoutResizer__resize-bar {
+.Root__nav-right-sidebar .LayoutResizer__resize-bar {
   display: unset;
 }
 
@@ -2684,8 +2684,9 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Right sidebar */
 
-.nav-ylx .Root__right-sidebar {
+.nav-ylx .Root__nav-right-sidebar {
   height: calc(100% - 120px);
+  position: relative;
 }
 
 /* Friends activity */
