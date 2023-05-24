@@ -769,7 +769,7 @@ button.switch {
 }
 
 /* Fade effect when scrolling down playlists */
-.Y8edH1Yjo4xrW_58czQj {
+.main-rootlist-rootlistDividerGradient {
   background: linear-gradient(180deg, rgba(var(--spice-main), 0.7), transparent);
 }
 
@@ -1037,7 +1037,7 @@ button.switch {
   padding-bottom: 24px;
 }
 
-.main-trackList-trackListHeader.g9n_9K5pFI3B_JuDI_hS {
+.main-trackList-trackListHeader.main-trackList-trackListHeaderStuck {
   padding: 0px;
   margin: 0px;
   border-bottom: none;
@@ -1953,8 +1953,8 @@ option {
   background-color: var(--spice-text) !important;
 }
 
-.main-repeatButton-button.tP0mccyU1WAa7I9PevC1:not([disabled]):hover,
-.main-shuffleButton-button.OF_3F0SQCsBtL1jSTlTA:not([disabled]):hover {
+.main-repeatButton-button.main-repeatButton-active:not([disabled]):hover,
+.main-shuffleButton-button.main-shuffleButton-active:not([disabled]):hover {
   background-color: #00cc85 !important;
 }
 
@@ -2555,7 +2555,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Left navbar */
 
-.Root__nav-bar.hasYLXSidebar {
+.nav-ylx .Root__nav-bar {
   max-width: unset !important;
   height: calc(100% - 120px);
   top: 25px;
