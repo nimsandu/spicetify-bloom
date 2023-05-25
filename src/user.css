@@ -1424,6 +1424,15 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.GenericModal {
+  border-radius: var(--border-radius-1);
+}
+
+.main-trackCreditsModal-header {
+  border-top-right-radius: var(--border-radius-1);
+  border-top-left-radius: var(--border-radius-1);
+}
+
 .main-trackCreditsModal-container,
 .main-aboutRecsModal-container,
 .main-playlistEditDetailsModal-container,
@@ -1621,8 +1630,9 @@ option {
   color: var(--spice-text);
 }
 
-.main-dropDown-dropDown {
-  border-radius: var(--border-radius-2) !important;
+.main-dropDown-dropDown,
+select {
+  border-radius: var(--border-radius-3) !important;
 }
 
 .x-toggle-indicator {
