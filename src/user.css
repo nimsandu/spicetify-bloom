@@ -2591,8 +2591,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 .main-yourLibraryX-navLinkActive > .home-active-icon,
-.main-yourLibraryX-navLinkActive > .search-active-icon,
-.main-yourLibraryX-collapseButton:active svg {
+.main-yourLibraryX-navLinkActive > .search-active-icon {
   animation: bounce 175ms ease-out forwards;
 }
 
