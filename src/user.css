@@ -2307,7 +2307,7 @@ select {
 }
 
 .lyrics-lyricsContent-lyric {
-  transform-origin: left;
+  transform-origin: var(--lyrics-text-direction);
   margin: 0.3rem 0;
   transform: scale(1);
   text-shadow: none;

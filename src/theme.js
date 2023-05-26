@@ -247,6 +247,23 @@
 
   // fixes container shifting & active line clipping
   function updateLyricsMaxWidth() {
+    function detectTextDirection() {
+      // 0, 1 - blank lines
+      const lyric = document.getElementsByClassName('lyrics-lyricsContent-lyric')[2];
+      // https://stackoverflow.com/questions/13731909/how-to-detect-that-text-typed-in-text-area-is-rtl
+      const rtl_rx = /[\u0591-\u07FF]/;
+      return rtl_rx.test(lyric.innerHTML) ? 'rtl' : 'ltr';
+    }
+
+    function setLyricsTransformOrigin(textDirection) {
+      const main = document.getElementById('main');
+      if (textDirection === 'rtl') {
+        main.style.setProperty('--lyrics-text-direction', 'right');
+      } else {
+        main.style.setProperty('--lyrics-text-direction', 'left');
+      }
+    }
+
     function setLyricsMaxWidth() {
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
@@ -258,10 +275,22 @@
       lyricsContentWrapper.style.maxWidth = '';
       lyricsContentWrapper.style.width = '';
 
-      const offset =
-        lyricsContentWrapper.offsetLeft +
-        parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
-      const maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
+      const textDirection = detectTextDirection();
+      setLyricsTransformOrigin(textDirection);
+      let offset;
+      let maxWidth;
+
+      if (textDirection === 'rtl') {
+        offset =
+          lyricsContentWrapper.offsetRight +
+          parseInt(window.getComputedStyle(lyricsContentWrapper).marginRight, 10);
+        maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
+      } else {
+        offset =
+          lyricsContentWrapper.offsetLeft +
+          parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
+        maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
+      }
 
       lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
       const lyricsContentWrapperWidth = lyricsContentWrapper.getBoundingClientRect().width;
