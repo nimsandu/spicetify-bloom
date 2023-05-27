@@ -36,6 +36,26 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 <br>
 
+## **LibraryX First Look**
+
+#### **Default Dark**
+
+![Dark-libx](https://github.com/nimsandu/spicetify-bloom/blob/58b8799bfc963c87d97b5eff1cb1faf48f15c5f3/images/libx_dark.jpg)
+
+<br>
+
+#### **Default Light**
+
+![light-libx](https://github.com/nimsandu/spicetify-bloom/blob/58b8799bfc963c87d97b5eff1cb1faf48f15c5f3/images/libx_light.jpg)
+
+<br>
+
+#### **Dark Mono**
+
+![darkmono-libx](https://github.com/nimsandu/spicetify-bloom/blob/58b8799bfc963c87d97b5eff1cb1faf48f15c5f3/images/libx_darkmono.jpg)
+
+<br>
+
 ## Dependencies
 
 - Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
