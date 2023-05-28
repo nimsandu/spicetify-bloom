@@ -2277,6 +2277,10 @@ select {
 
 /* New lyrics style */
 
+#main {
+  --lyrics-text-direction: left;
+}
+
 /* Needed for lyrics cinema */
 .Root__top-bar {
   z-index: 5 !important;
