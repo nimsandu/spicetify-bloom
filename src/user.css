@@ -2756,9 +2756,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
 :root {
   --bloom-enable-fluent-style: 1;
   --bloom-fluent-background: url(https://i.imgur.com/Bt56rrV.jpg);
-  --bloom-fluent-background-blur: 60px;
-  --bloom-fluent-background-saturate: 2;
-  --bloom-fluent-background-opacity: 0.83;
+  /* --bloom-fluent-background: url(https://i.imgur.com/2xPWYuc.jpeg); */
+  --bloom-fluent-background-blur: 150px;
+  --bloom-fluent-background-saturate: 3.5;
+  --bloom-fluent-background-opacity: 0.85;
 }
 
 .fluent .Root__top-container {
