@@ -2750,3 +2750,101 @@ input:checked ~ .x-toggle-indicatorWrapper {
   background: transparent;
   top: 0 !important;
 }
+
+/* Fluent Style */
+
+:root {
+  --bloom-enable-fluent-style: 1;
+  --bloom-fluent-background: url(https://i.imgur.com/Bt56rrV.jpg);
+  --bloom-fluent-background-blur: 60px;
+  --bloom-fluent-background-saturate: 2;
+  --bloom-fluent-background-opacity: 0.83;
+}
+
+.fluent .Root__top-container {
+  grid-template-areas:
+    'topbar topbar topbar'
+    'left-sidebar main-view right-sidebar'
+    'now-playing-bar now-playing-bar now-playing-bar';
+  grid-template-rows: 64px 1fr auto;
+}
+
+.bloom-fluent-background {
+  background-image: var(--bloom-fluent-background);
+  position: absolute;
+  filter: saturate(var(--bloom-fluent-background-saturate))
+    blur(var(--bloom-fluent-background-blur));
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.fluent .Root__main-view {
+  background-color: rgba(var(--spice-rgb-main), var(--bloom-fluent-background-opacity));
+}
+
+.fluent .main-home-homeHeader {
+  background: transparent !important;
+}
+
+.fluent .Root__nav-bar,
+.fluent .Root__top-bar,
+.fluent .Root__nav-right-sidebar,
+.fluent .main-buddyFeed-container {
+  background-color: rgba(var(--spice-rgb-sidebar), var(--bloom-fluent-background-opacity));
+}
+
+.fluent .Root__top-bar {
+  backdrop-filter: none;
+  grid-area: topbar;
+  position: relative !important;
+  width: 100% !important;
+  z-index: 2 !important;
+  display: flex !important;
+}
+
+.fluent .main-navBar-navBar {
+  margin-top: 0;
+}
+
+.fluent .main-navBar-navBar:before {
+  box-shadow: none;
+}
+
+.Root__nav-right-sidebar {
+  margin-top: 0;
+  height: unset;
+}
+
+.fluent .main-card-card,
+.fluent .main-buddyFeed-friendActivity {
+  background-color: rgba(var(--spice-rgb-card), 0.65);
+}
+
+.fluent .main-entityHeader-backgroundColor {
+  opacity: 0;
+}
+
+.fluent .main-entityHeader-overlay,
+.fluent .main-entityHeader-container {
+  background-image: none !important;
+  background: none !important;
+}
+
+.fluent .main-trackList-indexable {
+  background-color: rgba(var(--spice-rgb-card), 0.5);
+}
+
+.fluent .main-trackList-trackListHeader.main-trackList-trackListHeaderStuck {
+  top: 0 !important
+}
+
+.fluent .main-trackList-trackListHeaderRow,
+.fluent .main-trackList-trackList .main-trackList-indexable {
+  border-radius: var(--border-radius-3);
+}
+
+.fluent .main-trackList-indexable .main-rootlist-wrapper,
+.fluent .playlist-playlist-playlistContent {
+  background-color: transparent;
+}

@@ -708,4 +708,34 @@
     };
     bodyObserver.observe(body, bodyObserverConfig);
   });
+
+  function fluentize() {
+    function getFluentConfig() {
+      const rootStyles = window.getComputedStyle(document.documentElement);
+      const fluentStyleEnabled = rootStyles.getPropertyValue('--bloom-enable-fluent-style');
+      return fluentStyleEnabled;
+    }
+
+    function addFluentBackground() {
+      waitForElement(['main'], () => {
+        const bloomFluentBackground = document.createElement('div');
+        const topContainer = document.querySelector('.Root__top-container');
+        topContainer.insertBefore(bloomFluentBackground, topContainer.firstChild);
+        bloomFluentBackground.classList.add('bloom-fluent-background');
+      });
+    }
+
+    function toggleFluentStyle() {
+      waitForElement(['body'], () => {
+        const body = document.querySelector('body');
+        body.classList.add('fluent');
+      });
+    }
+
+    if (getFluentConfig() === ' 1') {
+      addFluentBackground();
+      toggleFluentStyle();
+    }
+  }
+  fluentize();
 })();
