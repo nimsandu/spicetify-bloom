@@ -1621,7 +1621,7 @@ aside[aria-label='Friend Activity'] .main-avatar-avatar {
   background-color: var(--spice-card);
 }
 
-.x-settings-equalizerPresetsContainer > span > .main-dropDown-dropDown {
+.x-settings-equalizerPresetsContainer .main-dropDown-dropDown {
   background-color: var(--spice-selected-row) !important;
 }
 
