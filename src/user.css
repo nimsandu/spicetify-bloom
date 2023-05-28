@@ -2762,7 +2762,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Fluent Style */
 
-:root {
+.fluent {
   --bloom-fluent-background: url(https://i.imgur.com/Bt56rrV.jpg);
   /* --bloom-fluent-background: url(https://i.imgur.com/2xPWYuc.jpeg); */
   --bloom-fluent-background-blur: 150px;
