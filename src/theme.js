@@ -709,11 +709,25 @@
     bodyObserver.observe(body, bodyObserverConfig);
   });
 
-  function fluentize() {
+  function fluentStyling() {
     function getFluentConfig() {
       const rootStyles = window.getComputedStyle(document.documentElement);
       const fluentStyleEnabled = rootStyles.getPropertyValue('--bloom-enable-fluent-style');
       return fluentStyleEnabled;
+    }
+
+    function disableLibraryX() {
+      const features = JSON.parse(localStorage.getItem('spicetify-exp-features'));
+      const libraryXEnabled = features.enableYLXSidebar.value;
+      if (libraryXEnabled) {
+        features['enableYLXSidebar'].value = false;
+        localStorage.setItem('spicetify-exp-features', JSON.stringify(features));
+        location.reload();
+      }
+    }
+
+    function verifyColorScheme() {
+      return Spicetify.Config.color_scheme.includes('fluent_') ? true : false;
     }
 
     function addFluentBackground() {
@@ -732,10 +746,15 @@
       });
     }
 
-    if (getFluentConfig() === ' 1') {
+    function fluentize() {
+      disableLibraryX();
       addFluentBackground();
       toggleFluentStyle();
     }
+
+    if (getFluentConfig() === ' 1' && verifyColorScheme()) {
+      fluentize();
+    }
   }
-  fluentize();
+  fluentStyling();
 })();
