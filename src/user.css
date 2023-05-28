@@ -2834,7 +2834,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-trackList-indexable .main-rootlist-wrapper,
 .fluent .playlist-playlist-playlistContent,
 .fluent .main-trackList-trackListHeaderRow,
-.fluent .search-searchCategory-SearchCategory {
+.fluent .search-searchCategory-SearchCategory,
+.fluent .x-settings-equalizerSection {
   background: none !important;
 }
 
@@ -2848,13 +2849,14 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .view-homeShortcutsGrid-draggable,
 .fluent #marketplace-readme,
 .fluent .main-heroCard-card,
-.fluent .x-settings-equalizerSection,
-.fluent .main-dropDown-dropDown {
+.fluent .main-dropDown-dropDown,
+.fluent .x-settings-section {
   background-color: rgba(var(--spice-rgb-card), 0.5) !important;
   backdrop-filter: saturate(1.5) !important;
 }
 
-.fluent #marketplace-readme {
+.fluent #marketplace-readme,
+.fluent .x-settings-section {
   padding: 16px;
   max-width: 900px;
   border-radius: var(--border-radius-3);
@@ -2869,7 +2871,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 .fluent .main-trackList-trackListHeader.main-trackList-trackListHeaderStuck {
-  top: 0 !important
+  top: 0 !important;
 }
 
 .fluent .main-trackList-trackListHeaderRow,
