@@ -2843,7 +2843,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 .fluent .main-card-card,
 .fluent .main-buddyFeed-friendActivity,
-.fluent .main-trackList-indexable {
+.fluent .main-trackList-indexable,
+.fluent .view-homeShortcutsGrid-draggable {
   background-color: rgba(var(--spice-rgb-card), 0.5);
   backdrop-filter: saturate(1.5);
 }
