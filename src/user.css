@@ -2844,9 +2844,16 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-card-card,
 .fluent .main-buddyFeed-friendActivity,
 .fluent .main-trackList-indexable,
-.fluent .view-homeShortcutsGrid-draggable {
+.fluent .view-homeShortcutsGrid-draggable,
+.fluent #marketplace-readme {
   background-color: rgba(var(--spice-rgb-card), 0.5);
   backdrop-filter: saturate(1.5);
+}
+
+.fluent #marketplace-readme {
+  padding: 16px;
+  max-width: 900px;
+  border-radius: var(--border-radius-3);
 }
 
 .fluent .main-trackList-indexable {
