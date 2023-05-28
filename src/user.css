@@ -2848,9 +2848,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .view-homeShortcutsGrid-draggable,
 .fluent #marketplace-readme,
 .fluent .main-heroCard-card,
-.fluent .x-settings-equalizerSection {
-  background-color: rgba(var(--spice-rgb-card), 0.5);
-  backdrop-filter: saturate(1.5);
+.fluent .x-settings-equalizerSection,
+.fluent .main-dropDown-dropDown {
+  background-color: rgba(var(--spice-rgb-card), 0.5) !important;
+  backdrop-filter: saturate(1.5) !important;
 }
 
 .fluent #marketplace-readme {
