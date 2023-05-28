@@ -2885,3 +2885,9 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .x-toggle-indicator {
   background-color: var(--spice-main) !important;
 }
+
+.fluent .main-rootlist-rootlistItemLink:link,
+.fluent .main-rootlist-rootlistItemLink:visited,
+.fluent .main-rootlist-rootlistPlaylistHeader {
+  background-color: var(--spice-main);
+}
