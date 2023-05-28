@@ -1038,6 +1038,11 @@ button.switch {
   padding-bottom: 24px;
 }
 
+.main-trackList-trackList.main-trackList-indexable {
+  background-color: var(--spice-card);
+  border-radius: var(--border-radius-2);
+}
+
 .main-trackList-trackListHeader.main-trackList-trackListHeaderStuck {
   padding: 0px;
   margin: 0px;
