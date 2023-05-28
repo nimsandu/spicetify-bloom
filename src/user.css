@@ -2819,8 +2819,13 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-entityHeader-overlay,
 .fluent .main-entityHeader-container,
 .fluent .main-trackList-indexable .main-rootlist-wrapper,
-.fluent .playlist-playlist-playlistContent {
+.fluent .playlist-playlist-playlistContent,
+.fluent .main-trackList-trackListHeaderRow.main-trackList-trackListRowGrid {
   background: none !important;
+}
+
+.main-trackList-trackListHeader.main-trackList-trackListHeaderStuck {
+  background: var(--spice-card) !important;
 }
 
 .fluent .main-card-card,
