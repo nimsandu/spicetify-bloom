@@ -2847,7 +2847,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-trackList-indexable,
 .fluent .view-homeShortcutsGrid-draggable,
 .fluent #marketplace-readme,
-.fluent .main-heroCard-card {
+.fluent .main-heroCard-card,
+.fluent .x-settings-equalizerSection {
   background-color: rgba(var(--spice-rgb-card), 0.5);
   backdrop-filter: saturate(1.5);
 }
@@ -2873,4 +2874,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-trackList-trackListHeaderRow,
 .fluent .main-trackList-trackList .main-trackList-indexable {
   border-radius: var(--border-radius-3);
+}
+
+.fluent .x-toggle-indicator {
+  background-color: var(--spice-main) !important;
 }
