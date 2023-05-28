@@ -2833,7 +2833,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-entityHeader-container,
 .fluent .main-trackList-indexable .main-rootlist-wrapper,
 .fluent .playlist-playlist-playlistContent,
-.fluent .main-trackList-trackListHeaderRow {
+.fluent .main-trackList-trackListHeaderRow,
+.fluent .search-searchCategory-SearchCategory {
   background: none !important;
 }
 
@@ -2845,7 +2846,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-buddyFeed-friendActivity,
 .fluent .main-trackList-indexable,
 .fluent .view-homeShortcutsGrid-draggable,
-.fluent #marketplace-readme {
+.fluent #marketplace-readme,
+.fluent .main-heroCard-card {
   background-color: rgba(var(--spice-rgb-card), 0.5);
   backdrop-filter: saturate(1.5);
 }
