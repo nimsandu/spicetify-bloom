@@ -2850,7 +2850,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent #marketplace-readme,
 .fluent .main-heroCard-card,
 .fluent .main-dropDown-dropDown,
-.fluent .x-settings-section {
+.fluent .x-settings-section,
+.fluent
+  .main-nowPlayingView-panelOpenDiv
+  .main-nowPlayingView-section:not(.main-nowPlayingView-lyricsGradient) {
   background-color: rgba(var(--spice-rgb-card), 0.5) !important;
   backdrop-filter: saturate(1.5) !important;
 }
