@@ -2821,7 +2821,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 .fluent .main-card-card,
 .fluent .main-buddyFeed-friendActivity {
-  background-color: rgba(var(--spice-rgb-card), 0.65);
+  background-color: rgba(var(--spice-rgb-card), 0.6);
 }
 
 .fluent .main-entityHeader-backgroundColor {
