@@ -710,10 +710,8 @@
   });
 
   function fluentStyling() {
-    function getFluentConfig() {
-      const rootStyles = window.getComputedStyle(document.documentElement);
-      const fluentStyleEnabled = rootStyles.getPropertyValue('--bloom-enable-fluent-style');
-      return fluentStyleEnabled;
+    function checkFluentEnabled() {
+      return Spicetify.Config.color_scheme.includes('fluent_') ? true : false;
     }
 
     function disableLibraryX() {
@@ -724,10 +722,6 @@
         localStorage.setItem('spicetify-exp-features', JSON.stringify(features));
         location.reload();
       }
-    }
-
-    function verifyColorScheme() {
-      return Spicetify.Config.color_scheme.includes('fluent_') ? true : false;
     }
 
     function addFluentBackground() {
@@ -752,7 +746,7 @@
       toggleFluentStyle();
     }
 
-    if (getFluentConfig() === ' 1' && verifyColorScheme()) {
+    if (checkFluentEnabled()) {
       fluentize();
     }
   }
