@@ -2783,7 +2783,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
   background-color: rgba(var(--spice-rgb-main), var(--bloom-fluent-background-opacity));
 }
 
-.fluent .main-home-homeHeader {
+.fluent .main-home-homeHeader,
+.fluent .xcTrtCsYOPtSElbX9inq {
   background: transparent !important;
 }
 
