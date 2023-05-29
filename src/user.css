@@ -2855,7 +2855,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .x-settings-section,
 .fluent
   .main-nowPlayingView-panelOpenDiv
-  .main-nowPlayingView-section:not(.main-nowPlayingView-lyricsGradient) {
+  .main-nowPlayingView-section:not(.main-nowPlayingView-lyricsGradient),
+.fluent .artist-artistAbout-container {
   background-color: rgba(var(--spice-rgb-card), 0.5) !important;
   backdrop-filter: saturate(1.5) !important;
 }
