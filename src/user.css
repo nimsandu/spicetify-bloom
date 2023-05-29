@@ -2900,7 +2900,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-contextMenu-menu,
 .fluent .main-contextMenu-tippy,
 .fluent .aCtCKL9BxAoHeVZS0uRs {
-  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
+  background-color: rgba(var(--spice-rgb-player), 0.8) !important;
 }
 
 .fluent a[class*='-tabBar-active'] {
