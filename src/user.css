@@ -2793,7 +2793,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 .fluent .Root__main-view {
   background-color: rgba(255, 255, 255, 0.04) !important;
-  border-radius: var(--border-radius-1);
+  border-top-left-radius: var(--border-radius-1);
+  border-top-right-radius: var(--border-radius-1);
 }
 
 .fluent .Root__main-view.Root__top-container--right-sidebar-hidden {
