@@ -726,10 +726,37 @@
 
     function addFluentBackground() {
       waitForElement(['main'], () => {
-        const bloomFluentBackground = document.createElement('div');
+        const bloomFluentBackground = document.createElement('canvas');
+        bloomFluentBackground.classList.add('bloom-fluent-background');
         const topContainer = document.querySelector('.Root__top-container');
         topContainer.insertBefore(bloomFluentBackground, topContainer.firstChild);
-        bloomFluentBackground.classList.add('bloom-fluent-background');
+
+        const fluent = document.querySelector('.fluent');
+        const fluentStyle = window.getComputedStyle(fluent);
+        const blur = fluentStyle.getPropertyValue('--bloom-fluent-background-blur').trim();
+        const saturate = fluentStyle.getPropertyValue('--bloom-fluent-background-saturate').trim();
+        const imageSrc = fluentStyle.getPropertyValue('--bloom-fluent-background').trim();
+
+        const context = bloomFluentBackground.getContext('2d');
+        context.imageSmoothingEnabled = false;
+        context.filter = `blur(${blur}px) saturate(${saturate})`;
+
+        fetch(imageSrc)
+          .then((response) => response.blob())
+          .then((blob) => {
+            const bloomFluentBackgroundImage = new Image();
+            bloomFluentBackgroundImage.src = URL.createObjectURL(blob);;
+
+            bloomFluentBackgroundImage.onload = () => {
+              context.drawImage(
+                bloomFluentBackgroundImage,
+                0,
+                0,
+                bloomFluentBackground.width,
+                bloomFluentBackground.height
+              );
+            };
+          });
       });
     }
 

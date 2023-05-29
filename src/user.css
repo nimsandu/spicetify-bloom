@@ -2763,10 +2763,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
 /* Fluent Style */
 
 .fluent {
-  --bloom-fluent-background: url(https://i.imgur.com/Bt56rrV.jpg);
-  /* --bloom-fluent-background: url(https://i.imgur.com/2xPWYuc.jpeg); */
-  --bloom-fluent-background-blur: 150px;
-  --bloom-fluent-background-saturate: 3.5;
+  --bloom-fluent-background: https://i.imgur.com/Bt56rrV.jpg;
+  /* --bloom-fluent-background: https://i.imgur.com/2xPWYuc.jpeg; */
+  --bloom-fluent-background-blur: 25;
+  --bloom-fluent-background-saturate: 2;
   --bloom-fluent-background-opacity: 0.85;
 }
 
@@ -2779,13 +2779,9 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 .bloom-fluent-background {
-  background-image: var(--bloom-fluent-background);
   position: absolute;
-  filter: saturate(var(--bloom-fluent-background-saturate))
-    blur(var(--bloom-fluent-background-blur));
   width: 100%;
   height: 100%;
-  background-size: cover;
 }
 
 .fluent .Root__main-view {
