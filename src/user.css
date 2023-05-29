@@ -2846,7 +2846,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 .fluent .main-trackList-trackListHeaderStuck .main-trackList-trackListHeaderRow {
-  background: var(--spice-card) !important;
+  background: var(--spice-selected-row) !important;
 }
 
 .fluent .main-card-card,
