@@ -2835,7 +2835,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .playlist-playlist-playlistContent,
 .fluent .main-trackList-trackListHeaderRow,
 .fluent .search-searchCategory-SearchCategory,
-.fluent .x-settings-container .main-dropDown-dropDown {
+.fluent .x-settings-container .main-dropDown-dropDown,
+.fluent .artist-artistOverview-artistOverviewContent {
   background: none !important;
 }
 
@@ -2913,4 +2914,12 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-navBar-navBarLinkActive:active,
 .fluent .main-navBar-navBarLinkActive:focus {
   background-color: rgba(var(--spice-rgb-selected-row), 0.8);
+}
+
+.fluent .main-entityHeader-background {
+  display: none;
+}
+
+.fluent .main-entityHeader-withBackgroundImage {
+  margin-top: 0;
 }
