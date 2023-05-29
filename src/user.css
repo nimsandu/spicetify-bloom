@@ -2822,7 +2822,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 .fluent .main-trackList-trackListHeaderRow {
-  transition: background 200ms ease;
+  transition: background 300ms ease;
 }
 
 .fluent .main-home-homeHeader,
