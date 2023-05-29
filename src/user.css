@@ -2901,3 +2901,16 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .aCtCKL9BxAoHeVZS0uRs {
   background-color: rgba(var(--spice-rgb-main), 0.8) !important;
 }
+
+.fluent a[class*='-tabBar-active'] {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.6) !important;
+}
+
+.fluent .main-trackList-trackListRow.main-trackList-selected,
+.fluent .main-trackList-trackListRow.main-trackList-selected:hover,
+.fluent .main-navBar-navBarLinkActive,
+.fluent .main-navBar-navBarLinkActive:hover,
+.fluent .main-navBar-navBarLinkActive:active,
+.fluent .main-navBar-navBarLinkActive:focus {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.8);
+}
