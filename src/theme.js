@@ -728,8 +728,16 @@
       waitForElement(['main'], () => {
         const bloomFluentBackground = document.createElement('canvas');
         bloomFluentBackground.classList.add('bloom-fluent-background');
+
         const topContainer = document.querySelector('.Root__top-container');
         topContainer.insertBefore(bloomFluentBackground, topContainer.firstChild);
+        
+        const bloomFluentBackgroundOverlay = document.createElement('div');
+        bloomFluentBackgroundOverlay.classList.add('bloom-fluent-background-overlay');
+        bloomFluentBackground.parentNode.insertBefore(
+          bloomFluentBackgroundOverlay,
+          bloomFluentBackground.nextSibling
+        );
 
         const fluent = document.querySelector('.fluent');
         const fluentStyle = window.getComputedStyle(fluent);
@@ -745,7 +753,7 @@
           .then((response) => response.blob())
           .then((blob) => {
             const bloomFluentBackgroundImage = new Image();
-            bloomFluentBackgroundImage.src = URL.createObjectURL(blob);;
+            bloomFluentBackgroundImage.src = URL.createObjectURL(blob);
 
             bloomFluentBackgroundImage.onload = () => {
               context.drawImage(
