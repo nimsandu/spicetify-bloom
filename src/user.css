@@ -2813,7 +2813,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 .fluent .main-navBar-navBar:before {
-  box-shadow: none;
+  display: none;
 }
 
 .Root__nav-right-sidebar {
@@ -2835,7 +2835,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .playlist-playlist-playlistContent,
 .fluent .main-trackList-trackListHeaderRow,
 .fluent .search-searchCategory-SearchCategory,
-.fluent .x-settings-equalizerSection {
+.fluent .x-settings-container .main-dropDown-dropDown {
   background: none !important;
 }
 
@@ -2865,6 +2865,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
   border-radius: var(--border-radius-3);
 }
 
+.fluent .x-settings-equalizerSection {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.3) !important;
+}
+
 .fluent .main-trackList-indexable {
   background-color: rgba(var(--spice-rgb-card), 0.45);
 }
@@ -2890,4 +2894,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .main-rootlist-rootlistItemLink:visited,
 .fluent .main-rootlist-rootlistPlaylistHeader {
   background-color: var(--spice-main);
+}
+
+.fluent .main-contextMenu-menu,
+.fluent .main-contextMenu-tippy,
+.fluent .aCtCKL9BxAoHeVZS0uRs {
+  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
 }
