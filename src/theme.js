@@ -714,16 +714,6 @@
       return Spicetify.Config.color_scheme.includes('fluent_') ? true : false;
     }
 
-    function disableLibraryX() {
-      const features = JSON.parse(localStorage.getItem('spicetify-exp-features'));
-      const libraryXEnabled = features.enableYLXSidebar.value;
-      if (libraryXEnabled) {
-        features['enableYLXSidebar'].value = false;
-        localStorage.setItem('spicetify-exp-features', JSON.stringify(features));
-        location.reload();
-      }
-    }
-
     function addFluentBackground() {
       waitForElement(['main'], () => {
         const fluentBackground = document.createElement('canvas');
@@ -772,11 +762,22 @@
       waitForElement(['body'], () => {
         const body = document.querySelector('body');
         body.classList.add('fluent');
+        switch (Spicetify.Config.color_scheme) {
+          case 'fluent_dark': {
+            body.classList.add('dark');
+            break;
+          }
+          case 'fluent_light': {
+            body.classList.add('light');
+            break;
+          }
+          default:
+            break;
+        }
       });
     }
 
     function fluentize() {
-      disableLibraryX();
       addFluentBackground();
       toggleFluentStyle();
     }
