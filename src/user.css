@@ -2803,8 +2803,11 @@ input:checked ~ .x-toggle-indicatorWrapper {
   border-top-right-radius: 0;
 }
 
-.fluent:not(:has(.nav-ylx)) .Root__top-bar {
+.fluent .Root__top-bar {
   backdrop-filter: none;
+}
+
+.fluent:not(:has(.nav-ylx)) .Root__top-bar {
   grid-area: topbar;
   position: relative !important;
   width: 100% !important;
@@ -2830,6 +2833,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
   transition: background 300ms ease;
 }
 
+.fluent .Root__top-container,
 .fluent .Root__nav-bar,
 .fluent .Root__top-bar,
 .fluent .Root__nav-right-sidebar,
