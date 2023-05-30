@@ -726,17 +726,17 @@
 
     function addFluentBackground() {
       waitForElement(['main'], () => {
-        const bloomFluentBackground = document.createElement('canvas');
-        bloomFluentBackground.classList.add('bloom-fluent-background');
+        const fluentBackground = document.createElement('canvas');
+        fluentBackground.classList.add('bloom-fluent-background');
 
         const topContainer = document.querySelector('.Root__top-container');
-        topContainer.insertBefore(bloomFluentBackground, topContainer.firstChild);
-        
-        const bloomFluentBackgroundOverlay = document.createElement('div');
-        bloomFluentBackgroundOverlay.classList.add('bloom-fluent-background-overlay');
-        bloomFluentBackground.parentNode.insertBefore(
-          bloomFluentBackgroundOverlay,
-          bloomFluentBackground.nextSibling
+        topContainer.insertBefore(fluentBackground, topContainer.firstChild);
+
+        const fluentBackgroundOverlay = document.createElement('div');
+        fluentBackgroundOverlay.classList.add('bloom-fluent-background-overlay');
+        fluentBackground.parentNode.insertBefore(
+          fluentBackgroundOverlay,
+          fluentBackground.nextSibling
         );
 
         const fluent = document.querySelector('.fluent');
@@ -745,23 +745,23 @@
         const saturate = fluentStyle.getPropertyValue('--bloom-fluent-background-saturate').trim();
         const imageSrc = fluentStyle.getPropertyValue('--bloom-fluent-background').trim();
 
-        const context = bloomFluentBackground.getContext('2d');
+        const context = fluentBackground.getContext('2d');
         context.imageSmoothingEnabled = false;
         context.filter = `blur(${blur}px) saturate(${saturate})`;
 
         fetch(imageSrc)
           .then((response) => response.blob())
           .then((blob) => {
-            const bloomFluentBackgroundImage = new Image();
-            bloomFluentBackgroundImage.src = URL.createObjectURL(blob);
+            const fluentBackgroundImage = new Image();
+            fluentBackgroundImage.src = URL.createObjectURL(blob);
 
-            bloomFluentBackgroundImage.onload = () => {
+            fluentBackgroundImage.onload = () => {
               context.drawImage(
-                bloomFluentBackgroundImage,
+                fluentBackgroundImage,
                 0,
                 0,
-                bloomFluentBackground.width,
-                bloomFluentBackground.height
+                fluentBackground.width,
+                fluentBackground.height
               );
             };
           });
