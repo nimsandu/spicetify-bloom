@@ -1560,12 +1560,12 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   opacity: 1 !important;
 }
 
-.Root__nav-right-sidebar {
+.Root__right-sidebar {
   margin-top: 25px;
   height: calc(100% - 135px);
 }
 
-.Root__nav-right-sidebar .LayoutResizer__resize-bar {
+.Root__right-sidebar .LayoutResizer__resize-bar {
   display: unset;
 }
 
@@ -2714,7 +2714,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Right sidebar */
 
-.nav-ylx .Root__nav-right-sidebar {
+.nav-ylx .Root__right-sidebar {
   height: calc(100% - 120px);
   position: relative;
 }
@@ -2823,7 +2823,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
   display: none;
 }
 
-.Root__nav-right-sidebar {
+.Root__right-sidebar {
   margin-top: 0;
   height: unset;
 }
@@ -2836,7 +2836,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .fluent .Root__top-container,
 .fluent .Root__nav-bar,
 .fluent .Root__top-bar,
-.fluent .Root__nav-right-sidebar,
+.fluent .Root__right-sidebar,
 .fluent .main-buddyFeed-container,
 .fluent .main-home-homeHeader,
 .fluent .xcTrtCsYOPtSElbX9inq,
