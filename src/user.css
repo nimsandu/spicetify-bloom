@@ -263,13 +263,25 @@ html {
   justify-content: center;
 }
 
+.Root__top-bar:before {
+  content: '';
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/noise.png');
+  opacity: 0.15;
+}
+
 .Root__top-bar {
   position: absolute !important;
   width: 100vw !important;
   grid-area: none;
   z-index: 4 !important;
   background-color: rgba(var(--spice-rgb-sidebar), 0.85);
-  backdrop-filter: blur(80px) saturate(2);
+  backdrop-filter: blur(50px) saturate(2.5);
 }
 
 .main-topBar-container {
@@ -362,7 +374,8 @@ div#context-menu:before,
   right: 0;
   bottom: 0;
   border-radius: var(--border-radius-1);
-  backdrop-filter: blur(25px) saturate(1.5);
+  backdrop-filter: blur(35px) saturate(2.5);
+  background-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/noise.png');
 }
 
 .main-contextMenu-menu,
@@ -1735,6 +1748,19 @@ select {
 }
 
 /* player */
+
+.Root__now-playing-bar:before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-1);
+  background-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/noise.png');
+  opacity: 0.2;
+}
 
 .Root__now-playing-bar {
   background: rgba(var(--spice-rgb-player), 0.75);
