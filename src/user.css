@@ -239,7 +239,7 @@ html {
 .x-categoryCard-title,
 .x-heroCategoryCard-heroTitle,
 .collection-collectionEntityHeroCard-likedSongs div {
-  color: var(--spice-alt-text);
+  color: white;
 }
 
 /* transitions */
