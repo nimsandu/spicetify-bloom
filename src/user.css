@@ -131,6 +131,10 @@ html {
 
 /* cards */
 
+.main-cardSubHeader-root {
+  color: var(--spice-subtext) !important;
+}
+
 .main-shelf-shelfGrid {
   overflow-y: visible !important;
 }
