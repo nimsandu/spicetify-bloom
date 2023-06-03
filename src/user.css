@@ -2620,6 +2620,25 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Left navbar */
 
+.ChipInnerComponent,
+.ChipInnerComponent-secondary {
+  background-color: var(--spice-card);
+  color: var(--spice-text);
+}
+
+.ChipInnerComponent-selected,
+.ChipInnerComponent-selected-secondary {
+  background-color: var(--spice-text);
+  color: var(--spice-card);
+}
+
+.ChipInnerComponent:hover,
+.ChipInnerComponent-selected:hover,
+.ChipInnerComponent-selected-secondary:hover {
+  background-color: var(--spice-selected-row) !important;
+  color: var(--spice-text);
+}
+
 .nav-ylx .Root__nav-bar {
   max-width: unset !important;
   height: calc(100% - 120px);
