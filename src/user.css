@@ -43,6 +43,14 @@ html {
   --text-base: var(--spice-text);
 }
 
+.TypeElement-ballad-textBase-type {
+  color: var(--spice-text);
+}
+
+.TypeElement-mesto-textSubdued-type {
+  color: var(--spice-subtext);
+}
+
 .Root__main-view {
   z-index: 0;
   background-color: var(--spice-main);
@@ -130,10 +138,6 @@ html {
 }
 
 /* cards */
-
-.main-cardSubHeader-root {
-  color: var(--spice-subtext) !important;
-}
 
 .main-shelf-shelfGrid {
   overflow-y: visible !important;
@@ -1027,11 +1031,6 @@ button.switch {
   background-color: var(--spice-card) !important;
 }
 
-.main-nowPlayingView-panelOpenDiv .TypeElement-ballad-textBase-type {
-  color: var(--spice-text) !important;
-}
-
-.main-nowPlayingView-panelOpenDiv .TypeElement-mesto-textSubdued-type,
 .main-nowPlayingView-panelOpenDiv .artist-artistOnTour-timeAndVenue.artist-artistOnTour-condensed,
 .main-nowPlayingView-panelOpenDiv .main-nowPlayingView-openQueue,
 .main-nowPlayingView-panelOpenDiv .svHFeMC3Ef_TpSdRyvsM {
@@ -1103,8 +1102,7 @@ button.switch {
   color: var(--spice-text) !important;
 }
 
-.main-trackList-rowDuration,
-.main-trackList-rowSectionVariable > .TypeElement-mesto-textSubdued-type {
+.main-trackList-rowDuration {
   color: var(--spice-subtext) !important;
 }
 
