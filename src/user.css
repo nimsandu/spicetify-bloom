@@ -2580,6 +2580,10 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Topbar */
 
+.nav-ylx .Root__top-bar:before {
+  background-image: none;
+}
+
 .nav-ylx .Root__top-bar {
   padding-top: 32px;
 }
