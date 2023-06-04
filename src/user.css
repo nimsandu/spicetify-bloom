@@ -380,7 +380,7 @@ div#context-menu:before,
   right: 0;
   bottom: 0;
   border-radius: var(--border-radius-1);
-  backdrop-filter: blur(35px) saturate(2.5);
+  backdrop-filter: blur(25px) saturate(2.5);
   background-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/noise/noise_context_menu.png');
 }
 
