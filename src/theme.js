@@ -256,11 +256,11 @@
     }
 
     function setLyricsTransformOrigin(textDirection) {
-      const main = document.getElementById('main');
+      const root = document.querySelector(':root');
       if (textDirection === 'rtl') {
-        main.style.setProperty('--lyrics-text-direction', 'right');
+        root.style.setProperty('--lyrics-text-direction', 'right');
       } else {
-        main.style.setProperty('--lyrics-text-direction', 'left');
+        root.style.setProperty('--lyrics-text-direction', 'left');
       }
     }
 

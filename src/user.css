@@ -2329,7 +2329,7 @@ button.arrow-btn {
 
 /* New lyrics style */
 
-#main {
+:root {
   --lyrics-text-direction: left;
 }
 
