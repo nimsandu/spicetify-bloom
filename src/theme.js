@@ -708,4 +708,9 @@
     };
     bodyObserver.observe(body, bodyObserverConfig);
   });
+
+if (Spicetify.Config.color_scheme.includes('light')) {
+  document.documentElement.style.setProperty('--noise-opacity', '0.03');
+}
+
 })();
