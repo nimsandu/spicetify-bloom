@@ -2780,6 +2780,11 @@ input:checked ~ .x-toggle-indicatorWrapper {
   transform: none !important;
 }
 
+.nav-ylx .main-nowPlayingBar-nowPlayingBar {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 /* Search */
 
 .nav-ylx .x-searchInput-searchInputInput {
