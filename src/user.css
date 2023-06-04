@@ -473,11 +473,6 @@ div#context-menu:before,
   color: var(--spice-subtext) !important;
 }
 
-.main-topBar-button,
-.IAyWaeDamLJLjxuPeVKw {
-  background-color: var(--spice-selected-row) !important;
-}
-
 .IAyWaeDamLJLjxuPeVKw {
   color: var(--spice-text) !important;
 }
@@ -1309,11 +1304,23 @@ button.switch {
 /* top bar */
 
 .main-topBar-button,
+.IAyWaeDamLJLjxuPeVKw,
 .main-userWidget-box {
-  background-color: var(--spice-sidebar);
+  background-color: var(--spice-selected-row) !important;
   width: 28px !important;
   height: 28px !important;
   padding: 0;
+}
+
+.Fxnb0xe6bL7I7W8V0p6C,
+.main-avatar-avatar,
+.main-avatar-avatar div {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.pEG0W4wkbkrOYURhz82H {
+  margin: 0;
 }
 
 .main-entityHeader-topbarTitle,
