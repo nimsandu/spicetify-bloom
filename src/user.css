@@ -1739,8 +1739,8 @@ select {
 .main-connectBar-connectBar {
   background-color: var(--spice-accent) !important;
   border-radius: 4px;
-  height: 28px;
-  width: 200px;
+  height: auto;
+  width: 300px;
   padding: 8px;
   position: absolute;
   right: 6px;
