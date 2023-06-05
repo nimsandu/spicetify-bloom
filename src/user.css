@@ -1249,6 +1249,7 @@ button.switch {
   transform: scale(1) !important;
   margin-top: 48px;
   z-index: -1;
+  border-radius: 0;
 }
 
 [class='main-entityHeader-backgroundColor'] {
@@ -2651,7 +2652,6 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .nav-ylx .main-entityHeader-background,
 .nav-ylx .main-entityHeader-background.main-entityHeader-gradient {
   margin-top: 105px;
-  border-radius: 0;
 }
 
 .nav-ylx .main-view-container {
