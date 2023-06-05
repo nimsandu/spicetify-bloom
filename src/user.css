@@ -2596,11 +2596,13 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* LibraryX */
 
-/* Topbar */
+/* Top container */
 
-.nav-ylx .Root__top-bar:before {
-  background-image: none;
+.nav-ylx .Root__top-container {
+  padding-top: 0 !important;
 }
+
+/* Topbar */
 
 .nav-ylx .Root__top-bar {
   padding-top: 32px;
@@ -2617,23 +2619,46 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Main view */
 
+.nav-ylx .Root__main-view:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: var(--border-radius-1);
+  box-shadow: 0 -8px 0 var(--spice-sidebar), 0 8px 0 var(--spice-sidebar);
+  pointer-events: none;
+}
+
 .nav-ylx .Root__main-view {
   border-radius: var(--border-radius-1) !important;
-  top: 25px;
-  height: calc(100% - 22px);
+  top: 64px;
+  height: calc(100% - 48px);
+  overflow: visible;
 }
 
 .nav-ylx .main-view-container__scroll-node-child-spacer {
-  height: 32px !important;
+  height: 124px !important;
+}
+
+.nav-ylx
+  .main-view-container:has(.lyrics-lyricsContainer-LyricsContainer)
+  .main-view-container__scroll-node-child-spacer {
+  height: 60px !important;
 }
 
 .nav-ylx .main-entityHeader-background,
 .nav-ylx .main-entityHeader-background.main-entityHeader-gradient {
-  margin-top: 0;
+  margin-top: 105px;
+  border-radius: 0;
 }
 
-.nav-ylx .main-entityHeader-container {
-  margin-top: 24px;
+.nav-ylx .main-view-container {
+  margin-top: -107px;
+}
+
+.main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
+  margin-top: 107px;
 }
 
 /* Left navbar */
@@ -2659,8 +2684,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 .nav-ylx .Root__nav-bar {
   max-width: unset !important;
-  height: calc(100% - 120px);
-  top: 25px;
+  height: calc(100% - 48px);
+  top: 64px;
 }
 
 .main-yourLibraryX-libraryContainer {
@@ -2768,6 +2793,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
 .main-yourLibraryX-libraryContainer {
   --background-highlight: var(--spice-selected-row) !important;
   --text-bright-accent: var(--spice-accent) !important;
+  padding-bottom: 107px !important;
 }
 
 .main-yourLibraryX-listRowSubtitleLeadingWrapper svg {
@@ -2798,9 +2824,14 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Right sidebar */
 
+.nav-ylx .main-buddyFeed-scrollBarContainer {
+  height: calc(100% - 105px);
+}
+
 .nav-ylx .Root__right-sidebar {
-  height: calc(100% - 120px);
+  height: calc(100% - 48px);
   position: relative;
+  margin-top: 64px;
 }
 
 /* Friends activity */
@@ -2819,27 +2850,53 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Lyrics Cinema*/
 
+.nav-ylx .main-lyricsCinema-container .lyrics-lyrics-container {
+  margin-top: 60px;
+}
+
 .nav-ylx .lyrics-lyrics-coverTopBar {
   padding-top: 0;
 }
 
 .nav-ylx .main-lyricsCinema-controls {
-  top: 50px !important;
+  top: 74px !important;
 }
 
 /* Lyrics Plus */
 
 .nav-ylx .lyrics-lyricsContainer-LyricsBackground {
-  margin-bottom: -80px;
+  margin-bottom: -100px;
 }
 
 .nav-ylx .lyrics-config-button-container {
-  padding-bottom: 50px;
+  padding-bottom: 75px;
+}
+
+.nav-ylx
+  .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
+  .lyrics-config-button-container {
+  padding-bottom: 181px;
+}
+
+.nav-ylx
+  .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
+  .lyrics-lyricsContainer-Provider {
+  padding-bottom: 60px;
+}
+
+.nav-ylx .lyrics-lyricsContainer-LyricsUnsyncedPadding {
+  height: 15vh;
 }
 
 /* Track list */
 
 .nav-ylx .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
   background: transparent;
-  top: 0 !important;
+  padding-top: 40px;
+}
+
+/* notification */
+
+.nav-ylx .main-notificationBubbleContainer-NotificationBubbleContainer {
+  margin-bottom: 100px;
 }
