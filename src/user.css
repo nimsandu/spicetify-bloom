@@ -1309,8 +1309,8 @@ button.switch {
 }
 
 .Fxnb0xe6bL7I7W8V0p6C,
-.main-avatar-avatar,
-.main-avatar-avatar div {
+.Root__top-bar .main-avatar-avatar,
+.Root__top-bar .main-avatar-avatar div {
   width: 28px !important;
   height: 28px !important;
 }
