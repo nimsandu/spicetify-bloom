@@ -17,13 +17,13 @@
 
 <br>
 
-#### **Default Dark**
+#### **Dark**
 
 ![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/dark.png)
 
 <br>
 
-#### **Default Light**
+#### **Light**
 
 ![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/light.png)
 
@@ -38,13 +38,13 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ## **LibraryX First Look**
 
-#### **Default Dark**
+#### **Dark**
 
 ![Dark-libx](https://github.com/nimsandu/spicetify-bloom/blob/58b8799bfc963c87d97b5eff1cb1faf48f15c5f3/images/libx_dark.jpg)
 
 <br>
 
-#### **Default Light**
+#### **Light**
 
 ![light-libx](https://github.com/nimsandu/spicetify-bloom/blob/58b8799bfc963c87d97b5eff1cb1faf48f15c5f3/images/libx_light.jpg)
 
