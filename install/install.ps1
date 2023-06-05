@@ -110,23 +110,6 @@ $configFile | ForEach-Object {
   }
 }
 
-# Ask about auto-update task if it's not already registered
-if (-not (Get-ScheduledTask -TaskName "Bloom Updater" -ErrorAction SilentlyContinue)) {
-  $choice = $host.UI.PromptForChoice("", "Check theme updates once a week?", ("&Yes", "&No"), 0)
-  if ($choice -eq 0) {
-    $ArgumentList = "-ExecutionPolicy Bypass -WindowStyle Hidden -Command IWR -UseB 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/update.ps1' | IEx"
-    $updateTaskRegister = Start-Process -FilePath powershell -Verb runAs -ArgumentList $ArgumentList -PassThru
-    $updateTaskRegister.WaitForExit()
-    
-    if ($updateTaskRegister.ExitCode -eq 0) {
-      Write-Host -Object "+ Registered Update Task"
-    }
-    else {
-      Write-Error -Message "x Can't register Update Task"
-    }
-  }
-}
-
 if ($version) {
   spicetify apply
 }
