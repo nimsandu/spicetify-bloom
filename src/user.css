@@ -384,6 +384,13 @@ div#context-menu:before,
   background-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/noise/noise_context_menu.png');
 }
 
+.yxf_6IsQEmHjijEBUMTP:focus,
+.yxf_6IsQEmHjijEBUMTP:hover,
+.yxf_6IsQEmHjijEBUMTP.queue-tabBar-active {
+  border-radius: var(--border-radius-1) !important;
+  color: var(--spice-text) !important;
+}
+
 .main-contextMenu-menu,
 .main-contextMenu-tippy,
 .aCtCKL9BxAoHeVZS0uRs {
