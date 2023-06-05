@@ -2658,7 +2658,7 @@ input:checked ~ .x-toggle-indicatorWrapper {
   margin-top: -107px;
 }
 
-.main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
+.nav-ylx .main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
   margin-top: 107px;
 }
 
