@@ -1248,6 +1248,7 @@ button.switch {
 .main-entityHeader-background.main-entityHeader-gradient {
   transform: scale(1) !important;
   margin-top: 48px;
+  z-index: -1;
 }
 
 [class='main-entityHeader-backgroundColor'] {
