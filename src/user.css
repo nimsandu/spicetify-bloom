@@ -2032,11 +2032,6 @@ select {
   background-color: var(--spice-text) !important;
 }
 
-.main-repeatButton-button.main-repeatButton-active:not([disabled]):hover,
-.main-shuffleButton-button.main-shuffleButton-active:not([disabled]):hover {
-  background-color: #00cc85 !important;
-}
-
 .main-skipBackButton-button:active,
 .main-skipForwardButton-button:active,
 .MRfNcNMd_djj3KOg_VOB:active,
