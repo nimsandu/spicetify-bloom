@@ -1310,8 +1310,10 @@ button.switch {
 
 .main-topBar-button,
 .IAyWaeDamLJLjxuPeVKw,
-.main-userWidget-box {
+.main-userWidget-box,
+.I4p8r1UNjIGk9yv3H2Ms {
   background-color: var(--spice-selected-row) !important;
+  color: var(--spice-text);
   width: 28px !important;
   height: 28px !important;
   padding: 0;
