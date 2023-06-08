@@ -3,9 +3,9 @@
     "description": "Spicetify theme inspired by Microsoft's Fluent Design and Windows 11 UI",
     "preview": "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/bloom_cover.jpg",
     "readme": "README-marketplace.md",
-    "usercss": "src/user.css",
+    "usercss": "remote/user.css",
     "schemes": "src/color.ini",
-    "include": ["https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/src/theme.js"],
+    "include": ["https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/remote/theme.js"],
     "branch": "main",
     "authors": [
         {
