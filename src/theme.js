@@ -709,8 +709,22 @@
     bodyObserver.observe(body, bodyObserverConfig);
   });
 
-if (Spicetify.Config.color_scheme.includes('light')) {
-  document.documentElement.style.setProperty('--noise-opacity', '0.03');
-}
+  function schemeCallback() {
+    if (Spicetify.Config.color_scheme.includes('light')) {
+      const root = document.querySelector(':root');
+      root.style.setProperty('--noise-opacity', '3.5%');
+    }
+  }
+  schemeCallback();
 
+  waitForElement(['.marketplaceScheme'], () => {
+    const scheme = document.getElementsByClassName('marketplaceScheme')[0];
+    const schemeObserver = new MutationObserver(schemeCallback);
+    const schemeObserverConfig = {
+      attributes: true,
+      childList: false,
+      subtree: false,
+    };
+    schemeObserver.observe(scheme, schemeObserverConfig);
+  });
 })();
