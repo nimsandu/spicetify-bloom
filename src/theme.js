@@ -50,7 +50,7 @@
                   icon = {
                     src:
                       image.url ||
-                      'https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg',
+                      'https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg',
                     size: 'cover',
                   };
                   if (!image.url) {
@@ -65,7 +65,7 @@
                   icon = {
                     src:
                       base64 ||
-                      'https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg',
+                      'https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg',
                     size: 'cover',
                   };
                   if (!base64) {
@@ -179,7 +179,7 @@
       .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabelOne}"][aria-label*="${tracklistPlayLabelTwo}"],
       .main-playButton-PlayButton>button[aria-label*="${playlistPlayLabel}"] {
         background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
       }
       .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
       .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.pause}"],
@@ -189,7 +189,7 @@
       .main-trackList-rowImagePlayButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
       .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
         background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
       }`;
     document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
 
@@ -197,25 +197,25 @@
     libraryXButtonsStyle.innerHTML = `
       .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.enlarge-your-library']}"] span {
         background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg') !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg') !important;
         width: 18px;
         height: 18px;
       }
       .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.reduce-your-library']}"] span {
         background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg') !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg') !important;
         width: 18px;
         height: 18px;
       }
       .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.grid-view']}"] span {
         background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_table_simple_24_regular.svg') !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_table_simple_24_regular.svg') !important;
         width: 18px;
         height: 18px;
       }
       .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.list-view']}"] span {
         background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/nimsandu/spicetify-bloom@master/assets/fluentui-system-icons/ic_fluent_text_bullet_list_ltr_24_filled.svg') !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_text_bullet_list_ltr_24_filled.svg') !important;
         width: 18px;
         height: 18px;
       }
