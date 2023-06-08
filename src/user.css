@@ -1374,18 +1374,24 @@ a[class*='-tabBar-headerItemLink']:active {
 
 .x-searchInput-searchInputInput,
 .G9iUss4eOSpJyn2VBzsS {
-  background-color: rgba(var(--spice-rgb-card), 0.65);
+  background-color: rgba(var(--spice-rgb-selected-row), 0.4) !important;
   color: var(--spice-text) !important;
   border: 1px solid var(--spice-light-border);
   border-radius: var(--border-radius-2) !important;
   padding-right: 72px;
   padding-left: 12px;
+  height: 40px !important;
   transition: background-color ease-in 167ms;
+}
+
+.x-searchInput-searchInputInput:hover,
+.G9iUss4eOSpJyn2VBzsS:hover {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.6) !important;
 }
 
 .x-searchInput-searchInputInput:focus,
 .G9iUss4eOSpJyn2VBzsS:focus {
-  background-color: rgba(var(--spice-rgb-main), 0.75);
+  background-color: rgba(var(--spice-rgb-main), 0.7) !important;
   border-bottom: var(--spice-accent) solid 2px;
 }
 
