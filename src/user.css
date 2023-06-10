@@ -2639,10 +2639,6 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 /* Spicetify power bar */
 
-#power-bar-container {
-  border-radius: var(--border-radius-3) !important;
-}
-
 #power-bar-search.has-suggestions {
   border-bottom: none !important;
   width: 100% !important;
