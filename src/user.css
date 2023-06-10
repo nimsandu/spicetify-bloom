@@ -2472,13 +2472,40 @@ button.arrow-btn {
   display: none;
 }
 
+.lyrics-lyrics-container {
+  margin-top: 0;
+}
+
 .lyrics-lyricsContainer-LyricsBackground {
   margin-bottom: -110px;
   margin-top: -10px;
 }
 
-.lyrics-lyrics-container {
-  margin-top: 0;
+.lyrics-lyricsContainer-Provider {
+  padding-bottom: 40px;
+}
+
+.lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
+  .lyrics-lyricsContainer-Provider {
+  padding-bottom: 130px;
+}
+
+#lyrics-fullscreen-container
+  > .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
+  .lyrics-lyricsContainer-Provider {
+  padding-bottom: 35px;
+}
+
+.nav-ylx .lyrics-lyricsContainer-LyricsUnsyncedPadding {
+  height: 20vh;
+}
+
+.lyrics-config-button-container {
+  bottom: 105px;
+}
+
+#lyrics-fullscreen-container .lyrics-config-button-container {
+  bottom: 10px;
 }
 
 body:has(#lyrics-fullscreen-container)
@@ -2596,13 +2623,8 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 /* Fix lyrics get covered by controls */
-
 .lyrics-lyrics-contentContainer {
   margin-bottom: 120px;
-}
-
-.lyrics-config-button-container {
-  padding-bottom: 20px;
 }
 
 /* Spicetify power bar */
@@ -2913,19 +2935,17 @@ input:checked ~ .x-toggle-indicatorWrapper {
 /* Lyrics Plus */
 
 .nav-ylx .lyrics-config-button-container {
-  padding-bottom: 80px;
+  bottom: 170px;
 }
 
-.nav-ylx
-  .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
-  .lyrics-config-button-container {
-  padding-bottom: 139px;
+.nav-ylx .lyrics-lyricsContainer-Provider {
+  padding-bottom: 105px;
 }
 
 .nav-ylx
   .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
   .lyrics-lyricsContainer-Provider {
-  padding-bottom: 60px;
+  padding-bottom: 200px;
 }
 
 .nav-ylx .lyrics-lyricsContainer-LyricsUnsyncedPadding {
