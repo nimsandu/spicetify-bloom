@@ -102,8 +102,7 @@ html {
 
 .main-topBar-background,
 .main-topBar-overlay {
-  background-color: var(--spice-topbar) !important;
-  opacity: 1 !important;
+  opacity: 0 !important;
 }
 
 .main-entityHeader-overlay {
