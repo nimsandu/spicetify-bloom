@@ -2430,6 +2430,7 @@ button.arrow-btn {
 }
 
 /* hide horizontal scrollbar */
+.lyrics-lyricsContainer-LyricsContainer,
 .lyrics-lyricsContainer-SyncedLyricsPage {
   overflow-x: hidden;
 }
