@@ -1685,7 +1685,6 @@ aside[aria-label='Friend Activity'] .main-avatar-avatar {
 
 .main-dropDown-dropDown,
 option {
-  background-color: var(--spice-card) !important;
   color: var(--spice-text);
 }
 
