@@ -2508,6 +2508,10 @@ button.arrow-btn {
   bottom: 10px;
 }
 
+#fad-lyrics-plus-container .lyrics-config-button-container {
+  bottom: 32px;
+}
+
 body:has(#lyrics-fullscreen-container)
   > #main
   > .Root
