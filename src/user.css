@@ -1514,7 +1514,6 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 .tJeH2W2to1A7d9tWBRoi,
 .artist-artistAbout-modal,
 .desktopmodals-aboutSpotifyModal-container,
-#power-bar-wrapper,
 .XwNfIrI6_hCa_9_T2cQB,
 .main-embedWidgetGenerator-container,
 .main-trackCreditsModal-header {
@@ -2651,6 +2650,25 @@ input:checked ~ .x-toggle-indicatorWrapper {
 }
 
 /* Spicetify power bar */
+
+#power-bar-wrapper::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-1) !important;
+  background-image: var(--noise-texture);
+  opacity: var(--noise-opacity);
+}
+
+#power-bar-wrapper {
+  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
+  backdrop-filter: blur(50px) saturate(1.5);
+  border-radius: var(--border-radius-1) !important;
+}
 
 #power-bar-search.has-suggestions {
   border-bottom: none !important;
