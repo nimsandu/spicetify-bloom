@@ -1496,10 +1496,21 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 .main-aboutRecsModal-container,
 .main-playlistEditDetailsModal-container,
 .profile-userEditDetails-container,
-.artist-artistAbout-modal {
+.tJeH2W2to1A7d9tWBRoi,
+.artist-artistAbout-modal,
+.desktopmodals-aboutSpotifyModal-container,
+#power-bar-wrapper,
+.XwNfIrI6_hCa_9_T2cQB,
+.main-embedWidgetGenerator-container {
   background-color: rgba(var(--spice-rgb-main), 0.8) !important;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px) saturate(1.5);
   border-radius: var(--border-radius-1) !important;
+}
+
+.main-trackCreditsModal-header,
+#full-screen-config-container .setting-card,
+.Ifnz1lh1jjvqPqJ4KPo8 {
+  background-color: rgba(var(--spice-rgb-card), 0.8) !important;
 }
 
 .uJjmxe0T11dUVeW6Biz8 {
@@ -2630,11 +2641,6 @@ input:checked ~ .x-toggle-indicatorWrapper {
 
 #power-bar-container {
   border-radius: var(--border-radius-3) !important;
-}
-
-#power-bar-wrapper {
-  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
-  backdrop-filter: blur(50px);
 }
 
 #power-bar-search.has-suggestions {
