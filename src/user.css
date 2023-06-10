@@ -384,6 +384,12 @@ div#context-menu:before,
   background-image: url('https://nimsandu.github.io/spicetify-bloom/assets/noise/noise_context_menu.png');
 }
 
+div#context-menu > .main-contextMenu-menu:before,
+div#context-menu > .main-userWidget-dropDownMenu:before,
+.main-userWidget-dropDownMenu > .main-contextMenu-menu:before {
+  display: none;
+}
+
 .yxf_6IsQEmHjijEBUMTP:focus,
 .yxf_6IsQEmHjijEBUMTP:hover,
 .yxf_6IsQEmHjijEBUMTP.queue-tabBar-active {
