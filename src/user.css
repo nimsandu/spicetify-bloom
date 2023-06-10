@@ -2485,11 +2485,6 @@ button.arrow-btn {
   padding-bottom: 40px;
 }
 
-.lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
-  .lyrics-lyricsContainer-Provider {
-  padding-bottom: 130px;
-}
-
 #lyrics-fullscreen-container
   > .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
   .lyrics-lyricsContainer-Provider {
@@ -2501,7 +2496,7 @@ button.arrow-btn {
 }
 
 .lyrics-config-button-container {
-  bottom: 105px;
+  bottom: 15px;
 }
 
 #lyrics-fullscreen-container .lyrics-config-button-container {
@@ -2939,17 +2934,11 @@ input:checked ~ .x-toggle-indicatorWrapper {
 /* Lyrics Plus */
 
 .nav-ylx .lyrics-config-button-container {
-  bottom: 170px;
+  bottom: 80px;
 }
 
 .nav-ylx .lyrics-lyricsContainer-Provider {
   padding-bottom: 105px;
-}
-
-.nav-ylx
-  .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
-  .lyrics-lyricsContainer-Provider {
-  padding-bottom: 200px;
 }
 
 .nav-ylx .lyrics-lyricsContainer-LyricsUnsyncedPadding {
