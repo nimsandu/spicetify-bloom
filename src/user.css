@@ -740,6 +740,10 @@ button.switch {
   border: var(--spice-contour) solid 1px !important;
 }
 
+.main-button-primary {
+  color: var(--spice-alt-text) !important;
+}
+
 .main-button-outlined {
   background-color: var(--spice-card);
 }
