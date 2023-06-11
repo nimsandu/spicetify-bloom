@@ -130,8 +130,13 @@ html {
 
 /* cards */
 
+.main-shelf-shelf {
+  margin-bottom: 0;
+}
+
 .main-shelf-shelfGrid {
   overflow-y: visible !important;
+  margin-bottom: 16px;
 }
 
 .main-cardImage-image,
@@ -153,6 +158,7 @@ html {
 .x-categoryCard-CategoryCard:hover,
 .main-heroCard-card:hover {
   transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(var(--spice-rgb-layer-shadow), 0.5) !important;
 }
 
 .main-card-card:hover::after,
@@ -196,15 +202,12 @@ html {
   overflow: unset;
 }
 
-.main-card-card,
-.main-heroCard-card,
 .x-searchResultsTracks-root > .main-gridContainer-gridContainer,
 .main-trackList-indexable,
 .main-card-card,
 .main-heroCard-card,
 .view-homeShortcutsGrid-draggable {
   background-color: var(--spice-card);
-  box-shadow: 0px 4px 4px -4px var(--spice-layer-shadow) !important;
   border: 1px var(--spice-contour) solid;
 }
 
@@ -236,7 +239,7 @@ html {
 .main-card-card,
 .x-categoryCard-CategoryCard,
 .main-heroCard-card {
-  transition: transform 400ms var(--ms-motion-timing-decelerate);
+  transition: transform 400ms var(--ms-motion-timing-decelerate), box-shadow 400ms var(--ms-motion-timing-decelerate);
 }
 
 .link-subtle {
@@ -436,7 +439,7 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 .main-contextMenu-menu,
 ._60cb742e518d084c3c959007b9463b51-scss {
   border-radius: var(--border-radius-1);
-  border: 1px solid var(--spice-layer-shadow);
+  box-shadow: 0 0 2px var(--spice-layer-shadow) !important;
   background-color: var(--spice-card);
 }
 
