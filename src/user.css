@@ -1473,12 +1473,6 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   opacity: var(--noise-opacity);
 }
 
-.GenericModal {
-  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
-  backdrop-filter: blur(50px) saturate(1.5);
-  border-radius: var(--border-radius-1) !important;
-}
-
 .main-trackCreditsModal-container,
 .main-aboutRecsModal-container,
 .main-playlistEditDetailsModal-container,
@@ -1491,6 +1485,12 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 .main-trackCreditsModal-header,
 .main-confirmDialog-container {
   background-color: transparent !important;
+}
+
+.GenericModal {
+  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
+  backdrop-filter: blur(50px) saturate(1.5);
+  border-radius: var(--border-radius-1) !important;
 }
 
 #full-screen-config-container .setting-card,
