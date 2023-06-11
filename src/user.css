@@ -1025,7 +1025,7 @@ button.switch {
 }
 
 .main-nowPlayingView-content {
-  --text-subdued: var(--spice-subtext)
+  --text-subdued: var(--spice-subtext);
 }
 
 /* tracklist */
@@ -1693,17 +1693,44 @@ select {
   border-radius: var(--border-radius-3) !important;
 }
 
+.x-toggle-indicatorWrapper {
+  background-color: transparent;
+  height: 20px;
+  width: 40px;
+  box-shadow: 0 0 0 1px var(--spice-subtext) !important;
+}
+
+input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
+  background-color: var(--spice-selected-row);
+}
+
+input:checked ~ .x-toggle-indicatorWrapper {
+  background-color: var(--spice-button);
+  box-shadow: none !important;
+}
+
 .x-toggle-indicator {
-  background-color: var(--spice-card) !important;
+  background-color: var(--spice-subtext);
+  height: 12px;
+  width: 12px;
+  top: 4px;
+  left: 3px;
+  transform: scale(1);
+  transition: transform 50ms ease;
+}
+
+input:not([disabled]) ~ .x-toggle-indicatorWrapper:hover .x-toggle-indicator {
+  transform: scale(1.2);
+}
+
+input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
+  background-color: var(--spice-main);
+  right: 4px;
 }
 
 .x-settings-facebookButton,
 .main-connectToFacebook-facebookButton {
   color: var(--spice-shadow);
-}
-
-.x-toggle-indicatorWrapper {
-  background-color: rgba(var(--spice-rgb-subtext), 0.3) !important;
 }
 
 .x-proxySettings-proxyInput {
@@ -2587,10 +2614,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 .Kujbn0F68QOf_o44cNxw {
   background-color: var(--spice-accent) !important;
   border: 2px solid var(--spice-main) !important;
-}
-
-input:checked ~ .x-toggle-indicatorWrapper {
-  background-color: var(--spice-accent) !important;
 }
 
 .npv-background-image__overlay {
