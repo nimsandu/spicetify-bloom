@@ -155,9 +155,9 @@ html {
   transform: translateY(-3px);
 }
 
-.main-card-card:hover:after,
-.x-categoryCard-CategoryCard:hover:after,
-.main-heroCard-card:hover:after {
+.main-card-card:hover::after,
+.x-categoryCard-CategoryCard:hover::after,
+.main-heroCard-card:hover::after {
   transform: translateY(0px);
 }
 
@@ -254,7 +254,7 @@ html {
   justify-content: center;
 }
 
-.Root__top-bar:before {
+.Root__top-bar::before {
   content: '';
   z-index: 3;
   position: absolute;
@@ -355,8 +355,8 @@ h3,
 
 /* menus */
 
-div#context-menu:before,
-.main-contextMenu-menu:before {
+div#context-menu::before,
+.main-contextMenu-menu::before {
   content: '';
   z-index: -1;
   position: absolute;
@@ -369,9 +369,9 @@ div#context-menu:before,
   background-image: url('https://nimsandu.github.io/spicetify-bloom/assets/noise/noise_context_menu.png');
 }
 
-div#context-menu > .main-contextMenu-menu:before,
-div#context-menu > .main-userWidget-dropDownMenu:before,
-.main-userWidget-dropDownMenu > .main-contextMenu-menu:before {
+div#context-menu > .main-contextMenu-menu::before,
+div#context-menu > .main-userWidget-dropDownMenu::before,
+.main-userWidget-dropDownMenu > .main-contextMenu-menu::before {
   display: none;
 }
 
@@ -446,7 +446,7 @@ div#context-menu > .main-userWidget-dropDownMenu:before,
 
 /* buttons */
 
-.main-genericButton-buttonActive:after {
+.main-genericButton-buttonActive::after {
   background-color: var(--spice-accent) !important;
 }
 
@@ -789,7 +789,7 @@ button.switch {
 }
 
 /* Rounded top-left corner + left/top border for main content window */
-.main-navBar-navBar:before {
+.main-navBar-navBar::before {
   content: '';
   position: absolute;
   left: 100%;
@@ -1765,7 +1765,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   color: var(--spice-shadow);
 }
 
-.connect-device-list-container:before {
+.connect-device-list-container::before {
   border-top-color: transparent;
 }
 
@@ -1812,7 +1812,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
 }
 
-.main-connectBar-connectBar:after {
+.main-connectBar-connectBar::after {
   border-bottom: none !important;
 }
 
@@ -1824,7 +1824,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* player */
 
-.Root__now-playing-bar:before {
+.Root__now-playing-bar::before {
   content: '';
   z-index: -1;
   position: absolute;
@@ -1896,7 +1896,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   margin-left: -10px;
 }
 
-.progress-bar__slider:after {
+.progress-bar__slider::after {
   content: '';
   position: absolute;
   width: 10px;
@@ -1909,11 +1909,11 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   transition: transform 300ms var(--ms-motion-timing-decelerate);
 }
 
-.progress-bar__slider:hover:after {
+.progress-bar__slider:hover::after {
   transform: scale(1.25);
 }
 
-.progress-bar__slider:active:after {
+.progress-bar__slider:active::after {
   transform: scale(0.8);
 }
 
@@ -2126,7 +2126,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   fill: var(--spice-accent) !important;
 }
 
-.control-button--active-dot:after {
+.control-button--active-dot::after {
   background-color: transparent;
 }
 
@@ -2263,8 +2263,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 /*Remove gradient in name*/
-.main-trackInfo-overlay:after,
-.main-trackInfo-overlay:before {
+.main-trackInfo-overlay::after,
+.main-trackInfo-overlay::before {
   width: 0 !important;
 }
 
@@ -2552,7 +2552,7 @@ body:has(#lyrics-fullscreen-container)
   > #main
   > .Root
   > .Root__top-container
-  > .Root__main-view:before {
+  > .Root__main-view::before {
   display: none !important;
 }
 
@@ -2703,7 +2703,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 /* Main view */
 
 /* rounded main view container corners */
-.nav-ylx .Root__main-view:before {
+.nav-ylx .Root__main-view::before {
   content: '';
   position: absolute;
   width: 100%;
