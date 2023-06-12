@@ -2475,6 +2475,8 @@ button.arrow-btn {
 
 .main-nowPlayingView-section .lyrics-lyricsContent-lyric {
   transform: unset;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* New Lyrics Plus style */
