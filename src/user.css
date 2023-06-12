@@ -2420,9 +2420,8 @@ button.arrow-btn {
 .lyrics-lyricsContent-lyric {
   transform-origin: var(--lyrics-text-direction);
   margin: 0.3rem 0;
-  transform: scale(1);
   text-shadow: none;
-  transition: transform 400ms ease, text-shadow 400ms ease, color 50ms ease;
+  transition: text-shadow 100ms ease, color 100ms ease;
 }
 
 /* lyrics not available message */
@@ -2434,19 +2433,32 @@ button.arrow-btn {
   color: var(--lyrics-color-active) !important;
 }
 
-.lyrics-lyricsContent-isInteractive:active {
-  transform: scale(0.9);
-}
-
 .lyrics-lyricsContent-active {
-  transform: scale(1.1);
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
   max-width: var(--lyrics-active-max-width);
 }
 
-/* right sidebar lyrics */
-.main-nowPlayingView-lyricsContent > .lyrics-lyricsContent-lyric {
-  max-width: 90% !important;
+@media (min-width: 1920px) {
+  .lyrics-lyricsContent-lyric {
+    transform: scale(1);
+    transition: transform 400ms ease, text-shadow 400ms ease, color 50ms ease;
+  }
+
+  .lyrics-lyricsContent-active {
+    transform: scale(1.1);
+  }
+
+  .lyrics-lyricsContent-isInteractive:active {
+    transform: scale(0.9);
+  }
+
+  .lyrics-lyricsContent-isInteractive.lyrics-lyricsContent-active:active {
+    transform: scale(0.8);
+  }
+}
+
+.main-nowPlayingView-section .lyrics-lyricsContent-lyric {
+  transform: unset;
 }
 
 /* New Lyrics Plus style */
