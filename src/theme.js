@@ -246,7 +246,7 @@
   }
 
   // fixes container shifting & active line clipping
-  function updateLyricsMaxWidth() {
+  function updateLyricsPageProperties() {
     function detectTextDirection() {
       // 0, 1 - blank lines
       const lyric = document.getElementsByClassName('lyrics-lyricsContent-lyric')[2];
@@ -264,7 +264,32 @@
       }
     }
 
-    function setLyricsMaxWidth() {
+    function calculateLyricsMaxWidth(textDirection, lyricsWrapper, lyricsContainer) {
+      let offset;
+      let maxWidth;
+
+      if (textDirection === 'rtl') {
+        offset =
+        lyricsWrapper.offsetRight +
+          parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
+        maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
+      } else {
+        offset =
+        lyricsWrapper.offsetLeft +
+          parseInt(window.getComputedStyle(lyricsWrapper).marginLeft, 10);
+        maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
+      }
+
+      return maxWidth;
+    }
+
+    function lockLyricsWrapperWidth(lyricsWrapper) {
+      const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
+      lyricsWrapper.style.maxWidth = `${lyricsWrapperWidth}px`;
+      lyricsWrapper.style.width = `${lyricsWrapperWidth}px`;
+    }
+
+    function setLyricsPageProperties() {
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
       )[0];
@@ -275,34 +300,22 @@
       lyricsContentWrapper.style.maxWidth = '';
       lyricsContentWrapper.style.width = '';
 
-      const textDirection = detectTextDirection();
-      setLyricsTransformOrigin(textDirection);
-      let offset;
-      let maxWidth;
-
-      if (textDirection === 'rtl') {
-        offset =
-          lyricsContentWrapper.offsetRight +
-          parseInt(window.getComputedStyle(lyricsContentWrapper).marginRight, 10);
-        maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
-      } else {
-        offset =
-          lyricsContentWrapper.offsetLeft +
-          parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
-        maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
-      }
-
-      lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
-      const lyricsContentWrapperWidth = lyricsContentWrapper.getBoundingClientRect().width;
-      lyricsContentWrapper.style.maxWidth = `${lyricsContentWrapperWidth}px`;
-      lyricsContentWrapper.style.width = `${lyricsContentWrapperWidth}px`;
+      const lyricsTextDirection = detectTextDirection();
+      setLyricsTransformOrigin(lyricsTextDirection);
+      const lyricsMaxWidth = calculateLyricsMaxWidth(
+        lyricsTextDirection,
+        lyricsContentWrapper,
+        lyricsContentContainer
+      );
+      lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${lyricsMaxWidth}px`);
+      lockLyricsWrapperWidth(lyricsContentWrapper);
     }
 
     function lyricsCallback(mutationsList, lyricsObserver) {
       for (let i = 0; i < mutationsList.length; i += 1) {
         for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
           if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
-            setLyricsMaxWidth();
+            setLyricsPageProperties();
           }
         }
       }
@@ -310,7 +323,7 @@
     }
 
     waitForElement(['.lyrics-lyricsContent-provider'], () => {
-      setLyricsMaxWidth();
+      setLyricsPageProperties();
 
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
@@ -431,7 +444,7 @@
     }
 
     waitForElement(['#lyrics-backdrop'], () => {
-      updateLyricsMaxWidth();
+      updateLyricsPageProperties();
 
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
@@ -530,7 +543,7 @@
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
-        updateLyricsMaxWidth();
+        updateLyricsPageProperties();
       }
     } else {
       if (lyricsBackdropContainer != null) {
@@ -551,7 +564,7 @@
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
-        updateLyricsMaxWidth();
+        updateLyricsPageProperties();
       }
     } else if (
       lyricsBackdropContainer != null &&
@@ -614,7 +627,7 @@
 
   async function onResize() {
     centerTopbar();
-    updateLyricsMaxWidth();
+    updateLyricsPageProperties();
   }
   window.onresize = onResize;
 
