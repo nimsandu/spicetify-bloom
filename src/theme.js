@@ -296,7 +296,7 @@
         lyricsLines[i].innerHTML !== "" ? positionIndex += 1 : null
         animationDelay = 50 + (positionIndex * 10)
         animationDelay > 1000 ? animationDelay = 1000 : null
-        animationDuration = 200 + (positionIndex * 100);
+        animationDuration = 200 + (positionIndex * 50);
         animationDuration > 1000 ? animationDuration = 1000 : null
         lyricsLines[i].style.animationDelay = `${animationDelay}ms`;
         lyricsLines[i].style.animationDuration = `${animationDuration}ms`;
