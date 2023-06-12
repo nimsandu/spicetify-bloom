@@ -2410,19 +2410,38 @@ button.arrow-btn {
   visibility: hidden !important;
 }
 
+.lyrics-lyrics-contentWrapper {
+  visibility: hidden;
+  max-width: 100% !important;
+}
+
+.lyrics-lyricsContent-description,
+.lyrics-lyricsContent-lyric,
+.lyrics-lyricsContent-provider {
+  position: absolute;
+  top: calc(var(--position-index) * var(--font-size) * 1.5)
+}
+
+.lyrics-lyricsContent-lyric {
+  font-size: 100%;
+  text-shadow: none;
+  transition: font-size 400ms ease, text-shadow 400ms ease, color 50ms ease;
+}
+
+.lyrics-lyricsContent-isInteractive:active {
+  font-size: 90%;
+}
+
+.lyrics-lyricsContent-active {
+  font-size: 110%;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
 .lyrics-lyrics-container {
   --lyrics-color-active: rgb(255, 255, 255) !important;
   --lyrics-color-inactive: rgba(255, 255, 255, 0.35) !important;
   --lyrics-color-passed: rgba(255, 255, 255, 0.8) !important;
   --lyrics-color-messaging: rgba(255, 255, 255, 0.45) !important;
-}
-
-.lyrics-lyricsContent-lyric {
-  transform-origin: var(--lyrics-text-direction);
-  margin: 0.3rem 0;
-  transform: scale(1);
-  text-shadow: none;
-  transition: transform 400ms ease, text-shadow 400ms ease, color 50ms ease;
 }
 
 /* lyrics not available message */
@@ -2432,21 +2451,6 @@ button.arrow-btn {
 
 .lyrics-lyricsContent-lyric:hover {
   color: var(--lyrics-color-active) !important;
-}
-
-.lyrics-lyricsContent-isInteractive:active {
-  transform: scale(0.9);
-}
-
-.lyrics-lyricsContent-active {
-  transform: scale(1.1);
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-  max-width: var(--lyrics-active-max-width);
-}
-
-/* right sidebar lyrics */
-.main-nowPlayingView-lyricsContent > .lyrics-lyricsContent-lyric {
-  max-width: 90% !important;
 }
 
 /* New Lyrics Plus style */

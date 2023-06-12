@@ -245,64 +245,36 @@
     context.fillRect(0, 0, backdrop.width, backdrop.height);
   }
 
-  // fixes container shifting & active line clipping
-  function updateLyricsMaxWidth() {
-    function detectTextDirection() {
-      // 0, 1 - blank lines
-      const lyric = document.getElementsByClassName('lyrics-lyricsContent-lyric')[2];
-      // https://stackoverflow.com/questions/13731909/how-to-detect-that-text-typed-in-text-area-is-rtl
-      const rtl_rx = /[\u0591-\u07FF]/;
-      return rtl_rx.test(lyric.innerHTML) ? 'rtl' : 'ltr';
-    }
-
-    function setLyricsTransformOrigin(textDirection) {
-      const root = document.querySelector(':root');
-      if (textDirection === 'rtl') {
-        root.style.setProperty('--lyrics-text-direction', 'right');
-      } else {
-        root.style.setProperty('--lyrics-text-direction', 'left');
-      }
-    }
-
-    function setLyricsMaxWidth() {
+  function updateLyricsPageProperties() {
+    function setLyricsPageProperties() {
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
       )[0];
-      const lyricsContentContainer = document.getElementsByClassName(
-        'lyrics-lyrics-contentContainer'
-      )[0];
+      const lyricsElements = lyricsContentWrapper.getElementsByTagName("*")
 
-      lyricsContentWrapper.style.maxWidth = '';
-      lyricsContentWrapper.style.width = '';
+      const fontSize = getComputedStyle(lyricsContentWrapper).fontSize
+      lyricsContentWrapper.style.setProperty('--font-size', `${fontSize}`);
 
-      const textDirection = detectTextDirection();
-      setLyricsTransformOrigin(textDirection);
-      let offset;
-      let maxWidth;
+      let positionIndex = 0;
+      let lineMaxWidth = 0;
+      let lineWidth = 0;
+      for (let i = 0; i < lyricsElements.length; i += 1) {
+        lyricsElements[i].innerHTML != null ? positionIndex += 1 : null
+        lyricsElements[i].style.setProperty('--position-index', `${positionIndex}`);
 
-      if (textDirection === 'rtl') {
-        offset =
-          lyricsContentWrapper.offsetRight +
-          parseInt(window.getComputedStyle(lyricsContentWrapper).marginRight, 10);
-        maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
-      } else {
-        offset =
-          lyricsContentWrapper.offsetLeft +
-          parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
-        maxWidth = Math.round(0.95 * (lyricsContentContainer.clientWidth - offset));
+        lineWidth = parseInt(getComputedStyle(lyricsElements[i]).width)
+        lineWidth > lineMaxWidth ? lineMaxWidth = lineWidth : null
       }
 
-      lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${maxWidth}px`);
-      const lyricsContentWrapperWidth = lyricsContentWrapper.getBoundingClientRect().width;
-      lyricsContentWrapper.style.maxWidth = `${lyricsContentWrapperWidth}px`;
-      lyricsContentWrapper.style.width = `${lyricsContentWrapperWidth}px`;
+      lyricsContentWrapper.style.width = `${lineMaxWidth}px`;
+      lyricsContentWrapper.style.visibility = 'visible';
     }
 
     function lyricsCallback(mutationsList, lyricsObserver) {
       for (let i = 0; i < mutationsList.length; i += 1) {
         for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
           if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
-            setLyricsMaxWidth();
+            setLyricsPageProperties();
           }
         }
       }
@@ -310,7 +282,7 @@
     }
 
     waitForElement(['.lyrics-lyricsContent-provider'], () => {
-      setLyricsMaxWidth();
+      setLyricsPageProperties();
 
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
@@ -431,7 +403,7 @@
     }
 
     waitForElement(['#lyrics-backdrop'], () => {
-      updateLyricsMaxWidth();
+      updateLyricsPageProperties();
 
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
@@ -530,7 +502,7 @@
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
-        updateLyricsMaxWidth();
+        updateLyricsPageProperties();
       }
     } else {
       if (lyricsBackdropContainer != null) {
@@ -551,7 +523,7 @@
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
-        updateLyricsMaxWidth();
+        updateLyricsPageProperties();
       }
     } else if (
       lyricsBackdropContainer != null &&
@@ -614,7 +586,7 @@
 
   async function onResize() {
     centerTopbar();
-    updateLyricsMaxWidth();
+    updateLyricsPageProperties();
   }
   window.onresize = onResize;
 
