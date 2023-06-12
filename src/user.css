@@ -2418,6 +2418,9 @@ button.arrow-btn {
 }
 
 .lyrics-lyricsContent-lyric {
+  opacity: 0;
+  visibility: hidden;
+  animation-fill-mode: forwards;
   transform-origin: var(--lyrics-text-direction);
   margin: 0.3rem 0;
   text-shadow: none;
@@ -2427,6 +2430,19 @@ button.arrow-btn {
 /* lyrics not available message */
 .C3pBU1DsOUJJOAv89ZFT {
   color: var(--lyrics-color-passed) !important;
+  opacity: 0;
+  animation: reveal 400ms ease forwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .lyrics-lyricsContent-lyric:hover {

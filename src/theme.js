@@ -289,6 +289,22 @@
       lyricsWrapper.style.width = `${lyricsWrapperWidth}px`;
     }
 
+    function revealLyricsLines() {
+      const lyricsLines = document.getElementsByClassName('lyrics-lyricsContent-lyric');
+      let positionIndex = 0;
+      for (let i = 0; i < lyricsLines.length; i += 1) {
+        lyricsLines[i].innerHTML !== "" ? positionIndex += 1 : null
+        animationDelay = 50 + (positionIndex * 10)
+        animationDelay > 1000 ? animationDelay = 1000 : null
+        animationDuration = 200 + (positionIndex * 100);
+        animationDuration > 1000 ? animationDuration = 1000 : null
+        lyricsLines[i].style.animationDelay = `${animationDelay}ms`;
+        lyricsLines[i].style.animationDuration = `${animationDuration}ms`;
+        lyricsLines[i].style.animationTimingFunction = 'ease';
+        lyricsLines[i].style.animationName = 'reveal';
+      }
+    }
+
     function setLyricsPageProperties() {
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
@@ -316,14 +332,16 @@
         for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
           if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
             setLyricsPageProperties();
+            revealLyricsLines();
+            lyricsObserver.disconnect;
           }
         }
       }
-      lyricsObserver.disconnect;
     }
 
     waitForElement(['.lyrics-lyricsContent-provider'], () => {
       setLyricsPageProperties();
+      revealLyricsLines();
 
       const lyricsContentWrapper = document.getElementsByClassName(
         'lyrics-lyrics-contentWrapper'
