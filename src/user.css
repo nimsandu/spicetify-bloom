@@ -2431,7 +2431,7 @@ button.arrow-btn {
 .C3pBU1DsOUJJOAv89ZFT {
   color: var(--lyrics-color-passed) !important;
   opacity: 0;
-  animation: reveal 400ms ease forwards;
+  animation: reveal 800ms ease forwards;
 }
 
 @keyframes reveal {
