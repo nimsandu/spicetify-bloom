@@ -333,7 +333,6 @@
           if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
             setLyricsPageProperties();
             revealLyricsLines();
-            lyricsObserver.disconnect;
           }
         }
       }
@@ -342,18 +341,20 @@
     waitForElement(['.lyrics-lyricsContent-provider'], () => {
       setLyricsPageProperties();
       revealLyricsLines();
-
-      const lyricsContentWrapper = document.getElementsByClassName(
-        'lyrics-lyrics-contentWrapper'
-      )[0];
-      const lyricsObserver = new MutationObserver(lyricsCallback);
-      const lyricsObserverConfig = {
-        attributes: false,
-        childList: true,
-        subtree: false,
-      };
-      lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
     });
+
+    if (typeof lyricsObserver === 'undefined' || lyricsObserver == null) {
+      waitForElement(['.lyrics-lyrics-contentWrapper'], () => {
+        const lyricsContentWrapper = document.getElementsByClassName('lyrics-lyrics-contentWrapper')[0];
+        const lyricsObserver = new MutationObserver(lyricsCallback);
+        const lyricsObserverConfig = {
+          attributes: false,
+          childList: true,
+          subtree: false,
+        };
+        lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
+      });
+    }
   }
 
   let previousAlbumUri;
