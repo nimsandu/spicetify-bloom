@@ -527,6 +527,7 @@
       const lyricsBackdropContainer = document.createElement('div');
       lyricsBackdropContainer.id = 'lyrics-backdrop-container';
       underMainView.prepend(lyricsBackdropContainer);
+      lyricsBackdropContainer.classList.add('lyrics-backdrop-container-show');
 
       const lyricsBackdrop = document.createElement('canvas');
       lyricsBackdrop.id = 'lyrics-backdrop';
@@ -561,12 +562,14 @@
       if (lyricsBackdropContainer == null) {
         initLyricsBackdrop();
       } else {
-        lyricsBackdropContainer.style.display = 'unset';
+        lyricsBackdropContainer.classList.remove('lyrics-backdrop-container-hide');
+        lyricsBackdropContainer.classList.add('lyrics-backdrop-container-show');
         updateLyricsPageProperties();
       }
     } else {
       if (lyricsBackdropContainer != null) {
-        lyricsBackdropContainer.style.display = 'none';
+        lyricsBackdropContainer.classList.remove('lyrics-backdrop-container-show');
+        lyricsBackdropContainer.classList.add('lyrics-backdrop-container-hide');
       }
       if (Spicetify.Platform.History.location.pathname === '/search') {
         addCategoryCardBackdrop();
@@ -582,14 +585,16 @@
       if (lyricsBackdropContainer == null) {
         initLyricsBackdrop();
       } else {
-        lyricsBackdropContainer.style.display = 'unset';
+        lyricsBackdropContainer.classList.remove('lyrics-backdrop-container-hide');
+        lyricsBackdropContainer.classList.add('lyrics-backdrop-container-show');
         updateLyricsPageProperties();
       }
     } else if (
       lyricsBackdropContainer != null &&
       !Spicetify.Platform.History.location.pathname.includes('lyrics')
     ) {
-      lyricsBackdropContainer.style.display = 'none';
+      lyricsBackdropContainer.classList.remove('lyrics-backdrop-container-show');
+      lyricsBackdropContainer.classList.add('lyrics-backdrop-container-hide');
     }
   }
 

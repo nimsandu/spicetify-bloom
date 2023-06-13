@@ -2406,6 +2406,38 @@ button.arrow-btn {
   background-color: var(--spice-main);
 }
 
+.lyrics-backdrop-container-show {
+  animation: lyrics-backdrop-show 300ms ease forwards;
+}
+
+@keyframes lyrics-backdrop-show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lyrics-backdrop-container-hide {
+  animation: lyrics-backdrop-hide 300ms ease backwards;
+  z-index: 0;
+  opacity: 0;
+}
+
+@keyframes lyrics-backdrop-hide {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  to {
+    z-index: 1;
+    opacity: 0;
+  }
+}
+
 .lyrics-lyrics-background {
   visibility: hidden !important;
 }
@@ -2432,6 +2464,11 @@ button.arrow-btn {
   color: var(--lyrics-color-passed) !important;
   opacity: 0;
   animation: reveal 800ms ease forwards;
+}
+
+.lyrics-lyricsContent-description {
+  opacity: 0;
+  animation: reveal 200ms ease forwards;
 }
 
 @keyframes reveal {
