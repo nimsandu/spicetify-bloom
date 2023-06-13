@@ -1207,13 +1207,16 @@ button.switch {
 
 /* artist page */
 
-.artist-artistOffers-info .artist-artistOffers-description {
+.artist-artistOffers-info .artist-artistOffers-description,
+.artist-popularTrackList-seeMore {
   color: var(--spice-subtext);
 }
 
 .artist-artistOverview-heading,
 .artist-artistPick-heading,
-.artist-artistAbout-heading {
+.artist-artistAbout-heading,
+.QWAQMuWlIwVfc5Cv7hXp,
+._1CRNzNyAMFxnnS30JUo {
   margin-bottom: 20px !important;
 }
 
@@ -1261,6 +1264,10 @@ button.switch {
 .main-entityTitle-subtitle,
 .main-entityHeader-metaDataText span {
   color: var(--spice-text) !important;
+}
+
+._GJZaoUD9ozPvCUDT2Mp {
+  border-radius: var(--border-radius-3);
 }
 
 /* podcasts */
