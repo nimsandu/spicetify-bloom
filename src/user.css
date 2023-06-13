@@ -214,7 +214,7 @@ html {
 .main-tag-container {
   font-weight: 400;
   font-size: 10px;
-  color: var(--spice-main) !important;
+  color: var(--spice-alt-text) !important;
   background-color: var(--spice-accent);
 }
 
@@ -1074,14 +1074,6 @@ button.switch {
   background-color: var(--spice-selected-row);
 }
 
-.main-trackList-trackListRow.main-trackList-selected .main-tag-container,
-.main-trackList-trackListRow.main-trackList-selected:hover .main-tag-container,
-.main-trackList-trackListRow.main-trackList-selected:active .main-tag-container,
-.main-trackList-trackListRow.main-trackList-selected:focus .main-tag-container {
-  color: var(--spice-text) !important;
-  background-color: var(--spice-shadow);
-}
-
 .main-tag-container,
 .main-trackList-rowImage {
   border-radius: var(--border-radius-3);
@@ -1095,10 +1087,10 @@ button.switch {
   color: var(--spice-subtext) !important;
 }
 
-.main-trackList-trackListRow.main-trackList-selected span,
-.main-trackList-trackListRow.main-trackList-selected:hover span,
-.main-trackList-trackListRow.main-trackList-selected:active span,
-.main-trackList-trackListRow.main-trackList-selected:focus span,
+.main-trackList-trackListRow.main-trackList-selected span:not(.main-tag-container),
+.main-trackList-trackListRow.main-trackList-selected:hover span:not(.main-tag-container),
+.main-trackList-trackListRow.main-trackList-selected:active span:not(.main-tag-container),
+.main-trackList-trackListRow.main-trackList-selected:focus span:not(.main-tag-container),
 .main-trackList-trackListRow.main-trackList-selected a,
 .main-trackList-trackListRow.main-trackList-selected:hover a,
 .main-trackList-trackListRow.main-trackList-selected:active a,
