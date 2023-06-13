@@ -2656,6 +2656,10 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   border: 2px solid var(--spice-main) !important;
 }
 
+.SxHlW6byhoJSUJNugaE1 .k6Nq7pavAmiyJlxj52QA {
+  color: var(--spice-alt-text);
+}
+
 .npv-background-image__overlay {
   background-color: rgba(var(--spice-rgb-layer-shadow), 0.7) !important;
 }
