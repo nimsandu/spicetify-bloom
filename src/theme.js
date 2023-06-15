@@ -256,11 +256,10 @@
     }
 
     function setLyricsTransformOrigin(textDirection) {
-      const root = document.querySelector(':root');
       if (textDirection === 'rtl') {
-        root.style.setProperty('--lyrics-text-direction', 'right');
+        document.documentElement.style.setProperty('--lyrics-text-direction', 'right');
       } else {
-        root.style.setProperty('--lyrics-text-direction', 'left');
+        document.documentElement.style.setProperty('--lyrics-text-direction', 'left');
       }
     }
 
@@ -347,11 +346,7 @@
       waitForElement(['.lyrics-lyrics-contentWrapper'], () => {
         const lyricsContentWrapper = document.getElementsByClassName('lyrics-lyrics-contentWrapper')[0];
         const lyricsObserver = new MutationObserver(lyricsCallback);
-        const lyricsObserverConfig = {
-          attributes: false,
-          childList: true,
-          subtree: false,
-        };
+        const lyricsObserverConfig = { childList: true };
         lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
       });
     }
@@ -611,8 +606,6 @@
       const lyricsCinemaObserverConfig = {
         attributes: true,
         attributeFilter: ['class'],
-        childList: false,
-        subtree: false,
       };
       lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig);
     });
@@ -761,7 +754,6 @@
     const body = document.querySelector('body');
     const bodyObserver = new MutationObserver(bodyCallback);
     const bodyObserverConfig = {
-      attributes: false,
       childList: true,
       subtree: true,
     };
@@ -770,8 +762,7 @@
 
   function schemeCallback() {
     if (Spicetify.Config.color_scheme.includes('light')) {
-      const root = document.querySelector(':root');
-      root.style.setProperty('--noise-opacity', '3.5%');
+      document.documentElement.style.setProperty('--noise-opacity', '3.5%');
     }
   }
   schemeCallback();
@@ -779,11 +770,7 @@
   waitForElement(['.marketplaceScheme'], () => {
     const scheme = document.getElementsByClassName('marketplaceScheme')[0];
     const schemeObserver = new MutationObserver(schemeCallback);
-    const schemeObserverConfig = {
-      attributes: true,
-      childList: false,
-      subtree: false,
-    };
+    const schemeObserverConfig = { attributes: true };
     schemeObserver.observe(scheme, schemeObserverConfig);
   });
 })();
