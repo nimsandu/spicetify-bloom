@@ -1,0 +1,10 @@
+{
+    "css.lint.vendorPrefix": "ignore",
+    "indentRainbow.colorOnWhiteSpaceOnly": true,
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+}
