@@ -1298,9 +1298,9 @@ button.switch {
 /* top bar */
 
 .main-topBar-button,
-.IAyWaeDamLJLjxuPeVKw,
-.main-userWidget-box,
-.I4p8r1UNjIGk9yv3H2Ms {
+.main-topBar-buddyFeed,
+.main-userWidget-boxCondensed,
+.main-topBar-whatsNewFeed {
   background-color: var(--spice-selected-row) !important;
   color: var(--spice-text);
   width: 28px !important;
