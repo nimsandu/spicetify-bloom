@@ -239,7 +239,8 @@ html {
 .main-card-card,
 .x-categoryCard-CategoryCard,
 .main-heroCard-card {
-  transition: transform 400ms var(--ms-motion-timing-decelerate), box-shadow 400ms var(--ms-motion-timing-decelerate);
+  transition: transform 400ms var(--ms-motion-timing-decelerate),
+    box-shadow 400ms var(--ms-motion-timing-decelerate);
 }
 
 .link-subtle {
@@ -1096,9 +1097,12 @@ button.switch {
 .main-trackList-trackListRow.main-trackList-selected:active a,
 .main-trackList-trackListRow.main-trackList-selected:focus a,
 .main-trackList-trackListRow.main-trackList-selected button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected:hover button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected:active button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected:focus button:not(.main-trackList-rowHeartButton),
+.main-trackList-trackListRow.main-trackList-selected:hover
+  button:not(.main-trackList-rowHeartButton),
+.main-trackList-trackListRow.main-trackList-selected:active
+  button:not(.main-trackList-rowHeartButton),
+.main-trackList-trackListRow.main-trackList-selected:focus
+  button:not(.main-trackList-rowHeartButton),
 .main-trackList-trackListRow.main-trackList-selected div,
 .main-trackList-trackListRow.main-trackList-selected:hover div,
 .main-trackList-trackListRow.main-trackList-selected:active div,
@@ -2433,7 +2437,7 @@ button.arrow-btn {
   from {
     opacity: 0;
   }
-  
+
   to {
     opacity: 1;
     visibility: visible;

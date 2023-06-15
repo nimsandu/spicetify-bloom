@@ -43,6 +43,7 @@
             const [type] = playlistElements[i].href.split('/').slice(-2, -1);
             let icon = cache.get(id);
             if (!icon) {
+              let base64;
               switch (type) {
                 case 'playlist': {
                   const playlist = playlistData.find((p) => p.id === id);
@@ -61,7 +62,7 @@
                 }
 
                 case 'folder':
-                  const base64 = localStorage.getItem('bloom:folder-image:' + id);
+                  base64 = localStorage.getItem(`bloom:folder-image:${id}`);
                   icon = {
                     src:
                       base64 ||
@@ -251,15 +252,16 @@
       // 0, 1 - blank lines
       const lyric = document.getElementsByClassName('lyrics-lyricsContent-lyric')[2];
       // https://stackoverflow.com/questions/13731909/how-to-detect-that-text-typed-in-text-area-is-rtl
-      const rtl_rx = /[\u0591-\u07FF]/;
-      return rtl_rx.test(lyric.innerHTML) ? 'rtl' : 'ltr';
+      const rtlRegExp = /[\u0591-\u07FF]/;
+      return rtlRegExp.test(lyric.innerHTML) ? 'rtl' : 'ltr';
     }
 
     function setLyricsTransformOrigin(textDirection) {
+      const rootStyle = document.documentElement.style;
       if (textDirection === 'rtl') {
-        document.documentElement.style.setProperty('--lyrics-text-direction', 'right');
+        rootStyle.setProperty('--lyrics-text-direction', 'right');
       } else {
-        document.documentElement.style.setProperty('--lyrics-text-direction', 'left');
+        rootStyle.setProperty('--lyrics-text-direction', 'left');
       }
     }
 
@@ -269,12 +271,12 @@
 
       if (textDirection === 'rtl') {
         offset =
-        lyricsWrapper.offsetRight +
+          lyricsWrapper.offsetRight +
           parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
         maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
       } else {
         offset =
-        lyricsWrapper.offsetLeft +
+          lyricsWrapper.offsetLeft +
           parseInt(window.getComputedStyle(lyricsWrapper).marginLeft, 10);
         maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
       }
@@ -284,7 +286,9 @@
 
     function lockLyricsWrapperWidth(lyricsWrapper) {
       const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
+      // eslint-disable-next-line no-param-reassign
       lyricsWrapper.style.maxWidth = `${lyricsWrapperWidth}px`;
+      // eslint-disable-next-line no-param-reassign
       lyricsWrapper.style.width = `${lyricsWrapperWidth}px`;
     }
 
@@ -292,11 +296,20 @@
       const lyricsLines = document.getElementsByClassName('lyrics-lyricsContent-lyric');
       let positionIndex = 0;
       for (let i = 0; i < lyricsLines.length; i += 1) {
-        lyricsLines[i].innerHTML !== "" ? positionIndex += 1 : null
-        animationDelay = 50 + (positionIndex * 10)
-        animationDelay > 1000 ? animationDelay = 1000 : null
-        animationDuration = 200 + (positionIndex * 75);
-        animationDuration > 1000 ? animationDuration = 1000 : null
+        if (lyricsLines[i].innerHTML !== '') {
+          positionIndex += 1;
+        }
+
+        let animationDelay = 50 + positionIndex * 10;
+        if (animationDelay > 1000) {
+          animationDelay = 1000;
+        }
+
+        let animationDuration = 200 + positionIndex * 75;
+        if (animationDuration > 1000) {
+          animationDuration = 1000;
+        }
+
         lyricsLines[i].style.animationDelay = `${animationDelay}ms`;
         lyricsLines[i].style.animationDuration = `${animationDuration}ms`;
         lyricsLines[i].style.animationTimingFunction = 'ease';
@@ -326,7 +339,7 @@
       lockLyricsWrapperWidth(lyricsContentWrapper);
     }
 
-    async function lyricsCallback(mutationsList, lyricsObserver) {
+    async function lyricsCallback(mutationsList) {
       for (let i = 0; i < mutationsList.length; i += 1) {
         for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
           if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
@@ -342,9 +355,12 @@
       revealLyricsLines();
     });
 
+    // eslint-disable-next-line no-undef
     if (typeof lyricsObserver === 'undefined' || lyricsObserver == null) {
       waitForElement(['.lyrics-lyrics-contentWrapper'], () => {
-        const lyricsContentWrapper = document.getElementsByClassName('lyrics-lyrics-contentWrapper')[0];
+        const lyricsContentWrapper = document.getElementsByClassName(
+          'lyrics-lyrics-contentWrapper'
+        )[0];
         const lyricsObserver = new MutationObserver(lyricsCallback);
         const lyricsObserverConfig = { childList: true };
         lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
@@ -620,39 +636,43 @@
       const left = topBarContentWrapper.offsetLeft;
       const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
 
-      max = window.innerWidth / 2;
+      const max = window.innerWidth / 2;
       if (left <= 0 || right <= 0 || left > max || right > max) {
         return;
       }
 
       let diff;
       if (topBarContentWrapper.style.marginLeft !== '') {
-        diff = right - left + parseInt(topBarContentWrapper.style.marginLeft);
+        diff = right - left + parseInt(topBarContentWrapper.style.marginLeft, 10);
       } else {
         diff = right - left;
       }
 
-      diff !== 0 ? (topBarContentWrapper.style.marginLeft = diff + 'px') : null;
+      if (diff !== 0) {
+        topBarContentWrapper.style.marginLeft = `${diff}px`;
+      }
     });
   }
   window.addEventListener('load', centerTopbar);
 
   function rootObserverCallback(mutationsList, mutationObserver) {
-    const regex = /--panel-width:\s*([\d.]+)px/;
-    const match = mutationsList[0].oldValue.match(regex);
+    const regExp = /--panel-width:\s*([\d.]+)px/;
+    const match = mutationsList[0].oldValue.match(regExp);
     const oldPanelWidth = match[1];
-    const newPanelWidth = parseInt(
-      mutationsList[0].target.style.getPropertyValue('--panel-width'),
-      10
-    );
-    if (newPanelWidth > oldPanelWidth) {
-      const buddyFeedContainer = document.getElementsByClassName('main-buddyFeed-container')[0];
-      buddyFeedContainer.style.width = `${oldPanelWidth}px`;
-    }
-    mutationObserver.disconnect;
+    setTimeout(() => {
+      const newPanelWidth = parseInt(
+        mutationsList[0].target.style.getPropertyValue('--panel-width'),
+        10
+      );
+      if (newPanelWidth > oldPanelWidth) {
+        const buddyFeedContainer = document.getElementsByClassName('main-buddyFeed-container')[0];
+        buddyFeedContainer.style.width = `${oldPanelWidth}px`;
+      }
+      mutationObserver.disconnect();
+    }, 0);
   }
 
-  rootObserver = new MutationObserver(rootObserverCallback);
+  const rootObserver = new MutationObserver(rootObserverCallback);
   const rootObserverConfig = {
     attributes: true,
     attributeFilter: ['style'],
@@ -693,10 +713,10 @@
     const file = filePickerInput.files[0];
     const reader = new FileReader();
     reader.onload = (event) => {
-      const result = event.target.result;
-      const id = Spicetify.URI.from(filePickerInput.uri).id;
+      const { result } = event.target;
+      const { id } = Spicetify.URI.from(filePickerInput.uri);
       try {
-        localStorage.setItem('bloom:folder-image:' + id, result);
+        localStorage.setItem(`bloom:folder-image:${id}`, result);
       } catch {
         Spicetify.showNotification('File is too large');
       }
@@ -709,8 +729,8 @@
   new Spicetify.ContextMenu.Item(
     'Remove folder image',
     ([uri]) => {
-      const id = Spicetify.URI.from(uri).id;
-      localStorage.removeItem('bloom:folder-image:' + id);
+      const { id } = Spicetify.URI.from(uri);
+      localStorage.removeItem(`bloom:folder-image:${id}`);
       updatePlaylistsImages();
     },
     ([uri]) => Spicetify.URI.isFolder(uri),
@@ -733,8 +753,8 @@
     for (let i = 0; i < mutationsList.length; i += 1) {
       if (mutationsList[i].addedNodes[0]?.id?.includes('tippy')) {
         const tippy = mutationsList[i].addedNodes[0];
-        const body = document.querySelector('body');
-        const parentNode = tippy.parentNode;
+        const { body } = document;
+        const { parentNode } = tippy;
         if (
           parentNode !== body &&
           !parentNode.classList?.contains('lyrics-tooltip-wrapper') &&
@@ -751,13 +771,12 @@
   }
 
   waitForElement(['body'], () => {
-    const body = document.querySelector('body');
     const bodyObserver = new MutationObserver(bodyCallback);
     const bodyObserverConfig = {
       childList: true,
       subtree: true,
     };
-    bodyObserver.observe(body, bodyObserverConfig);
+    bodyObserver.observe(document.body, bodyObserverConfig);
   });
 
   function schemeCallback() {
