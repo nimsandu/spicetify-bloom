@@ -644,7 +644,34 @@
   }
   window.addEventListener('load', centerTopbar);
 
+  function rootObserverCallback(mutationsList, mutationObserver) {
+    const regex = /--panel-width:\s*([\d.]+)px/;
+    const match = mutationsList[0].oldValue.match(regex);
+    const oldPanelWidth = match[1];
+    const newPanelWidth = parseInt(
+      mutationsList[0].target.style.getPropertyValue('--panel-width'),
+      10
+    );
+    if (newPanelWidth > oldPanelWidth) {
+      const buddyFeedContainer = document.getElementsByClassName('main-buddyFeed-container')[0];
+      buddyFeedContainer.style.width = `${oldPanelWidth}px`;
+    }
+    mutationObserver.disconnect;
+  }
+
+  rootObserver = new MutationObserver(rootObserverCallback);
+  const rootObserverConfig = {
+    attributes: true,
+    attributeFilter: ['style'],
+    attributeOldValue: true,
+  };
+
+  function keepRightSidebarWidth() {
+    rootObserver.observe(document.documentElement, rootObserverConfig);
+  }
+
   async function onResize() {
+    keepRightSidebarWidth();
     centerTopbar();
     updateLyricsPageProperties();
   }
