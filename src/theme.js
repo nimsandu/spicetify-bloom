@@ -326,7 +326,7 @@
       lockLyricsWrapperWidth(lyricsContentWrapper);
     }
 
-    function lyricsCallback(mutationsList, lyricsObserver) {
+    async function lyricsCallback(mutationsList, lyricsObserver) {
       for (let i = 0; i < mutationsList.length; i += 1) {
         for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
           if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
@@ -337,7 +337,7 @@
       }
     }
 
-    waitForElement(['.lyrics-lyricsContent-provider'], () => {
+    waitForElement(['.lyrics-lyricsContent-provider'], async () => {
       setLyricsPageProperties();
       revealLyricsLines();
     });
