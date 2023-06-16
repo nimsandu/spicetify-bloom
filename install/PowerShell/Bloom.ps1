@@ -1,0 +1,170 @@
+<#
+.SYNOPSIS
+Bloom installer script
+
+Version: v1.0
+Date: 20.06.2023
+
+.LINK GitHub
+https://github.com/nimsandu/spicetify-bloom
+
+.LINK Authors
+https://github.com/SunsetTechuila
+#>
+
+[CmdletBinding()]
+param (
+  [ValidateSet('Install', 'Uninstall', 'Update')]
+  [string]$Action = 'Install'
+)
+begin {
+  $ErrorActionPreference = 'Stop'
+  Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+  $previousConsoleTitle = $Host.UI.RawUI.WindowTitle
+  $Host.UI.RawUI.WindowTitle = 'Bloom Installer'
+}
+process {
+  Clear-Host
+  
+  Write-Verbose -Message 'Downloading Functions module...' -Verbose
+  $Parameters = @{
+    Uri             = 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/PowerShell/Functions.psm1'
+    UseBasicParsing = $true
+  }
+  $functions = (Invoke-WebRequest @Parameters).Content
+  
+  $tempModulePath = [IO.Path]::GetTempFileName() + '.psm1'
+  $functions | Out-File -FilePath $tempModulePath -Encoding UTF8
+  Import-Module -Name $tempModulePath
+  
+  Clear-Host
+  Write-HelloMessage
+  
+  $minimumPowerShellVersion = 5
+  $currentPowerShellVersion = $PSVersionTable.PSVersion.Major
+  
+  if ($currentPowerShellVersion -lt $minimumPowerShellVersion) {
+    Write-Error -Message (
+      "Your PowerShell version is $currentPowerShellVersion.`n" +
+      "The minimum version required to run this script is $minimumPowerShellVersion."
+    )
+  }
+  
+  $isSpicetifyInstalled = Test-Spicetify
+  
+  switch ($Action) {
+    'Uninstall' {
+      if (-not ($isSpicetifyInstalled)) {
+        Write-Error -Message 'Failed to detect Spicetify installation!'
+      }
+      
+      $spicetifyFolders = Get-SpicetifyFoldersPaths
+      $Parameters = @{
+        Path   = $spicetifyFolders.bloomPath
+        Config = $spicetifyFolders.configPath
+      }
+      
+      $Host.UI.RawUI.Flushinputbuffer()
+      $choice = $Host.UI.PromptForChoice(
+        '',
+        'Do you plan to use the marketplace to install the next theme?',
+        ('&Yes', '&No'),
+        0
+      )
+      if ($choice -eq 0) {
+        $Parameters.Value = 'marketplace'
+      }
+      
+      Uninstall-Bloom @Parameters
+    }
+    'Update' {
+      if (-not ($isSpicetifyInstalled)) {
+        Write-Error -Message 'Failed to detect Spicetify installation!'
+      }
+      
+      $spicetifyFolders = Get-SpicetifyFoldersPaths
+      $Parameters = @{
+        Path        = $(Get-Bloom)
+        Destination = $spicetifyFolders.bloomPath
+        Config      = $spicetifyFolders.configPath
+        Type        = $(Get-ThemeType -Path $spicetifyFolders.bloomPath)
+      }
+      Install-Bloom @Parameters
+    }
+    'Install' {
+      $isSpotifyInstalled = Test-Spotify
+      $isSegoeUIVariableInstalled = Test-SegoeUIVariable
+      
+      if (-not ($isSpotifyInstalled)) {
+        Write-Host -Object 'Spotify not found.' -ForegroundColor Yellow
+        
+        $Host.UI.RawUI.Flushinputbuffer()
+        $choice = $Host.UI.PromptForChoice('', 'Install Spotify?', ('&Yes', '&No'), 0)
+        if ($choice -eq 1) {
+          exit
+        }
+        
+        Install-Spotify
+      }
+      
+      if (-not ($isSpicetifyInstalled)) {
+        Write-Host -Object 'Spicetify not found.' -ForegroundColor Yellow
+        
+        $Host.UI.RawUI.Flushinputbuffer()
+        $choice = $Host.UI.PromptForChoice('', 'Install Spicetify?', ('&Yes', '&No'), 0)
+        if ($choice -eq 1) {
+          exit
+        }
+        
+        Install-Spicetify
+        Install-Marketplace
+      }
+      
+      if (-not ($isSegoeUIVariableInstalled)) {
+        Write-Host -Object 'Segoe UI Variable font not found.' -ForegroundColor Yellow
+        
+        $Host.UI.RawUI.Flushinputbuffer()
+        $choice = $Host.UI.PromptForChoice(
+          '',
+          'Install Segoe UI Variable font for better look?',
+          ('&Yes', '&No'),
+          0
+        )
+        if ($choice -eq 0) {
+          $segoeUIVariablePath = Get-SegoeUIVariable
+          Add-SegoeUIVariable -Path $segoeUIVariablePath
+        }
+      }
+      
+      $spicetifyFolders = Get-SpicetifyFoldersPaths
+      $Parameters = @{
+        Path        = $(Get-Bloom)
+        Destination = $spicetifyFolders.bloomPath
+        Config      = $spicetifyFolders.configPath
+        ColorScheme = $(Get-WindowsAppsTheme)
+      }
+      
+      $Host.UI.RawUI.Flushinputbuffer()
+      $choice = $Host.UI.PromptForChoice(
+        '',
+        'Use the files that fetch all the code remotely (auto-update)' +
+        'or store all of the code locally (no auto-update)?',
+        ('&Remote', '&Local'),
+        0
+      )
+      if ($choice -eq 1) {
+        $Parameters.Type = 'Local'
+      }
+      
+      Install-Bloom @Parameters
+    }
+  }
+}
+end {
+  Remove-Module -Name (($tempModulePath | Split-Path -Leaf) -replace '.psm1', '') -Force
+  Remove-Item -Path $tempModulePath -Force
+  [Console]::Title = $previousConsoleTitle
+  Write-ByeMessage
+  Start-Sleep -Seconds 5
+}

@@ -68,7 +68,8 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 ### Windows (Powershell)
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/install.ps1" | Invoke-Expression
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+iex "& { $(iwr -useb 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/PowerShell/Bloom.ps1') }"
 ```
 
 ### Linux/macOS (Bash)
