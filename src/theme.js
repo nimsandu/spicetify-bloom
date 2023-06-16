@@ -233,6 +233,7 @@
   }
 
   injectScript('https://unpkg.com/fast-average-color/dist/index.browser.min.js');
+  injectScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js');
 
   const blur = 20;
 
@@ -295,7 +296,7 @@
           animationDelay = 1000;
         }
 
-        let animationDuration = 200 + positionIndex * 75;
+        let animationDuration = 200 + positionIndex * 100;
         if (animationDuration > 1000) {
           animationDuration = 1000;
         }
@@ -474,6 +475,7 @@
     waitForElement(['#lyrics-backdrop'], () => {
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
+        updateLyricsPageProperties();
         return;
       }
       previousAlbumUri = Spicetify.Player.data.track.metadata.album_uri;
@@ -506,32 +508,28 @@
         );
         const centerX = lyricsBackdropPrevious.width / 2;
         const centerY = lyricsBackdropPrevious.height / 2;
-        let radius = 5;
+        const radius = { value: 0 };
 
-        function animate() {
-          if (radius >= maxRadius) {
+        gsap.to(radius, {
+          duration: 0.8,
+          value: maxRadius,
+          onUpdate: () => {
+            contextPrevious.beginPath();
+            contextPrevious.arc(centerX, centerY, radius.value, 0, Math.PI * 2);
+            contextPrevious.closePath();
+            contextPrevious.fill();
+          },
+          onComplete: async () => {
+            updateLyricsPageProperties();
             lyricsBackdropPrevious.remove();
-            return;
-          }
-
-          contextPrevious.beginPath();
-          contextPrevious.arc(centerX, centerY, radius, 0, Math.PI * 2);
-          contextPrevious.closePath();
-          contextPrevious.fill();
-
-          radius += 5;
-          requestAnimationFrame(animate);
-        }
-        animate();
+          },
+          ease: 'sine.out',
+        });
       };
     });
   }
 
-  async function onSongChange() {
-    updateLyricsPageProperties();
-    updateLyricsBackdrop();
-  }
-  Spicetify.Player.addEventListener('songchange', onSongChange);
+  Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
 
   function initLyricsBackdrop() {
     waitForElement(['.under-main-view'], () => {
@@ -572,7 +570,6 @@
     if (Spicetify.Platform.History.location.pathname.includes('lyrics')) {
       if (lyricsBackdropContainer == null) {
         initLyricsBackdrop();
-        updateLyricsPageProperties();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
         updateLyricsPageProperties();
@@ -594,7 +591,6 @@
     if (lyricsCinema.classList.contains('main-lyricsCinema-lyricsCinemaVisible')) {
       if (lyricsBackdropContainer == null) {
         initLyricsBackdrop();
-        updateLyricsPageProperties();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
         updateLyricsPageProperties();

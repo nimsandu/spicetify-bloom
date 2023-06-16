@@ -10,6 +10,7 @@
   },
   "globals": {
     "Spicetify": "readonly",
-    "FastAverageColor": "readonly"
+    "FastAverageColor": "readonly",
+    "gsap": "readonly"
   }
 }
