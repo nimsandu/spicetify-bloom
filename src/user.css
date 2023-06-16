@@ -2466,10 +2466,6 @@ button.arrow-btn {
   .lyrics-lyricsContent-isInteractive:active {
     transform: scale(0.9);
   }
-
-  .lyrics-lyricsContent-isInteractive.lyrics-lyricsContent-active:active {
-    transform: scale(0.8);
-  }
 }
 
 .main-nowPlayingView-section .lyrics-lyricsContent-lyric {
