@@ -2392,17 +2392,40 @@ button.arrow-btn {
   top: 80px !important;
 }
 
-#lyrics-backdrop {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
 #lyrics-backdrop-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: var(--spice-main);
+  --lyrics-blur: 200px;
+}
+
+#lyrics-backdrop-container::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(var(--lyrics-blur));
+}
+
+#lyrics-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(0%);
+  filter: brightness(0.65) saturate(1.4);
+}
+
+.lyrics-backdrop-animate {
+  animation: lyrics-animation 1200ms ease forwards;
+}
+
+@keyframes lyrics-animation {
+  from {
+    clip-path: circle(0%);
+  }
+  to {
+    clip-path: circle(100%);
+  }
 }
 
 .lyrics-lyrics-background {

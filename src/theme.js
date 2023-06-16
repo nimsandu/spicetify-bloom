@@ -224,28 +224,6 @@
     document.getElementsByTagName('head')[0].appendChild(libraryXButtonsStyle);
   }, 10);
 
-  waitForElement(['body'], () => {
-    const facScript = document.createElement('script');
-    facScript.src = 'https://unpkg.com/fast-average-color/dist/index.browser.min.js';
-    facScript.defer = true;
-    facScript.type = 'text/javascript';
-    document.body.appendChild(facScript);
-  });
-
-  const blur = 20;
-
-  function fillBackdrop(backdrop) {
-    const context = backdrop.getContext('2d');
-    const rootStyles = getComputedStyle(document.documentElement);
-    const spiceMain = rootStyles.getPropertyValue('--spice-rgb-main').split(',');
-    context.fillStyle = `rgb(
-      ${spiceMain[0].trim()},
-      ${spiceMain[1]},
-      ${spiceMain[2]}
-      )`;
-    context.fillRect(0, 0, backdrop.width, backdrop.height);
-  }
-
   // fixes container shifting & active line clipping
   function updateLyricsPageProperties() {
     function detectTextDirection() {
@@ -371,166 +349,39 @@
   let previousAlbumUri;
 
   async function updateLyricsBackdrop() {
-    async function calculateBrightnessCoefficient(image) {
-      try {
-        const fac = new FastAverageColor();
-        // ignore colors darker than 50% by HSB, because 0.5 is a brightness threshold
-        const averageColor = await fac.getColorAsync(image, {
-          ignoredColor: [0, 0, 0, 255, 125],
-        });
-        fac.destroy();
-
-        // slice(0, 3) - remove alpha channel value
-        let brightness = Math.max(...averageColor.value.slice(0, 3));
-        brightness = (brightness / 255).toFixed(1);
-
-        return brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
-      } catch (error) {
-        return 0.65;
-      }
-    }
-
-    async function calculateSaturationCoefficient(originalImage, canvasImage) {
-      function getSaturation(color) {
-        const { value } = color;
-        const max = Math.max(...value.slice(0, 3));
-        const min = Math.min(...value.slice(0, 3));
-        const delta = max - min;
-        return max !== 0 ? delta / max : 0;
-      }
-
-      try {
-        const fac = new FastAverageColor();
-        const [averageOriginalColor, averageCanvasColor] = await Promise.all([
-          // ignore almost black colors
-          fac.getColorAsync(originalImage, {
-            ignoredColor: [0, 0, 0, 255, 10],
-          }),
-          fac.getColorAsync(canvasImage),
-          { ignoredColor: [0, 0, 0, 255, 10] },
-        ]);
-        fac.destroy();
-
-        const [averageOriginalSaturation, averageCanvasSaturation] = [
-          getSaturation(averageOriginalColor),
-          getSaturation(averageCanvasColor),
-        ];
-
-        let saturationCoefficient;
-
-        if (averageCanvasSaturation < averageOriginalSaturation) {
-          saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
-        } else {
-          // do not change saturation if backdrop is more saturated than the original artwork or equal
-          saturationCoefficient = 1;
-        }
-
-        const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(1);
-
-        // try to detect and fix oversaturated backdrop
-        if (finalSaturation > 0.8) {
-          saturationCoefficient = 1 - (finalSaturation - 0.8);
-        }
-
-        // try to detect and fix undersaturated backdrop
-        if (finalSaturation < 0.5 && averageOriginalSaturation > 0.05) {
-          saturationCoefficient += 0.5 - finalSaturation;
-        }
-
-        // coefficient threshold
-        if (saturationCoefficient > 1.7) {
-          saturationCoefficient = 1.7;
-        }
-
-        return saturationCoefficient.toFixed(1);
-      } catch (error) {
-        return 1.4;
-      }
-    }
-
-    // necessary because backdrop edges become transparent due to blurring
-    async function calculateContextDrawValues(canvas) {
-      const drawWidth = canvas.width + blur * 2;
-      const drawHeight = canvas.height + blur * 2;
-      const drawX = 0 - blur;
-      const drawY = 0 - blur;
-      return [drawWidth, drawHeight, drawX, drawY];
-    }
-
-    async function getImageFromCanvas(canvas) {
-      const image = new Image();
-      image.src = canvas.toDataURL();
-      return image;
-    }
-
-    async function updateFilters(canvas, image) {
-      const canvasImage = await getImageFromCanvas(canvas);
-      const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
-        calculateBrightnessCoefficient(canvasImage),
-        calculateSaturationCoefficient(image, canvasImage),
-      ]);
-      // eslint-disable-next-line no-param-reassign
-      canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
-    }
-
     waitForElement(['#lyrics-backdrop'], () => {
-      updateLyricsPageProperties();
+      const currentTrackMetadata = Spicetify.Player.data.track.metadata;
 
       // don't animate backdrop if artwork didn't change
-      if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
+      if (previousAlbumUri === currentTrackMetadata.album_uri) {
         return;
       }
-      previousAlbumUri = Spicetify.Player.data.track.metadata.album_uri;
+      previousAlbumUri = currentTrackMetadata.album_uri;
 
-      const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
-      const contextPrevious = lyricsBackdropPrevious.getContext('2d');
-      contextPrevious.globalCompositeOperation = 'destination-out';
-      contextPrevious.filter = `blur(${blur}px)`;
+      const lyricsBackdrops = document.querySelectorAll('#lyrics-backdrop');
+      const lyricsBackdropPrevious = lyricsBackdrops[lyricsBackdrops.length - 1];
 
-      const lyricsBackdrop = document.createElement('canvas');
+      for (let i = 0; i < lyricsBackdrops.length - 1; i += 1) {
+        lyricsBackdrops[i].remove();
+      }
+
+      const lyricsBackdrop = document.createElement('img');
       lyricsBackdrop.id = 'lyrics-backdrop';
-      fillBackdrop(lyricsBackdrop);
-      lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
-      const context = lyricsBackdrop.getContext('2d');
-      context.imageSmoothingEnabled = false;
-      context.filter = `blur(${blur}px)`;
+      lyricsBackdrop.src = currentTrackMetadata.image_xlarge_url;
 
-      const lyricsBackdropImage = new Image();
-      lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
+      lyricsBackdropPrevious.insertAdjacentElement('afterend', lyricsBackdrop);
 
-      lyricsBackdropImage.onload = async () => {
-        const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(
-          lyricsBackdrop
-        );
-        context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
-        updateFilters(lyricsBackdrop, lyricsBackdropImage);
-
-        const maxRadius = Math.ceil(
-          Math.sqrt(lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2) / 2
-        );
-        const centerX = lyricsBackdropPrevious.width / 2;
-        const centerY = lyricsBackdropPrevious.height / 2;
-        let radius = 5;
-
-        function animate() {
-          if (radius >= maxRadius) {
-            lyricsBackdropPrevious.remove();
-            return;
-          }
-
-          contextPrevious.beginPath();
-          contextPrevious.arc(centerX, centerY, radius, 0, Math.PI * 2);
-          contextPrevious.closePath();
-          contextPrevious.fill();
-
-          radius += 5;
-          requestAnimationFrame(animate);
-        }
-        animate();
-      };
+      lyricsBackdrop.addEventListener('load', () => {
+        lyricsBackdrop.className = 'lyrics-backdrop-animate';
+      });
     });
   }
-  Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
+  async function onSongChange() {
+    updateLyricsPageProperties();
+    updateLyricsBackdrop();
+  }
+
+  Spicetify.Player.addEventListener('songchange', onSongChange);
 
   function initLyricsBackdrop() {
     waitForElement(['.under-main-view'], () => {
@@ -539,11 +390,11 @@
       lyricsBackdropContainer.id = 'lyrics-backdrop-container';
       underMainView.prepend(lyricsBackdropContainer);
 
-      const lyricsBackdrop = document.createElement('canvas');
+      const lyricsBackdrop = document.createElement('div');
+      lyricsBackdrop.style.backgroundColor = 'var(--spice-main)';
       lyricsBackdrop.id = 'lyrics-backdrop';
       lyricsBackdropContainer.appendChild(lyricsBackdrop);
 
-      fillBackdrop(lyricsBackdrop);
       updateLyricsBackdrop();
     });
   }
