@@ -1690,6 +1690,10 @@ option {
   color: var(--spice-text);
 }
 
+option {
+  background-color: var(--spice-card);
+}
+
 .main-dropDown-dropDown,
 select {
   border-radius: var(--border-radius-3) !important;
