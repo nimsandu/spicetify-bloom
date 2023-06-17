@@ -227,7 +227,7 @@
   function injectScript(source) {
     const script = document.createElement('script');
     script.src = source;
-    script.defer = true;
+    script.async = true;
     script.type = 'text/javascript';
     document.head.appendChild(script);
   }
