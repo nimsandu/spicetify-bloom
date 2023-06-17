@@ -147,7 +147,6 @@
     )
       return;
     clearInterval(interval);
-    const playButtonStyle = document.createElement('style');
 
     function cleanLabel(label) {
       const cleanedLabel = label.replace(/[{0}{1}«»”“]/g, '').trim();
@@ -171,6 +170,7 @@
     tracklistPlayLabelOne = cleanLabel(tracklistPlayLabelOne);
     tracklistPlayLabelTwo = cleanLabel(tracklistPlayLabelTwo);
 
+    const playButtonStyle = document.createElement('style');
     playButtonStyle.innerHTML = `
       .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.play}"],
       .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.play}"],
@@ -192,7 +192,7 @@
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
       }`;
-    document.getElementsByTagName('head')[0].appendChild(playButtonStyle);
+    document.head.appendChild(playButtonStyle);
 
     const libraryXButtonsStyle = document.createElement('style');
     libraryXButtonsStyle.innerHTML = `
@@ -221,7 +221,7 @@
         height: 18px;
       }
     `;
-    document.getElementsByTagName('head')[0].appendChild(libraryXButtonsStyle);
+    document.head.appendChild(libraryXButtonsStyle);
   }, 10);
 
   function injectScript(source) {
