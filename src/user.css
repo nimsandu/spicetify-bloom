@@ -2769,7 +2769,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   margin-top: 64px;
 }
 
-.nav-ylx .contentSpacing:not(.artist-artistDiscography-topBar) {
+.nav-ylx .contentSpacing:not(.artist-artistDiscography-topBar, .search-searchCategory-container) {
   padding-top: 20px;
 }
 
