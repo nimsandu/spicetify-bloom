@@ -2546,7 +2546,7 @@ button.arrow-btn {
   padding-bottom: 35px;
 }
 
-.nav-ylx .lyrics-lyricsContainer-LyricsUnsyncedPadding {
+.lyrics-lyricsContainer-LyricsUnsyncedPadding {
   height: 20vh;
 }
 
@@ -2720,21 +2720,21 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Top container */
 
-.nav-ylx .Root__top-container {
+.Root__top-container {
   padding-top: 0 !important;
 }
 
 /* Topbar */
 
-.nav-ylx .main-topBar-container > *:not(button):not(.main-topBar-historyButtons),
-.nav-ylx .main-topBar-topbarContent {
+.main-topBar-container > *:not(button):not(.main-topBar-historyButtons),
+.main-topBar-topbarContent {
   -webkit-app-region: drag !important;
 }
 
 /* Main view */
 
 /* rounded main view container corners */
-.nav-ylx .Root__main-view::before {
+.Root__main-view::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -2745,35 +2745,35 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   pointer-events: none;
 }
 
-.nav-ylx .Root__main-view {
+.Root__main-view {
   border-radius: var(--border-radius-1) !important;
   top: 64px;
   height: calc(100% - 48px);
   overflow: visible;
 }
 
-.nav-ylx .main-view-container__scroll-node-child-spacer {
+.main-view-container__scroll-node-child-spacer {
   height: 64px !important;
 }
 
-.nav-ylx .main-entityHeader-background,
-.nav-ylx .main-entityHeader-background.main-entityHeader-gradient {
+.main-entityHeader-background,
+.main-entityHeader-background.main-entityHeader-gradient {
   margin-top: 64px;
 }
 
-.nav-ylx .main-view-container {
+.main-view-container {
   margin-top: -64px;
 }
 
-.nav-ylx .main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
+.main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
   margin-top: 64px;
 }
 
-.nav-ylx .contentSpacing:not(.artist-artistDiscography-topBar, .search-searchCategory-container) {
+.contentSpacing:not(.artist-artistDiscography-topBar, .search-searchCategory-container) {
   padding-top: 20px;
 }
 
-.nav-ylx .main-home-home {
+.main-home-home {
   padding-top: 16px;
 }
 
@@ -2798,7 +2798,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   color: var(--spice-text);
 }
 
-.nav-ylx .Root__nav-bar {
+.Root__nav-bar {
   max-width: unset !important;
   height: calc(100% - 48px);
   top: 64px;
@@ -2897,7 +2897,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   height: 18px;
 }
 
-.nav-ylx .main-rootlist-wrapper {
+.main-rootlist-wrapper {
   padding-left: unset;
   padding-right: unset;
 }
@@ -2922,29 +2922,29 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Player bar */
 
-[dir='ltr'] .nav-ylx .main-coverSlotCollapsed-navAltContainer {
+[dir='ltr'] .main-coverSlotCollapsed-navAltContainer {
   transform: none !important;
 }
 
-.nav-ylx .main-nowPlayingBar-nowPlayingBar {
+.main-nowPlayingBar-nowPlayingBar {
   padding-left: 16px;
   padding-right: 16px;
 }
 
 /* Search */
 
-.nav-ylx .x-searchInput-searchInputInput {
+.x-searchInput-searchInputInput {
   padding-left: 18px;
   padding-right: 62px;
 }
 
 /* Right sidebar */
 
-.nav-ylx .main-buddyFeed-scrollBarContainer {
+.main-buddyFeed-scrollBarContainer {
   height: calc(100% - 105px);
 }
 
-.nav-ylx .Root__right-sidebar {
+.Root__right-sidebar {
   height: calc(100% - 48px);
   position: relative;
   margin-top: 64px;
@@ -2952,57 +2952,57 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Friends activity */
 
-.nav-ylx .main-buddyFeed-container {
+.main-buddyFeed-container {
   border-radius: var(--border-radius-1);
 }
 
-.nav-ylx .main-buddyFeed-content {
+.main-buddyFeed-content {
   margin-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
-.nav-ylx .main-buddyFeed-header {
+.main-buddyFeed-header {
   padding-inline-start: 12px;
 }
 
 /* Lyrics */
 
-.nav-ylx .lyrics-lyrics-coverTopBar {
+.lyrics-lyrics-coverTopBar {
   padding-top: 0;
 }
 
 /* Lyrics Cinema*/
 
-.nav-ylx .main-lyricsCinema-container .lyrics-lyrics-container {
+.main-lyricsCinema-container .lyrics-lyrics-container {
   margin-top: 64px;
 }
 
-.nav-ylx .main-lyricsCinema-controls {
+.main-lyricsCinema-controls {
   top: 74px !important;
 }
 
 /* Lyrics Plus */
 
-.nav-ylx .lyrics-config-button-container {
+.lyrics-config-button-container {
   bottom: 80px;
 }
 
-.nav-ylx .lyrics-lyricsContainer-Provider {
+.lyrics-lyricsContainer-Provider {
   padding-bottom: 105px;
 }
 
-.nav-ylx .lyrics-lyricsContainer-LyricsUnsyncedPadding {
+.lyrics-lyricsContainer-LyricsUnsyncedPadding {
   height: 15vh;
 }
 
 /* Track list */
 
-.nav-ylx .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
+.main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
   background: transparent;
 }
 
 /* notification */
 
-.nav-ylx .main-notificationBubbleContainer-NotificationBubbleContainer {
+.main-notificationBubbleContainer-NotificationBubbleContainer {
   margin-bottom: 95px;
 }
