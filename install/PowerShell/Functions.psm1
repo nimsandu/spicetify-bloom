@@ -1,17 +1,3 @@
-<#
-.SYNOPSIS
-Bloom installer script functions
-
-Version: v1.0
-Date: 20.06.2023
-
-.LINK GitHub
-https://github.com/nimsandu/spicetify-bloom
-
-.LINK Authors
-https://github.com/SunsetTechuila
-#>
-
 #Requires -Version 5.0
 
 #region Console helpers
