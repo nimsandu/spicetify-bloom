@@ -28,15 +28,15 @@ process {
   Clear-Host
   
   Write-Verbose -Message 'Downloading Functions module...' -Verbose
+  $moduleName = 'Functions'
+  $modulePath = "$env:TEMP\$moduleName.psm1"
   $Parameters = @{
     Uri             = 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/PowerShell/Functions.psm1'
     UseBasicParsing = $true
+    OutFile         = $modulePath
   }
-  $functions = (Invoke-WebRequest @Parameters).Content
-  
-  $tempModulePath = [IO.Path]::GetTempFileName() + '.psm1'
-  $functions | Out-File -FilePath $tempModulePath -Encoding UTF8
-  Import-Module -Name $tempModulePath
+  Invoke-WebRequest @Parameters
+  Import-Module -Name $modulePath
   
   Clear-Host
   Write-HelloMessage
@@ -162,8 +162,8 @@ process {
   }
 }
 end {
-  Remove-Module -Name (($tempModulePath | Split-Path -Leaf) -replace '.psm1', '') -Force
-  Remove-Item -Path $tempModulePath -Force
+  Remove-Module -Name $moduleName -Force
+  Remove-Item -Path $modulePath -Force
   [Console]::Title = $previousConsoleTitle
   Write-ByeMessage
   Start-Sleep -Seconds 5
