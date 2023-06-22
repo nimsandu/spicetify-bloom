@@ -81,10 +81,7 @@ process {
       Install-Bloom @Parameters
     }
     'Install' {
-      $isSpotifyInstalled = Test-Spotify
-      $isSegoeUIVariableInstalled = Test-SegoeUIVariable
-      
-      if (-not ($isSpotifyInstalled)) {
+      if (-not (Test-Spotify)) {
         Write-Host -Object 'Spotify not found.' -ForegroundColor Yellow
         
         $Host.UI.RawUI.Flushinputbuffer()
@@ -109,7 +106,7 @@ process {
         Install-Marketplace
       }
       
-      if (-not ($isSegoeUIVariableInstalled)) {
+      if (-not (Test-SegoeUIVariable)) {
         Write-Host -Object 'Segoe UI Variable font not found.' -ForegroundColor Yellow
         
         $Host.UI.RawUI.Flushinputbuffer()
@@ -120,8 +117,7 @@ process {
           0
         )
         if ($choice -eq 0) {
-          $segoeUIVariablePath = Get-SegoeUIVariable
-          Add-SegoeUIVariable -Path $segoeUIVariablePath
+          Add-SegoeUIVariable -Path $(Get-SegoeUIVariable)
         }
       }
       

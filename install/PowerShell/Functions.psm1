@@ -278,13 +278,12 @@ function Get-ThemeType {
 
 #region Bloom
 function Get-Bloom {
-    [CmdletBinding(DefaultParameterSetName = 'unpackedRepoPath')]
-    [OutputType([string], ParameterSetName = 'unpackedRepoPath')]
+    [CmdletBinding()]
+    [OutputType([string])]
     param ()
     begin {
         $archiveName = 'spicetify-bloom-main'
         $archivePath = "$env:TEMP\$archiveName.zip"
-        $unpackedRepoPath = "$env:TEMP\$archiveName"
     }
     process {
         Write-Verbose -Message 'Downloading the Bloom repository archive...' -Verbose
@@ -304,7 +303,7 @@ function Get-Bloom {
         Expand-Archive @Parameters 
     }
     end {
-        $unpackedRepoPath
+        "$env:TEMP\$archiveName"
         Remove-Item -Path $archivePath -Force
     }
 }
@@ -417,14 +416,13 @@ function Test-SegoeUIVariable {
 }
 
 function Get-SegoeUIVariable {
-    [CmdletBinding(DefaultParameterSetName = 'fontPath')]
-    [OutputType([string], ParameterSetName = 'fontPath')]
+    [CmdletBinding()]
+    [OutputType([string])]
     param ()
     begin {
         $fontName = 'SegoeUI-VF'
         $fontArchivePath = "$env:TEMP\$fontName.zip"
         $fontFolderPath = "$env:TEMP\$fontName"
-        $fontPath = "$fontFolderPath\$fontName.ttf"
     }
     process {
         Write-Verbose -Message 'Downloading Segoe UI Variable...' -Verbose
@@ -444,7 +442,7 @@ function Get-SegoeUIVariable {
         Expand-Archive @Parameters
     }
     end {
-        $fontPath
+        "$fontFolderPath\$fontName.ttf"
         
         $Parameters = @{
             Path    = "$fontFolderPath\*"
