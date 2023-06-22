@@ -61,7 +61,7 @@ if [[ -e "$extensionPath" || -h "$extensionPath" ]]; then
 fi
 
 # Download latest master
-zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
+zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/legacy.zip"
 zipSavePath=`mktemp`
 zipExtractPath=`mktemp -d`
 echo "Downloading bloom-spicetify latest master..."
@@ -70,7 +70,7 @@ curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
 # Extract theme from .zip file
 echo "Extracting..."
 unzip -oq "$zipSavePath" -d "$zipExtractPath" < /dev/tty
-mv "$zipExtractPath/spicetify-bloom-main/src/" "$themePath"
+mv "$zipExtractPath/spicetify-bloom-legacy/src/" "$themePath"
 
 # Delete .zip file
 echo "Deleting zip file..."

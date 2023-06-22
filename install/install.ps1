@@ -41,16 +41,16 @@ spicetify config extensions bloom.js- -q
 Remove-Item -Path "$spicePath\Extensions\bloom.js" -Force -ErrorAction SilentlyContinue
 
 # Download latest master
-$zipUri = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
-$zipSavePath = "$themePath\bloom-main.zip"
+$zipUri = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/legacy.zip"
+$zipSavePath = "$themePath\bloom-legacy.zip"
 Write-Host -Object "Downloading spicetify-bloom latest master..."
 Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
 
 # Extract theme from .zip file
 Write-Host -Object "Extracting..."
 Expand-Archive -Path $zipSavePath -DestinationPath $themePath -Force
-Move-Item -Path "$themePath\spicetify-bloom-main\src\*" -Destination $themePath
-Remove-Item -Path "$themePath\spicetify-bloom-main" -Recurse -Force
+Move-Item -Path "$themePath\spicetify-bloom-legacy\src\*" -Destination $themePath
+Remove-Item -Path "$themePath\spicetify-bloom-legacy" -Recurse -Force
 
 # Delete .zip file
 Write-Host -Object "Deleting zip file..."

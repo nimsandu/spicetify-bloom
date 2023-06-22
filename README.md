@@ -9,7 +9,7 @@
 
 <br>
 
-![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/bloom_cover.jpg)
+![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/legacy/images/bloom_cover.jpg)
 
 <br>
 
@@ -19,19 +19,19 @@
 
 #### **Dark**
 
-![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/dark.png)
+![dark-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/legacy/images/dark.png)
 
 <br>
 
 #### **Light**
 
-![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/light.png)
+![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/legacy/images/light.png)
 
 <br>
 
 #### **Dark Mono**
 
-![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/darkmono.png)
+![light-1](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/legacy/images/darkmono.png)
 By [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 <br>
@@ -58,8 +58,8 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 
 ## Dependencies
 
-- Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
-- Latest version of [Spotify](https://www.spotify.com/download).
+- [Spicetify 2.20.0](https://github.com/spicetify/spicetify-cli/releases/tag/v2.20.0).
+- Spotify 1.2.13 [(Windows installer)](https://upgrade.scdn.co/upgrade/client/win32-x86/spotify_installer-1.2.13.661.ga588f749-4064.exe).
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows Vista and newer.
   Segoe UI versions older than 5.37 (older than Windows 8.0) are not officially supported but may work.
 
@@ -68,13 +68,13 @@ By [@SunsetTechuila](https://github.com/SunsetTechuila)
 ### Windows (Powershell)
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/install.ps1" | Invoke-Expression
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/legacy/install/install.ps1" | Invoke-Expression
 ```
 
 ### Linux/macOS (Bash)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/legacy/install/install.sh | bash
 ```
 
 <details>
@@ -87,19 +87,13 @@ curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/insta
 
 ...or if you don't want to use shell commands, you can download the installation scripts within the repository.
 
-### Spicetify Marketplace
-
-You can also install the theme from the Spicetify Marketplace.
-Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
-[installation instructions](https://github.com/spicetify/spicetify-marketplace/wiki/Installation). Look for `Bloom` theme and install it.
-
 ## Manual Installation
 
 Use this guide to install if you're having trouble using the shell commands/installation scripts.
 
 ### Step 1
 
-- Download the theme [ZIP file](https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/main.zip) via the GitHub repository page.
+- Download the theme [ZIP file](https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/legacy.zip) via the GitHub repository page.
 
 ### Step 2
 
