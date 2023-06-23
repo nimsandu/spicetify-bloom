@@ -82,18 +82,6 @@ spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 echo "+ Configured Bloom theme"
 
-# Patch the xpui.js for sidebar fixes
-# credit: https://github.com/JulienMaille/dribbblish-dynamic-theme/blob/main/install.sh
-PATCH='[Patch]
-xpui.js_find_8008 = ,(\\w+=)32,
-xpui.js_repl_8008 = ,\${1}58,'
-if cat "$spicePath/config-xpui.ini" | grep -o '\[Patch\]'; then
-    perl -i -0777 -pe "s/\[Patch\].*?($|(\r*\n){2})/$PATCH\n\n/s" "$spicePath/config-xpui.ini"
-else
-    echo -e "\n$PATCH" >> "$spicePath/config-xpui.ini"
-fi
-echo "+ Patched xpui.js for Sidebar fixes"
-
 # We need to do function approach instead apparently.
 function recover_from_failure() {
     echo "\? Spicetify failed! Attempt to recover!"
