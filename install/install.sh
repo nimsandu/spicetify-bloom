@@ -88,19 +88,6 @@ spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 echo "+ Configured Bloom theme"
 
-# We need to do function approach instead apparently.
-function recover_from_failure() {
-    echo "\? Spicetify failed! Attempt to recover!"
-    spicetify backup apply
-    if [ $? != 0 ]; then
-        echo "\! Still failing! See output for more info!"
-        # b/126
-        exit 2
-    fi
-}
-
-spicetify apply
-if [ $? != 0 ]; then
-    recover_from_failure
-fi
+# Just straight up backup-apply, many users don't pre-configure their spicetify
+spicetify backup apply
 echo "+ Applied Theme"
