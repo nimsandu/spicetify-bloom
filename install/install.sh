@@ -53,6 +53,12 @@ if [ -d "$themePath" ]; then
     rm -rf "$themePath"
 fi
 
+# Do we have dnf and spotify-client installed? (Fedora check)
+# Also check if the spotify_path configuration is done or not
+if [ ! -z "$(which dnf)" ] && [ ! -z "$(dnf list | grep spotify-client | grep command)" ] && [ -z "$(grep spotify_path ~/.config/spicetify/config-xpui.ini | sed 's/spotify_path.*= //')" ]; then
+    sed -i '/spotify_path/ s/$/\/usr\/share\/spotify\-client/' ~/.config/spicetify/config-xpui.ini
+fi
+
 # Remove old extension
 spicetify config extensions bloom.js- -q
 extensionPath="$spicePath/Extensions/bloom.js"
