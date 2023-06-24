@@ -3,7 +3,7 @@
   
   [Spicetify](https://github.com/spicetify/spicetify-cli) theme inspired by Microsoft's [Fluent Design System](https://www.microsoft.com/design/fluent).  
   
-  **Consider starring us, and suggest stuff by submitting a comment!**
+  **Consider starring us and suggest stuff by submitting a comment!**
 </div>
 
 ![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/main-cover.png)
@@ -68,7 +68,8 @@ Please report about that via the repository's issues page.
 
 ### Theme doesn't work correctly with Spotify version less than 1.2.14
 
-Use the [legacy branch](https://github.com/nimsandu/spicetify-bloom/tree/legacy) (unsupported).
+In Spotify version 1.2.14, not only has the classic theme been cut, but also the indication that a new theme is active. Since it is now problematic to identify the active theme, only Library X support remains.
+If you want to keep using the classic theme with Bloom - use the [legacy branch](https://github.com/nimsandu/spicetify-bloom/tree/legacy) (unsupported). Otherwise - update your Spotify.
 
 ## Credits
 
