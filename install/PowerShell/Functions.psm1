@@ -207,7 +207,7 @@ function Get-SpicetifyFoldersPaths {
     }
     process {
         @{
-            configPath = $(spicetify path -c)
+            configPath = (spicetify path -c)
             bloomPath  = "$(spicetify path userdata)\Themes\Bloom"
         }
     }

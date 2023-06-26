@@ -43,7 +43,7 @@ process {
   
   switch ($Action) {
     'Uninstall' {
-      if (-not ($isSpicetifyInstalled)) {
+      if (-not $isSpicetifyInstalled) {
         Write-Error -Message 'Failed to detect Spicetify installation!'
       }
       
@@ -67,16 +67,16 @@ process {
       Uninstall-Bloom @Parameters
     }
     'Update' {
-      if (-not ($isSpicetifyInstalled)) {
+      if (-not $isSpicetifyInstalled) {
         Write-Error -Message 'Failed to detect Spicetify installation!'
       }
       
       $spicetifyFolders = Get-SpicetifyFoldersPaths
       $Parameters = @{
-        Path        = $(Get-Bloom)
+        Path        = (Get-Bloom)
         Destination = $spicetifyFolders.bloomPath
         Config      = $spicetifyFolders.configPath
-        Type        = $(Get-ThemeType -Path $spicetifyFolders.bloomPath)
+        Type        = (Get-ThemeType -Path $spicetifyFolders.bloomPath)
       }
       Install-Bloom @Parameters
     }
@@ -93,7 +93,7 @@ process {
         Install-Spotify
       }
       
-      if (-not ($isSpicetifyInstalled)) {
+      if (-not $isSpicetifyInstalled) {
         Write-Host -Object 'Spicetify not found.' -ForegroundColor Yellow
         
         $Host.UI.RawUI.Flushinputbuffer()
@@ -117,16 +117,16 @@ process {
           0
         )
         if ($choice -eq 0) {
-          Add-SegoeUIVariable -Path $(Get-SegoeUIVariable)
+          Add-SegoeUIVariable -Path (Get-SegoeUIVariable)
         }
       }
       
       $spicetifyFolders = Get-SpicetifyFoldersPaths
       $Parameters = @{
-        Path        = $(Get-Bloom)
+        Path        = (Get-Bloom)
         Destination = $spicetifyFolders.bloomPath
         Config      = $spicetifyFolders.configPath
-        ColorScheme = $(Get-WindowsAppsTheme)
+        ColorScheme = (Get-WindowsAppsTheme)
       }
       
       $Host.UI.RawUI.Flushinputbuffer()
