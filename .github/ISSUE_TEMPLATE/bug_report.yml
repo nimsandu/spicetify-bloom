@@ -46,7 +46,7 @@ body:
         - Color scheme:
         - Extensions:
         - Custom apps:
-        - Bloom installation method: (Spicetify Marketplace/PowerShell script/Shell script/Manual)
+        - Bloom installation method: (Spicetify Marketplace/PowerShell script/Bash script/Manual)
       placeholder: |
         - Spotify version: for Windows 1.2.11.916.geb595a67
         - Installed from: Spotify site
