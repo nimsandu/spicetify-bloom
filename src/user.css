@@ -390,7 +390,7 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .main-contextMenu-menu,
 .main-contextMenu-tippy,
-.aCtCKL9BxAoHeVZS0uRs {
+.main-devicePicker-tooltip {
   background-color: rgba(var(--spice-rgb-card), 0.8) !important;
 }
 
