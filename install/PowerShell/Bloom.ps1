@@ -146,9 +146,9 @@ process {
   }
 }
 end {
+  Write-ByeMessage
   Remove-Module -Name $moduleName -Force
   Remove-Item -Path $modulePath -Force
   [Console]::Title = $previousConsoleTitle
-  Write-ByeMessage
   Start-Sleep -Seconds 5
 }
