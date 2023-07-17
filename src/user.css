@@ -1300,6 +1300,12 @@ button.switch {
   background-color: var(--spice-card) !important;
 }
 
+/* video podcasts */
+
+.VideoPlayer__container video {
+  padding-bottom: 105px;
+}
+
 /* top bar */
 
 .main-topBar-button,
