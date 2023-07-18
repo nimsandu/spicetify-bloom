@@ -80,7 +80,7 @@ mv "$zipExtractPath/spicetify-bloom-main/src/" "$themePath"
 
 # Delete .zip file
 echo "Deleting zip file..."
-rm "$zipSavePath" -rf "$zipExtractPath"
+rm -rf "$zipSavePath" "$zipExtractPath"
 
 # Apply the theme with spicetify config calls
 spicetify config current_theme bloom
