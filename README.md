@@ -42,7 +42,7 @@ by [yumegenso](https://github.com/yumegenso)
 - Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
 - Latest version of [Spotify](https://www.spotify.com/download).
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows.
-  - Segoe UI Variable download link for Linux/macOS/Windows 8-10 users: [click me](https://aka.ms/SegoeUIVariable)
+  - Segoe UI Variable download link for Linux/macOS/Windows 10 users: [click me](https://aka.ms/SegoeUIVariable)
 
 ## Installation
 
