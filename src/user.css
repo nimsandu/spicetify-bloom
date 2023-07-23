@@ -275,7 +275,7 @@ html {
 .Root__top-bar {
   position: absolute !important;
   width: 100vw !important;
-  grid-area: none;
+  grid-area: none !important;
   z-index: 4 !important;
   background-color: rgba(var(--spice-rgb-sidebar), 0.85);
   backdrop-filter: blur(50px) saturate(2.5);
