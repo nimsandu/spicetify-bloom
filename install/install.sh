@@ -63,7 +63,7 @@ fi
 spicetify config extensions bloom.js- -q
 extensionPath="$spicePath/Extensions/bloom.js"
 if [[ -e "$extensionPath" || -h "$extensionPath" ]]; then
-  rm "$spicePath/Extensions/bloom.js"
+    rm "$spicePath/Extensions/bloom.js"
 fi
 
 # Download latest master
@@ -76,7 +76,7 @@ curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
 # Extract theme from .zip file
 echo "Extracting..."
 unzip -oq "$zipSavePath" -d "$zipExtractPath" < /dev/tty
-mv "$zipExtractPath/spicetify-bloom-main/src/" "$themePath"
+mv "$zipExtractPath/spicetify-bloom-main/dist/" "$themePath"
 
 # Delete .zip file
 echo "Deleting zip file..."

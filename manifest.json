@@ -1,12 +1,13 @@
 {
     "name": "Bloom",
-    "description": "Spicetify theme inspired by Microsoft's Fluent Design and Windows 11 UI",
-    "preview": "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/main-cover.png",
-    "readme": "README-marketplace.md",
+    "description": "Spicetify theme inspired by Microsoft's Fluent Design",
+    "preview": "images/main-cover.png",
+    "readme": "readme-marketplace.md",
     "usercss": "remote/user.css",
     "schemes": "src/color.ini",
-    "include": ["https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/remote/theme.js"],
-    "branch": "main",
+    "include": [
+        "remote/theme.js"
+    ],
     "authors": [
         {
             "name": "Nimsandu Kottage",

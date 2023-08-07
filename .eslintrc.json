@@ -4,13 +4,20 @@
     "commonjs": true,
     "es2021": true
   },
-  "extends": ["eslint:recommended", "airbnb-base", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier"
+  ],
   "parserOptions": {
-    "ecmaVersion": "latest"
+    "ecmaVersion": "latest",
+    "project": ["tsconfig.json"]
   },
-  "globals": {
-    "Spicetify": "readonly",
-    "FastAverageColor": "readonly",
-    "gsap": "readonly"
-  }
+  "plugins": [
+    "react"
+  ]
 }
