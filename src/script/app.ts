@@ -6,21 +6,6 @@
 
 
 
-  function addCategoryCardBackdrop() {
-    waitForElements(['.x-categoryCard-image'], () => {
-      const cards = document.getElementsByClassName('x-categoryCard-CategoryCard');
-      const cardImages = document.getElementsByClassName('x-categoryCard-image');
-      for (let i = 0; i < cards.length; i += 1) {
-        if (cardImages[i].previousSibling?.classList.value !== 'x-categoryCard-backdrop') {
-          const cardBackdrop = document.createElement('div');
-          cardBackdrop.classList.add('x-categoryCard-backdrop');
-          cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
-          cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
-          cardImages[i].insertAdjacentElement('beforebegin', cardBackdrop);
-        }
-      }
-    });
-  }
 
   function fillCanvas(canvas) {
     const context = canvas.getContext('2d');
@@ -34,11 +19,7 @@
     context.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-  function getTextLineDirection(text) {
-    // https://stackoverflow.com/questions/13731909/how-to-detect-that-text-typed-in-text-area-is-rtl
-    const rtlRegExp = /[\u0591-\u07FF]/;
-    return rtlRegExp.test(text[0]) ? 'rtl' : 'ltr';
-  }
+
 
   // fixes container shifting & active line clipping
   function updateLyricsPageProperties() {
@@ -335,8 +316,6 @@
     document.documentElement.style.setProperty('--filter-brightness', 0);
   }
 
-  updatePlaylistsImages();
-
   waitForElements(['.main-yourLibraryX-navLink'], () => {
     const navLinks = document.getElementsByClassName('main-yourLibraryX-navLink');
     for (let i = 0; i < navLinks.length; i += 1) {
@@ -423,9 +402,3 @@
 
   setNoiseOpacity();
 
-  waitForElements(['.marketplaceScheme'], ([marketplaceScheme]) => {
-    const schemeObserver = new MutationObserver(setNoiseOpacity);
-    const schemeObserverConfig = { attributes: true };
-    schemeObserver.observe(marketplaceScheme, schemeObserverConfig);
-  });
-})();

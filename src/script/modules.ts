@@ -1,5 +1,11 @@
-import { waitForAPIs, cleanLocalizationString, injectStyle, waitForElements } from "./utils";
-import { fluentIconsURL } from "./constants";
+import {
+  waitForAPIs,
+  cleanLocalizationString,
+  injectStyle,
+  waitForElements,
+  setNoiseOpacity,
+} from "./utils";
+import { fluentIconsURL, lightNoiseOpacityValue } from "./constants";
 
 export function addButtonsStyles(): void {
   waitForAPIs(["Spicetify.Locale"], () => {
@@ -85,7 +91,6 @@ export function addButtonsStyles(): void {
   });
 }
 
-// fix backdrop-filter for some flyouts and menus
 // see https://github.com/nimsandu/spicetify-bloom/issues/220#issuecomment-1555071865
 export function moveTippies(mutationsList: MutationRecord[]): void {
   mutationsList.forEach((mutation) => {
@@ -106,12 +111,6 @@ export function moveTippies(mutationsList: MutationRecord[]): void {
   });
   // trigger element postition correction
   window.dispatchEvent(new Event("resize"));
-}
-
-export function setNoiseOpacity(): void {
-  if (Spicetify.Config.color_scheme.includes("light")) {
-    document.documentElement.style.setProperty("--noise-opacity", "3.5%");
-  }
 }
 
 export function centerTopbar(): void {
@@ -137,5 +136,37 @@ export function centerTopbar(): void {
         topBarContentWrapper.style.marginLeft = `${diff}px`;
       }
     }
+  });
+}
+
+export function addBackdropToCategoryCards(): void {
+  waitForElements([".x-categoryCard-image"], () => {
+    const cards = document.getElementsByClassName("x-categoryCard-CategoryCard");
+    const cardImages = document.getElementsByClassName("x-categoryCard-image");
+
+    for (let i = 0, max = cards.length; i < max; i += 1) {
+      if (cards[i] instanceof HTMLElement && cardImages[i] instanceof HTMLImageElement) {
+        if (cardImages[i].previousElementSibling?.className !== "x-categoryCard-backdrop") {
+          const { backgroundColor } = (cards[i] as HTMLElement).style;
+          const { src } = cardImages[i] as HTMLImageElement;
+
+          const cardBackdrop = document.createElement("div");
+          cardBackdrop.classList.add("x-categoryCard-backdrop");
+          cardBackdrop.style.backgroundImage = `url(${src})`;
+          cardBackdrop.style.backgroundColor = `${backgroundColor}`;
+
+          cardImages[i].insertAdjacentElement("beforebegin", cardBackdrop);
+        }
+      }
+    }
+  });
+}
+
+export function watchForMarketplaceScheme(): void {
+  waitForElements([".marketplaceScheme"], ([marketplaceScheme]) => {
+    const schemeObserver = new MutationObserver(() => {
+      if (Spicetify.Config.color_scheme.includes("light")) setNoiseOpacity(lightNoiseOpacityValue);
+    });
+    schemeObserver.observe(marketplaceScheme, { attributes: true });
   });
 }

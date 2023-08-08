@@ -1,3 +1,5 @@
+import { noiseOpacityVariable } from "./constants";
+
 export function waitForElements(
   elements: string[],
   // eslint-disable-next-line no-empty-pattern
@@ -38,4 +40,8 @@ export function injectStyle(styleCSS: string): void {
   const styleElement = document.createElement("style");
   styleElement.innerHTML = styleCSS;
   document.head.appendChild(styleElement);
+}
+
+export function setNoiseOpacity(value: string): void {
+  document.documentElement.style.setProperty(noiseOpacityVariable, value);
 }
