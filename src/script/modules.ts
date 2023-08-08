@@ -3,9 +3,10 @@ import {
   cleanLocalizationString,
   injectStyle,
   waitForElements,
-  setNoiseOpacity,
+  calculateLyricsMaxWidth,
+  getTextLineDirection,
 } from "./utils";
-import { fluentIconsURL, lightNoiseOpacityValue } from "./constants";
+import { fluentIconsURL, lightNoiseOpacityValue, noiseOpacityVariable } from "./constants";
 
 export function addButtonsStyles(): void {
   waitForAPIs(["Spicetify.Locale"], () => {
@@ -162,6 +163,10 @@ export function addBackdropToCategoryCards(): void {
   });
 }
 
+export function setNoiseOpacity(value: string): void {
+  document.documentElement.style.setProperty(noiseOpacityVariable, value);
+}
+
 export function watchForMarketplaceScheme(): void {
   waitForElements([".marketplaceScheme"], ([marketplaceScheme]) => {
     const schemeObserver = new MutationObserver(() => {
@@ -169,4 +174,27 @@ export function watchForMarketplaceScheme(): void {
     });
     schemeObserver.observe(marketplaceScheme, { attributes: true });
   });
+}
+
+export function setLyricsLinesProperties(
+  lyricsLines: NodeListOf<HTMLElement>,
+  lyricsWrapper: HTMLElement,
+): void {
+  const maxWidth = calculateLyricsMaxWidth(lyricsWrapper);
+  for (let i = 0, max = lyricsLines.length; i < max; i += 1) {
+    const lyricsLine = lyricsLines[i];
+    lyricsLine.style.maxWidth = `${maxWidth}px`;
+    lyricsLine.style.transformOrigin =
+      getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
+  }
+}
+
+export function fixLyricsWrapperMaxWidth(lyricsWrapper: HTMLElement): void {
+  const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
+  /* eslint-disable no-param-reassign */
+  lyricsWrapper.style.maxWidth = "";
+  lyricsWrapper.style.width = "";
+  lyricsWrapper.style.maxWidth = `${lyricsWrapperWidth}px`;
+  lyricsWrapper.style.width = `${lyricsWrapperWidth}px`;
+  /* eslint-enable no-param-reassign */
 }

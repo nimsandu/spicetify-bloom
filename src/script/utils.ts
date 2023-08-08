@@ -1,5 +1,3 @@
-import { noiseOpacityVariable } from "./constants";
-
 export function waitForElements(
   elements: string[],
   // eslint-disable-next-line no-empty-pattern
@@ -27,21 +25,25 @@ export function waitForAPIs(apis: string[], func: () => void, attempts = 50): vo
   func();
 }
 
-export function getTextLineDirection(line: string): "rtl" | "ltr" {
-  const rtlRegExp = /[\u0591-\u07FF]/;
-  return rtlRegExp.test(line[0]) ? "rtl" : "ltr";
-}
-
-export function cleanLocalizationString(string: string) {
-  return string.replace(/[{0}{1}«»”“]/g, "").trim();
-}
-
 export function injectStyle(styleCSS: string): void {
   const styleElement = document.createElement("style");
   styleElement.innerHTML = styleCSS;
   document.head.appendChild(styleElement);
 }
 
-export function setNoiseOpacity(value: string): void {
-  document.documentElement.style.setProperty(noiseOpacityVariable, value);
+export function cleanLocalizationString(input: string): string {
+  return input.replace(/[{0}{1}«»”“]/g, "").trim();
+}
+
+export function getTextLineDirection(line: string): "rtl" | "ltr" {
+  const rtlRegExp = /[\u0591-\u07FF]/;
+  const firstCharacter = line[0];
+  return rtlRegExp.test(firstCharacter) ? "rtl" : "ltr";
+}
+
+export function calculateLyricsMaxWidth(lyricsWrapper: HTMLElement): number {
+  const lyricsContainer = lyricsWrapper.parentElement as HTMLElement;
+  const marginLeft = parseInt(window.getComputedStyle(lyricsWrapper).marginLeft, 10);
+  const totalOffset = lyricsWrapper.offsetLeft + marginLeft;
+  return Math.round(0.95 * (lyricsContainer.clientWidth - totalOffset));
 }
