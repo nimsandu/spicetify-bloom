@@ -1,12 +1,4 @@
-(async function bloom() {
-
-
-
-
-
-
-
-
+export default async function bloom() {
   function fillCanvas(canvas) {
     const context = canvas.getContext('2d');
     const rootStyles = getComputedStyle(document.documentElement);
@@ -19,45 +11,8 @@
     context.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-
-
   // fixes container shifting & active line clipping
   function updateLyricsPageProperties() {
-
-
-    function revealLyricsLines() {
-      const lyricsLines = document.getElementsByClassName('lyrics-lyricsContent-lyric');
-      let positionIndex = 0;
-
-      for (let i = 0, max = lyricsLines.length; i < max; i += 1) {
-        const { style } = lyricsLines[i];
-
-        // stop if the lyrics has been already revealed
-        if (style.animationName === 'reveal') {
-          return;
-        }
-
-        if (lyricsLines[i].innerHTML !== '') {
-          positionIndex += 1;
-        }
-
-        let animationDelay = 50 + positionIndex * 10;
-        if (animationDelay > 1000) {
-          animationDelay = 1000;
-        }
-
-        let animationDuration = 200 + positionIndex * 100;
-        if (animationDuration > 1000) {
-          animationDuration = 1000;
-        }
-
-        style.animationDelay = `${animationDelay}ms`;
-        style.animationDuration = `${animationDuration}ms`;
-        style.animationTimingFunction = 'ease';
-        style.animationName = 'reveal';
-      }
-    }
-
     function lyricsCallback(mutationsList) {
       mutationsList.forEach((mutation) => {
         mutation.addedNodes.forEach((addedNode) => {
@@ -353,4 +308,4 @@
   bodyObserver.observe(document.body, bodyObserverConfig);
 
   setNoiseOpacity();
-
+}

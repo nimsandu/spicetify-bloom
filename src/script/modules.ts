@@ -8,6 +8,10 @@ import {
 } from "./utils";
 import { fluentIconsURL, lightNoiseOpacityValue, noiseOpacityVariable } from "./constants";
 
+function setNoiseOpacity(value: string): void {
+  document.documentElement.style.setProperty(noiseOpacityVariable, value);
+}
+
 export function addButtonsStyles(): void {
   waitForAPIs(["Spicetify.Locale"], () => {
     const { Locale } = Spicetify;
@@ -97,12 +101,11 @@ export function moveTippies(mutationsList: MutationRecord[]): void {
   mutationsList.forEach((mutation) => {
     mutation.addedNodes?.forEach((addedNode) => {
       if (addedNode instanceof HTMLElement && addedNode.id?.includes("tippy")) {
-        const { parentNode } = addedNode;
+        const { parentElement } = addedNode;
         if (
-          parentNode instanceof HTMLElement &&
-          parentNode !== document.body &&
-          !parentNode.classList?.contains("lyrics-tooltip-wrapper") &&
-          !parentNode.classList?.contains("main-contextMenu-menuItem")
+          parentElement !== document.body &&
+          !parentElement?.classList?.contains("lyrics-tooltip-wrapper") &&
+          !parentElement?.classList?.contains("main-contextMenu-menuItem")
         ) {
           addedNode.classList.add("encore-dark-theme");
           document.body.appendChild(addedNode);
@@ -121,21 +124,12 @@ export function centerTopbar(): void {
       const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
 
       const max = window.innerWidth / 2;
-      if (left <= 0 || right <= 0 || left > max || right > max) {
-        return;
-      }
+      if (left <= 0 || right <= 0 || left > max || right > max) return;
 
-      let diff;
-      if (topBarContentWrapper.style.marginLeft !== "") {
-        diff = right - left + parseInt(topBarContentWrapper.style.marginLeft, 10);
-      } else {
-        diff = right - left;
-      }
-
-      if (diff !== 0) {
-        // eslint-disable-next-line no-param-reassign
-        topBarContentWrapper.style.marginLeft = `${diff}px`;
-      }
+      const { style } = topBarContentWrapper;
+      const marginLeft = parseInt(style.marginLeft, 10);
+      const diff = right - left + (marginLeft || 0);
+      if (diff !== 0) style.marginLeft = `${diff}px`;
     }
   });
 }
@@ -146,25 +140,20 @@ export function addBackdropToCategoryCards(): void {
     const cardImages = document.getElementsByClassName("x-categoryCard-image");
 
     for (let i = 0, max = cards.length; i < max; i += 1) {
-      if (cards[i] instanceof HTMLElement && cardImages[i] instanceof HTMLImageElement) {
-        if (cardImages[i].previousElementSibling?.className !== "x-categoryCard-backdrop") {
-          const { backgroundColor } = (cards[i] as HTMLElement).style;
-          const { src } = cardImages[i] as HTMLImageElement;
+      const card = cards[i];
+      const cardImage = cardImages[i];
 
+      if (card instanceof HTMLElement && cardImage instanceof HTMLImageElement) {
+        if (cardImage.previousElementSibling?.className !== "x-categoryCard-backdrop") {
           const cardBackdrop = document.createElement("div");
           cardBackdrop.classList.add("x-categoryCard-backdrop");
-          cardBackdrop.style.backgroundImage = `url(${src})`;
-          cardBackdrop.style.backgroundColor = `${backgroundColor}`;
-
-          cardImages[i].insertAdjacentElement("beforebegin", cardBackdrop);
+          cardBackdrop.style.backgroundImage = `url(${cardImage.src})`;
+          cardBackdrop.style.backgroundColor = `${card.style.backgroundColor}`;
+          cardImage.insertAdjacentElement("beforebegin", cardBackdrop);
         }
       }
     }
   });
-}
-
-export function setNoiseOpacity(value: string): void {
-  document.documentElement.style.setProperty(noiseOpacityVariable, value);
 }
 
 export function watchForMarketplaceScheme(): void {
@@ -176,25 +165,38 @@ export function watchForMarketplaceScheme(): void {
   });
 }
 
-export function setLyricsLinesProperties(
-  lyricsLines: NodeListOf<HTMLElement>,
-  lyricsWrapper: HTMLElement,
-): void {
+export function setLyricsLinesProperties(lyricsWrapper: HTMLElement): void {
   const maxWidth = calculateLyricsMaxWidth(lyricsWrapper);
-  for (let i = 0, max = lyricsLines.length; i < max; i += 1) {
-    const lyricsLine = lyricsLines[i];
-    lyricsLine.style.maxWidth = `${maxWidth}px`;
-    lyricsLine.style.transformOrigin =
-      getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
-  }
+  const lyricsLines = Array.from(document.getElementsByClassName("lyrics-lyricsContent-lyric"));
+  let positionIndex = 0;
+
+  lyricsLines.forEach((lyricsLine) => {
+    if (lyricsLine instanceof HTMLElement) {
+      const { style } = lyricsLine;
+
+      style.maxWidth = `${maxWidth}px`;
+      style.transformOrigin =
+        getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
+
+      if (lyricsLine.innerText) positionIndex += 1;
+      let animationDelay = 50 + positionIndex * 10;
+      if (animationDelay > 1000) animationDelay = 1000;
+      let animationDuration = 200 + positionIndex * 100;
+      if (animationDuration > 1000) animationDuration = 1000;
+
+      style.animationDelay = `${animationDelay}ms`;
+      style.animationDuration = `${animationDuration}ms`;
+      style.animationTimingFunction = "ease";
+      style.animationName = "reveal";
+    }
+  });
 }
 
 export function fixLyricsWrapperMaxWidth(lyricsWrapper: HTMLElement): void {
+  const { style } = lyricsWrapper;
   const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
-  /* eslint-disable no-param-reassign */
-  lyricsWrapper.style.maxWidth = "";
-  lyricsWrapper.style.width = "";
-  lyricsWrapper.style.maxWidth = `${lyricsWrapperWidth}px`;
-  lyricsWrapper.style.width = `${lyricsWrapperWidth}px`;
-  /* eslint-enable no-param-reassign */
+  style.maxWidth = "";
+  style.width = "";
+  style.maxWidth = `${lyricsWrapperWidth}px`;
+  style.width = `${lyricsWrapperWidth}px`;
 }
