@@ -136,23 +136,21 @@ export function centerTopbar(): void {
 
 export function addBackdropToCategoryCards(): void {
   waitForElements([".x-categoryCard-image"], () => {
-    const cards = document.getElementsByClassName("x-categoryCard-CategoryCard");
-    const cardImages = document.getElementsByClassName("x-categoryCard-image");
-
-    for (let i = 0, max = cards.length; i < max; i += 1) {
-      const card = cards[i];
-      const cardImage = cardImages[i];
-
-      if (card instanceof HTMLElement && cardImage instanceof HTMLImageElement) {
-        if (cardImage.previousElementSibling?.className !== "x-categoryCard-backdrop") {
-          const cardBackdrop = document.createElement("div");
-          cardBackdrop.classList.add("x-categoryCard-backdrop");
-          cardBackdrop.style.backgroundImage = `url(${cardImage.src})`;
-          cardBackdrop.style.backgroundColor = `${card.style.backgroundColor}`;
-          cardImage.insertAdjacentElement("beforebegin", cardBackdrop);
-        }
+    const cards = Array.from(document.getElementsByClassName("x-categoryCard-CategoryCard"));
+    cards.forEach((card) => {
+      const cardImage = card.getElementsByClassName("x-categoryCard-image")[0];
+      if (
+        card instanceof HTMLElement &&
+        cardImage instanceof HTMLImageElement &&
+        cardImage.previousElementSibling?.className !== "x-categoryCard-backdrop"
+      ) {
+        const cardBackdrop = document.createElement("div");
+        cardBackdrop.classList.add("x-categoryCard-backdrop");
+        cardBackdrop.style.backgroundImage = `url(${cardImage.src})`;
+        cardBackdrop.style.backgroundColor = `${card.style.backgroundColor}`;
+        cardImage.insertAdjacentElement("beforebegin", cardBackdrop);
       }
-    }
+    });
   });
 }
 
