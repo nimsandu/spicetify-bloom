@@ -30,9 +30,14 @@
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "onchange": "^7.1.0",
+    "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "sass": "^1.64.2",
     "spicetify-creator": "^1.0.14",
+    "stylelint": "^15.10.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "stylelint-order": "^6.0.3",
     "typescript": "^5.1.6"
   },
   "dependencies": {

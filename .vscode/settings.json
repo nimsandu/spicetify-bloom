@@ -1,6 +1,7 @@
 {
-    "css.lint.vendorPrefix": "ignore",
-    "scss.lint.vendorPrefix": "ignore",
+    "css.validate": false,
+    "scss.validate": false,
+    "stylelint.validate": ["css", "scss"],
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
