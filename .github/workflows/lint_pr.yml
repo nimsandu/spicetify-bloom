@@ -1,0 +1,38 @@
+name: Lint Pull Request
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+    branches:
+      - main
+
+jobs:
+  lint-pr-title:
+    name: Lint Pull Request Title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint Pull Request Title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          disallowScopes: |
+            [A-Z]+
+          subjectPattern: ^(?![A-Z]).+$
+  lint-code:
+    name: Lint Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm i
+      - name: Lint
+        run: npm run lint
