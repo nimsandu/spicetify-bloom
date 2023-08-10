@@ -1,0 +1,39 @@
+name: Distribute Theme
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  distribute-theme:
+    name: Distribute Theme
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm i
+      - name: Lint Code
+        run: npm run lint
+      - name: Build Theme
+        run: |
+          npm run build-theme
+      - name: Copy Assets
+        run: |
+          cp -r src/assets dist
+      - name: Deploy Changes
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: dist
+          FOLDER: dist
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SKIP_EMPTY_COMMITS: true
+          MESSAGE: "chore: update"

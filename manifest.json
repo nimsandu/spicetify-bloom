@@ -1,11 +1,11 @@
 {
   "name": "Bloom",
-  "description": "Spicetify theme inspired by Microsoft's Fluent Design",
+  "description": "Spicetify theme inspired by Microsoft Fluent Design",
   "preview": "images/main-cover.png",
   "readme": "readme_marketplace.md",
-  "usercss": "remote/user.css",
-  "schemes": "src/color.ini",
-  "include": ["remote/theme.js"],
+  "usercss": "https://nimsandu.github.io/spicetify-bloom/user.css",
+  "schemes": "https://nimsandu.github.io/spicetify-bloom/color.ini",
+  "include": ["https://nimsandu.github.io/spicetify-bloom/theme.js"],
   "authors": [
     {
       "name": "Nimsandu Kottage",
