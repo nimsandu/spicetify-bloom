@@ -1,14 +1,16 @@
 export function waitForElements(
-  elements: string[],
+  elementSelectors: string[],
   // eslint-disable-next-line no-empty-pattern
   func: ([]: Element[]) => void,
   attempts = 50,
 ): void {
-  const queries = elements.map((element) => document.querySelector(element));
-  if (queries.every((a) => a)) {
+  const queries = elementSelectors.map((elementSelector) =>
+    document.querySelector(elementSelector),
+  );
+  if (queries.every((element) => element)) {
     func(queries as Element[]);
   } else if (attempts > 0) {
-    setTimeout(waitForElements, 200, elements, func, attempts - 1);
+    setTimeout(waitForElements, 200, elementSelectors, func, attempts - 1);
   }
 }
 

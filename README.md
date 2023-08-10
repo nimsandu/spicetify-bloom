@@ -89,7 +89,7 @@ Use this guide to install if you're having trouble using the shell commands/inst
     spicetify config current_theme bloom color_scheme dark
     spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
     spicetify apply
-    ```
+   ```
 
 ## Customization
 
@@ -179,8 +179,8 @@ If you want to keep using the classic UI with Bloom - use the [legacy branch](ht
 
 ## Credits
 
-- Based on [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
-- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
+- Based on [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)
+- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation
 - [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
 
 ### Special Thanks

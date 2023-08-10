@@ -73,8 +73,8 @@ If you want to keep using the classic UI with Bloom - use the [legacy branch](ht
 
 ## Credits
 
-- Based on [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)  
-- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation  
+- Based on [Fluent](https://github.com/williamckha/spicetify-fluent) by [williamckha](https://github.com/williamckha)
+- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft Corporation
 - [Phosphor Icons](https://github.com/phosphor-icons/phosphor-icons) by Phosphor Icons
 
 ## Special Thanks

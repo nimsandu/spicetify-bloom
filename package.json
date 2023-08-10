@@ -39,8 +39,8 @@
     "build-theme-local": "npm run build-script-local && npm run build-styles-local && npm run copy-colors",
     "watch-theme": "concurrently \"npm run watch-script\" \"npm run watch-styles\" \"npm run watch-colors\"",
     "update-types": "curl -s -o src/script/types/spicetify.d.ts https://raw.githubusercontent.com/spicetify/spicetify-cli/master/globals.d.ts",
-    "lint": "prettier . --check && eslint src/script && stylelint src/styles",
-    "lint-fix": "prettier . --write && eslint --fix src/script && stylelint src/styles --fix"
+    "lint": "prettier . --check && eslint . && stylelint \"**/*.scss\"",
+    "lint-fix": "prettier . --write && eslint --fix . && stylelint \"**/*.scss\" --fix"
   },
   "devDependencies": {
     "cross-os": "^1.4.0",

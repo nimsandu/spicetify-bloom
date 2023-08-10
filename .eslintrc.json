@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "commonjs": true,
@@ -21,9 +22,7 @@
     "ecmaVersion": 2022,
     "project": ["tsconfig.json"]
   },
-  "plugins": [
-    "react", "@typescript-eslint", "import"
-  ],
+  "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
     "import/no-unresolved": "error"
   },

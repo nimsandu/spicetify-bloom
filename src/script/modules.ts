@@ -163,20 +163,26 @@ export function watchForMarketplaceScheme(): void {
   });
 }
 
-export function setLyricsLinesProperties(lyricsWrapper: HTMLElement): void {
+// fix for active line clipping
+export function setLyricsLinesMaxWidth(
+  lyricsWrapper: HTMLElement,
+  lyricsLines: HTMLElement[],
+): void {
   const maxWidth = calculateLyricsMaxWidth(lyricsWrapper);
-  const lyricsLines = Array.from(document.getElementsByClassName("lyrics-lyricsContent-lyric"));
-  let positionIndex = 0;
-
   lyricsLines.forEach((lyricsLine) => {
-    if (lyricsLine instanceof HTMLElement) {
+    const { style } = lyricsLine;
+    style.maxWidth = `${maxWidth}px`;
+    style.transformOrigin = getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
+  });
+}
+
+export function revealLyricsLines(lyricsLines: HTMLElement[]): void {
+  let positionIndex = 0;
+  lyricsLines.forEach((lyricsLine) => {
+    if (lyricsLine.innerText) {
       const { style } = lyricsLine;
+      positionIndex += 1;
 
-      style.maxWidth = `${maxWidth}px`;
-      style.transformOrigin =
-        getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
-
-      if (lyricsLine.innerText) positionIndex += 1;
       let animationDelay = 50 + positionIndex * 10;
       if (animationDelay > 1000) animationDelay = 1000;
       let animationDuration = 200 + positionIndex * 100;
@@ -190,6 +196,7 @@ export function setLyricsLinesProperties(lyricsWrapper: HTMLElement): void {
   });
 }
 
+// fix for container shifting
 export function fixLyricsWrapperMaxWidth(lyricsWrapper: HTMLElement): void {
   const { style } = lyricsWrapper;
   const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
