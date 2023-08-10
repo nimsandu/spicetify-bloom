@@ -12,7 +12,7 @@
     "watch-colors": "onchange src/color.ini -- npm run copy-colors",
     "build-theme": "npm run build-script && npm run build-styles && npm run copy-colors",
     "build-theme-local": "npm run build-script-local && npm run build-styles-local",
-    "watch-theme": "npm run watch-script && npm run watch-styles && npm run watch-colors",
+    "watch-theme": "concurrently \"npm run watch-script\" \"npm run watch-styles\" \"npm run watch-colors\"",
     "update-types": "curl -s -o src/script/types/spicetify.d.ts https://raw.githubusercontent.com/spicetify/spicetify-cli/master/globals.d.ts"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
+    "concurrently": "^8.2.0",
     "copyfiles": "^2.4.1",
     "eslint": "^8.44.0",
     "eslint-config-airbnb": "^19.0.4",
