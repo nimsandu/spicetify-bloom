@@ -29,8 +29,8 @@ process {
   Clear-Host
   Write-HelloMessage
   
-  $minimumPowerShellVersion = 5
-  $currentPowerShellVersion = $PSVersionTable.PSVersion.Major
+  $minimumPowerShellVersion = [version]5.1
+  $currentPowerShellVersion = [version]$PSVersionTable.PSVersion
   
   if ($currentPowerShellVersion -lt $minimumPowerShellVersion) {
     Write-Error -Message (
@@ -71,12 +71,12 @@ process {
         Write-Error -Message 'Failed to detect Spicetify installation!'
       }
       
+      $type = Get-ThemeType -Path $spicetifyFolders.bloomPath
       $spicetifyFolders = Get-SpicetifyFoldersPaths
       $Parameters = @{
-        Path        = (Get-Bloom)
+        Path        = (Get-Bloom -Type $type)
         Destination = $spicetifyFolders.bloomPath
         Config      = $spicetifyFolders.configPath
-        Type        = (Get-ThemeType -Path $spicetifyFolders.bloomPath)
       }
       Install-Bloom @Parameters
     }
@@ -121,14 +121,6 @@ process {
         }
       }
       
-      $spicetifyFolders = Get-SpicetifyFoldersPaths
-      $Parameters = @{
-        Path        = (Get-Bloom)
-        Destination = $spicetifyFolders.bloomPath
-        Config      = $spicetifyFolders.configPath
-        ColorScheme = (Get-WindowsAppsTheme)
-      }
-      
       $Host.UI.RawUI.Flushinputbuffer()
       $choice = $Host.UI.PromptForChoice(
         '',
@@ -137,8 +129,20 @@ process {
         ('&Remote', '&Local'),
         0
       )
-      if ($choice -eq 1) {
-        $Parameters.Type = 'Local'
+
+      if ($choice -eq 0) {
+        $type = 'Remote'
+      }
+      else {
+        $type = 'Local'
+      }
+
+      $spicetifyFolders = Get-SpicetifyFoldersPaths
+      $Parameters = @{
+        Path        = (Get-Bloom -Type $type)
+        Destination = $spicetifyFolders.bloomPath
+        Config      = $spicetifyFolders.configPath
+        ColorScheme = (Get-WindowsAppsTheme)
       }
       
       Install-Bloom @Parameters

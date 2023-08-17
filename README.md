@@ -87,7 +87,7 @@ Use this guide to install if you're having trouble using the shell commands/inst
 
    ```shell
     spicetify config current_theme bloom color_scheme dark
-    spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+    spicetify config inject_css 1 replace_colors 1 inject_theme_js 1
     spicetify apply
    ```
 
@@ -154,9 +154,9 @@ spicetify apply
 
 ### Issues when installing from Spicetify Marketplace
 
-```sh
+```shell
 spicetify config current_theme marketplace color_scheme marketplace
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+spicetify config inject_css 1 replace_colors 1 inject_theme_js 1
 spicetify apply
 ```
 

@@ -50,7 +50,7 @@ by [yumegenso](https://github.com/yumegenso)
 
 ```sh
 spicetify config current_theme marketplace color_scheme marketplace
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+spicetify config inject_css 1 replace_colors 1 inject_theme_js 1
 spicetify apply
 ```
 

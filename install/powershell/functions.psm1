@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+#Requires -Version 5.1
 
 #region Console helpers
 function Write-Center {
@@ -280,31 +280,46 @@ function Get-ThemeType {
 function Get-Bloom {
     [CmdletBinding()]
     [OutputType([string])]
-    param ()
+    param (
+        [Parameter(Mandatory)]
+        [ValidateSet('Remote', 'Local')]
+        [string]$Type
+    )
     begin {
-        $archiveName = 'spicetify-bloom-main'
-        $archivePath = "$env:TEMP\$archiveName.zip"
+        Write-Verbose -Message 'Downloading Bloom theme files...' -Verbose
+        $bloomBaseURI = 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom'
+        $bloomRemoteURI = "$bloomBaseURI/main/remote"
+        $bloomDistURI = "$bloomBaseURI/dist"
+        $fileList = 'color.ini', 'theme.js', 'user.css'
+        $outFolder = "$env:TEMP\bloom"
     }
     process {
-        Write-Verbose -Message 'Downloading the Bloom repository archive...' -Verbose
+        if ($Type -eq 'Local') {
+            $bloomURI = $bloomDistURI
+        }
+        else {
+            $bloomURI = $bloomRemoteURI
+        }
+
+        New-Item -Path "$env:TEMP\bloom" -ItemType Directory -Force | Out-Null
+
         $Parameters = @{
             UseBasicParsing = $true
-            Uri             = 'https://codeload.github.com/nimsandu/spicetify-bloom/zip/refs/heads/main'
-            OutFile         = $archivePath
         }
-        Invoke-WebRequest @Parameters
-        
-        Write-Verbose -Message 'Unpacking the Bloom repository archive...' -Verbose
-        $Parameters = @{
-            Path            = $archivePath
-            DestinationPath = $env:TEMP
-            Force           = $true
+
+        foreach ($file in $fileList) {
+            if ($file -ne 'color.ini') {
+                $Parameters.Uri = "$bloomURI/$file"
+            }
+            else {
+                $Parameters.Uri = "$bloomDistURI/color.ini" 
+            }
+            $Parameters.OutFile = "$outFolder\$file"
+            Invoke-WebRequest @Parameters
         }
-        Expand-Archive @Parameters 
     }
     end {
-        "$env:TEMP\$archiveName"
-        Remove-Item -Path $archivePath -Force
+        $outFolder
     }
 }
 
@@ -320,46 +335,24 @@ function Install-Bloom {
         [Parameter(Mandatory)]
         [string]$Config,
         
-        [ValidateSet('Remote', 'Local')]
-        [string]$Type = 'Remote',
-        
         [string]$ColorScheme
     )
     begin {
         Write-Verbose -Message 'Installing Bloom theme...' -Verbose
-        $bloomDistPath = "$Path\dist"
-        $bloomRemotePath = "$Path\remote"
     }
     process {
         New-Item -Path $Destination -ItemType Directory -Force | Out-Null
         
-        if ($Type -eq 'Remote') {
-            $Parameters = @{
-                Path        = "$bloomDistPath\color.ini"
-                Destination = $Destination
-                Force       = $true
-            }
-            Move-Item @Parameters
-            
-            $Parameters = @{
-                Path        = "$bloomRemotePath\*"
-                Destination = $Destination
-                Force       = $true
-            }
-            Move-Item @Parameters
+        $Parameters = @{
+            Path        = "$Path\*"
+            Destination = $Destination
+            Force       = $true
         }
-        else {
-            $Parameters = @{
-                Path        = $bloomDistPath
-                Destination = $Destination
-                Force       = $true
-            }
-            Move-Item @Parameters
-        }
-        
+        Move-Item @Parameters
+
         spicetify config extensions bloom.js- -q
-        spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
-        spicetify config current_theme 'Bloom'
+        spicetify config inject_css 1 replace_colors 1 inject_theme_js 1
+        spicetify config current_theme 'bloom'
         
         if ($ColorScheme) {
             spicetify config color_scheme $ColorScheme

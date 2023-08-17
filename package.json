@@ -65,7 +65,7 @@
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "sass": "^1.64.2",
-    "spicetify-creator": "^1.0.14",
+    "spicetify-creator": "^1.0.15",
     "stylelint": "^15.10.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-sass-guidelines": "^10.0.0",
