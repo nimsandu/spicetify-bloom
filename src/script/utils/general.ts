@@ -49,3 +49,17 @@ export function calculateLyricsMaxWidth(lyricsWrapper: HTMLElement): number {
   const totalOffset = lyricsWrapper.offsetLeft + marginLeft;
   return Math.round(0.95 * (lyricsContainer.clientWidth - totalOffset));
 }
+
+export function roundToDecimal(inputNumber: number, decimalPlaces: number): number {
+  const multiplier = 10 ** decimalPlaces;
+  return Math.round(inputNumber * multiplier) / multiplier;
+}
+
+// necessary because backdrop edges become transparent due to blurring
+export async function calculateContextDrawValues(canvas: HTMLCanvasElement, blurValue: number) {
+  const drawWidth = canvas.width + blurValue * 2;
+  const drawHeight = canvas.height + blurValue * 2;
+  const drawX = 0 - blurValue;
+  const drawY = 0 - blurValue;
+  return [drawWidth, drawHeight, drawX, drawY];
+}

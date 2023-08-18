@@ -5,7 +5,7 @@ import {
   waitForElements,
   calculateLyricsMaxWidth,
   getTextLineDirection,
-} from "./utils";
+} from "./utils/general";
 import { fluentIconsURL, lightNoiseOpacityValue, noiseOpacityVariable } from "./constants";
 
 function setNoiseOpacity(value: string): void {
