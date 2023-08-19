@@ -82,7 +82,7 @@ process {
     }
     'Install' {
       if (-not (Test-Spotify)) {
-        Write-Host -Object 'Spotify not found.' -ForegroundColor Yellow
+        Write-Warning -Message 'Spotify not found.'
         
         $Host.UI.RawUI.Flushinputbuffer()
         $choice = $Host.UI.PromptForChoice('', 'Install Spotify?', ('&Yes', '&No'), 0)
@@ -94,7 +94,7 @@ process {
       }
       
       if (-not $isSpicetifyInstalled) {
-        Write-Host -Object 'Spicetify not found.' -ForegroundColor Yellow
+        Write-Warning -Message 'Spicetify not found.'
         
         $Host.UI.RawUI.Flushinputbuffer()
         $choice = $Host.UI.PromptForChoice('', 'Install Spicetify?', ('&Yes', '&No'), 0)
@@ -107,7 +107,7 @@ process {
       }
       
       if (-not (Test-SegoeUIVariable)) {
-        Write-Host -Object 'Segoe UI Variable font not found.' -ForegroundColor Yellow
+        Write-Warning -Message 'Segoe UI Variable font not found.'
         
         $Host.UI.RawUI.Flushinputbuffer()
         $choice = $Host.UI.PromptForChoice(
