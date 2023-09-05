@@ -5,11 +5,11 @@ import {
   FastAverageColorRgbaWithThreshold,
 } from "fast-average-color";
 import {
-  maxFinalSaturation,
-  minFinalSaturation,
-  minOriginalSaturation,
-  maxSaturationCoefficient,
-  maxBrightness,
+  backdropMaxFinalSaturation,
+  backdropMinFinalSaturation,
+  backdropMinOriginalSaturation,
+  backdropMaxSaturationCoefficient,
+  backdropMaxBrightness,
 } from "./constants";
 import { roundToDecimal } from "../../shared/utils";
 
@@ -52,16 +52,19 @@ export async function calculateSaturationCoefficientAsync(
 
   const finalSaturation = roundToDecimal(secondAverageSaturation * saturationCoefficient, 1);
 
-  if (finalSaturation > maxFinalSaturation) {
-    saturationCoefficient = 1 - (finalSaturation - maxFinalSaturation);
+  if (finalSaturation > backdropMaxFinalSaturation) {
+    saturationCoefficient = 1 - (finalSaturation - backdropMaxFinalSaturation);
   }
 
-  if (finalSaturation < minFinalSaturation && firstAverageSaturation > minOriginalSaturation) {
-    saturationCoefficient += minFinalSaturation - finalSaturation;
+  if (
+    finalSaturation < backdropMinFinalSaturation &&
+    firstAverageSaturation > backdropMinOriginalSaturation
+  ) {
+    saturationCoefficient += backdropMinFinalSaturation - finalSaturation;
   }
 
-  if (saturationCoefficient > maxSaturationCoefficient) {
-    saturationCoefficient = maxSaturationCoefficient;
+  if (saturationCoefficient > backdropMaxSaturationCoefficient) {
+    saturationCoefficient = backdropMaxSaturationCoefficient;
   }
 
   return roundToDecimal(saturationCoefficient, 1);
@@ -70,13 +73,20 @@ export async function calculateSaturationCoefficientAsync(
 export async function calculateBrightnessCoefficientAsync(resource: FastAverageColorResource) {
   const fac = new FastAverageColor();
 
-  const ignoredColor: FastAverageColorRgbaWithThreshold = [0, 0, 0, 255, Math.floor(255 * maxBrightness)];
+  const ignoredColor: FastAverageColorRgbaWithThreshold = [
+    0,
+    0,
+    0,
+    255,
+    Math.floor(255 * backdropMaxBrightness),
+  ];
   const averageColor = await fac.getColorAsync(resource, { ignoredColor });
 
   // slice(0, 3) - remove alpha channel
   let brightness = Math.max(...averageColor.value.slice(0, 3));
   brightness = roundToDecimal(brightness / 255, 1);
-  const brightnessCoefficient = brightness > maxBrightness ? 1 - (brightness - maxBrightness) : 1;
+  const brightnessCoefficient =
+    brightness > backdropMaxBrightness ? 1 - (brightness - backdropMaxBrightness) : 1;
 
   fac.destroy();
   return brightnessCoefficient;

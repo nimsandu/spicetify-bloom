@@ -1,4 +1,14 @@
 import { calculateLyricsMaxWidth, getTextLineDirection } from "./utils";
+import {
+  lyricsAnimationName,
+  lyricsAnimationTimingFunction,
+  lyricsAnimationDurationMsMax,
+  lyricsAnimationDurationStepMs,
+  lyricsAnimationDurationStepMultiplier,
+  lyricsAnimationDelayMsMax,
+  lyricsAnimationDelayStepMs,
+  lyricsAnimationDelayStepMultiplier,
+} from "./constants";
 
 export function revealLyricsLines(lyricsLines: HTMLElement[]): void {
   let positionIndex = 0;
@@ -7,15 +17,22 @@ export function revealLyricsLines(lyricsLines: HTMLElement[]): void {
       const { style } = lyricsLine;
       positionIndex += 1;
 
-      let animationDelay = 50 + positionIndex * 10;
-      if (animationDelay > 1000) animationDelay = 1000;
-      let animationDuration = 200 + positionIndex * 100;
-      if (animationDuration > 1000) animationDuration = 1000;
+      let animationDelay =
+        lyricsAnimationDelayStepMs + positionIndex * lyricsAnimationDelayStepMultiplier;
+      if (animationDelay > lyricsAnimationDelayMsMax) {
+        animationDelay = lyricsAnimationDelayMsMax;
+      }
+
+      let animationDuration =
+        lyricsAnimationDurationStepMs + positionIndex * lyricsAnimationDurationStepMultiplier;
+      if (animationDuration > lyricsAnimationDurationMsMax) {
+        animationDuration = lyricsAnimationDurationMsMax;
+      }
 
       style.animationDelay = `${animationDelay}ms`;
       style.animationDuration = `${animationDuration}ms`;
-      style.animationTimingFunction = "ease";
-      style.animationName = "reveal";
+      style.animationTimingFunction = lyricsAnimationTimingFunction;
+      style.animationName = lyricsAnimationName;
     }
   });
 }

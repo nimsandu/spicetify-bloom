@@ -4,15 +4,6 @@ export default async function bloom() {
     document.documentElement.style.setProperty("--filter-brightness", 0);
   }
 
-  waitForElements([".main-yourLibraryX-navLink"], () => {
-    const navLinks = document.getElementsByClassName("main-yourLibraryX-navLink");
-    for (let i = 0; i < navLinks.length; i += 1) {
-      const div = document.createElement("div");
-      div.classList.add("main-yourLibraryX-navLink-accent");
-      navLinks[i].appendChild(div);
-    }
-  });
-
   waitForAPIs(["Spicetify.Panel"], () => {
     Spicetify.Panel.subPanelState(updateLyricsPageProperties);
   });
