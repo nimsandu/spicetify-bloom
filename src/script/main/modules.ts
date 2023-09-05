@@ -1,18 +1,13 @@
-import {
-  waitForAPIs,
-  cleanLocalizationString,
-  injectStyle,
-  waitForElements,
-  calculateLyricsMaxWidth,
-  getTextLineDirection,
-} from "./utils/general";
-import { fluentIconsURL, lightNoiseOpacityValue, noiseOpacityVariable } from "./constants";
+import { waitForAPIs, injectStyle, waitForElements } from "../shared/utils";
+import cleanLocalizationString from "./utils";
+import { lightNoiseOpacityValue, noiseOpacityVariable } from "./constants";
+import { fluentIconsURL } from "../shared/constants";
 
 function setNoiseOpacity(value: string): void {
   document.documentElement.style.setProperty(noiseOpacityVariable, value);
 }
 
-export function addButtonsStyles(): void {
+export function addButtonStyles(): void {
   waitForAPIs(["Spicetify.Locale"], () => {
     const { Locale } = Spicetify;
 
@@ -161,47 +156,4 @@ export function watchForMarketplaceScheme(): void {
     });
     schemeObserver.observe(marketplaceScheme, { attributes: true });
   });
-}
-
-// fix for active line clipping
-export function setLyricsLinesMaxWidth(
-  lyricsWrapper: HTMLElement,
-  lyricsLines: HTMLElement[],
-): void {
-  const maxWidth = calculateLyricsMaxWidth(lyricsWrapper);
-  lyricsLines.forEach((lyricsLine) => {
-    const { style } = lyricsLine;
-    style.maxWidth = `${maxWidth}px`;
-    style.transformOrigin = getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
-  });
-}
-
-export function revealLyricsLines(lyricsLines: HTMLElement[]): void {
-  let positionIndex = 0;
-  lyricsLines.forEach((lyricsLine) => {
-    if (lyricsLine.innerText) {
-      const { style } = lyricsLine;
-      positionIndex += 1;
-
-      let animationDelay = 50 + positionIndex * 10;
-      if (animationDelay > 1000) animationDelay = 1000;
-      let animationDuration = 200 + positionIndex * 100;
-      if (animationDuration > 1000) animationDuration = 1000;
-
-      style.animationDelay = `${animationDelay}ms`;
-      style.animationDuration = `${animationDuration}ms`;
-      style.animationTimingFunction = "ease";
-      style.animationName = "reveal";
-    }
-  });
-}
-
-// fix for container shifting
-export function fixLyricsWrapperMaxWidth(lyricsWrapper: HTMLElement): void {
-  const { style } = lyricsWrapper;
-  const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
-  style.maxWidth = "";
-  style.width = "";
-  style.maxWidth = `${lyricsWrapperWidth}px`;
-  style.width = `${lyricsWrapperWidth}px`;
 }

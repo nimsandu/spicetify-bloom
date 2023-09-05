@@ -2,8 +2,16 @@ import {
   FastAverageColor,
   FastAverageColorResource,
   FastAverageColorResult,
+  FastAverageColorRgbaWithThreshold,
 } from "fast-average-color";
-import { roundToDecimal } from "./general";
+import {
+  maxFinalSaturation,
+  minFinalSaturation,
+  minOriginalSaturation,
+  maxSaturationCoefficient,
+  maxBrightness,
+} from "./constants";
+import { roundToDecimal } from "../../shared/utils";
 
 export function getColorSaturation(color: FastAverageColorResult): number {
   // remove alpha channel
@@ -44,32 +52,45 @@ export async function calculateSaturationCoefficientAsync(
 
   const finalSaturation = roundToDecimal(secondAverageSaturation * saturationCoefficient, 1);
 
-  if (finalSaturation > 0.8) {
-    saturationCoefficient = 1 - (finalSaturation - 0.8);
+  if (finalSaturation > maxFinalSaturation) {
+    saturationCoefficient = 1 - (finalSaturation - maxFinalSaturation);
   }
 
-  if (finalSaturation < 0.5 && firstAverageSaturation > 0.05) {
-    saturationCoefficient += 0.5 - finalSaturation;
+  if (finalSaturation < minFinalSaturation && firstAverageSaturation > minOriginalSaturation) {
+    saturationCoefficient += minFinalSaturation - finalSaturation;
   }
 
-  if (saturationCoefficient > 1.7) {
-    saturationCoefficient = 1.7;
+  if (saturationCoefficient > maxSaturationCoefficient) {
+    saturationCoefficient = maxSaturationCoefficient;
   }
 
   return roundToDecimal(saturationCoefficient, 1);
 }
 
-export async function calculateBrightnessCoefficient(resource: FastAverageColorResource) {
+export async function calculateBrightnessCoefficientAsync(resource: FastAverageColorResource) {
   const fac = new FastAverageColor();
 
-  // ignore colors darker than 50% by HSB, because 0.5 is the brightness threshold
-  const averageColor = await fac.getColorAsync(resource, { ignoredColor: [0, 0, 0, 255, 125] });
+  const ignoredColor: FastAverageColorRgbaWithThreshold = [0, 0, 0, 255, Math.floor(255 * maxBrightness)];
+  const averageColor = await fac.getColorAsync(resource, { ignoredColor });
 
   // slice(0, 3) - remove alpha channel
   let brightness = Math.max(...averageColor.value.slice(0, 3));
   brightness = roundToDecimal(brightness / 255, 1);
-  const brightnessCoefficient = brightness > 0.5 ? 1 - (brightness - 0.5) : 1;
+  const brightnessCoefficient = brightness > maxBrightness ? 1 - (brightness - maxBrightness) : 1;
 
   fac.destroy();
   return brightnessCoefficient;
+}
+
+export function calculateLyricsMaxWidth(lyricsWrapper: HTMLElement): number {
+  const lyricsContainer = lyricsWrapper.parentElement as HTMLElement;
+  const marginLeft = parseInt(window.getComputedStyle(lyricsWrapper).marginLeft, 10);
+  const totalOffset = lyricsWrapper.offsetLeft + marginLeft;
+  return Math.round(0.95 * (lyricsContainer.clientWidth - totalOffset));
+}
+
+export function getTextLineDirection(line: string): "rtl" | "ltr" {
+  const rtlRegExp = /[\u0591-\u07FF]/;
+  const firstCharacter = line[0];
+  return rtlRegExp.test(firstCharacter) ? "rtl" : "ltr";
 }
