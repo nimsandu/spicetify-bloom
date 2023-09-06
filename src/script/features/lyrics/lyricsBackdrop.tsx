@@ -17,13 +17,7 @@ async updateLyricsBackdrop() {
 
 
 // necessary because backdrop edges become transparent due to blurring
-export async function calculateContextDrawValues(canvas: HTMLCanvasElement, blurValue: number) {
-  const drawWidth = canvas.width + blurValue * 2;
-  const drawHeight = canvas.height + blurValue * 2;
-  const drawX = 0 - blurValue;
-  const drawY = 0 - blurValue;
-  return [drawWidth, drawHeight, drawX, drawY];
-}
+
 
   async updateFilters(canvas, image) {
       const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
