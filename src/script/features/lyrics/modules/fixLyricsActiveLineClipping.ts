@@ -1,11 +1,10 @@
-import { calculateLyricsMaxWidth, getTextLineDirection } from "../utils/getImageSaturationAsync";
+import calculateLyricsMaxWidth from "../utils/calculateLyricsMaxWidth";
 
 function fixLyricsActiveLineClipping(lyricsWrapper: HTMLElement, lyricsLines: HTMLElement[]): void {
   const maxWidth = calculateLyricsMaxWidth(lyricsWrapper);
   lyricsLines.forEach((lyricsLine) => {
     const { style } = lyricsLine;
     style.maxWidth = `${maxWidth}px`;
-    style.transformOrigin = getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
   });
 }
 

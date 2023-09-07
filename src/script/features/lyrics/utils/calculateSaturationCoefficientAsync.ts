@@ -6,7 +6,7 @@ import {
   backdropMaxSaturationCoefficient,
 } from "../constants/constants";
 
-import getImageSaturationAsync from "./getImageSaturationAsync";
+import getImageSaturationAsync from "../helpers/getImageSaturationAsync";
 import roundToDecimal from "../../../shared/utils/roundToDecimal";
 
 async function calculateSaturationCoefficientAsync(
