@@ -1,7 +1,7 @@
 import calculateBrightnessCoefficientAsync from "../utils/calculateBrightnessCoefficientAsync";
 import calculateSaturationCoefficientAsync from "../utils/calculateSaturationCoefficientAsync";
 
-async function updateCanvasFiltersAsync(
+async function setCanvasFiltersAsync(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
 ): Promise<void> {
@@ -13,4 +13,4 @@ async function updateCanvasFiltersAsync(
   canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
 }
 
-export default updateCanvasFiltersAsync;
+export default setCanvasFiltersAsync;

@@ -1,5 +1,6 @@
 export const backdropBlurValue = 20;
 export const backdropAnimationDurationSec = 0.8;
+export const backdropAnimationTimingFunction = "sine.out";
 
 export const backdropMaxFinalSaturation = 0.8;
 export const backdropMinFinalSaturation = 0.5;
