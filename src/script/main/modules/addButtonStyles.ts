@@ -35,18 +35,23 @@ function addButtonStyles(): void {
 
     injectStyle(`
     .main-playButton-button[aria-label*="${playText}"],
-    .main-playPauseButton-button[aria-label="${playText}"][aria-label="${playbackPlayText}"],
+    .main-playPauseButton-button[aria-label="${playText}"],
+    .main-playPauseButton-button[aria-label="${playbackPlayText}"],
     .main-trackList-rowPlayPauseButton[aria-label*="${playText}"],
-    .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabelOne}"][aria-label*="${tracklistPlayLabelTwo}"],
-    .main-playButton-PlayButton>button[aria-label*="${playlistPlayText}"][aria-label*="${playText}"] {
+    .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabelOne}"],
+    .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabelTwo}"],
+    .main-playButton-PlayButton>button[aria-label*="${playlistPlayText}"],
+    .main-playButton-PlayButton>button[aria-label*="${playText}"] {
       background-color: var(--spice-text) !important;
       -webkit-mask-image: url('${fluentIconsURL}/ic_fluent_play_24_filled.svg') !important;
     }
     .main-playButton-button[aria-label*="${pauseText}"],
-    .main-playPauseButton-button[aria-label*="${pauseText}"][aria-label="${playbackPauseText}"],
+    .main-playPauseButton-button[aria-label*="${pauseText}"],
+    .main-playPauseButton-button[aria-label="${playbackPauseText}"],
     .main-trackList-rowPlayPauseButton[aria-label*="${pauseText}"],
     .main-trackList-rowImagePlayButton[aria-label*="${pauseText}"],
-    .main-playButton-PlayButton>button[aria-label*="${playlistPauseText}"][aria-label*="${pauseText}"] {
+    .main-playButton-PlayButton>button[aria-label*="${playlistPauseText}"],
+    .main-playButton-PlayButton>button[aria-label*="${pauseText}"] {
       background-color: var(--spice-text) !important;
       -webkit-mask-image: url('${fluentIconsURL}/ic_fluent_pause_16_filled.svg') !important;
     }
