@@ -1,3 +1,4 @@
+import styleCategoryCards from "./features/categoryCardBackdrops/styleCategoryCards";
 import addButtonStyles from "./main/modules/addButtonStyles";
 import addLibraryNavLinkAccent from "./main/modules/addLibraryNavLinkAccent";
 import controlNoiseOpacity from "./main/modules/controlNoiseOpacity";
@@ -14,6 +15,7 @@ async function bloom() {
   keepTopBarContentCentered();
   addLibraryNavLinkAccent();
   controlNoiseOpacity();
+  styleCategoryCards();
   fixTippiesBackdropFilter();
 }
 

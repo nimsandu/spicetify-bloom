@@ -1,5 +1,9 @@
-import waitForElements from "../../shared/utils/waitForElements";
-import { categoryCardBackdropClass, categoryCardImageClass, categoryCardClass } from "../constants/constants";
+import waitForElements from "../../../shared/utils/waitForElements";
+import {
+  categoryCardBackdropClass,
+  categoryCardImageClass,
+  categoryCardClass,
+} from "../constants/constants";
 
 function addBackdropToCategoryCards(): void {
   waitForElements([`.${categoryCardImageClass}`], () => {
@@ -20,7 +24,5 @@ function addBackdropToCategoryCards(): void {
     });
   });
 }
-
-
 
 export default addBackdropToCategoryCards;
