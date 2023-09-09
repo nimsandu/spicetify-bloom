@@ -16,3 +16,7 @@ export const lyricsAnimationDelayStepMultiplier = 10;
 export const lyricsAnimationDurationStepMs = 200;
 export const lyricsAnimationDurationMsMax = 1000;
 export const lyricsAnimationDurationStepMultiplier = 100;
+
+export const lyricsCinemaClass = "Root__lyrics-cinema";
+export const lyricsCinemaVisibleClass = "main-lyricsCinema-lyricsCinemaVisible";
+export const lyricsBackdropContainerClass = "lyrics-backdrop-container";

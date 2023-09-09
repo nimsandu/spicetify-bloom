@@ -1,8 +1,8 @@
 import waitForElements from "../../shared/utils/waitForElements";
-import { topbarContentWrapperSelector } from "../constants/constants";
+import { topBarContentWrapperSelector } from "../constants/constants";
 
-function centerTopbar(): void {
-  waitForElements([topbarContentWrapperSelector], ([topBarContentWrapper]) => {
+function centerTopBarContent(): void {
+  waitForElements([topBarContentWrapperSelector], ([topBarContentWrapper]) => {
     if (topBarContentWrapper instanceof HTMLElement) {
       const left = topBarContentWrapper.offsetLeft;
       const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
@@ -18,4 +18,10 @@ function centerTopbar(): void {
   });
 }
 
-export default centerTopbar;
+function keepTopBarContentCentered(): void {
+  if (document.readyState !== "complete") setTimeout(keepTopBarContentCentered, 100);
+  centerTopBarContent();
+  window.onresize = centerTopBarContent;
+}
+
+export default keepTopBarContentCentered;

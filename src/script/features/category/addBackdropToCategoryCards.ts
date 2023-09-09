@@ -21,4 +21,6 @@ function addBackdropToCategoryCards(): void {
   });
 }
 
+
+
 export default addBackdropToCategoryCards;

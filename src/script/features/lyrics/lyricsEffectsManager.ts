@@ -1,40 +1,71 @@
 import gsap from "gsap";
+import fillCanvas from "./modules/fillCanvas";
+import fixLyricsWrapperShifting from "./modules/fixLyricsWrapperShifting";
+import revealLyricsLines from "./modules/revealLyricsLines";
+import setCanvasFiltersAsync from "./modules/setCanvasFiltersAsync";
+import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
+import waitForElements from "../../shared/utils/waitForElements";
+import { lyricsCinemaClass } from "./constants/constants";
+import waitForAPIs from "../../shared/utils/waitForAPIs";
 
 class LyricsEffectsManager {
   protected static _previousAlbumUri: string;
 
-  //   // eslint-disable-next-line no-undef
-  //   if (typeof lyricsObserver === 'undefined') {
-  //     waitForElements(['.lyrics-lyrics-contentWrapper'], () => {
-  //       const lyricsContentWrapper = document.getElementsByClassName(
-  //         'lyrics-lyrics-contentWrapper'
-  //       )[0];
-  //       const lyricsObserver = new MutationObserver(lyricsCallback);
-  //       const lyricsObserverConfig = { childList: true };
-  //       lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
-  //     });
-  //     // eslint-disable-next-line no-undef
-  //   } else if (lyricsObserver == null) {
-  //     // eslint-disable-next-line no-undef
-  //     lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
-  //   }
-  // }
-}
+  private static watch():void {
+    waitForAPIs(['Spicetify.Platform.History'], () => {
+      Spicetify.Platform.History.listen(onPageChange);
+      onPageChange();
+    });
+  
+      waitForElements([lyricsCinemaClass], () => {
+        const lyricsCinema = document.getElementsByClassName(lyricsCinemaClass)[0];
+        const lyricsCinemaObserver = new MutationObserver(lyricsCinemaCallback);
+        const lyricsCinemaObserverConfig = {
+          attributes: true,
+          attributeFilter: ['class'],
+        };
+        lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig);
+      });
+    
+  }
 
-// gsap.to(radius, {
-//      duration: 0.8,
-//      value: maxRadius,
-//      onUpdate: () => {
-//        contextPrevious.beginPath();
-//        contextPrevious.arc(centerX, centerY, radius.value, 0, Math.PI * 2);
-//        contextPrevious.closePath();
-//        contextPrevious.fill();
-//      },
-//      onComplete: async () => {
-//        updateLyricsPageProperties();
-//        lyricsBackdropPrevious.remove();
-//      },
-//      ease: "sine.out",
-//    });
+  private static onPageChange() {
+    const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
+
+    if (Spicetify.Platform.History.location.pathname.includes('lyrics')) {
+      if (lyricsBackdropContainer == null) {
+        initLyricsBackdrop();
+      } else {
+        lyricsBackdropContainer.style.display = 'unset';
+        updateLyricsPageProperties();
+      }
+    } else {
+      if (lyricsBackdropContainer != null) {
+        lyricsBackdropContainer.style.display = 'none';
+      }
+    }
+  }
+
+  private static lyricsCinemaCallback(mutationsList) {
+    const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
+    const lyricsCinema = mutationsList[0].target;
+
+    if (lyricsCinema.classList.contains('main-lyricsCinema-lyricsCinemaVisible')) {
+      if (lyricsBackdropContainer == null) {
+        initLyricsBackdrop();
+      } else {
+        lyricsBackdropContainer.style.display = 'unset';
+        updateLyricsPageProperties();
+      }
+    } else if (
+      lyricsBackdropContainer != null &&
+      !Spicetify.Platform.History.location.pathname.includes('lyrics')
+    ) {
+      lyricsBackdropContainer.style.display = 'none';
+    }
+
+public static enable():void {
+  
+}
 
 export default LyricsEffectsManager;

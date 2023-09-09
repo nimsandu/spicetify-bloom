@@ -1,11 +1,13 @@
 import waitForElements from "../../shared/utils/waitForElements";
+import { navItemClass, navLinkAccentClass, navLinkClass } from "../constants/constants";
+
 
 function addLibraryNavLinkAccent(): void {
-  waitForElements(["."], () => {
-    const navLinks = document.getElementsByClassName("main-yourLibraryX-navLink");
-    for (let i = 0; i < navLinks.length; i += 1) {
+  waitForElements([`.${navItemClass}`], () => {
+    const navLinks = document.getElementsByClassName(navLinkClass);
+    for (let i = 0, max = navLinks.length; i < max; i += 1) {
       const div = document.createElement("div");
-      div.classList.add("main-yourLibraryX-navLink-accent");
+      div.classList.add(navLinkAccentClass);
       navLinks[i].appendChild(div);
     }
   });

@@ -7,7 +7,7 @@ import {
 } from "../constants/constants";
 
 import getImageSaturationAsync from "../helpers/getImageSaturationAsync";
-import roundToDecimal from "../../../shared/utils/roundToDecimal";
+import roundToDecimal from "../../../shared/helpers/roundToDecimal";
 
 async function calculateSaturationCoefficientAsync(
   firstResource: FastAverageColorResource,
