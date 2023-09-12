@@ -12,7 +12,7 @@ async function bloom() {
   settings.addToggle("check-requirements", "Check the theme requirements", true);
   settings.addToggle(
     "fix-tippies-backdrop-filter",
-    "Fix some menus and flyouts blur (might be resource instensive)",
+    "Fix some menus and flyouts blur (might be resource intensive)",
     true,
     () => {
       window.location.reload();
