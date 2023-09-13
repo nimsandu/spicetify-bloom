@@ -6,6 +6,7 @@
 - Utils must **return** some data, nothing more.
 - No importing of higher level code to lower level (modules to utils, utils to helpers, etc.)
 - No importing of code from the same level (utils to utils, modules to modules, etc.) within a feature.
+- No importing of code from one feature to another.
 - All data that might change in the future (class names, links, etc.) and parameter values (time, size, etc.) are better stored as constants in a separate file.
 
 ## Tree

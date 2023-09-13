@@ -3,6 +3,8 @@ import addBackdropToCategoryCards from "./modules/addBackdropToCategoryCards";
 
 function styleCategoryCards(): void {
   waitForAPIs(["Spicetify.Platform.History"], () => {
+    document.body.classList.add("style-category-cards");
+
     const { History } = Spicetify.Platform;
 
     function applyStyle(): void {
