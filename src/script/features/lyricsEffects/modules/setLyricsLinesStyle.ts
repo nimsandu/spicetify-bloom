@@ -1,5 +1,3 @@
-import getTextLineDirection from "../helpers/getTextLineDirection";
-import calculateLyricsMaxWidth from "../utils/calculateLyricsMaxWidth";
 import {
   lyricsAnimationName,
   lyricsAnimationTimingFunction,
@@ -10,16 +8,15 @@ import {
   lyricsAnimationDelayStepMs,
   lyricsAnimationDelayStepMultiplier,
 } from "../constants/constants";
+import getTextLineDirection from "../helpers/getTextLineDirection";
 
-function setLyricsLinesStyle(lyricsContentWrapper: HTMLElement, lyricsLines: HTMLElement[]): void {
-  const maxWidth = calculateLyricsMaxWidth(lyricsContentWrapper);
+function setLyricsLinesStyle(lyricsLines: HTMLElement[]): void {
   let positionIndex = 0;
 
   lyricsLines.forEach((lyricsLine) => {
     const { style } = lyricsLine;
     positionIndex += 1;
 
-    style.maxWidth = `${maxWidth}px`; // fix lyrics active line clipping
     style.transformOrigin = getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
 
     let animationDelay =

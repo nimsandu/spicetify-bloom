@@ -1,10 +1,10 @@
 function fixLyricsContentWrapperShifting(lyricsContentWrapper: HTMLElement): void {
   const { style } = lyricsContentWrapper;
-  const lyricsWrapperWidth = lyricsContentWrapper.getBoundingClientRect().width;
   style.maxWidth = "";
   style.width = "";
-  style.maxWidth = `${lyricsWrapperWidth}px`;
-  style.width = `${lyricsWrapperWidth}px`;
+  const lyricsContentWrapperWidth = lyricsContentWrapper.getBoundingClientRect().width;
+  style.maxWidth = `${lyricsContentWrapperWidth}px`;
+  style.width = `${lyricsContentWrapperWidth}px`;
 }
 
 export default fixLyricsContentWrapperShifting;

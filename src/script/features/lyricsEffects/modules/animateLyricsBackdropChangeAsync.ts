@@ -4,14 +4,14 @@ import {
   lyricsBackdropAnimationEasingVariant,
 } from "../constants/constants";
 
-async function animateLyricsBackdropChangeAsync(lyricsBackdrop: HTMLCanvasElement): Promise<void> {
-  const context = lyricsBackdrop.getContext("2d") as CanvasRenderingContext2D;
+function animateLyricsBackdropChange(lyricsBackdropElement: HTMLCanvasElement): void {
+  const context = lyricsBackdropElement.getContext("2d") as CanvasRenderingContext2D;
 
   const maxRadius = Math.ceil(
-    Math.sqrt(lyricsBackdrop.width ** 2 + lyricsBackdrop.height ** 2) / 2,
+    Math.sqrt(lyricsBackdropElement.width ** 2 + lyricsBackdropElement.height ** 2) / 2,
   );
-  const centerX = lyricsBackdrop.width / 2;
-  const centerY = lyricsBackdrop.height / 2;
+  const centerX = lyricsBackdropElement.width / 2;
+  const centerY = lyricsBackdropElement.height / 2;
   const radius = { value: 0 };
 
   gsap.to(radius, {
@@ -24,10 +24,10 @@ async function animateLyricsBackdropChangeAsync(lyricsBackdrop: HTMLCanvasElemen
       context.fill();
     },
     onComplete: () => {
-      lyricsBackdrop.remove();
+      lyricsBackdropElement.remove();
     },
     ease: lyricsBackdropAnimationEasingVariant,
   });
 }
 
-export default animateLyricsBackdropChangeAsync;
+export default animateLyricsBackdropChange;

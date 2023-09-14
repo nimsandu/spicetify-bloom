@@ -1,6 +1,6 @@
 import fixLyricsContentWrapperShifting from "./modules/fixLyricsContentWrapperShifting";
-import setCanvasFiltersAsync from "./modules/setCanvasFiltersAsync";
-import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
+import setLyricsBackdropFiltersAsync from "./modules/setLyricsBackdropFiltersAsync";
+import fixActiveLyricsLineClipping from "./modules/fixActiveLyricsLineClipping";
 import waitForElements from "../../shared/utils/waitForElements";
 import {
   lyricsBackdropBlurValue,
@@ -16,6 +16,7 @@ import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
 import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
 import createLyricsBackdropElement from "./utils/createLyricsBackdropElement";
 import animateLyricsBackdropChangeAsync from "./modules/animateLyricsBackdropChangeAsync";
+import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
 
 class LyricsEffectsManager {
   protected static previousAlbumUri: string;
@@ -93,7 +94,10 @@ class LyricsEffectsManager {
         lyricsBackdropBlurValue,
       );
       context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
-      setCanvasFiltersAsync(LyricsEffectsManager.lyricsBackdropElement, lyricsBackdropImage);
+      setLyricsBackdropFiltersAsync(
+        LyricsEffectsManager.lyricsBackdropElement,
+        lyricsBackdropImage,
+      );
 
       LyricsEffectsManager.updateLyricsPageProperties();
       animateLyricsBackdropChangeAsync(lyricsBackdropPrevious);
@@ -103,11 +107,21 @@ class LyricsEffectsManager {
   private static updateLyricsPageProperties(): void {
     waitForElements([lyricsContentWrapperSelector], ([lyricsContentWrapper]) => {
       fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
-      waitForElements([lyricsContentWrapperSelector], () => {
+      fixActiveLyricsLineClipping(lyricsContentWrapper as HTMLElement);
+
+      const lyricsContentContainer = lyricsContentWrapper.parentElement as HTMLElement;
+      new ResizeObserver(() => {
+        fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
+        fixActiveLyricsLineClipping(lyricsContentWrapper as HTMLElement);
+      }).observe(lyricsContentContainer);
+
+      waitForElements([`.${lyricsLinesClassName}`], () => {
         const lyricsLines = Array.from(
-          document.getElementsByClassName(lyricsLinesClassName) as HTMLCollectionOf<HTMLElement>,
+          lyricsContentWrapper.getElementsByClassName(
+            lyricsLinesClassName,
+          ) as HTMLCollectionOf<HTMLElement>,
         );
-        setLyricsLinesStyle(lyricsContentWrapper as HTMLElement, lyricsLines);
+        setLyricsLinesStyle(lyricsLines);
       });
     });
   }
