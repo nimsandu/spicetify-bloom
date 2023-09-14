@@ -6,17 +6,33 @@ import addLibraryNavLinkAccent from "./main/modules/addLibraryNavLinkAccent";
 import controlNoiseOpacity from "./main/modules/controlNoiseOpacity";
 import fixTippiesBackdropFilter from "./main/modules/fixTippiesBackdropFilter";
 import keepTopBarContentCentered from "./main/modules/keepTopBarContentCentered";
+import LyricsEffectsManager from "./features/lyricsEffects/lyricsEffectsManager";
+import {
+  tippiesBackdropSettingTitle,
+  bloomLyricsStyleSettingTitle,
+  requirementsSettingTitle,
+  themeSettingsSectionId,
+  themeSettingsSectionName,
+} from "./main/constants/constants";
+import {
+  tippiesBackdropSettingId,
+  bloomLyricsStyleSettingId,
+  requirementsSettingId,
+} from "./shared/constants/constants";
 
-async function bloom() {
-  const settings = new SettingsSection("Bloom theme settings", "bloom-settings");
-  settings.addToggle("check-requirements", "Check the theme requirements", true);
+function reloadLocalion() {
+  window.location.reload();
+}
+
+function bloom() {
+  const settings = new SettingsSection(themeSettingsSectionName, themeSettingsSectionId);
+  settings.addToggle(requirementsSettingId, requirementsSettingTitle, true);
+  settings.addToggle(tippiesBackdropSettingId, tippiesBackdropSettingTitle, true, reloadLocalion);
   settings.addToggle(
-    "fix-tippies-backdrop-filter",
-    "Fix some menus and flyouts blur (might be resource intensive)",
-    true,
-    () => {
-      window.location.reload();
-    },
+    bloomLyricsStyleSettingId,
+    bloomLyricsStyleSettingTitle,
+    false,
+    reloadLocalion,
   );
   settings.pushSettings();
 
@@ -30,8 +46,9 @@ async function bloom() {
   addLibraryNavLinkAccent();
   controlNoiseOpacity();
   styleCategoryCards();
-  if (settings.getFieldValue("fix-tippies-backdrop-filter")) fixTippiesBackdropFilter();
-  if (settings.getFieldValue("check-requirements")) checkRequirements();
+  if (settings.getFieldValue(tippiesBackdropSettingId)) fixTippiesBackdropFilter();
+  if (settings.getFieldValue(requirementsSettingId)) checkRequirements();
+  if (settings.getFieldValue(bloomLyricsStyleSettingId)) LyricsEffectsManager.enable();
 }
 
 export default bloom;
