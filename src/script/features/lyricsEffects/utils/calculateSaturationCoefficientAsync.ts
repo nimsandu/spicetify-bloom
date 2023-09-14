@@ -1,9 +1,9 @@
 import { FastAverageColorResource } from "fast-average-color";
 import {
-  backdropMaxFinalSaturation,
-  backdropMinFinalSaturation,
-  backdropMinOriginalSaturation,
-  backdropMaxSaturationCoefficient,
+  lyricsBackdropMaxFinalSaturation,
+  lyricsBackdropMinFinalSaturation,
+  lyricsBackdropMinOriginalSaturation,
+  lyricsBackdropMaxSaturationCoefficient,
 } from "../constants/constants";
 
 import getImageSaturationAsync from "../helpers/getImageSaturationAsync";
@@ -26,19 +26,19 @@ async function calculateSaturationCoefficientAsync(
 
   const finalSaturation = roundToDecimal(secondAverageSaturation * saturationCoefficient, 1);
 
-  if (finalSaturation > backdropMaxFinalSaturation) {
-    saturationCoefficient = 1 - (finalSaturation - backdropMaxFinalSaturation);
+  if (finalSaturation > lyricsBackdropMaxFinalSaturation) {
+    saturationCoefficient = 1 - (finalSaturation - lyricsBackdropMaxFinalSaturation);
   }
 
   if (
-    finalSaturation < backdropMinFinalSaturation &&
-    firstAverageSaturation > backdropMinOriginalSaturation
+    finalSaturation < lyricsBackdropMinFinalSaturation &&
+    firstAverageSaturation > lyricsBackdropMinOriginalSaturation
   ) {
-    saturationCoefficient += backdropMinFinalSaturation - finalSaturation;
+    saturationCoefficient += lyricsBackdropMinFinalSaturation - finalSaturation;
   }
 
-  if (saturationCoefficient > backdropMaxSaturationCoefficient) {
-    saturationCoefficient = backdropMaxSaturationCoefficient;
+  if (saturationCoefficient > lyricsBackdropMaxSaturationCoefficient) {
+    saturationCoefficient = lyricsBackdropMaxSaturationCoefficient;
   }
 
   return roundToDecimal(saturationCoefficient, 1);

@@ -1,7 +1,7 @@
-function calculateLyricsMaxWidth(lyricsWrapper: HTMLElement): number {
-  const lyricsContainer = lyricsWrapper.parentElement as HTMLElement;
-  const marginLeft = parseInt(window.getComputedStyle(lyricsWrapper).marginLeft, 10);
-  const totalOffset = lyricsWrapper.offsetLeft + marginLeft;
+function calculateLyricsMaxWidth(lyricsContentWrapper: HTMLElement): number {
+  const lyricsContainer = lyricsContentWrapper.parentElement as HTMLElement;
+  const marginLeft = parseInt(window.getComputedStyle(lyricsContentWrapper).marginLeft, 10);
+  const totalOffset = lyricsContentWrapper.offsetLeft + marginLeft;
   return Math.round(0.95 * (lyricsContainer.clientWidth - totalOffset));
 }
 

@@ -1,12 +1,14 @@
-export const backdropBlurValue = 20;
-export const backdropAnimationDurationSec = 0.8;
-export const backdropAnimationTimingFunction = "sine.out";
+export const lyricsBackdropBlurValue = 20;
+export const lyricsBackdropGlobalCompositeOperation = "destination-out";
+export const lyricsBackdropImageSmoothingEnabled = false;
+export const lyricsBackdropAnimationDurationSec = 0.8;
+export const lyricsBackdropAnimationEasingVariant = "sine.out";
 
-export const backdropMaxFinalSaturation = 0.8;
-export const backdropMinFinalSaturation = 0.5;
-export const backdropMinOriginalSaturation = 0.05;
-export const backdropMaxSaturationCoefficient = 1.7;
-export const backdropMaxBrightness = 0.5;
+export const lyricsBackdropMaxFinalSaturation = 0.8;
+export const lyricsBackdropMinFinalSaturation = 0.5;
+export const lyricsBackdropMinOriginalSaturation = 0.05;
+export const lyricsBackdropMaxSaturationCoefficient = 1.7;
+export const lyricsBackdropMaxBrightness = 0.5;
 
 export const lyricsAnimationName = "reveal";
 export const lyricsAnimationTimingFunction = "ease";
@@ -17,6 +19,14 @@ export const lyricsAnimationDurationStepMs = 200;
 export const lyricsAnimationDurationMsMax = 1000;
 export const lyricsAnimationDurationStepMultiplier = 100;
 
-export const lyricsCinemaClass = "Root__lyrics-cinema";
+export const lyricsCinemaElementSelector = ".Root__lyrics-cinema";
 export const lyricsCinemaVisibleClass = "main-lyricsCinema-lyricsCinemaVisible";
-export const lyricsBackdropContainerClass = "lyrics-backdrop-container";
+
+export const lyricsBackdropContainerId = "lyrics-backdrop-container";
+export const lyricsBackdropId = "lyrics-backdrop";
+
+export const underMainViewSelector = ".under-main-view";
+
+export const lyricsContentWrapperSelector = ".lyrics-lyrics-contentWrapper";
+
+export const lyricsLinesClassName = "lyrics-lyricsContent-lyric";
