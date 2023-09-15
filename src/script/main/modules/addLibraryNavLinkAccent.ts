@@ -1,7 +1,6 @@
 import waitForElements from "../../shared/utils/waitForElements";
 import { navItemClass, navLinkAccentClass, navLinkClass } from "../constants/constants";
 
-
 function addLibraryNavLinkAccent(): void {
   waitForElements([`.${navItemClass}`], () => {
     const navLinks = document.getElementsByClassName(navLinkClass);

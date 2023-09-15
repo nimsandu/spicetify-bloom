@@ -1,4 +1,7 @@
-import { hardwareAccelerationPrefsKey, hardwareAccelerationWarningMessage } from "../constants/constants";
+import {
+  hardwareAccelerationPrefsKey,
+  hardwareAccelerationWarningMessage,
+} from "../constants/constants";
 
 async function checkHardwareAccelerationAsync(): Promise<void> {
   if (!Spicetify.Platform?.PlayerAPI || !Spicetify.showNotification) {
