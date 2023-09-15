@@ -27,6 +27,7 @@ export const lyricsCinemaVisibleClass = "main-lyricsCinema-lyricsCinemaVisible";
 
 export const lyricsContentWrapperSelector = ".lyrics-lyrics-contentWrapper";
 export const lyricsLinesClassName = "lyrics-lyricsContent-lyric";
+export const lyricsContentProviderSelector = ".lyrics-lyricsContent-provider";
 
 export const lyricsBackdropContainerId = "lyrics-backdrop-container";
 export const lyricsBackdropElementId = "lyrics-backdrop";

@@ -14,27 +14,30 @@ function setLyricsLinesStyle(lyricsLines: HTMLElement[]): void {
   let positionIndex = 0;
 
   lyricsLines.forEach((lyricsLine) => {
-    const { style } = lyricsLine;
-    positionIndex += 1;
+    if (lyricsLine.textContent) {
+      const { style } = lyricsLine;
+      positionIndex += 1;
 
-    style.transformOrigin = getTextLineDirection(lyricsLine.innerText) === "rtl" ? "right" : "left";
+      style.transformOrigin =
+        getTextLineDirection(lyricsLine.textContent) === "rtl" ? "right" : "left";
 
-    let animationDelay =
-      lyricsAnimationDelayStepMs + positionIndex * lyricsAnimationDelayStepMultiplier;
-    if (animationDelay > lyricsAnimationDelayMsMax) {
-      animationDelay = lyricsAnimationDelayMsMax;
+      let animationDelay =
+        lyricsAnimationDelayStepMs + positionIndex * lyricsAnimationDelayStepMultiplier;
+      if (animationDelay > lyricsAnimationDelayMsMax) {
+        animationDelay = lyricsAnimationDelayMsMax;
+      }
+
+      let animationDuration =
+        lyricsAnimationDurationStepMs + positionIndex * lyricsAnimationDurationStepMultiplier;
+      if (animationDuration > lyricsAnimationDurationMsMax) {
+        animationDuration = lyricsAnimationDurationMsMax;
+      }
+
+      style.animationDelay = `${animationDelay}ms`;
+      style.animationDuration = `${animationDuration}ms`;
+      style.animationTimingFunction = lyricsAnimationTimingFunction;
+      style.animationName = lyricsAnimationName;
     }
-
-    let animationDuration =
-      lyricsAnimationDurationStepMs + positionIndex * lyricsAnimationDurationStepMultiplier;
-    if (animationDuration > lyricsAnimationDurationMsMax) {
-      animationDuration = lyricsAnimationDurationMsMax;
-    }
-
-    style.animationDelay = `${animationDelay}ms`;
-    style.animationDuration = `${animationDuration}ms`;
-    style.animationTimingFunction = lyricsAnimationTimingFunction;
-    style.animationName = lyricsAnimationName;
   });
 }
 

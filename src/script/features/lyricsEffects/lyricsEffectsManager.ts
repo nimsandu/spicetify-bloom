@@ -1,6 +1,6 @@
 import fixLyricsContentWrapperShifting from "./modules/fixLyricsContentWrapperShifting";
 import setLyricsBackdropFiltersAsync from "./modules/setLyricsBackdropFiltersAsync";
-import fixActiveLyricsLineClipping from "./modules/fixActiveLyricsLineClipping";
+import fixLyricsActiveLineClipping from "./modules/fixLyricsActiveLineClipping";
 import waitForElements from "../../shared/utils/waitForElements";
 import {
   lyricsBackdropBlurValue,
@@ -11,12 +11,13 @@ import {
   lyricsContentWrapperSelector,
   lyricsLinesClassName,
   mainViewContainerClass,
+  lyricsContentProviderSelector,
 } from "./constants/constants";
 import waitForAPIs from "../../shared/utils/waitForAPIs";
 import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
 import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
 import createLyricsBackdropElement from "./utils/createLyricsBackdropElement";
-import animateLyricsBackdropChangeAsync from "./modules/animateLyricsBackdropChangeAsync";
+import animateLyricsBackdropChange from "./modules/animateLyricsBackdropChange";
 import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
 
 class LyricsEffectsManager {
@@ -104,7 +105,7 @@ class LyricsEffectsManager {
         );
 
         LyricsEffectsManager.updateLyricsPageProperties();
-        animateLyricsBackdropChangeAsync(lyricsBackdropPrevious);
+        animateLyricsBackdropChange(lyricsBackdropPrevious);
       };
     });
   }
@@ -112,7 +113,7 @@ class LyricsEffectsManager {
   private static updateLyricsPageProperties(): void {
     waitForElements([lyricsContentWrapperSelector], ([lyricsContentWrapper]) => {
       fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
-      fixActiveLyricsLineClipping(lyricsContentWrapper as HTMLElement);
+      fixLyricsActiveLineClipping(lyricsContentWrapper as HTMLElement);
 
       const mainViewContainer = document.getElementsByClassName(
         mainViewContainerClass,
@@ -122,11 +123,11 @@ class LyricsEffectsManager {
       }
       LyricsEffectsManager.mainViewContainerResizeObserver = new ResizeObserver(() => {
         fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
-        fixActiveLyricsLineClipping(lyricsContentWrapper as HTMLElement);
+        fixLyricsActiveLineClipping(lyricsContentWrapper as HTMLElement);
       });
       LyricsEffectsManager.mainViewContainerResizeObserver.observe(mainViewContainer);
 
-      waitForElements([`.${lyricsLinesClassName}`], () => {
+      waitForElements([lyricsContentProviderSelector], () => {
         const lyricsLines = Array.from(
           lyricsContentWrapper.getElementsByClassName(
             lyricsLinesClassName,
