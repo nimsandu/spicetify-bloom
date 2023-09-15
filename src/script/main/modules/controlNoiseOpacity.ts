@@ -1,13 +1,13 @@
 import waitForElements from "../../shared/utils/waitForElements";
 import {
   lightNoiseOpacityValue,
-  noiseOpacityVariable,
+  noiseOpacityCSSVariable,
   marketplaceSchemeSelector,
 } from "../constants/constants";
 
 function setNoiseOpacity(): void {
   if (Spicetify.Config.color_scheme.includes("light")) {
-    document.documentElement.style.setProperty(noiseOpacityVariable, lightNoiseOpacityValue);
+    document.documentElement.style.setProperty(noiseOpacityCSSVariable, lightNoiseOpacityValue);
   }
 }
 

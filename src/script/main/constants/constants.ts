@@ -1,4 +1,4 @@
-export const noiseOpacityVariable = "--noise-opacity";
+export const noiseOpacityCSSVariable = "--noise-opacity";
 export const lightNoiseOpacityValue = "3.5%";
 
 export const marketplaceSchemeSelector = ".marketplaceScheme";
