@@ -1,0 +1,23 @@
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.x-categoryCard-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  transform-origin: center center;
+  opacity: 0;
+  filter: blur(60px);
+  animation: scale-in 750ms ease-out forwards;
+}
