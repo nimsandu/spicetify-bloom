@@ -1,2 +1,2 @@
-src/script/types/spicetify.d.ts
+src/script/shared/types/spicetify.d.ts
 dist

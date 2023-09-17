@@ -1,4 +1,10 @@
 {
   "extends": ["stylelint-config-sass-guidelines", "stylelint-config-rational-order"],
-  "plugins": ["stylelint-order", "stylelint-config-rational-order/plugin"]
+  "plugins": ["stylelint-order", "stylelint-config-rational-order/plugin"],
+  "rules": {
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null,
+    "selector-max-id": null,
+    "declaration-property-value-disallowed-list": null
+  }
 }
