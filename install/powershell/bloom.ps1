@@ -6,7 +6,6 @@ param (
 begin {
   $ErrorActionPreference = 'Stop'
   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   $previousConsoleTitle = $Host.UI.RawUI.WindowTitle
   $Host.UI.RawUI.WindowTitle = 'Bloom Installer'
 }

@@ -56,7 +56,6 @@ Simply install [Spicetify Marketplace](https://github.com/spicetify/spicetify-ma
 #### Windows (Powershell)
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 iex "& { $(iwr -useb 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/powershell/bloom.ps1') }"
 ```
 
@@ -122,7 +121,6 @@ For those who used scripts and not Marketplace.
 ### Windows (PowerShell)
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 iex "& { $(iwr -useb 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/powershell/bloom.ps1') } -Action Update"
 ```
 
@@ -137,7 +135,6 @@ For those who used scripts and not Marketplace.
 ### Automated (Windows PowerShell)
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 iex "& { $(iwr -useb 'https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install/powershell/bloom.ps1') } -Action Uninstall"
 ```
 
