@@ -72,7 +72,7 @@ First - make sure you have hardware acceleration enabled.
 Second - disable `Fix some menus and flyouts background blur` in the Bloom settings. If it worked - read on, if it didn't - your PC is probably not performant enough for Bloom.
 
 > [!WARNING]
-> You need Spicetify version 2.23.3 or higher to use this.
+> You need Spicetify **version 2.23.3 or higher** to use this.
 
 Open your Spicetify config (`spicetify -c`), go to the `Patch` section and paste the following:
 
