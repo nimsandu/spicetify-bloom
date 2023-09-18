@@ -48,7 +48,7 @@ by [yumegenso](https://github.com/yumegenso)
 
 ### Spicetify Marketplace
 
-Simply install [spicetify-marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
+Simply install [Spicetify Marketplace](https://github.com/spicetify/spicetify-marketplace) by following it's
 [installation instructions](https://github.com/spicetify/spicetify-marketplace/wiki/Installation). Then look for `Bloom` theme and click the install button.
 
 ### Scripts
