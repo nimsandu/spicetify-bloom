@@ -44,6 +44,22 @@ by [yumegenso](https://github.com/yumegenso)
 - [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI) font family, comes pre-installed on Windows.
   - Segoe UI Variable download link for Linux/macOS/Windows 10 users: [click me](https://aka.ms/SegoeUIVariable)
 
+## Customization
+
+### Color Scheme
+
+The `dark` color scheme is applied by default.
+
+The available color schemes are: `dark` `light` `darkmono` `darkgreen` `coffee` `comfy` . You can change the color scheme on the Marketplace page.
+
+### Accent Color
+
+You can change the accent color using Marketplace built-in `Color.ini Editor`.
+
+### Settings
+
+The theme settings are accessible from the Spotify settings page. Scroll to the bottom of it.
+
 ## Troubleshooting
 
 ### Issues when installing from Spicetify Marketplace

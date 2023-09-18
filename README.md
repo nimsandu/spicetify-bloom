@@ -114,6 +114,10 @@ If you installed Bloom from Marketplace you can change the color scheme on its p
 
 If you installed Bloom from Marketplace you can change the accent color using built-in `Color.ini Editor`.
 
+### Settings
+
+The theme settings are accessible from the Spotify settings page. Scroll to the bottom of it.
+
 ## Updating
 
 For those who used scripts and not Marketplace.
