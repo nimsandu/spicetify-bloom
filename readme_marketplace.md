@@ -46,15 +46,15 @@ by [yumegenso](https://github.com/yumegenso)
 
 ## Customization
 
-### Color Scheme
+### Changing Color Scheme
 
 The `dark` color scheme is applied by default.
 
 The available color schemes are: `dark` `light` `darkmono` `darkgreen` `coffee` `comfy` . You can change the color scheme on the Marketplace page.
 
-### Accent Color
+### Editing Color Scheme
 
-You can change the accent color using Marketplace built-in `Color.ini Editor`.
+You can change the scheme colors using Marketplace built-in `Color.ini Editor`.
 
 ### Settings
 

@@ -92,7 +92,7 @@ Use this guide to install if you're having trouble using the shell commands/inst
 
 ## Customization
 
-### Color Scheme
+### Changing Color Scheme
 
 The `dark` color scheme is applied by default during the installation process. If you install Bloom via PowerShell the installed color scheme depends on your Windows settings.
 
@@ -105,14 +105,14 @@ spicetify apply
 
 If you installed Bloom from Marketplace you can change the color scheme on its page.
 
-### Accent Color
+### Editing Color Scheme
 
 1. Navigate to the Spicetify's `Themes` directory. Use `spicetify path userdata` command to get the path.
 2. Open `Bloom` folder.
 3. Edit your current color scheme in the `color.ini` file.
 4. Use the `spicetify apply` command.
 
-If you installed Bloom from Marketplace you can change the accent color using built-in `Color.ini Editor`.
+If you installed Bloom from Marketplace you can change the scheme colors using built-in `Color.ini Editor`.
 
 ### Settings
 
