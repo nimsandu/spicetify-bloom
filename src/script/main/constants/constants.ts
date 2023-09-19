@@ -18,4 +18,4 @@ export const themeSettingsSectionName = "Bloom theme settings";
 export const requirementsSettingTitle = "Check the theme requirements";
 export const tippiesBackdropSettingTitle =
   "Fix some menus and flyouts background blur (may be resource intensive - read the Troubleshooting section in the theme README for more info)";
-export const bloomLyricsStyleSettingTitle = "Enable Bloom lyrics style (AM-like)";
+export const bloomLyricsStyleSettingTitle = "Enable Bloom lyrics style (not compatible with the Beautiful Lyrics extension)";
