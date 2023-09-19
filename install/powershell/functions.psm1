@@ -208,7 +208,7 @@ function Get-SpicetifyFoldersPaths {
     process {
         @{
             configPath = (spicetify path -c)
-            bloomPath  = "$(spicetify path userdata)\Themes\bloom"
+            bloomPath  = "$(spicetify path userdata)\Themes\Bloom"
         }
     }
 }
@@ -291,7 +291,7 @@ function Get-Bloom {
         $bloomRemoteURI = "$bloomBaseURI/main/remote"
         $bloomDistURI = "$bloomBaseURI/dist"
         $fileList = 'color.ini', 'theme.js', 'user.css'
-        $outFolder = "$env:TEMP\bloom"
+        $outFolder = "$env:TEMP\Bloom"
     }
     process {
         if ($Type -eq 'Local') {
@@ -301,7 +301,7 @@ function Get-Bloom {
             $bloomURI = $bloomRemoteURI
         }
 
-        New-Item -Path "$env:TEMP\bloom" -ItemType Directory -Force | Out-Null
+        New-Item -Path $outFolder -ItemType Directory -Force | Out-Null
 
         $Parameters = @{
             UseBasicParsing = $true
@@ -352,7 +352,7 @@ function Install-Bloom {
 
         spicetify config extensions bloom.js- -q
         spicetify config inject_css 1 replace_colors 1 inject_theme_js 1
-        spicetify config current_theme 'bloom'
+        spicetify config current_theme 'Bloom'
         
         if ($ColorScheme) {
             spicetify config color_scheme $ColorScheme

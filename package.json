@@ -20,29 +20,29 @@
   },
   "cross-os": {
     "_build-script-local": {
-      "win32": "spicetify-creator --out=\"%APPDATA%/spicetify/Themes/bloom\" --in=src/script",
-      "linux": "spicetify-creator --out=~/.config/spicetify/Themes/bloom --in=src/script",
-      "darwin": "spicetify-creator --out=~/.config/spicetify/Themes/bloom --in=src/script"
+      "win32": "spicetify-creator --out=\"%APPDATA%/spicetify/Themes/Bloom\" --in=src/script",
+      "linux": "spicetify-creator --out=~/.config/spicetify/Themes/Bloom --in=src/script",
+      "darwin": "spicetify-creator --out=~/.config/spicetify/Themes/Bloom --in=src/script"
     },
     "_watch-script": {
-      "win32": "spicetify-creator --watch --out=\"%APPDATA%/spicetify/Themes/bloom\" --in=src/script",
-      "linux": "spicetify-creator --watch --out=~/.config/spicetify/Themes/bloom --in=src/script",
-      "darwin": "spicetify-creator --watch --out=~/.config/spicetify/Themes/bloom --in=src/script"
+      "win32": "spicetify-creator --watch --out=\"%APPDATA%/spicetify/Themes/Bloom\" --in=src/script",
+      "linux": "spicetify-creator --watch --out=~/.config/spicetify/Themes/Bloom --in=src/script",
+      "darwin": "spicetify-creator --watch --out=~/.config/spicetify/Themes/Bloom --in=src/script"
     },
     "_build-styles-local": {
-      "win32": "sass src/styles/main.scss \"%APPDATA%/spicetify/Themes/bloom/user.css\" --no-source-map",
-      "linux": "sass src/styles/main.scss ~/.config/spicetify/Themes/bloom/user.css --no-source-map",
-      "darwin": "sass src/styles/main.scss ~/.config/spicetify/Themes/bloom/user.css --no-source-map"
+      "win32": "sass src/styles/main.scss \"%APPDATA%/spicetify/Themes/Bloom/user.css\" --no-source-map",
+      "linux": "sass src/styles/main.scss ~/.config/spicetify/Themes/Bloom/user.css --no-source-map",
+      "darwin": "sass src/styles/main.scss ~/.config/spicetify/Themes/Bloom/user.css --no-source-map"
     },
     "_watch-styles": {
-      "win32": "sass src/styles/main.scss \"%APPDATA%/spicetify/Themes/bloom/user.css\" --no-source-map --watch",
-      "linux": "sass src/styles/main.scss ~/.config/spicetify/Themes/bloom/user.css --no-source-map --watch",
-      "darwin": "sass src/styles/main.scss ~/.config/spicetify/Themes/bloom/user.css --no-source-map --watch"
+      "win32": "sass src/styles/main.scss \"%APPDATA%/spicetify/Themes/Bloom/user.css\" --no-source-map --watch",
+      "linux": "sass src/styles/main.scss ~/.config/spicetify/Themes/Bloom/user.css --no-source-map --watch",
+      "darwin": "sass src/styles/main.scss ~/.config/spicetify/Themes/Bloom/user.css --no-source-map --watch"
     },
     "_copy-colors-local": {
-      "win32": "copyfiles --flat src/color.ini \"%APPDATA%/spicetify/Themes/bloom\"",
-      "linux": "copyfiles --flat src/color.ini ~/.config/spicetify/Themes/bloom",
-      "darwin": "copyfiles --flat src/color.ini ~/.config/spicetify/Themes/bloom"
+      "win32": "copyfiles --flat src/color.ini \"%APPDATA%/spicetify/Themes/Bloom\"",
+      "linux": "copyfiles --flat src/color.ini ~/.config/spicetify/Themes/Bloom",
+      "darwin": "copyfiles --flat src/color.ini ~/.config/spicetify/Themes/Bloom"
     }
   },
   "devDependencies": {

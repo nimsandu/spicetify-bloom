@@ -80,12 +80,12 @@ Use this guide to install if you're having trouble using the shell commands/inst
 
 1. Download this repo as [archive](https://codeload.github.com/nimsandu/spicetify-bloom/zip/refs/heads/main).
 2. Navigate to the Spicetify's `Themes` directory. Use `spicetify path userdata` command to get the path.
-3. In the directory, create a new folder called `bloom`.
-4. Open the downloaded repo archive, and move all of the files from the `src` subfolder to the `bloom` folder you created.
+3. In the directory, create a new folder called `Bloom`.
+4. Open the downloaded repo archive, and move all of the files from the `src` subfolder to the `Bloom` folder you created.
 5. Open a terminal/command prompt window and type the following commands:
 
    ```shell
-    spicetify config current_theme bloom color_scheme dark
+    spicetify config current_theme Bloom color_scheme dark
     spicetify config inject_css 1 replace_colors 1 inject_theme_js 1
     spicetify apply
    ```
@@ -108,7 +108,7 @@ If you installed Bloom from Marketplace you can change the color scheme on its p
 ### Accent Color
 
 1. Navigate to the Spicetify's `Themes` directory. Use `spicetify path userdata` command to get the path.
-2. Open `bloom` folder.
+2. Open `Bloom` folder.
 3. Edit your current color scheme in the `color.ini` file.
 4. Use the `spicetify apply` command.
 
