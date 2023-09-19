@@ -95,6 +95,8 @@ Open your Spicetify config (`spicetify -c`), go to the `Patch` section and paste
 ```ini
 vendor~xpui.js_find_8008     = (\w+)=\w+\.props\.interactive&&\w+===\w+\|\|"parent"===\w+\?(\w+)\.parentNode:(\w+)\((\w+),\[(\w+)\]\)
 vendor~xpui.js_repl_all_8008 = ${1}=/(?:\bcontextMenu\b|\blyrics-tooltip-wrapper\b)/.test(${2}.parentNode.className)?${2}.parentNode:${3}(${4},[${5}])
+vendor~xpui.js_find_0880     = (\w+)\.contains\((\w+)\)\|\|\w+\.appendChild\(\w+\)
+vendor~xpui.js_repl_all_0880 = ${1}.contains(${2})||${1}.appendChild(${2});${2}.classList.add("encore-dark-theme")
 ```
 
 Save the changes and then run `spicetify apply`.
