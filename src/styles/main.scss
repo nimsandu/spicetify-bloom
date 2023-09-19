@@ -1,7 +1,10 @@
 @use "./features/categoryCardBackdrops/categoryCardBackdrop.scss";
 @use "./features/lyricsEffects/lyricsEffects.scss";
+@use "./third-party/lyrics-plus.scss";
 
 :root {
+  --temp-var: 64px;
+  --temp-var2: 105px;
   --border-radius-1: 9px;
   --border-radius-2: 7px;
   --border-radius-3: 7px;
@@ -47,7 +50,7 @@ html {
 }
 
 .Root__main-view {
-  top: 64px;
+  top: var(--temp-var);
   z-index: 0;
   height: calc(100% - 48px);
   overflow: visible;
@@ -751,14 +754,14 @@ style {
 /* sidebar */
 
 .Root__nav-bar {
-  top: 64px;
+  top: var(--temp-var);
   z-index: 1 !important;
   height: calc(100% - 48px);
 }
 
 .main-navBar-navBar {
   width: 85px !important;
-  margin-top: 64px;
+  margin-top: var(--temp-var);
   padding-top: 0;
 }
 
@@ -1584,7 +1587,7 @@ style {
 .Root__right-sidebar {
   position: relative;
   height: calc(100% - 48px);
-  margin-top: 64px;
+  margin-top: var(--temp-var);
 }
 
 .main-buddyFeed-findFriendsIcon,
@@ -2308,7 +2311,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 /* error content */
 
 .main-pageErrorTemplate-errorBody {
-  min-height: calc((100vh - 64px) - 105px);
+  min-height: calc((100vh - var(--temp-var)) - var(--temp-var2));
 }
 
 .main-pageErrorTemplate-errorBody svg {
@@ -2370,67 +2373,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .lyrics-lyrics-container {
   margin-top: 0;
-}
-
-.lyrics-lyricsContainer-LyricsBackground {
-  margin-top: -10px;
-  margin-bottom: -110px;
-}
-
-.lyrics-lyricsContainer-Provider {
-  padding-bottom: 40px;
-}
-
-#lyrics-fullscreen-container
-  > .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
-  .lyrics-lyricsContainer-Provider {
-  padding-bottom: 35px;
-}
-
-.lyrics-lyricsContainer-LyricsUnsyncedPadding {
-  height: 20vh;
-}
-
-.lyrics-config-button-container {
-  bottom: 80px;
-}
-
-#lyrics-fullscreen-container .lyrics-config-button-container {
-  bottom: 10px;
-}
-
-#fad-lyrics-plus-container .lyrics-config-button-container {
-  bottom: 32px;
-}
-
-body:has(#lyrics-fullscreen-container)
-  > #main
-  > .Root
-  > .Root__top-container
-  > *:not(.Root__main-view),
-body:has(#lyrics-fullscreen-container)
-  > #main
-  > .Root
-  > .Root__top-container
-  > .Root__main-view
-  > *:not(.main-view-container),
-body:has(#lyrics-fullscreen-container)
-  > #main
-  > .Root
-  > .Root__top-container
-  > .Root__main-view
-  > .main-view-container
-  > *:not(.under-main-view),
-body:has(#lyrics-fullscreen-container)
-  > #main
-  > .Root
-  > .Root__top-container
-  > .Root__main-view::before {
-  display: none !important;
-}
-
-body:has(#lyrics-fullscreen-container) > #main > .Root {
-  --panel-gap: 0 !important;
 }
 
 .hKccLC {
@@ -2575,20 +2517,16 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 /* Main view */
 
 .main-view-container__scroll-node-child-spacer {
-  height: 64px !important;
+  height: var(--temp-var) !important;
 }
 
 .main-entityHeader-background,
 .main-entityHeader-background.main-entityHeader-gradient {
-  margin-top: 64px;
+  margin-top: var(--temp-var);
 }
 
 .main-view-container {
-  margin-top: -64px;
-}
-
-.main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
-  margin-top: 64px;
+  margin-top: calc(var(--temp-var) * -1);
 }
 
 .contentSpacing:not(.artist-artistDiscography-topBar, .search-searchCategory-container) {
@@ -2710,7 +2648,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 .main-yourLibraryX-libraryContainer {
   --background-highlight: var(--spice-selected-row) !important;
   --text-bright-accent: var(--spice-accent) !important;
-  padding-bottom: 105px !important;
+  padding-bottom: var(--temp-var2) !important;
 }
 
 .main-yourLibraryX-listRowSubtitleLeadingWrapper svg {
@@ -2730,7 +2668,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 /* Right sidebar */
 
 .main-buddyFeed-scrollBarContainer {
-  height: calc(100% - 105px);
+  height: calc(100% - var(--temp-var2));
 }
 
 /* Friends activity */
@@ -2752,18 +2690,17 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Lyrics Cinema*/
 
+.Root__top-bar {
+  z-index: 5 !important;
+  display: unset !important;
+}
+
+.main-lyricsCinema-controls {
+  top: 74px !important;
+}
+
 .main-lyricsCinema-container .lyrics-lyrics-container {
-  margin-top: 64px;
-}
-
-/* Lyrics Plus */
-
-.lyrics-lyricsContainer-Provider {
-  padding-bottom: 105px;
-}
-
-.lyrics-lyricsContainer-LyricsUnsyncedPadding {
-  height: 15vh;
+  margin-top: var(--temp-var);
 }
 
 /* notification */

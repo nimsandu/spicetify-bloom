@@ -1,0 +1,53 @@
+@media not (display-mode: fullscreen) {
+  // fix bottom position
+
+  .lyrics-lyricsContainer-LyricsContainer {
+    padding-bottom: var(--temp-var2);
+  }
+
+  .lyrics-lyricsContainer-LyricsBackground {
+    margin-bottom: calc(var(--temp-var2) * -1);
+  }
+
+  .lyrics-lyricsContainer-LyricsContainer:has(.lyrics-lyricsContainer-UnsyncedLyricsPage)
+    .lyrics-config-button-container {
+    bottom: var(--temp-var2);
+  }
+
+  // fix lines position
+
+  .lyrics-lyricsContainer-SyncedLyrics .lyrics-lyricsContainer-LyricsLine {
+    transform: translateY(
+      calc(
+        var(--position-index) * var(--lyrics-line-height) +
+          calc(var(--offset) + calc(var(--temp-var) / 2))
+      )
+    );
+  }
+
+  .lyrics-lyricsContainer-SyncedLyrics
+    .lyrics-lyricsContainer-LyricsLine.lyrics-lyricsContainer-LyricsLine-active {
+    transform: translateY(
+        calc(
+          var(--position-index) * var(--lyrics-line-height) +
+            calc(var(--offset) + calc(var(--temp-var) / 2))
+        )
+      )
+      scale(1.1);
+  }
+}
+
+// hide everything except backdrop in fullscreen mode
+
+body:has(#lyrics-fullscreen-container) {
+  .Root__top-container > *:not(.Root__main-view),
+  .Root__main-view > *:not(.main-view-container),
+  .main-view-container > *:not(.under-main-view),
+  .Root__top-container > .Root__main-view::before {
+    display: none !important;
+  }
+  
+  .Root {
+    --panel-gap: 0 !important;
+  }
+}

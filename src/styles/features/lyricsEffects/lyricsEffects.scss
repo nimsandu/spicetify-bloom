@@ -3,16 +3,6 @@
 }
 
 .enable-bloom-lyrics-style {
-  /* Needed for lyrics cinema */
-  .Root__top-bar {
-    z-index: 5 !important;
-    display: unset !important;
-  }
-
-  .main-lyricsCinema-controls {
-    top: 74px !important;
-  }
-
   #lyrics-backdrop {
     position: absolute;
     width: 100%;
@@ -104,12 +94,6 @@
 
   .lyrics-lyricsContainer-LyricsBackground {
     display: none !important;
-  }
-
-  /* hide horizontal scrollbar */
-  .lyrics-lyricsContainer-LyricsContainer,
-  .lyrics-lyricsContainer-SyncedLyricsPage {
-    overflow-x: hidden;
   }
 
   .lyrics-lyricsContainer-LyricsContainer {
