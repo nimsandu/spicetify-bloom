@@ -1,7 +1,7 @@
 @use "./features/categoryCardBackdrop.scss";
 @use "./features/lyricsEffects.scss";
-@use "./third-party/lyrics-plus.scss";
 @use "./features/hideWindowControlsBackground.scss";
+@use "./third-party/lyrics-plus.scss";
 
 :root {
   --temp-var: 64px;
@@ -57,6 +57,10 @@ html {
   overflow: visible;
   background-color: var(--spice-main);
   border-radius: var(--border-radius-1) !important;
+}
+
+.main-view-container__scroll-node > .os-scrollbar-vertical {
+  top: var(--temp-var) !important;
 }
 
 .os-scrollbar {
@@ -1408,7 +1412,7 @@ style {
 /* notification */
 
 .main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: 110px;
+  margin-bottom: var(--temp-var2);
 }
 
 .main-notificationBubble-NotificationBubble {
@@ -1421,6 +1425,12 @@ style {
 
 .main-notificationBubble-isError {
   background-color: var(--spice-notif-bubble-error);
+}
+
+// playlist members window
+.QIWSUTRvc_sCKCXhR1v4,
+.A01aXaVEC14dEvpLdH0h {
+  color: var(--spice-text);
 }
 
 /* modals */
@@ -1457,7 +1467,8 @@ style {
 .XwNfIrI6_hCa_9_T2cQB,
 .main-embedWidgetGenerator-container,
 .main-trackCreditsModal-header,
-.main-confirmDialog-container {
+.main-confirmDialog-container,
+.BcnmjYfXOAeitEfgAPl6 {
   background-color: transparent !important;
 }
 
@@ -2702,10 +2713,4 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-lyricsCinema-container .lyrics-lyrics-container {
   margin-top: var(--temp-var);
-}
-
-/* notification */
-
-.main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: 95px;
 }
