@@ -19,6 +19,7 @@ import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesA
 import createLyricsBackdropElement from "./utils/createLyricsBackdropElement";
 import animateLyricsBackdropChange from "./modules/animateLyricsBackdropChange";
 import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
+import enableFeatureStyles from "../../shared/modules/enableFeatureStyles";
 
 class LyricsEffectsManager {
   protected static previousAlbumUri: string;
@@ -139,7 +140,7 @@ class LyricsEffectsManager {
   }
 
   public static enable(): void {
-    document.body.classList.add(bloomLyricsStyleSettingId);
+    enableFeatureStyles(bloomLyricsStyleSettingId);
 
     waitForElements([underMainViewSelector], ([underMainView]) => {
       LyricsEffectsManager.lyricsBackdropContainer = document.createElement("div");

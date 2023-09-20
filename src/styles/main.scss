@@ -2,6 +2,7 @@
 @use "./features/lyricsEffects.scss";
 @use "./features/hideWindowControlsBackground.scss";
 @use "./third-party/lyrics-plus.scss";
+@use "./third-party/power-bar.scss";
 
 :root {
   --temp-var: 64px;
@@ -12,7 +13,6 @@
   --glue-font-weight-normal: 400;
   --glue-font-weight-bold: 600;
   --glue-font-weight-black: 700;
-  --scrollbars: unset;
   --scrollbar-vertical-size: 6px;
   --filter-brightness: 1;
   --green: #00ffa1;
@@ -61,10 +61,6 @@ html {
 
 .main-view-container__scroll-node > .os-scrollbar-vertical {
   top: var(--temp-var) !important;
-}
-
-.os-scrollbar {
-  display: var(--scrollbars);
 }
 
 .os-scrollbar-handle {
@@ -240,7 +236,7 @@ html {
 
 /* headers */
 
-[dir="ltr"] .queue-tabBar-header,
+.queue-tabBar-header,
 .marketplace-tabBar-nav {
   text-align: center !important;
 }
@@ -514,19 +510,16 @@ h3,
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/lyrics-plus"] > .collection-icon,
 .main-yourLibraryX-navLink[href="/lyrics-plus"] > .home-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/lyrics-plus"] > .collection-active-icon,
 .main-yourLibraryX-navLink[href="/lyrics-plus"] > .home-active-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/marketplace"] > .collection-icon,
 .main-yourLibraryX-navLink[href="/marketplace"] > .home-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg");
   background-color: var(--spice-subtext) !important;
@@ -538,37 +531,31 @@ h3,
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/eternal-jukebox"] > .collection-icon,
 .main-yourLibraryX-navLink[href="/eternal-jukebox"] > .home-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg");
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/eternal-jukebox"] > .collection-active-icon,
 .main-yourLibraryX-navLink[href="/eternal-jukebox"] > .home-active-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/new-releases"] > .collection-icon,
 .main-yourLibraryX-navLink[href="/new-releases"] > .home-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/new-releases"] > .collection-active-icon,
 .main-yourLibraryX-navLink[href="/new-releases"] > .home-active-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href="/reddit"] > .collection-icon,
 .main-yourLibraryX-navLink[href="/reddit"] > .home-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/reddit/reddit_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/reddit"] > .collection-active-icon,
 .main-yourLibraryX-navLink[href="/reddit"] > .home-active-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/reddit/reddit_filled.svg");
   background-color: var(--spice-accent) !important;
@@ -580,32 +567,6 @@ h3,
 .home-active-icon path,
 .search-active-icon path,
 .collection-active-icon path {
-  display: none !important;
-}
-
-.main-createPlaylistButton-button {
-  display: block !important;
-  width: 24px !important;
-  height: 24px !important;
-  margin: auto;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
-  padding: 0;
-  background-color: var(--spice-subtext) !important;
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg");
-}
-
-.main-createPlaylistButton-button svg {
-  display: none !important;
-}
-
-.main-createPlaylistButton-createPlaylistIcon {
-  display: block !important;
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-createPlaylistButton-createPlaylistIcon > svg,
-.main-createPlaylistButton-text {
   display: none !important;
 }
 
@@ -762,12 +723,6 @@ style {
   top: var(--temp-var);
   z-index: 1 !important;
   height: calc(100% - 48px);
-}
-
-.main-navBar-navBar {
-  width: 85px !important;
-  margin-top: var(--temp-var);
-  padding-top: 0;
 }
 
 /* Fade effect when scrolling down playlists */
@@ -2291,7 +2246,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* play buttons */
 
-[dir="ltr"] .main-card-PlayButtonContainer {
+.main-card-PlayButtonContainer {
   filter: drop-shadow(0 0 5px rgba(0 0 0 / 30%));
 }
 
@@ -2461,56 +2416,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   margin-bottom: 120px;
 }
 
-/* Spicetify power bar */
-
-#power-bar-wrapper::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background-image: var(--noise-texture);
-  border-radius: var(--border-radius-1) !important;
-  opacity: var(--noise-opacity);
-  content: "";
-}
-
-#power-bar-wrapper {
-  background-color: rgba(var(--spice-rgb-main), 0.8) !important;
-  border-radius: var(--border-radius-1) !important;
-  backdrop-filter: blur(50px) saturate(1.5);
-}
-
-#power-bar-search.has-suggestions {
-  width: 100% !important;
-  border-bottom: none !important;
-}
-
-#power-bar-search:focus-visible {
-  border-bottom: 2px solid var(--spice-accent) !important;
-  border-radius: var(--border-radius-3) !important;
-}
-
-#suggestions-container h5 {
-  color: var(--spice-subtext) !important;
-  font-size: 1.1em !important;
-}
-
-.suggestions-category {
-  padding-bottom: 0 !important;
-  border: none !important;
-}
-
-.suggestion-item__active {
-  background-color: var(--spice-accent) !important;
-  border-radius: var(--border-radius-3) !important;
-}
-
-.suggestion-item__img {
-  border-radius: 10% !important;
-}
-
 /* LibraryX */
 
 /* Top container */
@@ -2646,13 +2551,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   background-color: var(--spice-text);
 }
 
-.main-yourLibraryX-createButton span {
-  width: 18px;
-  height: 18px;
-  background-color: var(--spice-text);
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_24_filled.svg");
-}
-
 .BoxComponent-group-tinted-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px.main-yourLibraryX-listItemGroup {
   background-color: var(--spice-selected-row) !important;
 }
@@ -2673,7 +2571,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Player bar */
 
-[dir="ltr"] .main-coverSlotCollapsed-navAltContainer {
+.main-coverSlotCollapsed-navAltContainer {
   transform: none !important;
 }
 

@@ -1,9 +1,11 @@
-html:not(.spotify__container--is-desktop.fullscreen) .hide-window-controls-background:not(.video-full-window)::after {
-  position: absolute;
-  right: 0;
-  z-index: 9999999;
-  width: var(--control-width);
-  height: var(--control-height);
-  backdrop-filter: brightness(2.12);
-  content: '';
+@media not (display-mode: fullscreen) {
+  body::after {
+    position: absolute;
+    right: 0;
+    z-index: 9999999;
+    width: var(--control-width);
+    height: var(--control-height);
+    backdrop-filter: brightness(2.12);
+    content: "";
+  }
 }
