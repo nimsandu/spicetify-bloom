@@ -8,7 +8,6 @@
 - No importing of code from the same level (utils to utils, modules to modules, etc.) within a feature.
 - No importing of code from one feature to another.
 - All data that might change in the future (class names, links, etc.) and parameter values (time, size, etc.) are better stored as constants in a separate file.
-- No helpers without utils.
 
 ## Tree
 
