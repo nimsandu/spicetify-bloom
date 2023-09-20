@@ -15,7 +15,7 @@ export const navLinkAccentClass = "main-yourLibraryX-navLink-accent";
 export const themeSettingsSectionId = "bloom-settings";
 export const themeSettingsSectionName = "Bloom theme settings";
 
-export const requirementsSettingTitle = "Check the theme requirements";
+export const requirementsSettingTitle = "Check theme requirements";
 export const requirementsSettingDefaultValue = true;
 
 export const tippiesBackdropSettingTitle =
