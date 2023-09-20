@@ -2559,6 +2559,9 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-yourLibraryX-libraryContainer {
   --background-highlight: var(--spice-selected-row) !important;
   --text-bright-accent: var(--spice-accent) !important;
+}
+
+#spicetify-playlist-list {
   padding-bottom: var(--temp-var2) !important;
 }
 
