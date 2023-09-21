@@ -54,9 +54,7 @@ html {
 .Root__main-view {
   top: var(--topbar-height);
   z-index: 0;
-  height: calc(
-    100% - calc(var(--temp-var2) - var(--topbar-height)) - calc(var(--border-radius-1) - 1px)
-  );
+  height: calc(100% - (var(--temp-var2) - var(--topbar-height)) - (var(--border-radius-1) - 2px));
   overflow: visible;
   border-radius: var(--border-radius-1) !important;
 }
@@ -191,7 +189,7 @@ html {
 }
 
 .x-searchResultsTracks-root > .main-gridContainer-gridContainer,
-.main-trackList-indexable,
+.main-trackList-trackList,
 .main-card-card,
 .main-heroCard-card,
 .view-homeShortcutsGrid-draggable {
@@ -728,9 +726,7 @@ style {
 .Root__nav-bar {
   top: var(--topbar-height);
   z-index: 1 !important;
-  height: calc(
-    100% - calc(var(--temp-var2) - var(--topbar-height)) - calc(var(--border-radius-1) - 1px)
-  );
+  height: calc(100% - (var(--temp-var2) - var(--topbar-height)) - (var(--border-radius-1) - 2px));
 }
 
 /* Fade effect when scrolling down playlists */
@@ -892,19 +888,19 @@ style {
 
 /* tracklist */
 
-.main-trackList-indexable .main-virtualScrollList-wrapper,
-.main-trackList-indexable .main-rootlist-wrapper {
+.main-trackList-trackList .main-virtualScrollList-wrapper,
+.main-trackList-trackList .main-rootlist-wrapper {
   padding: 8px;
   background-color: var(--spice-card);
   border-radius: var(--border-radius-2);
 }
 
-.main-trackList-indexable {
+.main-trackList-trackList {
   padding: 8px;
   padding-bottom: 24px;
 }
 
-.main-trackList-trackList.main-trackList-indexable {
+.main-trackList-trackList {
   background-color: var(--spice-card);
   border-radius: var(--border-radius-2);
 }
@@ -1302,7 +1298,7 @@ style {
 /* notification */
 
 .main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: calc(var(--temp-var2) + 5px);
+  margin-bottom: var(--temp-var2);
 }
 
 .main-notificationBubble-NotificationBubble {
@@ -1486,9 +1482,7 @@ style {
 }
 
 .Root__right-sidebar {
-  height: calc(
-    100% - calc(var(--temp-var2) - var(--topbar-height)) - calc(var(--border-radius-1) - 1px)
-  );
+  height: calc(100% - (var(--temp-var2) - var(--topbar-height)) - (var(--border-radius-1) - 2px));
   margin-top: var(--topbar-height);
 }
 
@@ -1638,6 +1632,14 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .hcuLp8V4uEEfWZ4k6aLV {
+  background-color: rgba(var(--spice-rgb-card), 0.5);
+}
+
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled="true"] ._k3JjF2rHwdYfSPZH09S {
+  background-color: rgba(var(--spice-rgb-card), 0.5);
+}
+
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled="true"] .main-devicePicker-nowPlayingActiveIcon {
   background-color: rgba(var(--spice-rgb-card), 0.5);
 }
 
