@@ -6,7 +6,7 @@
 @use "./third-party/power-bar.scss";
 
 :root {
-  --temp-var: 64px;
+  --topbar-height: 64px;
   --temp-var2: 105px;
   --border-radius-1: 9px;
   --border-radius-2: 7px;
@@ -52,15 +52,17 @@ html {
 }
 
 .Root__main-view {
-  top: var(--temp-var);
+  top: var(--topbar-height);
   z-index: 0;
-  height: calc(100% - calc(var(--temp-var2) - var(--temp-var)) - calc(var(--border-radius-1) - 1px));
+  height: calc(
+    100% - calc(var(--temp-var2) - var(--topbar-height)) - calc(var(--border-radius-1) - 1px)
+  );
   overflow: visible;
   border-radius: var(--border-radius-1) !important;
 }
 
 .main-view-container__scroll-node > .os-scrollbar-vertical {
-  top: var(--temp-var) !important;
+  top: var(--topbar-height) !important;
 }
 
 .os-scrollbar-handle {
@@ -724,9 +726,11 @@ style {
 /* sidebar */
 
 .Root__nav-bar {
-  top: var(--temp-var);
+  top: var(--topbar-height);
   z-index: 1 !important;
-  height: calc(100% - calc(var(--temp-var2) - var(--temp-var)) - calc(var(--border-radius-1) - 1px));
+  height: calc(
+    100% - calc(var(--temp-var2) - var(--topbar-height)) - calc(var(--border-radius-1) - 1px)
+  );
 }
 
 /* Fade effect when scrolling down playlists */
@@ -1298,7 +1302,7 @@ style {
 /* notification */
 
 .main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: var(--temp-var2);
+  margin-bottom: calc(var(--temp-var2) + 5px);
 }
 
 .main-notificationBubble-NotificationBubble {
@@ -1482,8 +1486,10 @@ style {
 }
 
 .Root__right-sidebar {
-  height: calc(100% - calc(var(--temp-var2) - var(--temp-var)) - calc(var(--border-radius-1) - 1px));
-  margin-top: var(--temp-var);
+  height: calc(
+    100% - calc(var(--temp-var2) - var(--topbar-height)) - calc(var(--border-radius-1) - 1px)
+  );
+  margin-top: var(--topbar-height);
 }
 
 .main-buddyFeed-findFriendsIcon,
@@ -2207,7 +2213,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 /* error content */
 
 .main-pageErrorTemplate-errorBody {
-  min-height: calc((100vh - var(--temp-var)) - var(--temp-var2));
+  min-height: calc((100vh - var(--topbar-height)) - var(--temp-var2));
 }
 
 .main-pageErrorTemplate-errorBody svg {
@@ -2357,16 +2363,16 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 /* Main view */
 
 .main-view-container__scroll-node-child-spacer {
-  height: var(--temp-var) !important;
+  height: var(--topbar-height) !important;
 }
 
 .main-entityHeader-background,
 .main-entityHeader-background.main-entityHeader-gradient {
-  margin-top: var(--temp-var);
+  margin-top: var(--topbar-height);
 }
 
 .main-view-container {
-  margin-top: calc(var(--temp-var) * -1);
+  margin-top: calc(var(--topbar-height) * -1);
 }
 
 .contentSpacing:not(.artist-artistDiscography-topBar, .search-searchCategory-container) {
@@ -2505,7 +2511,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-buddyFeed-content > div > ol,
 .main-nowPlayingView-content {
-	padding-bottom: var(--temp-var2)
+  padding-bottom: var(--temp-var2);
 }
 
 /* Friends activity */
@@ -2532,5 +2538,5 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .main-lyricsCinema-container .lyrics-lyrics-container {
-  margin-top: var(--temp-var);
+  margin-top: var(--topbar-height);
 }

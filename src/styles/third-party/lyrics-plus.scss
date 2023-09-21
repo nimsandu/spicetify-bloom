@@ -20,7 +20,7 @@
     transform: translateY(
       calc(
         var(--position-index) * var(--lyrics-line-height) +
-          calc(var(--offset) + calc(var(--temp-var) / 2))
+          calc(var(--offset) + calc(var(--topbar-height) / 2))
       )
     );
   }
@@ -30,7 +30,7 @@
     transform: translateY(
         calc(
           var(--position-index) * var(--lyrics-line-height) +
-            calc(var(--offset) + calc(var(--temp-var) / 2))
+            calc(var(--offset) + calc(var(--topbar-height) / 2))
         )
       )
       scale(1.1);
