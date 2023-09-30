@@ -48,12 +48,12 @@
   "devDependencies": {
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
     "concurrently": "^8.2.0",
     "copyfiles": "^2.4.1",
     "cross-os": "^1.4.0",
-    "eslint": "^8.44.0",
+    "eslint": "^8.50.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.8.0",
@@ -63,14 +63,14 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "onchange": "^7.1.0",
     "postcss": "^8.4.27",
-    "prettier": "^3.0.0",
+    "prettier": "^3.0.3",
     "sass": "^1.64.2",
     "spicetify-creator": "^1.0.15",
     "stylelint": "^15.10.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-order": "^6.0.3",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "fast-average-color": "^9.3.0",
