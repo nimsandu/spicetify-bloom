@@ -9,8 +9,8 @@ import {
   lyricsCinemaElementSelector,
   underMainViewSelector,
   lyricsContentWrapperSelector,
-  lyricsLinesClassName,
-  mainViewContainerClass,
+  lyricsLinesSelecor,
+  mainViewContainerSelector,
   lyricsContentProviderSelector,
 } from "./constants/constants";
 import waitForAPIs from "../../shared/utils/waitForAPIs";
@@ -116,9 +116,7 @@ class LyricsEffectsManager {
       fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
       fixLyricsActiveLineClipping(lyricsContentWrapper as HTMLElement);
 
-      const mainViewContainer = document.getElementsByClassName(
-        mainViewContainerClass,
-      )[0] as HTMLElement;
+      const mainViewContainer = document.querySelector(mainViewContainerSelector) as HTMLElement;
       if (LyricsEffectsManager.mainViewContainerResizeObserver) {
         LyricsEffectsManager.mainViewContainerResizeObserver.disconnect();
       }
@@ -130,9 +128,7 @@ class LyricsEffectsManager {
 
       waitForElements([lyricsContentProviderSelector], () => {
         const lyricsLines = Array.from(
-          lyricsContentWrapper.getElementsByClassName(
-            lyricsLinesClassName,
-          ) as HTMLCollectionOf<HTMLElement>,
+          lyricsContentWrapper.querySelectorAll(lyricsLinesSelecor) as NodeListOf<HTMLElement>,
         );
         setLyricsLinesStyle(lyricsLines);
       });

@@ -1,15 +1,15 @@
 import waitForElements from "../../../shared/utils/waitForElements";
 import {
   categoryCardBackdropClass,
-  categoryCardImageClass,
-  categoryCardClass,
+  categoryCardImageSelector,
+  categoryCardSelector,
 } from "../constants/constants";
 
 function addBackdropToCategoryCards(): void {
-  waitForElements([`.${categoryCardImageClass}`], () => {
-    const cards = Array.from(document.getElementsByClassName(categoryCardClass));
+  waitForElements([categoryCardImageSelector], () => {
+    const cards = Array.from(document.querySelectorAll(categoryCardSelector));
     cards.forEach((card) => {
-      const cardImage = card.getElementsByClassName(categoryCardImageClass)[0];
+      const cardImage = card.querySelector(categoryCardImageSelector);
       if (
         card instanceof HTMLElement &&
         cardImage instanceof HTMLImageElement &&

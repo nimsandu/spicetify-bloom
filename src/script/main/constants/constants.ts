@@ -8,8 +8,8 @@ export const topBarContentWrapperSelector = ".main-topBar-topbarContentWrapper";
 export const contextMenuItemClass = "main-contextMenu-menuItem";
 export const lyricsTooltipWrapperClass = "lyrics-tooltip-wrapper";
 
-export const navItemClass = "main-yourLibraryX-navItem";
-export const navLinkClass = "main-yourLibraryX-navLink";
+export const navItemSelector = ".main-yourLibraryX-navItem";
+export const navLinkSelector = ".main-yourLibraryX-navLink";
 export const navLinkAccentClass = "main-yourLibraryX-navLink-accent";
 
 export const themeSettingsSectionId = "bloom-settings";

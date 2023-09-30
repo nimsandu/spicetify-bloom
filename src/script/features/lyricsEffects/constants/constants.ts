@@ -19,14 +19,14 @@ export const lyricsAnimationDurationStepMs = 200;
 export const lyricsAnimationDurationMsMax = 1000;
 export const lyricsAnimationDurationStepMultiplier = 100;
 
-export const mainViewContainerClass = "main-view-container";
+export const mainViewContainerSelector = ".main-view-container";
 export const underMainViewSelector = ".under-main-view";
 
 export const lyricsCinemaElementSelector = ".Root__lyrics-cinema";
 export const lyricsCinemaVisibleClass = "main-lyricsCinema-lyricsCinemaVisible";
 
 export const lyricsContentWrapperSelector = ".lyrics-lyrics-contentWrapper";
-export const lyricsLinesClassName = "lyrics-lyricsContent-lyric";
+export const lyricsLinesSelecor = ".lyrics-lyricsContent-lyric";
 export const lyricsContentProviderSelector = ".lyrics-lyricsContent-provider";
 
 export const lyricsBackdropContainerId = "lyrics-backdrop-container";
