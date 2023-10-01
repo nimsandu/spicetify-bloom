@@ -2084,14 +2084,20 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 /* Shuffle disabled */
-.main-shuffleButton-button {
+.main-shuffleButton-button,
+// smart shuffle
+.player-controls .lihLVK button {
+  min-block-size: 24px !important;
   height: 24px !important;
   background-color: var(--spice-subtext) !important;
+  border: none !important;
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg");
 }
 
 /* Shuffle enabled */
-.main-shuffleButton-button[aria-checked="true"] {
+.main-shuffleButton-button[aria-checked="true"],
+  // smart shuffle
+.player-controls .lihLVK .d89qxCxbCRj4y1Woft8j {
   height: 24px !important;
   background-color: var(--spice-accent) !important;
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg");
