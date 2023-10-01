@@ -1729,9 +1729,18 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   background: rgba(var(--spice-rgb-player), 0.75);
   border: 1px solid var(--spice-player-border);
   border-radius: var(--border-radius-1);
-  /* 100% - side padding   */
   box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.main-nowPlayingBar-container::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
   backdrop-filter: blur(50px) saturate(1.5) !important;
+  content: "";
 }
 
 .main-nowPlayingBar-container {

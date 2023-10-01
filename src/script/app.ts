@@ -1,7 +1,6 @@
 import addButtonStyles from "./main/modules/addButtonStyles";
 import addLibraryNavLinkAccent from "./main/modules/addLibraryNavLinkAccent";
 import controlNoiseOpacity from "./main/modules/controlNoiseOpacity";
-import fixTippiesBackdropFilter from "./main/modules/fixTippiesBackdropFilter";
 import keepTopBarContentCentered from "./main/modules/keepTopBarContentCentered";
 import addSettingsAsync from "./main/modules/addSettingsAsync";
 
@@ -12,7 +11,6 @@ import hideWindowControlsBackground from "./features/hideWindowControlsBackgroun
 import fluentize from "./features/fluentStyle/fluentize";
 
 import {
-  tippiesBackdropSettingId,
   bloomLyricsStyleSettingId,
   requirementsSettingId,
   windowControlsBackgroundSettingId,
@@ -36,7 +34,6 @@ async function bloom(): Promise<void> {
   if (settings.getFieldValue(fluentStyleSettingId)) fluentize();
   if (settings.getFieldValue(windowControlsBackgroundSettingId)) hideWindowControlsBackground();
   if (settings.getFieldValue(bloomLyricsStyleSettingId)) LyricsEffectsManager.enable();
-  if (settings.getFieldValue(tippiesBackdropSettingId)) fixTippiesBackdropFilter();
   if (settings.getFieldValue(requirementsSettingId)) checkRequirements();
 }
 
