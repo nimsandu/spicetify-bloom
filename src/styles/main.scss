@@ -131,7 +131,6 @@ html {
 }
 
 .main-rootlist-rootlistDivider,
-.main-contextMenu-dividerBefore::before,
 .main-contextMenu-dividerAfter::after,
 .show-episodeList-divider,
 .main-rootlist-rootlistDividerContainer {
@@ -362,6 +361,10 @@ h3,
   border-radius: var(--border-radius-1);
   backdrop-filter: blur(35px) saturate(3.5);
   content: "";
+}
+
+.main-contextMenu-dividerBefore::before {
+  border-bottom: 1px solid rgba(var(--spice-rgb-subtext), 0.3) !important;
 }
 
 #context-menu > .main-contextMenu-menu::before,
