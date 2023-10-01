@@ -2,7 +2,8 @@ import { lyricsTooltipWrapperClass, contextMenuItemClass } from "../constants/co
 
 // fixes some topbar/playbar menus and flyouts backdrop-filter
 // it doesn't work because topbar and playbar, which are parent elements for these menus and flyouts, already have backdrop-filter applied to them
-// and if you move the blur to a pseudo element, you'll get color banding - dithering with noise as element
+// and if you move the blur to a pseudo element, you'll get color banding
+// dithering with noise as the element's background-image only works if it is applied to the before pseudo-element, and blur is applied to the element itself
 
 function moveTippies(mutationsList: MutationRecord[]): void {
   mutationsList.forEach((mutation) => {
