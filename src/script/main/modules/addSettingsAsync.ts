@@ -8,6 +8,8 @@ import {
   themeSettingsSectionName,
   requirementsSettingDefaultValue,
   requirementsSettingTitle,
+  tippiesBackdropSettingDefaultValue,
+  tippiesBackdropSettingTitle,
   bloomLyricsStyleSettingDefaultValue,
   bloomLyricsStyleSettingTitle,
   windowControlsBackgroundSettingDefaultValue,
@@ -18,6 +20,7 @@ import {
 
 import {
   requirementsSettingId,
+  tippiesBackdropSettingId,
   bloomLyricsStyleSettingId,
   windowControlsBackgroundSettingId,
   fluentStyleSettingId,
@@ -30,6 +33,13 @@ async function addSettingsAsync(): Promise<SettingsSection> {
     requirementsSettingId,
     requirementsSettingTitle,
     requirementsSettingDefaultValue,
+    reloadLocalion,
+  );
+
+  settings.addToggle(
+    tippiesBackdropSettingId,
+    tippiesBackdropSettingTitle,
+    tippiesBackdropSettingDefaultValue,
     reloadLocalion,
   );
 
