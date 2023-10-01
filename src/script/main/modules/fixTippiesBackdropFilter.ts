@@ -1,6 +1,8 @@
 import { lyricsTooltipWrapperClass, contextMenuItemClass } from "../constants/constants";
 
-// see https://github.com/nimsandu/spicetify-bloom/issues/220#issuecomment-1555071865
+// fixes some topbar/playbar menus and flyouts backdrop-filter
+// it doesn't work because topbar and playbar, which are parent elements for these menus and flyouts, already have backdrop-filter applied to them
+// and if you move the blur to a pseudo element, you'll get color banding - dithering with noise as element
 
 function moveTippies(mutationsList: MutationRecord[]): void {
   mutationsList.forEach((mutation) => {

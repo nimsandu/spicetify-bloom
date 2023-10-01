@@ -3,7 +3,7 @@ import calculateLyricsMaxWidth from "../utils/calculateLyricsMaxWidth";
 
 function fixLyricsActiveLineClipping(lyricsContentWrapper: HTMLElement): void {
   const maxWidth = calculateLyricsMaxWidth(lyricsContentWrapper);
-  document.body.style.setProperty(lyricsMaxWidthCSSVariable, `${maxWidth}px`);
+  document.documentElement.style.setProperty(lyricsMaxWidthCSSVariable, `${maxWidth}px`);
 }
 
 export default fixLyricsActiveLineClipping;
