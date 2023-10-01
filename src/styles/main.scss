@@ -53,6 +53,7 @@ html {
 
 .Root__main-view {
   top: var(--topbar-height);
+  // needed for artist header images
   z-index: 0;
   height: calc(100% - (var(--temp-var2) - var(--topbar-height)) - (var(--border-radius-1) - 2px));
   overflow: visible;
