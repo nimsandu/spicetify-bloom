@@ -173,25 +173,6 @@ Open Spotify settings and turn on `Enable hardware acceleration`.
 
 Please report about that via the repository's issues page.
 
-### High CPU usage, UI lags, laggy menus/flyouts
-
-First - make sure you have hardware acceleration enabled.
-Second - disable `Fix some menus and flyouts background blur` in the Bloom settings. If it worked - read on, if it didn't - your PC is probably not performant enough for Bloom.
-
-> [!WARNING]
-> You need Spicetify **version 2.24.0 or higher** to use this.
-
-Open your Spicetify config (`spicetify -c`), go to the `Patch` section and paste the following:
-
-```ini
-vendor~xpui.js_find_8008     = (\w+)=\w+\.props\.interactive&&\w+===\w+\|\|"parent"===\w+\?(\w+)\.parentNode:(\w+)\((\w+),\[(\w+)\]\)
-vendor~xpui.js_repl_all_8008 = ${1}=/(?:\bcontextMenu\b|\blyrics-tooltip-wrapper\b)/.test(${2}.parentNode.className)?${2}.parentNode:${3}(${4},[${5}])
-vendor~xpui.js_find_0880     = (\w+)\.contains\((\w+)\)\|\|\w+\.appendChild\(\w+\)
-vendor~xpui.js_repl_all_0880 = ${1}.contains(${2})||${1}.appendChild(${2});${2}.classList.add("encore-dark-theme")
-```
-
-Save the changes and then run `spicetify apply`.
-
 ### Theme doesn't work correctly with Spotify version less than 1.2.14
 
 In Spotify version 1.2.14, not only has the classic UI been cut, but also the indication that a new UI is active. Since it is now problematic to identify the active UI, only Library X support remains.
