@@ -13,7 +13,6 @@ export const navLinkSelector = ".main-yourLibraryX-navLink";
 export const navLinkAccentClass = "main-yourLibraryX-navLink-accent";
 
 export const playingBarBlurClass = "main-nowPlayingBar-container-blur";
-export const playingBarBlurBorderClass = "main-nowPlayingBar-container-blur-border";
 
 export const themeSettingsSectionId = "bloom-settings";
 export const themeSettingsSectionName = "Bloom theme settings";
