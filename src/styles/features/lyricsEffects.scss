@@ -1,7 +1,3 @@
-:root {
-  --lyrics-text-direction: left;
-}
-
 .enable-bloom-lyrics-style {
   .Root__lyrics-cinema {
     grid-area: main-view;
@@ -34,7 +30,6 @@
   .lyrics-lyricsContent-lyric {
     margin: 0.3rem 0;
     text-shadow: none;
-    transform-origin: var(--lyrics-text-direction);
     visibility: hidden;
     opacity: 0;
     transition:

@@ -18,8 +18,12 @@ function setLyricsLinesStyle(lyricsLines: HTMLElement[]): void {
       const { style } = lyricsLine;
       positionIndex += 1;
 
-      style.transformOrigin =
-        getTextLineDirection(lyricsLine.textContent) === "rtl" ? "right" : "left";
+      if (window.getComputedStyle(lyricsLine).textAlign !== "center") {
+        style.transformOrigin =
+          getTextLineDirection(lyricsLine.textContent) === "rtl" ? "right" : "left";
+      } else {
+        style.transformOrigin = "center";
+      }
 
       let animationDelay =
         lyricsAnimationDelayStepMs + positionIndex * lyricsAnimationDelayStepMultiplier;
