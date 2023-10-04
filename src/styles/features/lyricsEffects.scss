@@ -3,6 +3,10 @@
 }
 
 .enable-bloom-lyrics-style {
+  .Root__lyrics-cinema {
+    grid-area: main-view;
+  }
+
   #lyrics-backdrop {
     position: absolute;
     width: 100%;
