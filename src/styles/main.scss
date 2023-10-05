@@ -245,25 +245,33 @@ html {
   justify-content: center;
 }
 
-.Root__top-bar::before {
+.main-topBar-container-blur::before {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 3;
+  z-index: -1;
   background-image: var(--noise-texture);
   opacity: var(--noise-opacity);
   content: "";
 }
 
-.Root__top-bar {
-  position: absolute !important;
-  z-index: 4 !important;
-  grid-area: none !important;
-  width: 100vw !important;
+.main-topBar-container-blur {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
   background-color: rgba(var(--spice-rgb-sidebar), 0.85);
   backdrop-filter: blur(50px) saturate(2.5);
+}
+
+.Root__top-bar {
+  position: absolute !important;
+  z-index: 5 !important;
+  display: unset !important;
+  grid-area: none !important;
+  width: 100vw !important;
 }
 
 .main-topBar-container {
@@ -2537,11 +2545,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 /* Lyrics Cinema*/
-
-.Root__top-bar {
-  z-index: 5 !important;
-  display: unset !important;
-}
 
 .main-lyricsCinema-controls {
   top: 74px !important;

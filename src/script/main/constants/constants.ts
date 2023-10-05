@@ -12,7 +12,10 @@ export const navItemSelector = ".main-yourLibraryX-navItem";
 export const navLinkSelector = ".main-yourLibraryX-navLink";
 export const navLinkAccentClass = "main-yourLibraryX-navLink-accent";
 
+export const playingBarContainerSelector = ".main-nowPlayingBar-container";
+export const topBarContainerSelector = ".main-topBar-container";
 export const playingBarBlurClass = "main-nowPlayingBar-container-blur";
+export const topBarBlurClass = "main-topBar-container-blur";
 
 export const themeSettingsSectionId = "bloom-settings";
 export const themeSettingsSectionName = "Bloom theme settings";
