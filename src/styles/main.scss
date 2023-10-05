@@ -533,7 +533,6 @@ h3,
   background-color: var(--spice-subtext) !important;
 }
 
-.main-navBar-navBarLink[href="/marketplace"] > .collection-active-icon,
 .main-yourLibraryX-navLink[href="/marketplace"] > .home-active-icon {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg");
   background-color: var(--spice-accent) !important;
@@ -1302,7 +1301,13 @@ style {
 /* notification */
 
 .main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: var(--temp-var2);
+  @media not (display-mode: fullscreen) {
+    margin-bottom: var(--temp-var2);
+  }
+
+  div {
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25) !important;
+  }
 }
 
 .main-notificationBubble-NotificationBubble {
@@ -1717,7 +1722,9 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   left: 0;
   width: calc(100% - 26px);
   margin: 0 13px 13px;
+  border: 1px solid var(--spice-player-border);
   border-radius: var(--border-radius-1);
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25) !important;
 }
 
 .main-nowPlayingBar-container-blur::before {
@@ -2260,14 +2267,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   background-color: var(--spice-selected-row);
 }
 
-/* spicetify extensions */
-
-.main-topBar-button[title="Popup Lyrics"],
-.main-topBar-button[title="Full App Display"],
-.main-topBar-button[title="Bookmark"] {
-  background-color: var(--spice-card) !important;
-}
-
 .a2ruVaZt_DdrdHz3GqgU,
 .x-categoryCard-CategoryCard {
   color: var(--spice-alt-text);
@@ -2299,7 +2298,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .main-view-container__scroll-node-child {
-  padding-bottom: 118px;
+  padding-bottom: calc(var(--temp-var2) + 8px);
 }
 
 .view-homeShortcutsGrid-imageContainer {

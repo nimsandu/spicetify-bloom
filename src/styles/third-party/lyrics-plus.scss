@@ -1,7 +1,7 @@
 @media not (display-mode: fullscreen) {
   // fix bottom position
 
-  .lyrics-lyricsContainer-LyricsContainer {
+  .lyrics-lyricsContainer-LyricsContainer, .lyrics-lyricsContainer-UnsyncedLyricsPage {
     padding-bottom: var(--temp-var2);
   }
 
