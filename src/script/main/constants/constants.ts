@@ -29,3 +29,9 @@ export const windowControlsBackgroundSettingDefaultValue = false;
 
 export const fluentStyleSettingTitle = "Enable Fluent Style for fluent color scheme";
 export const fluentStyleSettingDefaultValue = true;
+
+export const easterEggButtonId = "easter-egg";
+export const easterEggButtonDescription = "Press this button";
+export const easterEggButtonValue = "Yes, do it!";
+export const easterEggVideoURL =
+  "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/src/assets/easter-egg.webm";

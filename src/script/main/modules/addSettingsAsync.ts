@@ -14,6 +14,10 @@ import {
   windowControlsBackgroundSettingTitle,
   fluentStyleSettingDefaultValue,
   fluentStyleSettingTitle,
+  easterEggButtonDescription,
+  easterEggButtonId,
+  easterEggButtonValue,
+  easterEggVideoURL,
 } from "../constants/constants";
 
 import {
@@ -56,6 +60,21 @@ async function addSettingsAsync(): Promise<SettingsSection> {
     fluentStyleSettingDefaultValue,
     reloadLocalion,
   );
+
+  settings.addButton(easterEggButtonId, easterEggButtonDescription, easterEggButtonValue, () => {
+    const videoElement = document.createElement("video");
+    videoElement.style.position = "absolute";
+    videoElement.style.width = "100%";
+    videoElement.style.height = "100%";
+    videoElement.onloadedmetadata = () => {
+      videoElement.play();
+      document.body.appendChild(videoElement);
+    };
+    videoElement.onended = () => {
+      videoElement.remove();
+    };
+    videoElement.src = easterEggVideoURL;
+  });
 
   settings.pushSettings();
   return settings;
