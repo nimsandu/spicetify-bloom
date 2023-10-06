@@ -29,7 +29,7 @@ export const lyricsContentWrapperSelector = ".lyrics-lyrics-contentWrapper";
 export const lyricsLinesSelecor = ".lyrics-lyricsContent-lyric";
 export const lyricsContentProviderSelector = ".lyrics-lyricsContent-provider";
 
-export const lyricsBackdropContainerId = "lyrics-backdrop-container";
-export const lyricsBackdropElementId = "lyrics-backdrop";
+export const lyricsBackdropContainerID = "lyrics-backdrop-container";
+export const lyricsBackdropElementID = "lyrics-backdrop";
 
 export const lyricsMaxWidthCSSVariable = "--lyrics-active-max-width";

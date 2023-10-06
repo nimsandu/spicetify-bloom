@@ -17,7 +17,7 @@ export const topBarContainerSelector = ".main-topBar-container";
 export const playingBarBlurClass = "main-nowPlayingBar-container-blur";
 export const topBarBlurClass = "main-topBar-container-blur";
 
-export const themeSettingsSectionId = "bloom-settings";
+export const themeSettingsSectionID = "bloom-settings";
 export const themeSettingsSectionName = "Bloom theme settings";
 
 export const requirementsSettingTitle = "Check theme requirements";
@@ -33,7 +33,7 @@ export const windowControlsBackgroundSettingDefaultValue = false;
 export const fluentStyleSettingTitle = "Enable Fluent Style for fluent color scheme";
 export const fluentStyleSettingDefaultValue = true;
 
-export const easterEggButtonId = "easter-egg";
+export const easterEggButtonID = "easter-egg";
 export const easterEggButtonDescription = "Press this button";
 export const easterEggButtonValue = "Yes, do it!";
 export const easterEggVideoURL =
