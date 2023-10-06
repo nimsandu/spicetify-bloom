@@ -37,7 +37,7 @@ export const easterEggButtonID = "easter-egg";
 export const easterEggButtonDescription = "Press this button";
 export const easterEggButtonValue = "Yes, do it!";
 export const easterEggVideoURL =
-  "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/dist/assets/easter-egg.webm";
+  "https://github.com/nimsandu/spicetify-bloom/assets/115353812/fdac793b-e0dd-4058-b29e-66ca2583beda";
 
 export const githubContentsAPIAssetsURL =
   "https://api.github.com/repos/nimsandu/spicetify-bloom/contents/assets?ref=dist";
