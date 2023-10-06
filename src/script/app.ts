@@ -3,6 +3,7 @@ import addBlurElements from "./main/modules/addBlurElements";
 import addLibraryNavLinkAccent from "./main/modules/addLibraryNavLinkAccent";
 import keepTopBarContentCentered from "./main/modules/keepTopBarContentCentered";
 import controlNoiseOpacity from "./main/modules/controlNoiseOpacity";
+import prefetchAssets from "./main/modules/prefetchAssets";
 import addSettingsAsync from "./main/modules/addSettingsAsync";
 
 import styleCategoryCards from "./features/categoryCardBackdrops/styleCategoryCards";
@@ -30,6 +31,7 @@ async function bloom(): Promise<void> {
   keepTopBarContentCentered();
   controlNoiseOpacity();
   styleCategoryCards();
+  prefetchAssets();
 
   const settings = await addSettingsAsync();
 
