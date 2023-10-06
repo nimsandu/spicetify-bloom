@@ -1,8 +1,11 @@
 import waitForAPIs from "../../shared/utils/waitForAPIs";
 import injectStyle from "../../shared/modules/injectStyle";
-import cleanLocalizationString from "../utils/cleanLocalizationString";
 import { fluentIconsURL } from "../../shared/constants/constants";
 import isObjectEmpty from "../../shared/helpers/isObjectEmpty";
+
+function cleanLocalizationString(input: string): string {
+  return input.replace(/[{0}{1}«»”“]/g, "").trim();
+}
 
 function addButtonStyles(): void {
   waitForAPIs(["Spicetify.Locale"], async () => {
