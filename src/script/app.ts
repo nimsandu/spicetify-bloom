@@ -13,10 +13,10 @@ import hideWindowControlsBackground from "./features/hideWindowControlsBackgroun
 import fluentize from "./features/fluentStyle/fluentize";
 
 import {
-  bloomLyricsStyleSettingID,
-  requirementsSettingID,
-  windowControlsBackgroundSettingID,
-  fluentStyleSettingID,
+  bloomLyricsStyleSettingId,
+  requirementsSettingId,
+  windowControlsBackgroundSettingId,
+  fluentStyleSettingId,
 } from "./shared/constants/constants";
 
 async function bloom(): Promise<void> {
@@ -35,10 +35,10 @@ async function bloom(): Promise<void> {
 
   const settings = await addSettingsAsync();
 
-  if (settings.getFieldValue(fluentStyleSettingID)) fluentize();
-  if (settings.getFieldValue(windowControlsBackgroundSettingID)) hideWindowControlsBackground();
-  if (settings.getFieldValue(bloomLyricsStyleSettingID)) LyricsEffectsManager.enable();
-  if (settings.getFieldValue(requirementsSettingID)) checkRequirements();
+  if (settings.getFieldValue(fluentStyleSettingId)) fluentize();
+  if (settings.getFieldValue(windowControlsBackgroundSettingId)) hideWindowControlsBackground();
+  if (settings.getFieldValue(bloomLyricsStyleSettingId)) LyricsEffectsManager.enable();
+  if (settings.getFieldValue(requirementsSettingId)) checkRequirements();
 }
 
 export default bloom;

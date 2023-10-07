@@ -1,5 +1,5 @@
-function enableFeatureStyles(featureSettingID: string): void {
-  document.documentElement.classList.add(featureSettingID);
+function enableFeatureStyles(featureSettingId: string): void {
+  document.documentElement.classList.add(featureSettingId);
 }
 
 export default enableFeatureStyles;

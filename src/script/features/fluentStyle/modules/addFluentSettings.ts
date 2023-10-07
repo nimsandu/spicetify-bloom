@@ -6,37 +6,37 @@ import getImageBase64FromUrlAsync from "../utils/getImageBase64FromUrlAsync";
 import {
   settingRemoveImageButtonValue,
   settingRemoveImageButtonDescription,
-  settingRemoveImageButtonID,
+  settingRemoveImageButtonId,
   settingConfirmInputButtonValue,
   settingConfirmInputButtonDescription,
-  settingConfirmInputButtonID,
+  settingConfirmInputButtonId,
   settingDownloadImageButtonValue,
   settingDownloadImageButtonDescription,
-  settingDownloadImageButtonID,
+  settingDownloadImageButtonId,
   settingImageUrlInputDefaultValue,
   settingImageUrlInputDescription,
-  settingImageUrlInputID,
-  settingsSectionID,
+  settingImageUrlInputId,
+  settingsSectionId,
   settingsSectionName,
   backgroundImageLocalStorageKey,
   backgroundImageUrlLocalStorageKey,
 } from "../constants/constants";
 
 function addFluentSettings(): SettingsSection {
-  const settings = new SettingsSection(settingsSectionName, settingsSectionID);
+  const settings = new SettingsSection(settingsSectionName, settingsSectionId);
 
   settings.addInput(
-    settingImageUrlInputID,
+    settingImageUrlInputId,
     settingImageUrlInputDescription,
     settingImageUrlInputDefaultValue,
   );
 
   settings.addButton(
-    settingConfirmInputButtonID,
+    settingConfirmInputButtonId,
     settingConfirmInputButtonDescription,
     settingConfirmInputButtonValue,
     async () => {
-      const imageURL: string = settings.getFieldValue(settingImageUrlInputID);
+      const imageURL: string = settings.getFieldValue(settingImageUrlInputId);
       const fluentBackgroundImage = await getImageBase64FromUrlAsync(imageURL);
       if (typeof fluentBackgroundImage === "string") {
         localStorage.setItem(backgroundImageUrlLocalStorageKey, imageURL);
@@ -46,12 +46,12 @@ function addFluentSettings(): SettingsSection {
   );
 
   settings.addButton(
-    settingDownloadImageButtonID,
+    settingDownloadImageButtonId,
     settingDownloadImageButtonDescription,
     settingDownloadImageButtonValue,
     async () => {
       const fluentBackgroundImage = await getImageBase64FromUrlAsync(
-        settings.getFieldValue(settingImageUrlInputID),
+        settings.getFieldValue(settingImageUrlInputId),
       );
       if (typeof fluentBackgroundImage === "string") {
         localStorage.setItem(backgroundImageLocalStorageKey, fluentBackgroundImage);
@@ -61,7 +61,7 @@ function addFluentSettings(): SettingsSection {
   );
 
   settings.addButton(
-    settingRemoveImageButtonID,
+    settingRemoveImageButtonId,
     settingRemoveImageButtonDescription,
     settingRemoveImageButtonValue,
     () => {

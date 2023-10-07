@@ -4,7 +4,7 @@ import reloadLocalion from "../../shared/helpers/reloadLocation";
 import getOsAsync from "../../shared/utils/getOsAsync";
 
 import {
-  themeSettingsSectionID,
+  themeSettingsSectionId,
   themeSettingsSectionName,
   requirementsSettingDefaultValue,
   requirementsSettingTitle,
@@ -15,30 +15,30 @@ import {
   fluentStyleSettingDefaultValue,
   fluentStyleSettingTitle,
   easterEggButtonDescription,
-  easterEggButtonID,
+  easterEggButtonId,
   easterEggButtonValue,
   easterEggVideoURL,
 } from "../constants/constants";
 
 import {
-  requirementsSettingID,
-  bloomLyricsStyleSettingID,
-  windowControlsBackgroundSettingID,
-  fluentStyleSettingID,
+  requirementsSettingId,
+  bloomLyricsStyleSettingId,
+  windowControlsBackgroundSettingId,
+  fluentStyleSettingId,
 } from "../../shared/constants/constants";
 
 async function addSettingsAsync(): Promise<SettingsSection> {
-  const settings = new SettingsSection(themeSettingsSectionName, themeSettingsSectionID);
+  const settings = new SettingsSection(themeSettingsSectionName, themeSettingsSectionId);
 
   settings.addToggle(
-    requirementsSettingID,
+    requirementsSettingId,
     requirementsSettingTitle,
     requirementsSettingDefaultValue,
     reloadLocalion,
   );
 
   settings.addToggle(
-    bloomLyricsStyleSettingID,
+    bloomLyricsStyleSettingId,
     bloomLyricsStyleSettingTitle,
     bloomLyricsStyleSettingDefaultValue,
     reloadLocalion,
@@ -47,7 +47,7 @@ async function addSettingsAsync(): Promise<SettingsSection> {
   const os = await getOsAsync();
   if (os === "windows") {
     settings.addToggle(
-      windowControlsBackgroundSettingID,
+      windowControlsBackgroundSettingId,
       windowControlsBackgroundSettingTitle,
       windowControlsBackgroundSettingDefaultValue,
       reloadLocalion,
@@ -55,13 +55,13 @@ async function addSettingsAsync(): Promise<SettingsSection> {
   }
 
   settings.addToggle(
-    fluentStyleSettingID,
+    fluentStyleSettingId,
     fluentStyleSettingTitle,
     fluentStyleSettingDefaultValue,
     reloadLocalion,
   );
 
-  settings.addButton(easterEggButtonID, easterEggButtonDescription, easterEggButtonValue, () => {
+  settings.addButton(easterEggButtonId, easterEggButtonDescription, easterEggButtonValue, () => {
     const videoElement = document.createElement("video");
     videoElement.style.position = "absolute";
     videoElement.style.width = "100%";

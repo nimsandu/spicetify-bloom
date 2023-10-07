@@ -1,9 +1,9 @@
-import { windowControlsBackgroundSettingID } from "../../shared/constants/constants";
+import { windowControlsBackgroundSettingId } from "../../shared/constants/constants";
 import enableFeatureStyles from "../../shared/modules/enableFeatureStyles";
 import setControlsDimensions from "./modules/setControlsDimensions";
 
 function hideWindowControlsBackground(): void {
-  enableFeatureStyles(windowControlsBackgroundSettingID);
+  enableFeatureStyles(windowControlsBackgroundSettingId);
   setControlsDimensions();
   window.onresize = setControlsDimensions;
 }

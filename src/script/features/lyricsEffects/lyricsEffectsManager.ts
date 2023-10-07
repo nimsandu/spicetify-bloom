@@ -5,7 +5,7 @@ import waitForElements from "../../shared/utils/waitForElements";
 import {
   lyricsBackdropBlurValue,
   lyricsBackdropGlobalCompositeOperation,
-  lyricsBackdropContainerID,
+  lyricsBackdropContainerId,
   lyricsCinemaElementSelector,
   underMainViewSelector,
   lyricsContentWrapperSelector,
@@ -14,7 +14,7 @@ import {
   lyricsContentProviderSelector,
 } from "./constants/constants";
 import waitForAPIs from "../../shared/utils/waitForAPIs";
-import { bloomLyricsStyleSettingID } from "../../shared/constants/constants";
+import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
 import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
 import createLyricsBackdropElement from "./utils/createLyricsBackdropElement";
 import animateLyricsBackdropChange from "./modules/animateLyricsBackdropChange";
@@ -136,11 +136,11 @@ class LyricsEffectsManager {
   }
 
   public static enable(): void {
-    enableFeatureStyles(bloomLyricsStyleSettingID);
+    enableFeatureStyles(bloomLyricsStyleSettingId);
 
     waitForElements([underMainViewSelector], ([underMainView]) => {
       LyricsEffectsManager.lyricsBackdropContainer = document.createElement("div");
-      LyricsEffectsManager.lyricsBackdropContainer.id = lyricsBackdropContainerID;
+      LyricsEffectsManager.lyricsBackdropContainer.id = lyricsBackdropContainerId;
       underMainView.prepend(LyricsEffectsManager.lyricsBackdropContainer);
 
       LyricsEffectsManager.lyricsBackdropElement = createLyricsBackdropElement();
