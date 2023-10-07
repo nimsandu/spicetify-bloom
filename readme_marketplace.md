@@ -6,36 +6,36 @@
   **Consider starring us and suggest stuff by submitting a comment!**
 </div>
 
-![main-cover](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/main-cover.png)
+![main-cover](images/main-cover.png)
 
 ## First Look
 
 ### **Dark**
 
-![dark](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/dark.png)
+![dark](images/dark.png)
 
 ### **Light**
 
-![light](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/light.png)
+![light](images/light.png)
 
 ### **Dark Mono**
 
-![darkmono](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/darkmono.png)
+![darkmono](images/darkmono.png)
 by [SunsetTechuila](https://github.com/SunsetTechuila)
 
 ### **Dark Green**
 
-![darkgreen](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/darkgreen.png)
+![darkgreen](images/darkgreen.png)
 by [stpnwf](https://github.com/stpnwf)
 
 ### **Coffee**
 
-![coffee](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/coffee.png)
+![coffee](images/coffee.png)
 by [yumegenso](https://github.com/yumegenso)
 
 ### **Comfy**
 
-![comfy](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/comfy.png)
+![comfy](images/comfy.png)
 
 ## Dependencies
 
