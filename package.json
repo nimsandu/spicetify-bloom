@@ -1,5 +1,6 @@
 {
   "name": "bloom",
+  "packageManager": "pnpm@8.8.0",
   "private": true,
   "scripts": {
     "build-script": "spicetify-creator --minify --out=dist --in=src/script",
@@ -10,13 +11,14 @@
     "watch-styles": "cross-os _watch-styles",
     "copy-colors": "copyfiles --flat src/color.ini dist",
     "copy-colors-local": "cross-os _copy-colors-local",
-    "watch-colors": "onchange src/color.ini -- npm run copy-colors",
-    "build-theme": "npm run build-script && npm run build-styles && npm run copy-colors",
-    "build-theme-local": "npm run build-script-local && npm run build-styles-local && npm run copy-colors-local",
-    "watch-theme": "concurrently \"npm run watch-script\" \"npm run watch-styles\" \"npm run watch-colors\"",
+    "watch-colors": "onchange src/color.ini -- pnpm copy-colors",
+    "build": "pnpm build-script && pnpm build-styles && pnpm copy-colors",
+    "build-local": "pnpm build-script-local && pnpm build-styles-local && pnpm copy-colors-local",
+    "watch": "concurrently \"pnpm watch-script\" \"pnpm watch-styles\" \"pnpm watch-colors\"",
     "update-types": "curl -s -o src/script/types/spicetify.d.ts https://raw.githubusercontent.com/spicetify/spicetify-cli/master/globals.d.ts",
     "lint": "prettier . --check && eslint src/script && stylelint src/styles",
-    "lint-fix": "prettier . --write && eslint --fix src/script && stylelint src/styles --fix"
+    "lint-fix": "prettier . --write && eslint --fix src/script && stylelint src/styles --fix",
+    "preinstall": "npx only-allow pnpm"
   },
   "cross-os": {
     "_build-script-local": {

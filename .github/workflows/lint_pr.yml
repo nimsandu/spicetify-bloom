@@ -27,12 +27,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: "pnpm"
+          cache-dependency-path: "pnpm-lock.yaml"
       - name: Install Dependencies
-        run: npm i
-      - name: Lint
-        run: npm run lint
+        run: pnpm install
+      - name: Lint Code
+        run: pnpm lint
