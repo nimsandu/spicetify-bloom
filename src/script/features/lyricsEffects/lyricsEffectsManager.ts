@@ -1,14 +1,12 @@
-import fixLyricsContentWrapperShifting from "./modules/fixLyricsContentWrapperShifting";
 import setLyricsBackdropFiltersAsync from "./modules/setLyricsBackdropFiltersAsync";
-import fixLyricsActiveLineClipping from "./modules/fixLyricsActiveLineClipping";
+import fixLyricsActiveLineAnimation from "./modules/fixLyricsActiveLineAnimation";
 import waitForElements from "../../shared/utils/waitForElements";
 import {
   lyricsBackdropBlurValue,
   lyricsBackdropGlobalCompositeOperation,
   lyricsBackdropContainerId,
-  lyricsCinemaElementSelector,
+  lyricsCinemaSelector,
   underMainViewSelector,
-  lyricsContentWrapperSelector,
   lyricsLinesSelecor,
   mainViewContainerSelector,
   lyricsContentProviderSelector,
@@ -16,19 +14,19 @@ import {
 import waitForAPIs from "../../shared/utils/waitForAPIs";
 import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
 import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
-import createLyricsBackdropElement from "./utils/createLyricsBackdropElement";
+import createLyricsBackdrop from "./utils/createLyricsBackdrop";
 import animateLyricsBackdropChange from "./modules/animateLyricsBackdropChange";
 import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
-import enableFeatureStyles from "../../shared/modules/enableFeatureStyles";
+import controlFeatureStyles from "../../shared/modules/controlFeatureStyles";
 
 class LyricsEffectsManager {
   protected static previousAlbumUri: string;
 
   protected static lyricsBackdropContainer: HTMLElement;
 
-  protected static lyricsCinemaElement: HTMLElement;
+  protected static lyricsCinema: HTMLElement;
 
-  protected static lyricsBackdropElement: HTMLCanvasElement;
+  protected static lyricsBackdrop: HTMLCanvasElement;
 
   protected static mainViewContainerResizeObserver: ResizeObserver;
 
@@ -39,14 +37,14 @@ class LyricsEffectsManager {
       LyricsEffectsManager.handleLyricsStatus();
     });
 
-    waitForElements([lyricsCinemaElementSelector], ([lyricsCinemaElement]) => {
-      LyricsEffectsManager.lyricsCinemaElement = lyricsCinemaElement as HTMLElement;
+    waitForElements([lyricsCinemaSelector], ([lyricsCinema]) => {
+      LyricsEffectsManager.lyricsCinema = lyricsCinema as HTMLElement;
       const lyricsCinemaObserver = new MutationObserver(LyricsEffectsManager.handleLyricsStatus);
       const lyricsCinemaObserverConfig = {
         attributes: true,
         attributeFilter: ["class"],
       };
-      lyricsCinemaObserver.observe(lyricsCinemaElement, lyricsCinemaObserverConfig);
+      lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig);
 
       LyricsEffectsManager.handleLyricsStatus();
     });
@@ -59,7 +57,7 @@ class LyricsEffectsManager {
   private static handleLyricsStatus() {
     if (
       Spicetify.Platform.History.location.pathname.includes("lyrics") ||
-      LyricsEffectsManager.lyricsCinemaElement?.className.includes("lyricsCinemaVisible")
+      LyricsEffectsManager.lyricsCinema?.className.includes("lyricsCinemaVisible")
     ) {
       LyricsEffectsManager.lyricsBackdropContainer.style.display = "unset";
       LyricsEffectsManager.updateLyricsEffects();
@@ -78,17 +76,17 @@ class LyricsEffectsManager {
       }
       LyricsEffectsManager.previousAlbumUri = metadata.album_uri;
 
-      const lyricsBackdropPrevious = LyricsEffectsManager.lyricsBackdropElement;
+      const lyricsBackdropPrevious = LyricsEffectsManager.lyricsBackdrop;
       const contextPrevious = lyricsBackdropPrevious.getContext("2d") as CanvasRenderingContext2D;
       contextPrevious.globalCompositeOperation = lyricsBackdropGlobalCompositeOperation;
 
-      LyricsEffectsManager.lyricsBackdropElement = createLyricsBackdropElement();
-      const context = LyricsEffectsManager.lyricsBackdropElement.getContext(
+      LyricsEffectsManager.lyricsBackdrop = createLyricsBackdrop();
+      const context = LyricsEffectsManager.lyricsBackdrop.getContext(
         "2d",
       ) as CanvasRenderingContext2D;
       lyricsBackdropPrevious.insertAdjacentElement(
         "beforebegin",
-        LyricsEffectsManager.lyricsBackdropElement,
+        LyricsEffectsManager.lyricsBackdrop,
       );
 
       const lyricsBackdropImage = new Image();
@@ -96,12 +94,12 @@ class LyricsEffectsManager {
 
       lyricsBackdropImage.onload = async () => {
         const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValuesAsync(
-          LyricsEffectsManager.lyricsBackdropElement,
+          LyricsEffectsManager.lyricsBackdrop,
           lyricsBackdropBlurValue,
         );
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
         setLyricsBackdropFiltersAsync(
-          LyricsEffectsManager.lyricsBackdropElement,
+          LyricsEffectsManager.lyricsBackdrop,
           lyricsBackdropImage,
         );
 
@@ -112,40 +110,35 @@ class LyricsEffectsManager {
   }
 
   private static updateLyricsPageProperties(): void {
-    waitForElements([lyricsContentWrapperSelector], ([lyricsContentWrapper]) => {
-      fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
-      fixLyricsActiveLineClipping(lyricsContentWrapper as HTMLElement);
+    fixLyricsActiveLineAnimation();
 
+    if (!LyricsEffectsManager.mainViewContainerResizeObserver) {
       const mainViewContainer = document.querySelector(mainViewContainerSelector) as HTMLElement;
-      if (LyricsEffectsManager.mainViewContainerResizeObserver) {
-        LyricsEffectsManager.mainViewContainerResizeObserver.disconnect();
-      }
-      LyricsEffectsManager.mainViewContainerResizeObserver = new ResizeObserver(() => {
-        fixLyricsContentWrapperShifting(lyricsContentWrapper as HTMLElement);
-        fixLyricsActiveLineClipping(lyricsContentWrapper as HTMLElement);
-      });
+      LyricsEffectsManager.mainViewContainerResizeObserver = new ResizeObserver(
+        fixLyricsActiveLineAnimation,
+      );
       LyricsEffectsManager.mainViewContainerResizeObserver.observe(mainViewContainer);
+    }
 
-      waitForElements([lyricsContentProviderSelector], () => {
-        const lyricsLines = Array.from(
-          lyricsContentWrapper.querySelectorAll(lyricsLinesSelecor) as NodeListOf<HTMLElement>,
-        );
-        setLyricsLinesStyle(lyricsLines);
-      });
+    waitForElements([lyricsContentProviderSelector], () => {
+      const lyricsLines = Array.from(
+        document.querySelectorAll(lyricsLinesSelecor) as NodeListOf<HTMLElement>,
+      );
+      setLyricsLinesStyle(lyricsLines);
     });
   }
 
   public static enable(): void {
-    enableFeatureStyles(bloomLyricsStyleSettingId);
+    controlFeatureStyles.enable(bloomLyricsStyleSettingId);
 
     waitForElements([underMainViewSelector], ([underMainView]) => {
       LyricsEffectsManager.lyricsBackdropContainer = document.createElement("div");
       LyricsEffectsManager.lyricsBackdropContainer.id = lyricsBackdropContainerId;
       underMainView.prepend(LyricsEffectsManager.lyricsBackdropContainer);
 
-      LyricsEffectsManager.lyricsBackdropElement = createLyricsBackdropElement();
+      LyricsEffectsManager.lyricsBackdrop = createLyricsBackdrop();
       LyricsEffectsManager.lyricsBackdropContainer.appendChild(
-        LyricsEffectsManager.lyricsBackdropElement,
+        LyricsEffectsManager.lyricsBackdrop,
       );
 
       LyricsEffectsManager.watchForLyrics();

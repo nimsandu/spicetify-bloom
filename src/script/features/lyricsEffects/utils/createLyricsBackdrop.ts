@@ -1,13 +1,13 @@
 import {
   lyricsBackdropBlurValue,
   lyricsBackdropImageSmoothingEnabled,
-  lyricsBackdropElementId,
+  lyricsBackdropId,
 } from "../constants/constants";
 import fillCanvas from "../helpers/fillCanvas";
 
-function createLyricsBackdropElement(): HTMLCanvasElement {
+function createLyricsBackdrop(): HTMLCanvasElement {
   const lyricsBackdropElement = document.createElement("canvas");
-  lyricsBackdropElement.id = lyricsBackdropElementId;
+  lyricsBackdropElement.id = lyricsBackdropId;
   fillCanvas(lyricsBackdropElement);
   const context = lyricsBackdropElement.getContext("2d") as CanvasRenderingContext2D;
   context.imageSmoothingEnabled = lyricsBackdropImageSmoothingEnabled;
@@ -15,4 +15,4 @@ function createLyricsBackdropElement(): HTMLCanvasElement {
   return lyricsBackdropElement;
 }
 
-export default createLyricsBackdropElement;
+export default createLyricsBackdrop;

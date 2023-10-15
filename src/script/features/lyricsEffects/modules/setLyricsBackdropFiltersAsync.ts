@@ -2,15 +2,15 @@ import calculateBrightnessCoefficientAsync from "../utils/calculateBrightnessCoe
 import calculateSaturationCoefficientAsync from "../utils/calculateSaturationCoefficientAsync";
 
 async function setLyricsBackdropFiltersAsync(
-  lyricsBackdropElement: HTMLCanvasElement,
+  lyricsBackdrop: HTMLCanvasElement,
   image: HTMLImageElement,
 ): Promise<void> {
   const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
-    calculateBrightnessCoefficientAsync(lyricsBackdropElement),
-    calculateSaturationCoefficientAsync(image, lyricsBackdropElement),
+    calculateBrightnessCoefficientAsync(lyricsBackdrop),
+    calculateSaturationCoefficientAsync(image, lyricsBackdrop),
   ]);
   // eslint-disable-next-line no-param-reassign
-  lyricsBackdropElement.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
+  lyricsBackdrop.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
 }
 
 export default setLyricsBackdropFiltersAsync;

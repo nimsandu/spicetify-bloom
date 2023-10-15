@@ -22,7 +22,7 @@ export const lyricsAnimationDurationStepMultiplier = 100;
 export const mainViewContainerSelector = ".main-view-container";
 export const underMainViewSelector = ".under-main-view";
 
-export const lyricsCinemaElementSelector = ".Root__lyrics-cinema";
+export const lyricsCinemaSelector = ".Root__lyrics-cinema";
 export const lyricsCinemaVisibleClass = "main-lyricsCinema-lyricsCinemaVisible";
 
 export const lyricsContentWrapperSelector = ".lyrics-lyrics-contentWrapper";
@@ -30,6 +30,6 @@ export const lyricsLinesSelecor = ".lyrics-lyricsContent-lyric";
 export const lyricsContentProviderSelector = ".lyrics-lyricsContent-provider";
 
 export const lyricsBackdropContainerId = "lyrics-backdrop-container";
-export const lyricsBackdropElementId = "lyrics-backdrop";
+export const lyricsBackdropId = "lyrics-backdrop";
 
 export const lyricsMaxWidthCSSVariable = "--lyrics-active-max-width";
