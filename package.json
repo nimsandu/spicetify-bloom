@@ -2,6 +2,13 @@
   "name": "bloom",
   "packageManager": "pnpm@8.8.0",
   "private": true,
+  "config": {
+    "github-pages-url": "https://nimsandu.github.io/spicetify-bloom",
+    "assets": {
+      "path": "src/assets",
+      "url": "https://nimsandu.github.io/spicetify-bloom/assets"
+    }
+  },
   "scripts": {
     "build-script": "spicetify-creator --minify --out=dist --in=src/script",
     "build-script-local": "cross-os _build-script-local",
@@ -11,14 +18,17 @@
     "watch-styles": "cross-os _watch-styles",
     "copy-colors": "copyfiles --flat src/color.ini dist",
     "copy-colors-local": "cross-os _copy-colors-local",
-    "watch-colors": "onchange src/color.ini -- pnpm copy-colors",
-    "build": "pnpm build-script && pnpm build-styles && pnpm copy-colors",
-    "build-local": "pnpm build-script-local && pnpm build-styles-local && pnpm copy-colors-local",
-    "watch": "concurrently \"pnpm watch-script\" \"pnpm watch-styles\" \"pnpm watch-colors\"",
-    "update-types": "curl -s -o src/script/types/spicetify.d.ts https://raw.githubusercontent.com/spicetify/spicetify-cli/master/globals.d.ts",
+    "watch-colors": "onchange src/color.ini -- pnpm copy-colors-local",
+    "copy-assets": "copyfiles --up 1 src/assets/**/* dist",
+    "copy-assets-local": "cross-os _copy-assets-local",
+    "watch-assets": "onchange src/assets/* -- pnpm copy-assets-local",
+    "build": "pnpm build-script && pnpm build-styles && pnpm copy-colors && pnpm copy-assets",
+    "build-local": "pnpm build-script-local && pnpm build-styles-local && pnpm copy-colors-local && pnpm copy-assets-local",
+    "watch": "concurrently \"pnpm watch-script\" \"pnpm watch-styles\" \"pnpm watch-colors\" \"pnpm watch-assets\"",
     "lint": "prettier . --check && eslint src/script && stylelint src/styles",
     "lint-fix": "prettier . --write && eslint --fix src/script && stylelint src/styles --fix",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "update-types": "curl -s -o src/script/shared/types/spicetify.d.ts https://raw.githubusercontent.com/spicetify/spicetify-cli/master/globals.d.ts"
   },
   "cross-os": {
     "_build-script-local": {
@@ -45,6 +55,11 @@
       "win32": "copyfiles --flat src/color.ini \"%APPDATA%/spicetify/Themes/Bloom\"",
       "linux": "copyfiles --flat src/color.ini ~/.config/spicetify/Themes/Bloom",
       "darwin": "copyfiles --flat src/color.ini ~/.config/spicetify/Themes/Bloom"
+    },
+    "_copy-assets": {
+      "win32": "copyfiles --up 1 src/assets/**/* \"%APPDATA%/spicetify/Themes/Bloom\"",
+      "linux": "copyfiles --up 1 src/assets/**/* ~/.config/spicetify/Themes/Bloom",
+      "darwin": "copyfiles --up 1 src/assets/**/* ~/.config/spicetify/Themes/Bloom"
     }
   },
   "devDependencies": {

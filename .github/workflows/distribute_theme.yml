@@ -27,11 +27,7 @@ jobs:
       - name: Lint Code
         run: pnpm lint
       - name: Build Theme
-        run: |
-          pnpm build
-      - name: Copy Assets
-        run: |
-          cp -r src/assets dist
+        run: pnpm build
       - name: Deploy Changes
         uses: peaceiris/actions-gh-pages@v3
         with:

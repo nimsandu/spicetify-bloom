@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "jsx": "react",
     "outDir": "dist",
     "esModuleInterop": true,
