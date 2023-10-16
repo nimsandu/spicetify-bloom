@@ -20,8 +20,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "pnpm"
-          cache-dependency-path: "pnpm-lock.yaml"
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install Dependencies
         run: pnpm install
       - name: Lint Code
