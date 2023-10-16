@@ -7,9 +7,7 @@ import {
   lyricsBackdropContainerId,
   lyricsCinemaSelector,
   underMainViewSelector,
-  lyricsLinesSelecor,
   mainViewContainerSelector,
-  lyricsContentProviderSelector,
 } from "./constants/constants";
 import waitForSpicetifyAPIs from "../../shared/utils/waitForSpicetifyAPIs";
 import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
@@ -117,12 +115,7 @@ class LyricsEffectsManager {
       LyricsEffectsManager.mainViewContainerResizeObserver.observe(mainViewContainer);
     }
 
-    waitForElements([lyricsContentProviderSelector], () => {
-      const lyricsLines = Array.from(
-        document.querySelectorAll(lyricsLinesSelecor) as NodeListOf<HTMLElement>,
-      );
-      setLyricsLinesStyle(lyricsLines);
-    });
+    setLyricsLinesStyle();
   }
 
   public static enable(): void {
