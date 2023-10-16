@@ -11,7 +11,7 @@ import {
   mainViewContainerSelector,
   lyricsContentProviderSelector,
 } from "./constants/constants";
-import waitForAPIs from "../../shared/utils/waitForAPIs";
+import waitForSpicetifyAPIs from "../../shared/utils/waitForSpicetifyAPIs";
 import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
 import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
 import createLyricsBackdrop from "./utils/createLyricsBackdrop";
@@ -31,8 +31,8 @@ class LyricsEffectsManager {
   protected static mainViewContainerResizeObserver: ResizeObserver;
 
   private static watchForLyrics(): void {
-    waitForAPIs(["Spicetify.Platform.History"], () => {
-      Spicetify.Platform.History.listen(LyricsEffectsManager.handleLyricsStatus);
+    waitForSpicetifyAPIs(["Spicetify.Platform.History"], ([History]) => {
+      History.listen(LyricsEffectsManager.handleLyricsStatus);
 
       LyricsEffectsManager.handleLyricsStatus();
     });
@@ -49,8 +49,8 @@ class LyricsEffectsManager {
       LyricsEffectsManager.handleLyricsStatus();
     });
 
-    waitForAPIs(["Spicetify.Player"], () => {
-      Spicetify.Player.addEventListener("songchange", LyricsEffectsManager.updateLyricsEffects);
+    waitForSpicetifyAPIs(["Spicetify.Player"], ([Player]: (typeof Spicetify.Player)[]) => {
+      Player.addEventListener("songchange", LyricsEffectsManager.updateLyricsEffects);
     });
   }
 
@@ -67,8 +67,8 @@ class LyricsEffectsManager {
   }
 
   private static updateLyricsEffects(): void {
-    waitForAPIs(["Spicetify.Player.data"], () => {
-      const { metadata } = Spicetify.Player.data.item;
+    waitForSpicetifyAPIs(["Spicetify.Player.data"], ([data]: (typeof Spicetify.Player.data)[]) => {
+      const { metadata } = data.item;
 
       if (LyricsEffectsManager.previousAlbumUri === metadata.album_uri) {
         LyricsEffectsManager.updateLyricsPageProperties();
@@ -98,10 +98,7 @@ class LyricsEffectsManager {
           lyricsBackdropBlurValue,
         );
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
-        setLyricsBackdropFiltersAsync(
-          LyricsEffectsManager.lyricsBackdrop,
-          lyricsBackdropImage,
-        );
+        setLyricsBackdropFiltersAsync(LyricsEffectsManager.lyricsBackdrop, lyricsBackdropImage);
 
         LyricsEffectsManager.updateLyricsPageProperties();
         animateLyricsBackdropChange(lyricsBackdropPrevious);
@@ -137,9 +134,7 @@ class LyricsEffectsManager {
       underMainView.prepend(LyricsEffectsManager.lyricsBackdropContainer);
 
       LyricsEffectsManager.lyricsBackdrop = createLyricsBackdrop();
-      LyricsEffectsManager.lyricsBackdropContainer.appendChild(
-        LyricsEffectsManager.lyricsBackdrop,
-      );
+      LyricsEffectsManager.lyricsBackdropContainer.appendChild(LyricsEffectsManager.lyricsBackdrop);
 
       LyricsEffectsManager.watchForLyrics();
     });

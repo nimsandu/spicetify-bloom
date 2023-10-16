@@ -1,4 +1,4 @@
-import waitForAPIs from "../../shared/utils/waitForAPIs";
+import waitForSpicetifyAPIs from "../../shared/utils/waitForSpicetifyAPIs";
 import injectStyle from "../../shared/modules/injectStyle";
 import { fluentIconsURL } from "../../shared/constants/constants";
 import isObjectEmpty from "../../shared/helpers/isObjectEmpty";
@@ -8,8 +8,7 @@ function cleanLocalizationString(input: string): string {
 }
 
 function addButtonStyles(): void {
-  waitForAPIs(["Spicetify.Locale"], async () => {
-    const { Locale } = Spicetify;
+  waitForSpicetifyAPIs(["Spicetify.Locale"], async ([Locale]: (typeof Spicetify.Locale)[]) => {
     let dictionary = Locale.getDictionary();
 
     while (isObjectEmpty(dictionary)) {

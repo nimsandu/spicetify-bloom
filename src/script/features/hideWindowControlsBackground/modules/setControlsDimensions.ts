@@ -1,9 +1,9 @@
-import waitForAPIs from "../../../shared/utils/waitForAPIs";
+import waitForSpicetifyAPIs from "../../../shared/utils/waitForSpicetifyAPIs";
 
 function setControlsDimensions(): void {
-  waitForAPIs(["Spicetify.Platform.PlayerAPI"], async () => {
+  waitForSpicetifyAPIs(["Spicetify.Platform.PlayerAPI"], async ([PlayerAPI]) => {
     // eslint-disable-next-line no-underscore-dangle
-    const { entries } = await Spicetify.Platform.PlayerAPI._prefs.get({
+    const { entries } = await PlayerAPI._prefs.get({
       key: "app.browser.zoom-level",
     });
     const zoomLevel = entries["app.browser.zoom-level"].number;

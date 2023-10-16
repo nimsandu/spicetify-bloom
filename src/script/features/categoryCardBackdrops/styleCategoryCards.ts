@@ -1,10 +1,8 @@
-import waitForAPIs from "../../shared/utils/waitForAPIs";
+import waitForSpicetifyAPIs from "../../shared/utils/waitForSpicetifyAPIs";
 import addBackdropToCategoryCards from "./modules/addBackdropToCategoryCards";
 
 function styleCategoryCards(): void {
-  waitForAPIs(["Spicetify.Platform.History"], () => {
-    const { History } = Spicetify.Platform;
-
+  waitForSpicetifyAPIs(["Spicetify.Platform.History"], ([History]) => {
     function applyStyle(): void {
       if (History.location.pathname === "/search") addBackdropToCategoryCards();
     }
