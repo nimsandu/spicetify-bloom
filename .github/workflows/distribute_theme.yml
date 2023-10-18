@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  distribute-theme:
+  distribute_theme:
     name: Distribute Theme
     runs-on: ubuntu-latest
     permissions:
