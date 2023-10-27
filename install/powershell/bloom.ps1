@@ -152,6 +152,6 @@ end {
   Write-ByeMessage
   Remove-Module -Name $moduleName -Force
   Remove-Item -Path $modulePath -Force
-  [Console]::Title = $previousConsoleTitle
+  $Host.UI.RawUI.WindowTitle = $previousConsoleTitle
   Start-Sleep -Seconds 5
 }

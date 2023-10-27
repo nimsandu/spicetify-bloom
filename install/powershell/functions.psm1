@@ -157,11 +157,11 @@ function Install-Spotify {
 function Test-Spicetify {
     [CmdletBinding()]
     [OutputType([bool])]
-    Param ()
-    Begin {
+    param ()
+    begin {
         Write-Verbose -Message 'Checking if Spicetify is installed...' -Verbose
     }
-    Process {
+    process {
         [bool](Get-Command -Name spicetify -ErrorAction SilentlyContinue) 
     }
 }
