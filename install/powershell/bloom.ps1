@@ -5,7 +5,7 @@ param (
 )
 begin {
   $ErrorActionPreference = 'Stop'
-  Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+  Set-ExecutionPolicy -ExecutionPolicy 'Bypass' -Scope 'Process' -Force
   $previousConsoleTitle = $Host.UI.RawUI.WindowTitle
   $Host.UI.RawUI.WindowTitle = 'Bloom Installer'
 }

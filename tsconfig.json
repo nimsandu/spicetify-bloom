@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "commonjs",
-    "resolveJsonModule": true,
+    "module": "ES2022",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "outDir": "dist",
     "esModuleInterop": true,
@@ -11,7 +11,8 @@
     "strict": true,
     "noEmitOnError": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "lib": ["ES2022", "DOM"]
   },
   "include": ["src/script/**/*"]
 }

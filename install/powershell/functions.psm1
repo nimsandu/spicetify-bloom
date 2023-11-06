@@ -1,4 +1,5 @@
 #Requires -Version 5.1
+$ErrorActionPreference = 'Stop'
 
 #region Console helpers
 function Write-Center {
@@ -21,11 +22,11 @@ function Write-HelloMessage {
     param ()
     process {
         Write-Host
-        Write-Center -Message '----------------------------------------' -ForegroundColor Blue
-        Write-Center -Message 'Starting the Spicetify Bloom script...' -ForegroundColor Blue
+        Write-Center -Message '----------------------------------------' -ForegroundColor 'Blue'
+        Write-Center -Message 'Starting the Spicetify Bloom script...' -ForegroundColor 'Blue'
         Write-Host
-        Write-Center -Message 'github.com/nimsandu/spicetify-bloom' -ForegroundColor Blue
-        Write-Center -Message '----------------------------------------' -ForegroundColor Blue
+        Write-Center -Message 'github.com/nimsandu/spicetify-bloom' -ForegroundColor 'Blue'
+        Write-Center -Message '----------------------------------------' -ForegroundColor 'Blue'
         Write-Host
     }
 }
@@ -37,7 +38,7 @@ function Write-Error {
         [string]$Message
     )
     process {
-        Write-Host -Object $Message -ForegroundColor Red
+        Write-Host -Object $Message -ForegroundColor 'Red'
     }
     end {
         Wait-Input
@@ -50,11 +51,11 @@ function Write-ByeMessage {
     param ()
     process {
         Write-Host
-        Write-Center -Message '----------------------------------------' -ForegroundColor Green
-        Write-Center -Message 'No errors!' -ForegroundColor Green
+        Write-Center -Message '----------------------------------------' -ForegroundColor 'Green'
+        Write-Center -Message 'No errors!' -ForegroundColor 'Green'
         Write-Host
-        Write-Center -Message 'Thanks for using Bloom!' -ForegroundColor Green
-        Write-Center -Message '----------------------------------------' -ForegroundColor Green
+        Write-Center -Message 'Thanks for using Bloom!' -ForegroundColor 'Green'
+        Write-Center -Message '----------------------------------------' -ForegroundColor 'Green'
         Write-Host
     }
 }
@@ -79,7 +80,7 @@ function Test-Spotify {
         Write-Verbose -Message 'Checking if Spotify is installed...' -Verbose
     }
     process {
-        $desktopApp = Test-Path -Path "$env:APPDATA\Spotify" -PathType Container
+        $desktopApp = Test-Path -Path "$env:APPDATA\Spotify" -PathType 'Container'
         $storeApp = Get-AppxPackage -Name '*SpotifyAB*'
     }
     end {
@@ -136,7 +137,7 @@ function Install-Spotify {
         Invoke-WebRequest @Parameters
         
         Write-Host
-        Write-Host -Object 'ATTENTION!' -ForegroundColor Yellow
+        Write-Host -Object 'ATTENTION!' -ForegroundColor 'Yellow'
         Write-Host -Object 'Do not close the Spotify installer!'
         Write-Host -Object 'Once Spotify is installed, please login. Then close the window.'
         Wait-Input
@@ -145,10 +146,10 @@ function Install-Spotify {
         Write-Verbose -Message 'Starting the Spotify installer...' -Verbose
         Start-Process -FilePath $installerPath
         
-        while (-not (Get-Process -Name Spotify -ErrorAction SilentlyContinue)) {
+        while (-not (Get-Process -Name 'Spotify' -ErrorAction 'SilentlyContinue')) {
             Start-Sleep -Seconds 1
         }
-        Wait-Process -Name Spotify
+        Wait-Process -Name 'Spotify'
     }
 }
 #endregion Spotify
@@ -162,7 +163,7 @@ function Test-Spicetify {
         Write-Verbose -Message 'Checking if Spicetify is installed...' -Verbose
     }
     process {
-        [bool](Get-Command -Name spicetify -ErrorAction SilentlyContinue) 
+        [bool](Get-Command -Name 'spicetify' -ErrorAction 'SilentlyContinue') 
     }
 }
 
@@ -301,7 +302,7 @@ function Get-Bloom {
             $bloomURI = $bloomRemoteURI
         }
 
-        New-Item -Path $outFolder -ItemType Directory -Force | Out-Null
+        New-Item -Path $outFolder -ItemType 'Directory' -Force | Out-Null
 
         $Parameters = @{
             UseBasicParsing = $true
@@ -341,7 +342,7 @@ function Install-Bloom {
         Write-Verbose -Message 'Installing Bloom theme...' -Verbose
     }
     process {
-        New-Item -Path $Destination -ItemType Directory -Force | Out-Null
+        New-Item -Path $Destination -ItemType 'Directory' -Force | Out-Null
         
         $Parameters = @{
             Path        = "$Path\*"
@@ -400,7 +401,7 @@ function Test-SegoeUIVariable {
     }
     process {
         [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing') | Out-Null
-        $fontCollection = New-Object -TypeName System.Drawing.Text.InstalledFontCollection
+        $fontCollection = New-Object -TypeName 'System.Drawing.Text.InstalledFontCollection'
         $fontNames = $fontCollection.Families.Name
     }
     end {

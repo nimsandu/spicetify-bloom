@@ -7,7 +7,6 @@ on:
 
 jobs:
   distribute_theme:
-    name: Distribute Theme
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,13 +16,13 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Lint Code
         run: pnpm lint
       - name: Build Theme
@@ -34,6 +33,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: dist
           publish_dir: dist
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
           commit_message: "chore: update to"
