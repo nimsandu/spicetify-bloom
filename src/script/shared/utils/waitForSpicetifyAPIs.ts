@@ -2,7 +2,7 @@
 function waitForSpicetifyAPIs(
   apiNames: string[],
   // eslint-disable-next-line no-empty-pattern
-  func: ([]: any[]) => void,
+  func: ([]: any[]) => void | Promise<void>,
   attempts = 50,
 ): void {
   const apis = apiNames.map((apiName) => {
