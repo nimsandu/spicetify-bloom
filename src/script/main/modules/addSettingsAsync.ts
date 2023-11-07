@@ -1,6 +1,5 @@
 import { SettingsSection } from "spcr-settings";
 
-import reloadLocalion from "../../shared/helpers/reloadLocation";
 import getOsAsync from "../../shared/utils/getOsAsync";
 
 import {
@@ -28,20 +27,22 @@ import {
 } from "../../shared/constants/constants";
 
 async function addSettingsAsync(): Promise<SettingsSection> {
+  const { location } = window;
+
   const settings = new SettingsSection(themeSettingsSectionName, themeSettingsSectionId);
 
   settings.addToggle(
     requirementsSettingId,
     requirementsSettingTitle,
     requirementsSettingDefaultValue,
-    reloadLocalion,
+    location.reload,
   );
 
   settings.addToggle(
     bloomLyricsStyleSettingId,
     bloomLyricsStyleSettingTitle,
     bloomLyricsStyleSettingDefaultValue,
-    reloadLocalion,
+    location.reload,
   );
 
   const os = await getOsAsync();
@@ -50,7 +51,7 @@ async function addSettingsAsync(): Promise<SettingsSection> {
       windowControlsBackgroundSettingId,
       windowControlsBackgroundSettingTitle,
       windowControlsBackgroundSettingDefaultValue,
-      reloadLocalion,
+      location.reload,
     );
   }
 
@@ -58,7 +59,7 @@ async function addSettingsAsync(): Promise<SettingsSection> {
     fluentStyleSettingId,
     fluentStyleSettingTitle,
     fluentStyleSettingDefaultValue,
-    reloadLocalion,
+    location.reload,
   );
 
   settings.addButton(easterEggButtonId, easterEggButtonDescription, easterEggButtonValue, () => {

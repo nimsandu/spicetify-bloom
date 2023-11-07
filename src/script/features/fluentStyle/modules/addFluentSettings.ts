@@ -1,6 +1,5 @@
 import { SettingsSection } from "spcr-settings";
 
-import reloadLocalion from "../../../shared/helpers/reloadLocation";
 import getImageBase64FromUrlAsync from "../utils/getImageBase64FromUrlAsync";
 
 import {
@@ -23,6 +22,8 @@ import {
 } from "../constants/constants";
 
 function addFluentSettings(): SettingsSection {
+  const { location } = window;
+
   const settings = new SettingsSection(settingsSectionName, settingsSectionId);
 
   settings.addInput(
@@ -41,7 +42,7 @@ function addFluentSettings(): SettingsSection {
       if (typeof fluentBackgroundImage === "string") {
         localStorage.setItem(backgroundImageUrlLocalStorageKey, imageURL);
       }
-      reloadLocalion();
+      location.reload();
     },
   );
 
@@ -55,7 +56,7 @@ function addFluentSettings(): SettingsSection {
       );
       if (typeof fluentBackgroundImage === "string") {
         localStorage.setItem(backgroundImageLocalStorageKey, fluentBackgroundImage);
-        reloadLocalion();
+        location.reload();
       }
     },
   );
@@ -66,7 +67,7 @@ function addFluentSettings(): SettingsSection {
     settingRemoveImageButtonValue,
     () => {
       localStorage.removeItem(backgroundImageLocalStorageKey);
-      reloadLocalion();
+      location.reload();
     },
   );
 
