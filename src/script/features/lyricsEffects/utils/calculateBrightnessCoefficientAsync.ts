@@ -3,8 +3,9 @@ import {
   FastAverageColorResource,
   FastAverageColorRgbaWithThreshold,
 } from "fast-average-color";
-import { lyricsBackdropMaxBrightness } from "../constants/constants";
+
 import roundToDecimal from "../../../shared/helpers/roundToDecimal";
+import { lyricsBackdropMaxBrightness } from "../constants/constants";
 
 async function calculateBrightnessCoefficientAsync(resource: FastAverageColorResource) {
   const fac = new FastAverageColor();

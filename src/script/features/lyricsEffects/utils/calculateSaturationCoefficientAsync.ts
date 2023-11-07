@@ -1,13 +1,13 @@
 import { FastAverageColorResource } from "fast-average-color";
+
+import getImageSaturationAsync from "../helpers/getImageSaturationAsync";
+import roundToDecimal from "../../../shared/helpers/roundToDecimal";
 import {
   lyricsBackdropMaxFinalSaturation,
   lyricsBackdropMinFinalSaturation,
   lyricsBackdropMinOriginalSaturation,
   lyricsBackdropMaxSaturationCoefficient,
 } from "../constants/constants";
-
-import getImageSaturationAsync from "../helpers/getImageSaturationAsync";
-import roundToDecimal from "../../../shared/helpers/roundToDecimal";
 
 async function calculateSaturationCoefficientAsync(
   firstResource: FastAverageColorResource,

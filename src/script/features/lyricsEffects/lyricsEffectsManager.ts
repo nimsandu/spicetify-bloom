@@ -1,6 +1,14 @@
+import controlFeatureStyles from "../../shared/modules/controlFeatureStyles";
+import waitForElements from "../../shared/utils/waitForElements";
+import waitForSpicetifyAPIs from "../../shared/utils/waitForSpicetifyAPIs";
+import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
+
 import setLyricsBackdropFiltersAsync from "./modules/setLyricsBackdropFiltersAsync";
 import fixLyricsActiveLineAnimation from "./modules/fixLyricsActiveLineAnimation";
-import waitForElements from "../../shared/utils/waitForElements";
+import animateLyricsBackdropChange from "./modules/animateLyricsBackdropChange";
+import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
+import createLyricsBackdrop from "./utils/createLyricsBackdrop";
+import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
 import {
   lyricsBackdropBlurValue,
   lyricsBackdropGlobalCompositeOperation,
@@ -9,20 +17,13 @@ import {
   underMainViewSelector,
   mainViewContainerSelector,
 } from "./constants/constants";
-import waitForSpicetifyAPIs from "../../shared/utils/waitForSpicetifyAPIs";
-import { bloomLyricsStyleSettingId } from "../../shared/constants/constants";
-import calculateContextDrawValuesAsync from "./utils/calculateContextDrawValuesAsync";
-import createLyricsBackdrop from "./utils/createLyricsBackdrop";
-import animateLyricsBackdropChange from "./modules/animateLyricsBackdropChange";
-import setLyricsLinesStyle from "./modules/setLyricsLinesStyle";
-import controlFeatureStyles from "../../shared/modules/controlFeatureStyles";
 
 class LyricsEffectsManager {
   protected static previousAlbumUri: string;
 
   protected static lyricsBackdropContainer: HTMLElement;
 
-  protected static lyricsCinema: HTMLElement;
+  protected static lyricsCinema: Element;
 
   protected static lyricsBackdrop: HTMLCanvasElement;
 
@@ -31,19 +32,17 @@ class LyricsEffectsManager {
   private static watchForLyrics(): void {
     waitForSpicetifyAPIs(["Spicetify.Platform.History"], ([History]) => {
       History.listen(LyricsEffectsManager.handleLyricsStatus);
-
       LyricsEffectsManager.handleLyricsStatus();
     });
 
     waitForElements([lyricsCinemaSelector], ([lyricsCinema]) => {
-      LyricsEffectsManager.lyricsCinema = lyricsCinema as HTMLElement;
+      LyricsEffectsManager.lyricsCinema = lyricsCinema;
       const lyricsCinemaObserver = new MutationObserver(LyricsEffectsManager.handleLyricsStatus);
       const lyricsCinemaObserverConfig = {
         attributes: true,
         attributeFilter: ["class"],
       };
       lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig);
-
       LyricsEffectsManager.handleLyricsStatus();
     });
 
@@ -66,10 +65,10 @@ class LyricsEffectsManager {
 
   private static updateLyricsEffects(): void {
     waitForSpicetifyAPIs(["Spicetify.Player.data"], ([data]: (typeof Spicetify.Player.data)[]) => {
-      const { metadata } = data.item;
+      LyricsEffectsManager.updateLyricsPageProperties();
 
+      const { metadata } = data.item;
       if (LyricsEffectsManager.previousAlbumUri === metadata.album_uri) {
-        LyricsEffectsManager.updateLyricsPageProperties();
         return;
       }
       LyricsEffectsManager.previousAlbumUri = metadata.album_uri;

@@ -1,9 +1,9 @@
+import fillCanvas from "../helpers/fillCanvas";
 import {
   lyricsBackdropBlurValue,
   lyricsBackdropImageSmoothingEnabled,
   lyricsBackdropId,
 } from "../constants/constants";
-import fillCanvas from "../helpers/fillCanvas";
 
 function createLyricsBackdrop(): HTMLCanvasElement {
   const lyricsBackdropElement = document.createElement("canvas");
