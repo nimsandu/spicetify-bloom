@@ -172,10 +172,11 @@ Open Spotify settings and turn on `Enable hardware acceleration`.
 
 Please report about that via the repository's issues page.
 
-### Theme doesn't work correctly with Spotify version less than 1.2.14
+### Theme doesn't work correctly with Spotify version less than 1.2.23
 
 In Spotify version 1.2.14, not only has the classic UI been cut, but also the indication that a new UI is active. Since it is now problematic to identify the active UI, only Library X support remains.
 If you want to keep using the classic UI with Bloom - use the [legacy branch](https://github.com/nimsandu/spicetify-bloom/tree/legacy) (unsupported). Otherwise - update your Spotify or enable `Library X view` in the Spotify experimental settings.
+In Spotify version 1.2.23 the main app grid has been revamped and the top bar has become part of the main view. Since it is problematic to support both grid variants, only the current variant support remains.
 
 ## Credits
 
