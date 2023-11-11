@@ -915,12 +915,6 @@ button.switch {
   transition: background-color ease-out 167ms;
 }
 
-/* left navbar resizer */
-
-.Root__nav-bar .LayoutResizer__resize-bar {
-  display: none;
-}
-
 /* playlist sidebar */
 
 .main-rootlist-rootlist .os-content {
