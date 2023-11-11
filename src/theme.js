@@ -9,122 +9,6 @@
     }
   }
 
-  function updatePlaylistsImages() {
-    waitForElement(['.main-rootlist-rootlistItem'], () => {
-      const mainRootlistWrapper = document.getElementsByClassName('main-rootlist-wrapper')[0];
-      mainRootlistWrapper.style.height = `${mainRootlistWrapper.offsetHeight * 2}px`;
-      const cache = new Map();
-
-      async function fetchPlaylistData(url) {
-        const response = await Spicetify.CosmosAsync.get(url);
-        const { items, next } = response;
-        return [...items, ...(next ? await fetchPlaylistData(next) : [])];
-      }
-
-      async function addPlaylistIcons() {
-        while (!Spicetify || !Spicetify.Platform || !Spicetify.CosmosAsync) {
-          // eslint-disable-next-line no-await-in-loop, no-promise-executor-return
-          await new Promise((resolve) => setTimeout(resolve, 100));
-        }
-
-        async function updatePlaylistList(playlistData) {
-          const playlistElements = await new Promise((resolve) => {
-            const interval = setInterval(() => {
-              const elements = document.querySelectorAll('#spicetify-playlist-list li a');
-              if (elements.length > 0) {
-                clearInterval(interval);
-                resolve(Array.from(elements));
-              }
-            }, 100);
-          });
-
-          for (let i = 0; i < playlistElements.length; i += 1) {
-            const [id] = playlistElements[i].href.split('/').slice(-1);
-            const [type] = playlistElements[i].href.split('/').slice(-2, -1);
-            let icon = cache.get(id);
-            if (!icon) {
-              let base64;
-              switch (type) {
-                case 'playlist': {
-                  const playlist = playlistData.find((p) => p.id === id);
-                  const image = playlist ? playlist.images[0] || {} : {};
-                  icon = {
-                    src:
-                      image.url ||
-                      'https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg',
-                    size: 'cover',
-                  };
-                  if (!image.url) {
-                    icon.size = '45px';
-                  }
-                  cache.set(id, icon);
-                  break;
-                }
-
-                case 'folder':
-                  base64 = localStorage.getItem(`bloom:folder-image:${id}`);
-                  icon = {
-                    src:
-                      base64 ||
-                      'https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg',
-                    size: 'cover',
-                  };
-                  if (!base64) {
-                    icon.size = '45px';
-                  }
-                  cache.set(id, icon);
-                  break;
-
-                default:
-                  break;
-              }
-            }
-
-            if (icon.src) {
-              playlistElements[i].style.backgroundImage = `url('${icon.src}')`;
-              playlistElements[i].style.backgroundRepeat = 'no-repeat';
-              playlistElements[i].style.backgroundSize = `${icon.size}`;
-              playlistElements[i].style.backgroundPosition = 'center';
-            }
-          }
-        }
-
-        const playlistList = await new Promise((resolve) => {
-          const interval = setInterval(() => {
-            const element = document.getElementById('spicetify-playlist-list');
-            if (element) {
-              clearInterval(interval);
-              resolve(element);
-            }
-          }, 100);
-        });
-
-        const playlistData = await fetchPlaylistData(
-          'https://api.spotify.com/v1/me/playlists?limit=50'
-        );
-        const observer = new MutationObserver(async () => {
-          observer.disconnect();
-          await updatePlaylistList(playlistData);
-          observer.observe(playlistList, { childList: true, subtree: true });
-        });
-        await updatePlaylistList(playlistData);
-        observer.observe(playlistList, { childList: true, subtree: true });
-      }
-
-      addPlaylistIcons();
-    });
-  }
-  updatePlaylistsImages();
-
-  waitForElement(['.main-navBar-navBarLink'], () => {
-    const navBarItems = document.getElementsByClassName('main-navBar-navBarLink');
-    for (let i = 0; i < navBarItems.length; i += 1) {
-      const div = document.createElement('div');
-      div.classList.add('navBar-navBarLink-accent');
-      navBarItems[i].appendChild(div);
-    }
-  });
-
   waitForElement(['.main-yourLibraryX-navItem'], () => {
     const navItemsLibraryX = document.getElementsByClassName('main-yourLibraryX-navLink');
     for (let i = 0; i < navItemsLibraryX.length; i += 1) {
@@ -256,22 +140,11 @@
       }
     }
 
-    function calculateLyricsMaxWidth(textDirection, lyricsWrapper, lyricsContainer) {
-      let offset;
-      let maxWidth;
-
-      if (textDirection === 'rtl') {
-        offset =
-          lyricsWrapper.offsetRight +
-          parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
-        maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
-      } else {
-        offset =
-          lyricsWrapper.offsetLeft +
-          parseInt(window.getComputedStyle(lyricsWrapper).marginLeft, 10);
-        maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
-      }
-
+    function calculateLyricsMaxWidth(lyricsWrapper, lyricsContainer) {
+      const offset =
+        lyricsWrapper.offsetRight +
+        parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
+      const maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
       return maxWidth;
     }
 
@@ -322,7 +195,6 @@
       const lyricsTextDirection = detectTextDirection();
       setLyricsTransformOrigin(lyricsTextDirection);
       const lyricsMaxWidth = calculateLyricsMaxWidth(
-        lyricsTextDirection,
         lyricsContentWrapper,
         lyricsContentContainer
       );
@@ -497,9 +369,8 @@
       lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = async () => {
-        const [drawWidth, drawHeight, drawX, drawY] = await calculateContextDrawValues(
-          lyricsBackdrop
-        );
+        const [drawWidth, drawHeight, drawX, drawY] =
+          await calculateContextDrawValues(lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
         updateFilters(lyricsBackdrop, lyricsBackdropImage);
 
@@ -654,97 +525,11 @@
   }
   window.addEventListener('load', centerTopbar);
 
-  function rootObserverCallback(mutationsList, mutationObserver) {
-    const regExp = /--panel-width:\s*([\d.]+)px/;
-    const match = mutationsList[0].oldValue.match(regExp);
-    const oldPanelWidth = match[1];
-    setTimeout(() => {
-      const newPanelWidth = parseInt(
-        mutationsList[0].target.style.getPropertyValue('--panel-width'),
-        10
-      );
-      if (newPanelWidth > oldPanelWidth) {
-        const buddyFeedContainer = document.getElementsByClassName('main-buddyFeed-container')[0];
-        buddyFeedContainer.style.width = `${oldPanelWidth}px`;
-      }
-      mutationObserver.disconnect();
-    }, 0);
-  }
-
-  const rootObserver = new MutationObserver(rootObserverCallback);
-  const rootObserverConfig = {
-    attributes: true,
-    attributeFilter: ['style'],
-    attributeOldValue: true,
-  };
-
-  function keepRightSidebarWidth() {
-    rootObserver.observe(document.documentElement, rootObserverConfig);
-  }
-
   async function onResize() {
-    keepRightSidebarWidth();
     centerTopbar();
     updateLyricsPageProperties();
   }
   window.onresize = onResize;
-
-  // filepicker for custom folder images
-  const filePickerForm = document.createElement('form');
-  filePickerForm.setAttribute('aria-hidden', true);
-  filePickerForm.innerHTML = '<input type="file" class="hidden-visually" />';
-  document.body.appendChild(filePickerForm);
-  /** @type {HTMLInputElement} */
-  const filePickerInput = filePickerForm.childNodes[0];
-  filePickerInput.accept = [
-    'image/jpeg',
-    'image/apng',
-    'image/avif',
-    'image/gif',
-    'image/png',
-    'image/svg+xml',
-    'image/webp',
-  ].join(',');
-
-  filePickerInput.onchange = () => {
-    if (!filePickerInput.files.length) return;
-
-    const file = filePickerInput.files[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const { result } = event.target;
-      const { id } = Spicetify.URI.from(filePickerInput.uri);
-      try {
-        localStorage.setItem(`bloom:folder-image:${id}`, result);
-      } catch {
-        Spicetify.showNotification('File is too large');
-      }
-      updatePlaylistsImages();
-    };
-    reader.readAsDataURL(file);
-  };
-
-  // context menu items for custom folder images
-  new Spicetify.ContextMenu.Item(
-    'Remove folder image',
-    ([uri]) => {
-      const { id } = Spicetify.URI.from(uri);
-      localStorage.removeItem(`bloom:folder-image:${id}`);
-      updatePlaylistsImages();
-    },
-    ([uri]) => Spicetify.URI.isFolder(uri),
-    'x'
-  ).register();
-  new Spicetify.ContextMenu.Item(
-    'Choose folder image',
-    ([uri]) => {
-      filePickerInput.uri = uri;
-      filePickerForm.reset();
-      filePickerInput.click();
-    },
-    ([uri]) => Spicetify.URI.isFolder(uri),
-    'edit'
-  ).register();
 
   // fix backdrop-filter for some flyouts and menus
   // see https://github.com/nimsandu/spicetify-bloom/issues/220#issuecomment-1555071865
