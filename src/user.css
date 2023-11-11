@@ -205,7 +205,7 @@ html {
 }
 
 .x-searchResultsTracks-root > .main-gridContainer-gridContainer,
-.main-trackList-indexable,
+.main-trackList-trackList,
 .main-card-card,
 .main-heroCard-card,
 .view-homeShortcutsGrid-draggable {
@@ -1030,19 +1030,16 @@ button.switch {
 
 /* tracklist */
 
-.main-trackList-indexable .main-virtualScrollList-wrapper,
-.main-trackList-indexable .main-rootlist-wrapper {
+.main-trackList-trackList .main-virtualScrollList-wrapper,
+.main-trackList-trackList .main-rootlist-wrapper {
   background-color: var(--spice-card);
   border-radius: var(--border-radius-2);
   padding: 8px;
 }
 
-.main-trackList-indexable {
+.main-trackList-trackList {
   padding: 8px;
   padding-bottom: 24px;
-}
-
-.main-trackList-trackList.main-trackList-indexable {
   background-color: var(--spice-card);
   border-radius: var(--border-radius-2);
 }
