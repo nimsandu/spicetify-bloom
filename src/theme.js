@@ -3,7 +3,7 @@
   function waitForElement(els, func, timeout = 100) {
     const queries = els.map((el) => document.querySelector(el));
     if (queries.every((a) => a)) {
-      func();
+      func(queries);
     } else if (timeout > 0) {
       setTimeout(waitForElement, 300, els, func, timeout - 1);
     }
@@ -194,10 +194,7 @@
 
       const lyricsTextDirection = detectTextDirection();
       setLyricsTransformOrigin(lyricsTextDirection);
-      const lyricsMaxWidth = calculateLyricsMaxWidth(
-        lyricsContentWrapper,
-        lyricsContentContainer
-      );
+      const lyricsMaxWidth = calculateLyricsMaxWidth(lyricsContentWrapper, lyricsContentContainer);
       lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${lyricsMaxWidth}px`);
       lockLyricsWrapperWidth(lyricsContentWrapper);
     }
@@ -220,10 +217,7 @@
 
     // eslint-disable-next-line no-undef
     if (typeof lyricsObserver === 'undefined' || lyricsObserver == null) {
-      waitForElement(['.lyrics-lyrics-contentWrapper'], () => {
-        const lyricsContentWrapper = document.getElementsByClassName(
-          'lyrics-lyrics-contentWrapper'
-        )[0];
+      waitForElement(['.lyrics-lyrics-contentWrapper'], ([lyricsContentWrapper]) => {
         const lyricsObserver = new MutationObserver(lyricsCallback);
         const lyricsObserverConfig = { childList: true };
         lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
@@ -344,7 +338,7 @@
       canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
     }
 
-    waitForElement(['#lyrics-backdrop'], () => {
+    waitForElement(['#lyrics-backdrop'], ([lyricsBackdropPrevious]) => {
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
         updateLyricsPageProperties();
@@ -352,7 +346,6 @@
       }
       previousAlbumUri = Spicetify.Player.data.track.metadata.album_uri;
 
-      const lyricsBackdropPrevious = document.getElementById('lyrics-backdrop');
       const contextPrevious = lyricsBackdropPrevious.getContext('2d');
       contextPrevious.globalCompositeOperation = 'destination-out';
       contextPrevious.filter = `blur(${blur}px)`;
@@ -403,8 +396,7 @@
   Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
 
   function initLyricsBackdrop() {
-    waitForElement(['.under-main-view'], () => {
-      const underMainView = document.querySelector('.under-main-view');
+    waitForElement(['.under-main-view'], ([underMainView]) => {
       const lyricsBackdropContainer = document.createElement('div');
       lyricsBackdropContainer.id = 'lyrics-backdrop-container';
       underMainView.prepend(lyricsBackdropContainer);
@@ -498,11 +490,7 @@
   });
 
   function centerTopbar() {
-    waitForElement(['.main-topBar-topbarContentWrapper'], () => {
-      const topBarContentWrapper = document.getElementsByClassName(
-        'main-topBar-topbarContentWrapper'
-      )[0];
-
+    waitForElement(['.main-topBar-topbarContentWrapper'], ([topBarContentWrapper]) => {
       const left = topBarContentWrapper.offsetLeft;
       const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
 
@@ -519,6 +507,7 @@
       }
 
       if (diff !== 0) {
+        // eslint-disable-next-line no-param-reassign
         topBarContentWrapper.style.marginLeft = `${diff}px`;
       }
     });
@@ -570,8 +559,7 @@
   }
   schemeCallback();
 
-  waitForElement(['.marketplaceScheme'], () => {
-    const scheme = document.getElementsByClassName('marketplaceScheme')[0];
+  waitForElement(['.marketplaceScheme'], ([scheme]) => {
     const schemeObserver = new MutationObserver(schemeCallback);
     const schemeObserverConfig = { attributes: true };
     schemeObserver.observe(scheme, schemeObserverConfig);
