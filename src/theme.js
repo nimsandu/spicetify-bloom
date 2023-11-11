@@ -410,6 +410,15 @@
     });
   }
 
+  function moveTopBarContainerUp() {
+    waitForElement(['.main-topBar-container'], ([topBarContainer]) => {
+      document
+        .querySelector('.Root__top-container')
+        ?.insertAdjacentElement('afterbegin', topBarContainer);
+    });
+  }
+  moveTopBarContainerUp();
+
   function addCategoryCardBackdrop() {
     waitForElement(['.x-categoryCard-image'], () => {
       const cards = document.getElementsByClassName('x-categoryCard-CategoryCard');

@@ -260,28 +260,20 @@ html {
   justify-content: center;
 }
 
-.Root__top-bar::before {
+.main-topBar-container::before {
   content: '';
-  z-index: 3;
+  z-index: 4;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-image: var(--noise-texture);
   opacity: var(--noise-opacity);
 }
 
-.Root__top-bar {
+.main-topBar-container {
   position: absolute !important;
   width: 100vw !important;
-  grid-area: none !important;
-  z-index: 4 !important;
+  z-index: 5 !important;
   background-color: rgba(var(--spice-rgb-sidebar), 0.85);
   backdrop-filter: blur(50px) saturate(2.5);
-}
-
-.main-topBar-container {
   padding-inline-end: 167px !important;
 }
 
@@ -1305,8 +1297,8 @@ button.switch {
 }
 
 .Fxnb0xe6bL7I7W8V0p6C,
-.Root__top-bar .main-avatar-avatar,
-.Root__top-bar .main-avatar-avatar div {
+.main-topBar-container .main-avatar-avatar,
+.main-topBar-container .main-avatar-avatar div {
   width: 28px !important;
   height: 28px !important;
 }
@@ -2384,12 +2376,6 @@ button.arrow-btn {
 
 :root {
   --lyrics-text-direction: left;
-}
-
-/* Needed for lyrics cinema */
-.Root__top-bar {
-  z-index: 5 !important;
-  display: unset !important;
 }
 
 .main-lyricsCinema-controls {
