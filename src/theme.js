@@ -340,11 +340,11 @@
 
     waitForElement(['#lyrics-backdrop'], ([lyricsBackdropPrevious]) => {
       // don't animate backdrop if artwork didn't change
-      if (previousAlbumUri === Spicetify.Player.data.track.metadata.album_uri) {
+      if (previousAlbumUri === Spicetify.Player.data.item.metadata.album_uri) {
         updateLyricsPageProperties();
         return;
       }
-      previousAlbumUri = Spicetify.Player.data.track.metadata.album_uri;
+      previousAlbumUri = Spicetify.Player.data.item.metadata.album_uri;
 
       const contextPrevious = lyricsBackdropPrevious.getContext('2d');
       contextPrevious.globalCompositeOperation = 'destination-out';
@@ -359,7 +359,7 @@
       context.filter = `blur(${blur}px)`;
 
       const lyricsBackdropImage = new Image();
-      lyricsBackdropImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
+      lyricsBackdropImage.src = Spicetify.Player.data.item.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = async () => {
         const [drawWidth, drawHeight, drawX, drawY] =
