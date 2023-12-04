@@ -142,7 +142,7 @@
 
     function calculateLyricsMaxWidth(lyricsWrapper, lyricsContainer) {
       const offset =
-        lyricsWrapper.offsetRight +
+        lyricsWrapper.offsetLeft +
         parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
       const maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
       return maxWidth;
