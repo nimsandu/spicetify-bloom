@@ -1427,19 +1427,20 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 
 /* notification */
 
-.main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: 110px;
+.notistack-SnackbarContainer {
+  margin-bottom: 95px;
 }
 
-.main-notificationBubble-NotificationBubble {
+.notistack-MuiContent, 
+.RQREWe_yBdtc_g6eC3wQ {
   color: var(--spice-text);
 }
 
-.main-notificationBubble-isNotice {
+.RQREWe_yBdtc_g6eC3wQ {
   background-color: var(--spice-notif-bubble-info);
 }
 
-.main-notificationBubble-isError {
+.notistack-MuiContent-error {
   background-color: var(--spice-notif-bubble-error);
 }
 
@@ -2985,10 +2986,4 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
   background: transparent;
-}
-
-/* notification */
-
-.main-notificationBubbleContainer-NotificationBubbleContainer {
-  margin-bottom: 95px;
 }
