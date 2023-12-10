@@ -41,8 +41,14 @@
     playlistPlayLabel = cleanLabel(playlistPlayLabel);
     let playlistPauseLabel = Spicetify.Platform.Translations['playlist.a11y.pause'];
     playlistPauseLabel = cleanLabel(playlistPauseLabel);
-    const smartShuffleEnableLabel = Spicetify.Platform.Translations['web-player.smart-shuffle.button-enable-shuffle-generic'].substring(1);
-    const smartShuffleDisableLabel =  Spicetify.Platform.Translations['web-player.smart-shuffle.button-disable-shuffle-generic'].substring(1);
+    const smartShuffleEnableLabel =
+      Spicetify.Platform.Translations[
+        'web-player.smart-shuffle.button-enable-shuffle-generic'
+      ].substring(1);
+    const smartShuffleDisableLabel =
+      Spicetify.Platform.Translations[
+        'web-player.smart-shuffle.button-disable-shuffle-generic'
+      ].substring(1);
 
     const tracklistPlayLabel = Spicetify.Platform.Translations['tracklist.a11y.play'];
     let tracklistPlayLabelOne;
@@ -159,8 +165,7 @@
 
     function calculateLyricsMaxWidth(lyricsWrapper, lyricsContainer) {
       const offset =
-        lyricsWrapper.offsetLeft +
-        parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
+        lyricsWrapper.offsetLeft + parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
       const maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
       return maxWidth;
     }
