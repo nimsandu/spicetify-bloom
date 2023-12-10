@@ -227,7 +227,7 @@
       }
     }
 
-    waitForElement(['.lyrics-lyricsContent-provider'], async () => {
+    waitForElement(['.lyrics-lyrics-contentContainer .lyrics-lyricsContent-provider'], async () => {
       setLyricsPageProperties();
       revealLyricsLines();
     });
