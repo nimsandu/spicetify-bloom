@@ -491,6 +491,43 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   display: none !important;
 }
 
+.view-homeShortcutsGrid-shortcut .main-playButton-PlayButton {
+  opacity: 0;
+}
+
+.view-homeShortcutsGrid-shortcut:hover .main-playButton-PlayButton {
+  opacity: 1;
+}
+
+.view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-equaliser {
+  -webkit-mask-image: var(--equalizer-svg);
+  background: var(--spice-accent);
+  content-visibility: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+@container (max-width: 1599px) {
+  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
+    height: 35px;
+    width: 35px;
+  }
+}
+
+@container (max-width: 1141px) {
+  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@container (max-width: 815px) {
+  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
+    height: 25px;
+    width: 25px;
+  }
+}
+
 .home-icon {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
   background-color: var(--spice-subtext) !important;
@@ -578,6 +615,30 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 .main-navBar-navBarLink[href='/reddit'] > .collection-active-icon,
 .main-yourLibraryX-navLink[href='/reddit'] > .home-active-icon {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/reddit/reddit_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
+.main-navBar-navBarLink[href='/stats'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/stats'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/stats'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/stats'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
+.main-navBar-navBarLink[href='/name-that-tune'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/name-that-tune'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/name-that-tune'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/stats'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
