@@ -581,6 +581,30 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   background-color: var(--spice-accent) !important;
 }
 
+.main-navBar-navBarLink[href='/stats'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/stats'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/stats'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/stats'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
+.main-navBar-navBarLink[href='/name-that-tune'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/name-that-tune'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/stats'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/stats'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
 .home-icon path,
 .search-icon path,
 .collection-icon path,
