@@ -495,6 +495,27 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   opacity: 0;
 }
 
+@container (max-width: 1599px) {
+  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
+    height: 35px;
+    width: 35px;
+  }
+}
+
+@container (max-width: 1141px) {
+  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@container (max-width: 815px) {
+  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
+    height: 25px;
+    width: 25px;
+  }
+}
+
 .home-icon {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
   background-color: var(--spice-subtext) !important;
