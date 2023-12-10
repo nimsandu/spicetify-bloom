@@ -41,6 +41,8 @@
     playlistPlayLabel = cleanLabel(playlistPlayLabel);
     let playlistPauseLabel = Spicetify.Platform.Translations['playlist.a11y.pause'];
     playlistPauseLabel = cleanLabel(playlistPauseLabel);
+    const smartShuffleEnableLabel = Spicetify.Platform.Translations['web-player.smart-shuffle.button-enable-shuffle-generic'].substring(1);
+    const smartShuffleDisableLabel =  Spicetify.Platform.Translations['web-player.smart-shuffle.button-disable-shuffle-generic'].substring(1);
 
     const tracklistPlayLabel = Spicetify.Platform.Translations['tracklist.a11y.play'];
     let tracklistPlayLabelOne;
@@ -75,6 +77,21 @@
       .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
+      }
+
+      .player-controls button[aria-label*="${smartShuffleEnableLabel}"] {
+        min-block-size: 24px !important;
+        height: 24px !important;
+        background-color: var(--spice-accent) !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
+        margin-right: -5px !important;
+      }
+      .player-controls button[aria-label*="${smartShuffleDisableLabel}"] {
+        min-block-size: 24px !important;
+        height: 24px !important;
+        background-color: var(--spice-subtext) !important;
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg');
+        margin-right: -5px !important;
       }`;
     document.head.appendChild(playButtonStyle);
 
