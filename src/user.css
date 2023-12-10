@@ -241,7 +241,8 @@ html {
 .main-card-card,
 .x-categoryCard-CategoryCard,
 .main-heroCard-card {
-  transition: transform 400ms var(--ms-motion-timing-decelerate),
+  transition:
+    transform 400ms var(--ms-motion-timing-decelerate),
     box-shadow 400ms var(--ms-motion-timing-decelerate);
 }
 
@@ -1376,7 +1377,9 @@ button.switch {
 }
 
 .main-playButton-PlayButton {
-  transition: opacity 0.5s, visibility 0.5s !important;
+  transition:
+    opacity 0.5s,
+    visibility 0.5s !important;
 }
 
 .main-playButton-PlayButton.main-playButton-primary {
@@ -1492,7 +1495,7 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   margin-bottom: 95px;
 }
 
-.notistack-MuiContent, 
+.notistack-MuiContent,
 .RQREWe_yBdtc_g6eC3wQ {
   color: var(--spice-text);
 }
@@ -2055,7 +2058,12 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-coverSlotCollapsed-container {
   transform-origin: center;
   transition-timing-function: ease-in;
-  transition: width 0.5s 0.2s, height 0.5s 0.2s, top 0.3s, left 0.5s, box-shadow 0.5s;
+  transition:
+    width 0.5s 0.2s,
+    height 0.5s 0.2s,
+    top 0.3s,
+    left 0.5s,
+    box-shadow 0.5s;
   border-radius: var(--border-radius-1) !important;
   background-color: transparent !important;
 }
@@ -2073,7 +2081,12 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-coverSlotCollapsed-container[aria-hidden='false'] {
   transition-timing-function: ease-out !important;
-  transition: width 0.5s 0.2s, height 0.5s 0.2s, top 0.5s 0.1s, left 0.3s, box-shadow 0.5s !important;
+  transition:
+    width 0.5s 0.2s,
+    height 0.5s 0.2s,
+    top 0.5s 0.1s,
+    left 0.3s,
+    box-shadow 0.5s !important;
   border-radius: var(--border-radius-1) !important;
 }
 
@@ -2474,7 +2487,9 @@ button.arrow-btn {
   animation-fill-mode: forwards;
   margin: 0.3rem 0;
   text-shadow: none;
-  transition: text-shadow 100ms ease, color 100ms ease;
+  transition:
+    text-shadow 100ms ease,
+    color 100ms ease;
 }
 
 .lyrics-lyricsContent-text {
@@ -2510,7 +2525,9 @@ button.arrow-btn {
 
 @media (min-width: 1920px) {
   .lyrics-lyricsContent-lyric {
-    transition: text-shadow 400ms ease, color 50ms ease;
+    transition:
+      text-shadow 400ms ease,
+      color 50ms ease;
   }
 
   .lyrics-lyricsContent-text {
@@ -2562,7 +2579,9 @@ button.arrow-btn {
 }
 
 .lyrics-lyricsContainer-Karaoke-Word {
-  transition: var(--word-duration) color ease, var(--word-duration) text-shadow ease !important;
+  transition:
+    var(--word-duration) color ease,
+    var(--word-duration) text-shadow ease !important;
   text-shadow: none;
 }
 
@@ -2799,7 +2818,9 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   height: 100%;
   z-index: 1;
   border-radius: var(--border-radius-1);
-  box-shadow: 0 -8px 0 var(--spice-sidebar), 0 8px 0 var(--spice-sidebar);
+  box-shadow:
+    0 -8px 0 var(--spice-sidebar),
+    0 8px 0 var(--spice-sidebar);
   pointer-events: none;
 }
 
