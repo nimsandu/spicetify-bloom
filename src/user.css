@@ -491,8 +491,12 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   display: none !important;
 }
 
-.view-homeShortcutsGrid-equaliser {
+.view-homeShortcutsGrid-shortcut .main-playButton-PlayButton {
   opacity: 0;
+}
+
+.view-homeShortcutsGrid-shortcut:hover .main-playButton-PlayButton {
+  opacity: 1;
 }
 
 @container (max-width: 1599px) {
