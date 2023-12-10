@@ -499,6 +499,14 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   opacity: 1;
 }
 
+.view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-equaliser {
+  -webkit-mask-image: var(--equalizer-svg);
+  background: var(--spice-accent);
+  content-visibility: hidden;
+  width: 20px;
+  height: 20px;
+}
+
 @container (max-width: 1599px) {
   .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
     height: 35px;
