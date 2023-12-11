@@ -650,6 +650,30 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   background-color: var(--spice-accent) !important;
 }
 
+.main-navBar-navBarLink[href='/betterLibrary'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/betterLibrary'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/betterLibrary'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/betterLibrary'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
+.main-navBar-navBarLink[href='/better-local-files'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/better-local-files'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/better-local-files'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/better-local-files'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
 .home-icon path,
 .search-icon path,
 .collection-icon path,
