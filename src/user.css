@@ -3017,6 +3017,10 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   padding-right: 16px;
 }
 
+.main-nowPlayingBar-left {
+  padding-inline-start: 0px !important;
+}
+
 /* Search */
 
 .x-searchInput-searchInputInput {
