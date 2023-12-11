@@ -2442,6 +2442,10 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   padding: 0px;
 }
 
+.marketplace-header {
+  padding-top: 8px;
+}
+
 .toggle-module__toggle-input___ceLM4_marketplace:checked
   ~ .toggle-module__toggle-indicator-wrapper___6Lcp0_marketplace {
   background-color: var(--spice-accent);
