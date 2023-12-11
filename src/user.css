@@ -94,7 +94,6 @@ html {
   background-color: var(--spice-main) !important;
 }
 
-.main-topBar-background,
 .main-topBar-overlay {
   opacity: 0 !important;
 }
@@ -261,21 +260,29 @@ html {
   justify-content: center;
 }
 
-.main-topBar-container::before {
-  content: '';
-  z-index: 4;
-  position: absolute;
-  background-image: var(--noise-texture);
-  opacity: var(--noise-opacity);
-}
-
 .main-topBar-container {
   position: absolute !important;
   width: 100vw !important;
   z-index: 5 !important;
-  background-color: rgba(var(--spice-rgb-sidebar), 0.85);
-  backdrop-filter: blur(50px) saturate(2.5);
   padding-inline-end: 167px !important;
+}
+
+.main-topBar-background {
+  opacity: 1 !important;
+  background-color: rgba(var(--spice-rgb-sidebar), 0.85) !important;
+  backdrop-filter: blur(50px) saturate(2.5);
+}
+
+.main-topBar-background::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  background-image: var(--noise-texture);
+  opacity: var(--noise-opacity);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .main-entityHeader-withBackgroundImage {
