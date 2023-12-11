@@ -37,6 +37,11 @@ by [yumegenso](https://github.com/yumegenso)
 
 ![comfy](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/comfy.png)
 
+### **Violet**
+
+![violet](https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/images/violet.png)
+by [bugreportion](https://github.com/bugreportion)
+
 ## Dependencies
 
 - Latest version of [Spicetify](https://github.com/spicetify/spicetify-cli).
