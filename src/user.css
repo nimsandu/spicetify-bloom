@@ -3051,10 +3051,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   padding-bottom: 0 !important;
 }
 
-.main-buddyFeed-header {
-  padding-inline-start: 12px;
-}
-
 /* Lyrics */
 
 .lyrics-lyrics-coverTopBar {
