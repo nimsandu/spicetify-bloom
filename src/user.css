@@ -263,7 +263,7 @@ html {
 
 .main-topBar-container::before {
   content: '';
-  z-index: 4;
+  z-index: 0;
   position: absolute;
   background-image: var(--noise-texture);
   opacity: var(--noise-opacity);
