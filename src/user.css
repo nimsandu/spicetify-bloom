@@ -1846,51 +1846,12 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   scale: 0.8;
 }
 
-.QClIatTm05fvjVzODr8X {
+.main-devicePicker-troubleshootingItemIcon {
   fill: var(--spice-text);
 }
 
 .hcuLp8V4uEEfWZ4k6aLV {
   background-color: rgba(var(--spice-rgb-card), 0.5);
-}
-
-._9eb5acf729a98d62135ca21777fef244-scss,
-.connect-device-button {
-  color: var(--spice-shadow);
-}
-
-.connect-device-list-container::before {
-  border-top-color: transparent;
-}
-
-.connect-device-list-container {
-  border-radius: var(--border-radius-1);
-  border: 1px solid var(--spice-button-disabled);
-}
-
-.connect-device-list-item {
-  margin: 0 8px;
-  border-radius: var(--border-radius-2);
-  width: -webkit-fill-available;
-}
-
-.connect-device-list-item:last-child {
-  margin: 0 8px 8px;
-}
-
-.connect-device-list-item:focus,
-.connect-device-list-item:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.05);
-}
-
-.connect-header {
-  display: none;
-}
-
-.connect-device-list-item--active,
-.connect-device-list-item--active .connect-device-list-item__icon,
-.connect-device-list-item--active .connect-device-list-item__device-subtitle {
-  color: var(--spice-subtext);
 }
 
 .main-connectBar-connectBar {
