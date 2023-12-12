@@ -1851,6 +1851,10 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .hcuLp8V4uEEfWZ4k6aLV {
+  background-color: transparent
+}
+
+.hcuLp8V4uEEfWZ4k6aLV:hover {
   background-color: rgba(var(--spice-rgb-card), 0.5);
 }
 
