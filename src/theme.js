@@ -1,21 +1,23 @@
-// credits for the folder images code: harbassan
+/* eslint-disable no-param-reassign */
 (function bloom() {
-  function waitForElement(els, func, timeout = 100) {
-    const queries = els.map((el) => document.querySelector(el));
-    if (queries.every((a) => a)) {
+  function waitForElements(elementSelectors, func, attempts = 50) {
+    const queries = elementSelectors.map((elementSelector) =>
+      document.querySelector(elementSelector)
+    );
+    if (queries.every((element) => element)) {
       func(queries);
-    } else if (timeout > 0) {
-      setTimeout(waitForElement, 300, els, func, timeout - 1);
+    } else if (attempts > 0) {
+      setTimeout(waitForElements, 200, elementSelectors, func, attempts - 1);
     }
   }
 
-  waitForElement(['.main-yourLibraryX-navItem'], () => {
-    const navItemsLibraryX = document.getElementsByClassName('main-yourLibraryX-navLink');
-    for (let i = 0; i < navItemsLibraryX.length; i += 1) {
-      const div = document.createElement('div');
-      div.classList.add('main-yourLibraryX-navLink-accent');
-      navItemsLibraryX[i].appendChild(div);
-    }
+  waitForElements(['.main-yourLibraryX-navItem'], () => {
+    const navItems = document.getElementsByClassName('main-yourLibraryX-navLink');
+    Array.from(navItems).forEach((navItem) => {
+      const navItemAccent = document.createElement('div');
+      navItemAccent.classList.add('main-yourLibraryX-navLink-accent');
+      navItem.appendChild(navItemAccent);
+    });
   });
 
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
@@ -23,38 +25,39 @@
     document.documentElement.style.setProperty('--filter-brightness', 0);
   }
 
-  const interval = setInterval(() => {
-    if (
-      typeof Spicetify.Platform === 'undefined' ||
-      (typeof Spicetify.Platform.Translations.play === 'undefined' &&
-        typeof Spicetify.Platform.Translations.pause === 'undefined')
-    )
-      return;
-    clearInterval(interval);
+  function isObjectEmpty(object) {
+    return Object.keys(object).length === 0;
+  }
 
+  const interval = setInterval(() => {
     function cleanLabel(label) {
       const cleanedLabel = label.replace(/[{0}{1}«»”“]/g, '').trim();
       return cleanedLabel;
     }
 
-    let playlistPlayLabel = Spicetify.Platform.Translations['playlist.a11y.play'];
-    playlistPlayLabel = cleanLabel(playlistPlayLabel);
-    let playlistPauseLabel = Spicetify.Platform.Translations['playlist.a11y.pause'];
-    playlistPauseLabel = cleanLabel(playlistPauseLabel);
-    const smartShuffleEnableLabel =
-      Spicetify.Platform.Translations[
-        'web-player.smart-shuffle.button-enable-shuffle-generic'
-      ].substring(1);
-    const smartShuffleDisableLabel =
-      Spicetify.Platform.Translations[
-        'web-player.smart-shuffle.button-disable-shuffle-generic'
-      ].substring(1);
+    const { Locale } = Spicetify;
+    if (!Locale || isObjectEmpty(Locale.getDictionary())) return;
+    clearInterval(interval);
 
-    const tracklistPlayLabel = Spicetify.Platform.Translations['tracklist.a11y.play'];
+    let playlistPlayLabel = Locale.get('playlist.a11y.play');
+    playlistPlayLabel = cleanLabel(playlistPlayLabel);
+    let playlistPauseLabel = Locale.get('playlist.a11y.pause');
+    playlistPauseLabel = cleanLabel(playlistPauseLabel);
+
+    const smartShuffleEnableLabel = Locale.get(
+      'web-player.smart-shuffle.button-enable-shuffle-generic'
+    ).substring(1);
+    const smartShuffleDisableLabel = Locale.get(
+      'web-player.smart-shuffle.button-disable-shuffle-generic'
+    ).substring(1);
+
+    const playLabel = Locale.get('play');
+    const pauseLabel = Locale.get('pause');
+
+    const tracklistPlayLabel = Locale.get('tracklist.a11y.play');
     let tracklistPlayLabelOne;
     let tracklistPlayLabelTwo;
-    // eslint-disable-next-line no-underscore-dangle
-    if (['zh-CN', 'zh-TW', 'am', 'fi'].includes(Spicetify.Locale._locale)) {
+    if (['zh-CN', 'zh-TW', 'am', 'fi'].includes(Locale.getLocale())) {
       [tracklistPlayLabelOne, tracklistPlayLabelTwo] = tracklistPlayLabel.split('{1}');
     } else {
       [tracklistPlayLabelOne, tracklistPlayLabelTwo] = tracklistPlayLabel.split('{0}');
@@ -64,35 +67,35 @@
 
     const playButtonStyle = document.createElement('style');
     playButtonStyle.innerHTML = `
-      .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.play}"],
-      .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.play}"],
-      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations.play}"],
-      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations['playback-control.play']}"],
-      .main-trackList-rowPlayPauseButton[aria-label*="${Spicetify.Platform.Translations.play}"],
+      .main-playButton-button[aria-label*="${playLabel}"],
+      .main-playButton-PlayButton>button[aria-label*="${playLabel}"],
+      .main-playPauseButton-button[aria-label="${playLabel}"],
+      .main-playPauseButton-button[aria-label="${Locale.get('playback-control.play')}"],
+      .main-trackList-rowPlayPauseButton[aria-label*="${playLabel}"],
       .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabelOne}"][aria-label*="${tracklistPlayLabelTwo}"],
       .main-playButton-PlayButton>button[aria-label*="${playlistPlayLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
       }
-      .main-playButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
-      .main-playButton-PlayButton>button[aria-label*="${Spicetify.Platform.Translations.pause}"],
-      .main-playPauseButton-button[aria-label*="${Spicetify.Platform.Translations.pause}"],
-      .main-playPauseButton-button[aria-label="${Spicetify.Platform.Translations['playback-control.pause']}"],
-      .main-trackList-rowPlayPauseButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
-      .main-trackList-rowImagePlayButton[aria-label*="${Spicetify.Platform.Translations.pause}"],
+      .main-playButton-button[aria-label*="${pauseLabel}"],
+      .main-playButton-PlayButton>button[aria-label*="${pauseLabel}"],
+      .main-playPauseButton-button[aria-label*="${pauseLabel}"],
+      .main-playPauseButton-button[aria-label="${Locale.get('playback-control.pause')}"],
+      .main-trackList-rowPlayPauseButton[aria-label*="${pauseLabel}"],
+      .main-trackList-rowImagePlayButton[aria-label*="${pauseLabel}"],
       .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
       }
 
-      .player-controls button[aria-label*="${smartShuffleEnableLabel}"] {
+      .player-controls button[aria-label*="${smartShuffleDisableLabel}"] {
         min-block-size: 24px !important;
         height: 24px !important;
         background-color: var(--spice-accent) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
         margin-right: -5px !important;
       }
-      .player-controls button[aria-label*="${smartShuffleDisableLabel}"] {
+      .player-controls button[aria-label*="${smartShuffleEnableLabel}"] {
         min-block-size: 24px !important;
         height: 24px !important;
         background-color: var(--spice-subtext) !important;
@@ -103,25 +106,33 @@
 
     const libraryXButtonsStyle = document.createElement('style');
     libraryXButtonsStyle.innerHTML = `
-      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.enlarge-your-library']}"] span {
+      .main-yourLibraryX-button[aria-label*="${Locale.get(
+        'web-player.your-library-x.enlarge-your-library'
+      )}"] span {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg') !important;
         width: 18px;
         height: 18px;
       }
-      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.reduce-your-library']}"] span {
+      .main-yourLibraryX-button[aria-label*="${Locale.get(
+        'web-player.your-library-x.reduce-your-library'
+      )}"] span {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg') !important;
         width: 18px;
         height: 18px;
       }
-      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.grid-view']}"] span {
+      .main-yourLibraryX-button[aria-label*="${Locale.get(
+        'web-player.your-library-x.grid-view'
+      )}"] span {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_table_simple_24_regular.svg') !important;
         width: 18px;
         height: 18px;
       }
-      .main-yourLibraryX-button[aria-label*="${Spicetify.Platform.Translations['web-player.your-library-x.list-view']}"] span {
+      .main-yourLibraryX-button[aria-label*="${Locale.get(
+        'web-player.your-library-x.list-view'
+      )}"] span {
         background-color: var(--spice-text) !important;
         -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_text_bullet_list_ltr_24_filled.svg') !important;
         width: 18px;
@@ -140,9 +151,11 @@
   }
 
   injectScript('https://unpkg.com/fast-average-color/dist/index.browser.min.js');
-  injectScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js');
+  injectScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js');
 
   const blur = 20;
+  let lyricsObserver;
+  const lyricsObserverConfig = { childList: true };
 
   // fixes container shifting & active line clipping
   function updateLyricsPageProperties() {
@@ -172,17 +185,16 @@
 
     function lockLyricsWrapperWidth(lyricsWrapper) {
       const lyricsWrapperWidth = lyricsWrapper.getBoundingClientRect().width;
-      // eslint-disable-next-line no-param-reassign
       lyricsWrapper.style.maxWidth = `${lyricsWrapperWidth}px`;
-      // eslint-disable-next-line no-param-reassign
       lyricsWrapper.style.width = `${lyricsWrapperWidth}px`;
     }
 
     function revealLyricsLines() {
-      const lyricsLines = document.getElementsByClassName('lyrics-lyricsContent-lyric');
+      const lyricsLines = Array.from(document.getElementsByClassName('lyrics-lyricsContent-lyric'));
+      if (lyricsLines[0].style.animationName === 'reveal') return;
       let positionIndex = 0;
-      for (let i = 0; i < lyricsLines.length; i += 1) {
-        if (lyricsLines[i].innerHTML !== '') {
+      lyricsLines.forEach((lyricsLine) => {
+        if (lyricsLine.innerHTML !== '') {
           positionIndex += 1;
         }
 
@@ -196,11 +208,11 @@
           animationDuration = 1000;
         }
 
-        lyricsLines[i].style.animationDelay = `${animationDelay}ms`;
-        lyricsLines[i].style.animationDuration = `${animationDuration}ms`;
-        lyricsLines[i].style.animationTimingFunction = 'ease';
-        lyricsLines[i].style.animationName = 'reveal';
-      }
+        lyricsLine.style.animationDelay = `${animationDelay}ms`;
+        lyricsLine.style.animationDuration = `${animationDuration}ms`;
+        lyricsLine.style.animationTimingFunction = 'ease';
+        lyricsLine.style.animationName = 'reveal';
+      });
     }
 
     function setLyricsPageProperties() {
@@ -221,30 +233,29 @@
       lockLyricsWrapperWidth(lyricsContentWrapper);
     }
 
-    async function lyricsCallback(mutationsList) {
-      for (let i = 0; i < mutationsList.length; i += 1) {
-        for (let a = 0; a < mutationsList[i].addedNodes?.length; a += 1) {
-          if (mutationsList[i].addedNodes[a].classList?.contains('lyrics-lyricsContent-provider')) {
+    function lyricsCallback(mutationsList) {
+      mutationsList.forEach((mutation) => {
+        Array.from(mutation.addedNodes).forEach((addedNode) => {
+          if (addedNode.classList?.contains('lyrics-lyricsContent-provider')) {
             setLyricsPageProperties();
             revealLyricsLines();
           }
-        }
-      }
+        });
+      });
     }
 
-    waitForElement(['.lyrics-lyrics-contentContainer .lyrics-lyricsContent-provider'], async () => {
+    waitForElements(['.lyrics-lyrics-contentContainer .lyrics-lyricsContent-provider'], () => {
       setLyricsPageProperties();
       revealLyricsLines();
     });
 
-    // eslint-disable-next-line no-undef
-    if (typeof lyricsObserver === 'undefined' || lyricsObserver == null) {
-      waitForElement(['.lyrics-lyrics-contentWrapper'], ([lyricsContentWrapper]) => {
-        const lyricsObserver = new MutationObserver(lyricsCallback);
-        const lyricsObserverConfig = { childList: true };
-        lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
-      });
-    }
+    waitForElements(['.lyrics-lyrics-contentWrapper'], ([lyricsContentWrapper]) => {
+      if (lyricsObserver instanceof MutationObserver) {
+        lyricsObserver.disconnect();
+      }
+      lyricsObserver = new MutationObserver(lyricsCallback);
+      lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
+    });
   }
 
   function fillBackdrop(backdrop) {
@@ -261,7 +272,7 @@
 
   let previousAlbumUri;
 
-  async function updateLyricsBackdrop() {
+  function updateLyricsBackdrop() {
     async function calculateBrightnessCoefficient(image) {
       const fac = new FastAverageColor();
 
@@ -336,7 +347,7 @@
     }
 
     // necessary because backdrop edges become transparent due to blurring
-    async function calculateContextDrawValues(canvas) {
+    function calculateContextDrawValues(canvas) {
       const drawWidth = canvas.width + blur * 2;
       const drawHeight = canvas.height + blur * 2;
       const drawX = 0 - blur;
@@ -344,14 +355,14 @@
       return [drawWidth, drawHeight, drawX, drawY];
     }
 
-    async function getImageFromCanvas(canvas) {
+    function getImageFromCanvas(canvas) {
       const image = new Image();
       image.src = canvas.toDataURL();
       return image;
     }
 
     async function updateFilters(canvas, image) {
-      const canvasImage = await getImageFromCanvas(canvas);
+      const canvasImage = getImageFromCanvas(canvas);
       const [brightnessCoefficient, saturationCoefficient] = await Promise.all([
         calculateBrightnessCoefficient(canvasImage),
         calculateSaturationCoefficient(image, canvasImage),
@@ -360,7 +371,7 @@
       canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
     }
 
-    waitForElement(['#lyrics-backdrop'], ([lyricsBackdropPrevious]) => {
+    waitForElements(['#lyrics-backdrop'], ([lyricsBackdropPrevious]) => {
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.item.metadata.album_uri) {
         updateLyricsPageProperties();
@@ -383,9 +394,8 @@
       const lyricsBackdropImage = new Image();
       lyricsBackdropImage.src = Spicetify.Player.data.item.metadata.image_xlarge_url;
 
-      lyricsBackdropImage.onload = async () => {
-        const [drawWidth, drawHeight, drawX, drawY] =
-          await calculateContextDrawValues(lyricsBackdrop);
+      lyricsBackdropImage.onload = () => {
+        const [drawWidth, drawHeight, drawX, drawY] = calculateContextDrawValues(lyricsBackdrop);
         context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
         updateFilters(lyricsBackdrop, lyricsBackdropImage);
 
@@ -405,7 +415,7 @@
             contextPrevious.closePath();
             contextPrevious.fill();
           },
-          onComplete: async () => {
+          onComplete: () => {
             updateLyricsPageProperties();
             lyricsBackdropPrevious.remove();
           },
@@ -418,7 +428,7 @@
   Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
 
   function initLyricsBackdrop() {
-    waitForElement(['.under-main-view'], ([underMainView]) => {
+    waitForElements(['.under-main-view'], ([underMainView]) => {
       const lyricsBackdropContainer = document.createElement('div');
       lyricsBackdropContainer.id = 'lyrics-backdrop-container';
       underMainView.prepend(lyricsBackdropContainer);
@@ -433,7 +443,7 @@
   }
 
   function moveTopBarContainerUp() {
-    waitForElement(['.main-topBar-container'], ([topBarContainer]) => {
+    waitForElements(['.main-topBar-container'], ([topBarContainer]) => {
       document
         .querySelector('.Root__top-container')
         ?.insertAdjacentElement('afterbegin', topBarContainer);
@@ -442,19 +452,22 @@
   moveTopBarContainerUp();
 
   function addCategoryCardBackdrop() {
-    waitForElement(['.x-categoryCard-image'], () => {
-      const cards = document.getElementsByClassName('x-categoryCard-CategoryCard');
-      const cardImages = document.getElementsByClassName('x-categoryCard-image');
-      for (let i = 0; i < cards.length; i += 1) {
-        let cardBackdrop = cardImages[i].previousSibling;
-        if (cardBackdrop == null) {
-          cardBackdrop = document.createElement('div');
+    waitForElements(['.x-categoryCard-image'], () => {
+      const cards = Array.from(document.querySelectorAll('.x-categoryCard-CategoryCard'));
+      cards.forEach((card) => {
+        const cardImage = card.querySelector('.x-categoryCard-image');
+        if (
+          card instanceof HTMLElement &&
+          cardImage instanceof HTMLImageElement &&
+          cardImage.previousElementSibling?.className !== 'x-categoryCard-backdrop'
+        ) {
+          const cardBackdrop = document.createElement('div');
           cardBackdrop.classList.add('x-categoryCard-backdrop');
-          cardBackdrop.style.backgroundImage = `url(${cardImages[i].src})`;
-          cardBackdrop.style.backgroundColor = `${cards[i].style.backgroundColor}`;
-          cardImages[i].parentNode.insertBefore(cardBackdrop, cardImages[i]);
+          cardBackdrop.style.backgroundImage = `url(${cardImage.src})`;
+          cardBackdrop.style.backgroundColor = `${card.style.backgroundColor}`;
+          cardImage.insertAdjacentElement('beforebegin', cardBackdrop);
         }
-      }
+      });
     });
   }
 
@@ -509,8 +522,7 @@
     Spicetify.Platform.History.listen(onPageChange);
     onPageChange();
 
-    waitForElement(['.Root__lyrics-cinema'], () => {
-      const lyricsCinema = document.getElementsByClassName('Root__lyrics-cinema')[0];
+    waitForElements(['.Root__lyrics-cinema'], ([lyricsCinema]) => {
       const lyricsCinemaObserver = new MutationObserver(lyricsCinemaCallback);
       const lyricsCinemaObserverConfig = {
         attributes: true,
@@ -521,7 +533,7 @@
   });
 
   function centerTopbar() {
-    waitForElement(['.main-topBar-topbarContentWrapper'], ([topBarContentWrapper]) => {
+    waitForElements(['.main-topBar-topbarContentWrapper'], ([topBarContentWrapper]) => {
       const left = topBarContentWrapper.offsetLeft;
       const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
 
@@ -538,50 +550,17 @@
       }
 
       if (diff !== 0) {
-        // eslint-disable-next-line no-param-reassign
         topBarContentWrapper.style.marginLeft = `${diff}px`;
       }
     });
   }
   window.addEventListener('load', centerTopbar);
 
-  async function onResize() {
+  function onResize() {
     centerTopbar();
     updateLyricsPageProperties();
   }
-  window.onresize = onResize;
-
-  // fix backdrop-filter for some flyouts and menus
-  // see https://github.com/nimsandu/spicetify-bloom/issues/220#issuecomment-1555071865
-  function bodyCallback(mutationsList) {
-    for (let i = 0; i < mutationsList.length; i += 1) {
-      if (mutationsList[i].addedNodes[0]?.id?.includes('tippy')) {
-        const tippy = mutationsList[i].addedNodes[0];
-        const { body } = document;
-        const { parentNode } = tippy;
-        if (
-          parentNode !== body &&
-          !parentNode.classList?.contains('lyrics-tooltip-wrapper') &&
-          !parentNode.classList?.contains('main-contextMenu-menuItem')
-        ) {
-          // inherit colors
-          tippy.classList.add('encore-dark-theme');
-          body.appendChild(tippy);
-          // trigger element postition correction
-          window.dispatchEvent(new Event('resize'));
-        }
-      }
-    }
-  }
-
-  waitForElement(['body'], () => {
-    const bodyObserver = new MutationObserver(bodyCallback);
-    const bodyObserverConfig = {
-      childList: true,
-      subtree: true,
-    };
-    bodyObserver.observe(document.body, bodyObserverConfig);
-  });
+  window.addEventListener('resize', onResize);
 
   function schemeCallback() {
     if (Spicetify.Config.color_scheme.includes('light')) {
@@ -590,9 +569,10 @@
   }
   schemeCallback();
 
-  waitForElement(['.marketplaceScheme'], ([scheme]) => {
+  waitForElements(['.marketplaceScheme'], ([scheme]) => {
     const schemeObserver = new MutationObserver(schemeCallback);
     const schemeObserverConfig = { attributes: true };
     schemeObserver.observe(scheme, schemeObserverConfig);
+    schemeCallback();
   });
 })();
