@@ -35,7 +35,6 @@ html {
 }
 
 .encore-dark-theme .encore-bright-accent-set {
-  width: auto;
   --background-highlight: var(--spice-accent);
   --background-press: var(--spice-accent);
 }
@@ -1862,11 +1861,11 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   background-color: var(--spice-accent) !important;
   border-radius: 4px;
   height: auto;
-  width: 300px;
+  width: auto;
   padding: 8px;
   position: absolute;
-  right: 6px;
-  bottom: 106px;
+  right: 5px;
+  bottom: 100px;
   color: var(--spice-alt-text) !important;
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
 }
