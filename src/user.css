@@ -1859,9 +1859,11 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-connectBar-connectBar {
   background-color: var(--spice-accent) !important;
+  --text-base: var(--spice-alt-text) !important;
+  --essential-base: var(--spice-alt-text) !important;
   border-radius: 4px;
-  height: auto;
-  width: auto;
+  height: auto !important;
+  width: auto !important;
   padding: 8px;
   position: absolute;
   right: 5px;
