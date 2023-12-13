@@ -443,11 +443,12 @@
   }
 
   function moveTopBarContainerUp() {
-    waitForElements(['.main-topBar-container'], ([topBarContainer]) => {
-      document
-        .querySelector('.Root__top-container')
-        ?.insertAdjacentElement('afterbegin', topBarContainer);
-    });
+    waitForElements(
+      ['.main-topBar-container', '.Root__top-container'],
+      ([topBarContainer, rootTopContainer]) => {
+        rootTopContainer.insertAdjacentElement('afterbegin', topBarContainer);
+      }
+    );
   }
   moveTopBarContainerUp();
 
