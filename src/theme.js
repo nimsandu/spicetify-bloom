@@ -562,17 +562,20 @@
   }
   window.addEventListener('resize', onResize);
 
-  function schemeCallback() {
+  function keepNoiseOpacity() {
     if (Spicetify.Config.color_scheme.includes('light')) {
       document.documentElement.style.setProperty('--noise-opacity', '3.5%');
     }
+    else {
+      document.documentElement.style.setProperty('--noise-opacity', '7.5%');
+    }
   }
-  schemeCallback();
+  keepNoiseOpacity();
 
-  waitForElements(['.marketplaceScheme'], ([scheme]) => {
-    const schemeObserver = new MutationObserver(schemeCallback);
-    const schemeObserverConfig = { attributes: true };
-    schemeObserver.observe(scheme, schemeObserverConfig);
-    schemeCallback();
+  waitForElements(['body'], ([body]) => {
+    const bodyObserver = new MutationObserver(keepNoiseOpacity);
+    const bodyObserverConfig = { childList: true };
+    bodyObserver.observe(body, bodyObserverConfig);
+    keepNoiseOpacity();
   });
 })();
