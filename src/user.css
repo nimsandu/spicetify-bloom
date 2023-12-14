@@ -1858,6 +1858,14 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   background-color: rgba(var(--spice-rgb-selected-row), 0.5);
 }
 
+/* waking up text */
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled=true] ._k3JjF2rHwdYfSPZH09S {
+  color: var(--spice-rgb-subtext)
+}
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled=true] .main-devicePicker-nowPlayingActiveIcon {
+  fill: var(--spice-rgb-subtext)
+}
+
 .main-connectBar-connectBar {
   background-color: var(--spice-accent) !important;
   --text-base: var(--spice-alt-text) !important;
