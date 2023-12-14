@@ -510,6 +510,9 @@
       handleLyricsStatus();
     });
 
+    keepCategoryCardBackdrops(Spicetify.Platform.History.location.pathname);
+    handleLyricsStatus();
+
     waitForElements(['.Root__lyrics-cinema'], ([lyricsCinema]) => {
       const lyricsCinemaObserver = new MutationObserver(handleLyricsStatus);
       const lyricsCinemaObserverConfig = {
