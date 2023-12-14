@@ -452,6 +452,15 @@
   }
   moveTopBarContainerUp();
 
+  function addPlayerBackground() {
+    waitForElements(['.main-nowPlayingBar-nowPlayingBar'], ([nowPlayingBar]) => {
+      const playerBackground = document.createElement('div');
+      playerBackground.classList.add('player-background');
+      nowPlayingBar.insertAdjacentElement('afterend', playerBackground);
+    });
+  }
+  addPlayerBackground();
+
   function addCategoryCardBackdrop() {
     waitForElements(['.x-categoryCard-image'], () => {
       const cards = Array.from(document.querySelectorAll('.x-categoryCard-CategoryCard'));
