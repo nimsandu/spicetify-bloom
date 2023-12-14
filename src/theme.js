@@ -11,6 +11,18 @@
     }
   }
 
+  function injectScript(source) {
+    const script = document.createElement('script');
+    script.src = source;
+    script.async = true;
+    script.type = 'text/javascript';
+    document.head.appendChild(script);
+  }
+
+  function isObjectEmpty(object) {
+    return Object.keys(object).length === 0;
+  }
+
   waitForElements(['.main-yourLibraryX-navItem'], () => {
     const navItems = document.getElementsByClassName('main-yourLibraryX-navLink');
     Array.from(navItems).forEach((navItem) => {
@@ -23,10 +35,6 @@
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
   if (textColor === ' #000000') {
     document.documentElement.style.setProperty('--filter-brightness', 0);
-  }
-
-  function isObjectEmpty(object) {
-    return Object.keys(object).length === 0;
   }
 
   const interval = setInterval(() => {
@@ -141,14 +149,6 @@
     `;
     document.head.appendChild(libraryXButtonsStyle);
   }, 10);
-
-  function injectScript(source) {
-    const script = document.createElement('script');
-    script.src = source;
-    script.async = true;
-    script.type = 'text/javascript';
-    document.head.appendChild(script);
-  }
 
   injectScript('https://unpkg.com/fast-average-color/dist/index.browser.min.js');
   injectScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js');
@@ -443,11 +443,12 @@
   }
 
   function moveTopBarContainerUp() {
-    waitForElements(['.main-topBar-container'], ([topBarContainer]) => {
-      document
-        .querySelector('.Root__top-container')
-        ?.insertAdjacentElement('afterbegin', topBarContainer);
-    });
+    waitForElements(
+      ['.main-topBar-container', '.Root__top-container'],
+      ([topBarContainer, rootTopContainer]) => {
+        rootTopContainer.insertAdjacentElement('afterbegin', topBarContainer);
+      }
+    );
   }
   moveTopBarContainerUp();
 
