@@ -35,7 +35,6 @@ html {
 }
 
 .encore-dark-theme .encore-bright-accent-set {
-  width: auto;
   --background-highlight: var(--spice-accent);
   --background-press: var(--spice-accent);
 }
@@ -1846,62 +1845,38 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   scale: 0.8;
 }
 
-.QClIatTm05fvjVzODr8X {
+.main-devicePicker-troubleshootingItemIcon {
   fill: var(--spice-text);
 }
 
 .hcuLp8V4uEEfWZ4k6aLV {
-  background-color: rgba(var(--spice-rgb-card), 0.5);
+  background-color: rgba(var(--spice-rgb-card), 0.4);
 }
 
-._9eb5acf729a98d62135ca21777fef244-scss,
-.connect-device-button {
-  color: var(--spice-shadow);
+.hcuLp8V4uEEfWZ4k6aLV:hover,
+.hcuLp8V4uEEfWZ4k6aLV:focus {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.5);
 }
 
-.connect-device-list-container::before {
-  border-top-color: transparent;
+/* waking up text */
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled=true] ._k3JjF2rHwdYfSPZH09S {
+  color: var(--spice-rgb-subtext)
 }
-
-.connect-device-list-container {
-  border-radius: var(--border-radius-1);
-  border: 1px solid var(--spice-button-disabled);
-}
-
-.connect-device-list-item {
-  margin: 0 8px;
-  border-radius: var(--border-radius-2);
-  width: -webkit-fill-available;
-}
-
-.connect-device-list-item:last-child {
-  margin: 0 8px 8px;
-}
-
-.connect-device-list-item:focus,
-.connect-device-list-item:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.05);
-}
-
-.connect-header {
-  display: none;
-}
-
-.connect-device-list-item--active,
-.connect-device-list-item--active .connect-device-list-item__icon,
-.connect-device-list-item--active .connect-device-list-item__device-subtitle {
-  color: var(--spice-subtext);
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled=true] .main-devicePicker-nowPlayingActiveIcon {
+  fill: var(--spice-rgb-subtext)
 }
 
 .main-connectBar-connectBar {
   background-color: var(--spice-accent) !important;
+  --text-base: var(--spice-alt-text) !important;
+  --essential-base: var(--spice-alt-text) !important;
   border-radius: 4px;
-  height: auto;
-  width: 300px;
+  height: auto !important;
+  width: auto !important;
   padding: 8px;
   position: absolute;
-  right: 6px;
-  bottom: 106px;
+  right: 5px;
+  bottom: 100px;
   color: var(--spice-alt-text) !important;
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
 }
