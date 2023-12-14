@@ -1850,11 +1850,12 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .hcuLp8V4uEEfWZ4k6aLV {
-  background-color: transparent
+  background-color: rgba(var(--spice-rgb-card), 0.4);
 }
 
-.hcuLp8V4uEEfWZ4k6aLV:hover {
-  background-color: rgba(var(--spice-rgb-card), 0.5);
+.hcuLp8V4uEEfWZ4k6aLV:hover,
+.hcuLp8V4uEEfWZ4k6aLV:focus {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.5);
 }
 
 .main-connectBar-connectBar {
