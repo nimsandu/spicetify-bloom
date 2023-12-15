@@ -2446,6 +2446,10 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   border: 1px rgba(var(--spice-rgb-accent), 0.7) solid !important;
 }
 
+.app-module__flex-center___p5IEY_eternalDjukebox button {
+  background-color: var(--spice-button);
+}
+
 button.arrow-btn {
   background-color: var(--spice-selected-row);
   color: var(--spice-text);
