@@ -2968,6 +2968,10 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   transition: background-color linear 200ms;
 }
 
+.main-yourLibraryX-button path {
+  display: none !important;
+}
+
 .main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
   > .main-yourLibraryX-button {
   color: var(--spice-subtext);
