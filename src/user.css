@@ -2451,6 +2451,12 @@ button.arrow-btn {
   color: var(--spice-text);
 }
 
+/* eternal-jukebox */
+[class*='container'][class*='eternalDjukebox']:not([class*='full-size']):not([class*='empty']) {
+  padding-top: 8px;
+  padding-bottom: 120px;
+}
+
 /* spicetify extensions */
 
 .main-topBar-button[title='Popup Lyrics'],
