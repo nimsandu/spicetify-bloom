@@ -2997,13 +2997,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   background-color: var(--spice-text);
 }
 
-.main-yourLibraryX-createButton span {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_24_filled.svg');
-  background-color: var(--spice-text);
-  width: 18px;
-  height: 18px;
-}
-
 .main-rootlist-wrapper {
   padding-left: unset;
   padding-right: unset;

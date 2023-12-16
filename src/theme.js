@@ -146,6 +146,14 @@
         width: 18px;
         height: 18px;
       }
+      .main-yourLibraryX-button[aria-label*="${Locale.get(
+        'web-player.your-library-x.create.button-label'
+      )}"] span {
+        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_24_filled.svg');
+        background-color: var(--spice-text);
+        width: 18px;
+        height: 18px;
+      }
     `;
     document.head.appendChild(libraryXButtonsStyle);
   }, 10);
