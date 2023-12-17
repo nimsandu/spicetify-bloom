@@ -2452,7 +2452,7 @@ button.arrow-btn {
 }
 
 /* eternal-jukebox */
-[class*='container'][class*='eternalDjukebox']:not([class*='full-size']):not([class*='empty']) {
+.main-view-container [class*='container'][class*='eternalDjukebox']:not([class*='full-size']):not([class*='empty']) {
   padding-top: 8px;
   padding-bottom: 120px;
 }
