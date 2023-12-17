@@ -2454,6 +2454,8 @@ button.arrow-btn {
 /* eternal-jukebox */
 .main-view-container [class*='container'][class*='eternalDjukebox']:not([class*='full-size']):not([class*='empty']) {
   padding-top: 8px;
+}
+.main-view-container [class*='stats'][class*='eternalDjukebox'] {
   padding-bottom: 120px;
 }
 
