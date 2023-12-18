@@ -673,6 +673,18 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   background-color: var(--spice-accent) !important;
 }
 
+.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-icon,
+.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/ncs-visualizer/visualizer_regular.svg');
+  background-color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-active-icon,
+.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-active-icon {
+  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/ncs-visualizer/visualizer_filled.svg');
+  background-color: var(--spice-accent) !important;
+}
+
 .home-icon path,
 .search-icon path,
 .collection-icon path,
@@ -2457,6 +2469,11 @@ button.arrow-btn {
 }
 .main-view-container [class*='stats'][class*='eternalDjukebox'] {
   padding-bottom: 120px;
+}
+
+.main-view-container [class*='ncsDvisualizer'] {
+  top: 50px;
+  bottom: 100px;
 }
 
 /* spicetify extensions */
