@@ -535,12 +535,12 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   }
 }
 
-.home-icon {
+.main-yourLibraryX-navLink[href='/'] .home-icon {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 
-.home-active-icon {
+.main-yourLibraryX-navLink[href='/'] .home-active-icon {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
