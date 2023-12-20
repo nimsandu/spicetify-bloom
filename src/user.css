@@ -673,16 +673,11 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   background-color: var(--spice-accent) !important;
 }
 
-.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-icon,
-.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-icon {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/ncs-visualizer/visualizer_regular.svg');
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-active-icon,
-.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-active-icon {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/ncs-visualizer/visualizer_filled.svg');
-  background-color: var(--spice-accent) !important;
+.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-icon path,
+.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-icon path,
+.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-active-icon path,
+.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-active-icon path {
+  display: block !important;
 }
 
 .home-icon path,
