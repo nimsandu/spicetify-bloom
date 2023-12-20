@@ -2955,6 +2955,14 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   transition: all ease 100ms;
 }
 
+.main-yourLibraryX-navLink[href='/ncs-visualizer']:hover > .home-icon {
+  background-color: var(--spice-selected-row) !important;
+}
+
+.main-yourLibraryX-navLink[href='/ncs-visualizer']:hover > .home-icon path {
+  color: var(--spice-text) !important;
+}
+
 .main-yourLibraryX-navLink:hover > .home-icon,
 .main-yourLibraryX-navLink:hover > .search-icon {
   background-color: var(--spice-text) !important;
