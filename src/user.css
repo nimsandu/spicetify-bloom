@@ -680,6 +680,16 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   display: block !important;
 }
 
+.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-icon path,
+.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-icon path {
+  color: var(--spice-subtext) !important;
+}
+
+.main-navBar-navBarLink[href='/ncs-visualizer'] > .collection-active-icon path,
+.main-yourLibraryX-navLink[href='/ncs-visualizer'] > .home-active-icon path {
+  color: var(--spice-accent) !important;
+}
+
 .home-icon path,
 .search-icon path,
 .collection-icon path,
