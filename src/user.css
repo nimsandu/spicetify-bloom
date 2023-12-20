@@ -2425,8 +2425,8 @@ button.arrow-btn {
 }
 
 .main-view-container [class*='ncsDvisualizer'] {
-  top: 50px;
-  bottom: 100px;
+  top: 64px;
+  bottom: 105px;
 }
 
 /* spicetify extensions */
