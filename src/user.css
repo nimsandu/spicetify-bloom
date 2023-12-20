@@ -2945,11 +2945,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   transition: all ease 100ms;
 }
 
-.main-yourLibraryX-navLink:hover > .home-icon,
-.main-yourLibraryX-navLink:hover > .search-icon {
-  background-color: var(--spice-text) !important;
-}
-
 .main-yourLibraryX-navLinkActive > .home-active-icon,
 .main-yourLibraryX-navLinkActive > .search-active-icon {
   animation: bounce 175ms ease-out forwards;
