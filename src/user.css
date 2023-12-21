@@ -259,11 +259,14 @@ html {
   justify-content: center;
 }
 
+.spotify__os--is-windows .main-topBar-container {
+  padding-inline-end: 167px !important;
+}
+
 .main-topBar-container {
   position: absolute !important;
   width: 100vw !important;
   z-index: 5 !important;
-  padding-inline-end: 167px !important;
 }
 
 .main-topBar-background {
@@ -335,9 +338,12 @@ h3,
   align-items: center;
 }
 
+.spotify__os--is-windows .main-topBar-historyButtons button:nth-child(1)  {
+  margin-left: 60px !important;
+}
+
 .main-topBar-historyButtons button:nth-child(1) {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg');
-  margin-left: 60px;
   background-color: var(--spice-text) !important;
   padding: 5px;
   width: 24px !important;
