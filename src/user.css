@@ -261,6 +261,7 @@ html {
 
 .spotify__os--is-windows .main-topBar-container {
   padding-inline-end: 167px !important;
+  padding-inline-start: 80px !important;
 }
 
 .main-topBar-container {
@@ -336,10 +337,6 @@ h3,
 
 .main-topBar-historyButtons {
   align-items: center;
-}
-
-.spotify__os--is-windows .main-topBar-historyButtons button:nth-child(1)  {
-  margin-left: 60px !important;
 }
 
 .main-topBar-historyButtons button:nth-child(1) {
