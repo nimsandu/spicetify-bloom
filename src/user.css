@@ -1883,7 +1883,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   z-index: -1;
 }
 
-.Root__top-container:has(.BeautifulLyricsPage) .player-background {
+.Root__top-container:has(.BeautifulLyricsPage.Cinema) .player-background {
   display: none;
 }
 
