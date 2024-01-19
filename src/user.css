@@ -2806,7 +2806,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Topbar */
 
-.main-topBar-container > *:not(button):not(.main-topBar-historyButtons):not(.hte6oQTQDvadfi5BA9eN),
+.main-topBar-container > *:not(button):not(.main-topBar-historyButtons):not(.main-topBar-topbarContentRight),
 .main-topBar-topbarContent {
   -webkit-app-region: drag !important;
 }
