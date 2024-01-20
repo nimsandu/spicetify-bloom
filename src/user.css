@@ -264,6 +264,27 @@ html {
   padding-inline-start: 80px !important;
 }
 
+.Root__top-container:not(:has(.main-topBar-container)) .Root__main-view::after {
+  content: '';
+  top: -64px;
+  left: calc(var(--left-sidebar-width) * -1);
+  position: absolute;
+  width: 100vw;
+  height: 64px;
+  z-index: 1;
+  background-color: rgba(var(--spice-rgb-sidebar), 0.85);
+  backdrop-filter: blur(50px) saturate(2.5);
+}
+
+.Root__top-container:has(.lyrics-lyrics-container) .main-topBar-topbarContentWrapper {
+  display: none !important;
+}
+
+.Root__main-view .main-topBar-container {
+  margin-left: calc(var(--left-sidebar-width) * -1) !important;
+  margin-top: -64px !important;
+}
+
 .main-topBar-container {
   position: absolute !important;
   width: 100vw !important;
@@ -2806,7 +2827,8 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Topbar */
 
-.main-topBar-container > *:not(button):not(.main-topBar-historyButtons):not(.main-topBar-topbarContentRight),
+.main-topBar-container
+  > *:not(button):not(.main-topBar-historyButtons):not(.main-topBar-topbarContentRight),
 .main-topBar-topbarContent {
   -webkit-app-region: drag !important;
 }

@@ -450,15 +450,17 @@
     });
   }
 
-  function moveTopBarContainerUp() {
+  function moveTopBarContainer(to) {
     waitForElements(
-      ['.main-topBar-container', '.Root__top-container'],
-      ([topBarContainer, rootTopContainer]) => {
-        rootTopContainer.insertAdjacentElement('afterbegin', topBarContainer);
+      ['.main-topBar-container', '.Root__main-view'],
+      ([topBarContainer, rootMainView]) => {
+        rootMainView.insertAdjacentElement(
+          to === 'up' ? 'beforebegin' : 'afterbegin',
+          topBarContainer
+        );
       }
     );
   }
-  moveTopBarContainerUp();
 
   function addPlayerBackground() {
     waitForElements(['.main-nowPlayingBar-nowPlayingBar'], ([nowPlayingBar]) => {
@@ -496,20 +498,22 @@
   }
 
   function handleLyricsStatus() {
-    const lyricsBackdropContainer = document.getElementById('lyrics-backdrop-container');
-    const lyricsCinema = document.getElementsByClassName('Root__lyrics-cinema')[0];
-    if (
-      Spicetify.Platform.History.location.pathname.includes('lyrics') ||
-      lyricsCinema?.classList.contains('main-lyricsCinema-lyricsCinemaVisible')
-    ) {
-      if (lyricsBackdropContainer == null) {
+    const lyricsBackdropContainer = document.querySelector('#lyrics-backdrop-container');
+    const lyricsCinema = document.querySelector('.Root__lyrics-cinema');
+    const isLyricsPage = Spicetify.Platform.History.location.pathname.includes('lyrics');
+    const isLyricsCinemaVisible = lyricsCinema?.className.includes('lyricsCinemaVisible');
+
+    if (isLyricsPage || isLyricsCinemaVisible) {
+      if (isLyricsCinemaVisible) moveTopBarContainer('up');
+      if (!lyricsBackdropContainer) {
         initLyricsBackdrop();
       } else {
         lyricsBackdropContainer.style.display = 'unset';
         updateLyricsPageProperties();
       }
-    } else if (lyricsBackdropContainer != null) {
-      lyricsBackdropContainer.style.display = 'none';
+    } else {
+      if (lyricsCinema && !isLyricsCinemaVisible) moveTopBarContainer('down');
+      if (lyricsBackdropContainer) lyricsBackdropContainer.style.display = 'none';
     }
   }
 
@@ -573,8 +577,7 @@
   function keepNoiseOpacity() {
     if (Spicetify.Config.color_scheme.includes('light')) {
       document.documentElement.style.setProperty('--noise-opacity', '3.5%');
-    }
-    else {
+    } else {
       document.documentElement.style.setProperty('--noise-opacity', '7.5%');
     }
   }
