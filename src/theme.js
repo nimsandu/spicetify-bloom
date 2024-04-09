@@ -512,7 +512,7 @@
         updateLyricsPageProperties();
       }
     } else {
-      if (lyricsCinema && !isLyricsCinemaVisible) moveTopBarContainer('down');
+      if (lyricsCinema && !isLyricsCinemaVisible) console.log('Fix Bug #332 https://github.com/nimsandu/spicetify-bloom/issues/332')
       if (lyricsBackdropContainer) lyricsBackdropContainer.style.display = 'none';
     }
   }
