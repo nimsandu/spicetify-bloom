@@ -2243,6 +2243,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .player-controls__left,
 .player-controls__right {
   margin-top: 2px;
+  align-items: center;
 }
 
 .player-controls__buttons button {
@@ -3170,4 +3171,3 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
   background: transparent;
 }
-
