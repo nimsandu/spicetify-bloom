@@ -10,24 +10,21 @@
   --filter-brightness: 1;
   --green: #00ffa1;
   --ms-motion-timing-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
-  --noise-texture: url('https://nimsandu.github.io/spicetify-bloom/assets/noise/noise.png');
+  --noise-texture: url("https://nimsandu.github.io/spicetify-bloom/assets/noise/noise.png");
   --noise-opacity: 7.5%;
   /* big thanks to CharlieS and harbassan for providing the svg */
-  --equalizer-svg: url("data:image/svg+xml,%3Csvg id='playing-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Cdefs%3E%3Cstyle%3E %23playing-icon %7B fill: %2320BC54; %7D @keyframes play %7B 0%25 %7Btransform: scaleY(1);%7D 3.3%25 %7Btransform: scaleY(0.9583);%7D 6.6%25 %7Btransform: scaleY(0.9166);%7D 9.9%25 %7Btransform: scaleY(0.8333);%7D 13.3%25 %7Btransform: scaleY(0.7083);%7D 16.6%25 %7Btransform: scaleY(0.5416);%7D 19.9%25 %7Btransform: scaleY(0.4166);%7D 23.3%25 %7Btransform: scaleY(0.25);%7D 26.6%25 %7Btransform: scaleY(0.1666);%7D 29.9%25 %7Btransform: scaleY(0.125);%7D 33.3%25 %7Btransform: scaleY(0.125);%7D 36.6%25 %7Btransform: scaleY(0.1666);%7D 39.9%25 %7Btransform: scaleY(0.1666);%7D 43.3%25 %7Btransform: scaleY(0.2083);%7D 46.6%25 %7Btransform: scaleY(0.2916);%7D 49.9%25 %7Btransform: scaleY(0.375);%7D 53.3%25 %7Btransform: scaleY(0.5);%7D 56.6%25 %7Btransform: scaleY(0.5833);%7D 59.9%25 %7Btransform: scaleY(0.625);%7D 63.3%25 %7Btransform: scaleY(0.6666);%7D 66.6%25 %7Btransform: scaleY(0.6666);%7D 69.9%25 %7Btransform: scaleY(0.6666);%7D 73.3%25 %7Btransform: scaleY(0.6666);%7D 76.6%25 %7Btransform: scaleY(0.7083);%7D 79.9%25 %7Btransform: scaleY(0.75);%7D 83.3%25 %7Btransform: scaleY(0.8333);%7D 86.6%25 %7Btransform: scaleY(0.875);%7D 89.9%25 %7Btransform: scaleY(0.9166);%7D 93.3%25 %7Btransform: scaleY(0.9583);%7D 96.6%25 %7Btransform: scaleY(1);%7D %7D %23bar1 %7B transform-origin: bottom; animation: play 0.9s -0.51s infinite; %7D %23bar2 %7B transform-origin: bottom; animation: play 0.9s infinite; %7D %23bar3 %7B transform-origin: bottom; animation: play 0.9s -0.15s infinite; %7D %23bar4 %7B transform-origin: bottom; animation: play 0.9s -0.75s infinite; %7D %3C/style%3E%3C/defs%3E%3Ctitle%3Eplaying-icon%3C/title%3E%3Crect id='bar1' class='cls-1' width='4' height='24'/%3E%3Crect id='bar2' class='cls-1' x='6' width='4' height='24'/%3E%3Crect id='bar3' class='cls-1' x='12' width='4' height='24'/%3E%3Crect id='bar4' class='cls-1' x='18' width='4' height='24'/%3E%3C/svg%3E");
+  --equalizer-svg: url("data:image/svg+xml,%3Csvg id="playing-icon" xmlns="http://www.w3.org/2000/svg" viewBox="002224"%3E%3Cdefs%3E%3Cstyle%3E %23playing-icon %7B fill: %2320BC54; %7D @keyframes play %7B 0%25 %7Btransform: scaleY(1);%7D 3.3%25 %7Btransform: scaleY(0.9583);%7D 6.6%25 %7Btransform: scaleY(0.9166);%7D 9.9%25 %7Btransform: scaleY(0.8333);%7D 13.3%25 %7Btransform: scaleY(0.7083);%7D 16.6%25 %7Btransform: scaleY(0.5416);%7D 19.9%25 %7Btransform: scaleY(0.4166);%7D 23.3%25 %7Btransform: scaleY(0.25);%7D 26.6%25 %7Btransform: scaleY(0.1666);%7D 29.9%25 %7Btransform: scaleY(0.125);%7D 33.3%25 %7Btransform: scaleY(0.125);%7D 36.6%25 %7Btransform: scaleY(0.1666);%7D 39.9%25 %7Btransform: scaleY(0.1666);%7D 43.3%25 %7Btransform: scaleY(0.2083);%7D 46.6%25 %7Btransform: scaleY(0.2916);%7D 49.9%25 %7Btransform: scaleY(0.375);%7D 53.3%25 %7Btransform: scaleY(0.5);%7D 56.6%25 %7Btransform: scaleY(0.5833);%7D 59.9%25 %7Btransform: scaleY(0.625);%7D 63.3%25 %7Btransform: scaleY(0.6666);%7D 66.6%25 %7Btransform: scaleY(0.6666);%7D 69.9%25 %7Btransform: scaleY(0.6666);%7D 73.3%25 %7Btransform: scaleY(0.6666);%7D 76.6%25 %7Btransform: scaleY(0.7083);%7D 79.9%25 %7Btransform: scaleY(0.75);%7D 83.3%25 %7Btransform: scaleY(0.8333);%7D 86.6%25 %7Btransform: scaleY(0.875);%7D 89.9%25 %7Btransform: scaleY(0.9166);%7D 93.3%25 %7Btransform: scaleY(0.9583);%7D 96.6%25 %7Btransform: scaleY(1);%7D %7D %23bar1 %7B transform-origin: bottom; animation: play 0.9s -0.51s infinite; %7D %23bar2 %7B transform-origin: bottom; animation: play 0.9s infinite; %7D %23bar3 %7B transform-origin: bottom; animation: play 0.9s -0.15s infinite; %7D %23bar4 %7B transform-origin: bottom; animation: play 0.9s -0.75s infinite; %7D %3C/style%3E%3C/defs%3E%3Ctitle%3Eplaying-icon%3C/title%3E%3Crect id="bar1" class="cls-1" width="4" height="24"/%3E%3Crect id="bar2" class="cls-1" x="6" width="4" height="24"/%3E%3Crect id="bar3" class="cls-1" x="12" width="4" height="24"/%3E%3Crect id="bar4" class="cls-1" x="18" width="4" height="24"/%3E%3C/svg%3E");
 }
 
 * {
-  font-family: 'Segoe UI Variable Display', 'Segoe UI Variable Text', 'Segoe UI', 'Microsoft Ya Hei',
-    sans-serif !important;
+  font-family: 'Segoe UI Variable Display', 'Segoe UI Variable Text',
+      'Segoe UI', 'Microsoft Ya Hei', sans-serif !important;
   /* font-family: 'Segoe UI Variable Display','Segoe UI Variable Text', 'Microsoft Ya Hei', sans-serif !important; */
   line-height: normal;
   box-shadow: none !important;
   -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  mask-position: center;
   -webkit-mask-size: contain;
-  mask-size: contain;
 }
 
 /* Fix Overflow off Screen */
@@ -37,9 +34,13 @@ html {
   overflow: hidden;
 }
 
-.encore-dark-theme .encore-bright-accent-set {
+.ButtonInner-medium-iconOnly {
   --background-highlight: var(--spice-accent);
   --background-press: var(--spice-accent);
+  min-inline-size: 32px;
+  min-block-size: 32px;
+  inline-size: 32px;
+  block-size: 32px;
 }
 
 .encore-light-theme {
@@ -62,18 +63,15 @@ html {
   background: var(--spice-subtext) !important;
 }
 
-.os-theme-spotify > .os-scrollbar-vertical {
-  margin-right: 2px;
-}
-
 .os-scrollbar-vertical {
-  width: 6px !important;
+  width: 2px !important;
+  margin-right: 2px;
   transition: width 150ms ease !important;
 }
 
 .os-scrollbar-vertical:hover,
 .os-scrollbar-vertical:active {
-  width: 9px !important;
+  width: 4px !important;
 }
 
 .os-scrollbar-horizontal {
@@ -240,7 +238,7 @@ html {
 /* transitions */
 
 /* .main-card-card {
-transition: background-color 150ms ease;
+  transition: background-color 150ms ease;
 } */
 
 .main-card-card,
@@ -289,13 +287,15 @@ transition: background-color 150ms ease;
 
 .Root__main-view .main-topBar-container {
   margin-left: calc(var(--left-sidebar-width) * -1) !important;
-  margin-top: -64px !important;
+  margin-top: calc(-24px + var(--panel-gap) * -2);
+  height: calc(24px + var(--panel-gap) * 2);
 }
 
 .main-topBar-container {
   position: absolute !important;
   width: 100vw !important;
   z-index: 5 !important;
+  padding: 0;
 }
 
 .main-topBar-background {
@@ -368,7 +368,6 @@ h3,
 }
 
 .main-topBar-historyButtons button:nth-child(1) {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg');
   background-color: var(--spice-text) !important;
   padding: 5px;
@@ -377,6 +376,7 @@ h3,
 }
 
 .main-topBar-historyButtons button:nth-child(2) {
+  display: inline-flex !important;
   mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg');
   background-color: var(--spice-text) !important;
@@ -510,9 +510,7 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .icon,
 .main-navBar-icon {
-  mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
-  mask-position: center;
   -webkit-mask-position: center;
   margin: auto;
   display: block;
@@ -543,7 +541,6 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-equaliser {
   -webkit-mask-image: var(--equalizer-svg);
-  mask-image: var(--equalizer-svg);
   background: var(--spice-accent);
   content-visibility: hidden;
   width: 20px;
@@ -604,116 +601,95 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .main-yourLibraryX-navLink[href='/'] .home-icon {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/'] .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/search'] .search-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/search'] .search-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/marketplace'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/marketplace'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/eternal-jukebox'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/eternal-jukebox'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/new-releases'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/new-releases'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/stats'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/stats'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/name-that-tune'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/name-that-tune'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/betterLibrary'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/betterLibrary'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-yourLibraryX-navLink[href='/better-local-files'] > .home-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
 .main-yourLibraryX-navLink[href='/better-local-files'] > .home-active-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
 .main-createPlaylistButton-button {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg');
   background-color: var(--spice-subtext) !important;
   padding: 0px;
@@ -758,7 +734,6 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .main-collectionLinkButton-collectionLinkButton[href='/collection/tracks']
   .main-collectionLinkButton-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_heart_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_heart_24_filled.svg');
   background-color: white !important;
   margin-right: 0px;
@@ -766,7 +741,6 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .main-collectionLinkButton-collectionLinkButton[href='/collection/episodes']
   .main-collectionLinkButton-icon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_mic_on_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_mic_on_24_filled.svg');
   background-color: #00da6b !important;
   margin-right: 0px;
@@ -900,7 +874,6 @@ button.switch {
 
 .main-navBar-navBar {
   width: 85px !important;
-  margin-top: 64px;
   padding-top: 0;
 }
 
@@ -1040,7 +1013,6 @@ button.switch {
   --left-sidebar-padding-right: 10px;
   --left-sidebar-item-indentation-width: 1px;
   margin-top: 0;
-  /* padding-bottom: 240px;  don't go below player controls */
 }
 
 .main-rootlist-rootlistPlaylistsScrollNode {
@@ -1252,7 +1224,6 @@ button.switch {
 }
 
 .main-trackList-playingIcon {
-  mask-image: var(--equalizer-svg);
   -webkit-mask-image: var(--equalizer-svg);
   background: var(--spice-text);
   content-visibility: hidden;
@@ -1445,7 +1416,7 @@ button.switch {
 
 .main-entityHeader-topbarTitle,
 .main-topBar-topbarTitle {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 700;
   padding-left: 10px;
 }
@@ -1493,7 +1464,7 @@ a[class*='-tabBar-headerItemLink']:active {
   border-radius: var(--border-radius-2) !important;
   padding-right: 72px;
   padding-left: 12px;
-  height: 40px !important;
+  height: 32px !important;
   transition: background-color ease-in 167ms;
 }
 
@@ -1511,7 +1482,6 @@ a[class*='-tabBar-headerItemLink']:active {
 }
 
 .x-searchInput-searchInputSearchIcon {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_16_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_16_regular.svg');
   background-color: var(--spice-subtext) !important;
   flex: 0;
@@ -1743,11 +1713,6 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
   opacity: 1 !important;
 }
 
-.Root__right-sidebar {
-  margin-top: 25px;
-  height: calc(100% - 135px);
-}
-
 .main-buddyFeed-findFriendsIcon,
 .main-buddyFeed-addFriendPlaceholderIcon {
   color: var(--spice-text) !important;
@@ -1884,10 +1849,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-devicePicker-header
   > .main-devicePicker-nowPlayingActiveIcon[src*='equaliser'] {
   -webkit-mask-image: var(--equalizer-svg);
-  mask-image: var(--equalizer-svg);
   background: var(--spice-button);
   content-visibility: hidden;
-  mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   scale: 0.8;
 }
@@ -1919,11 +1882,9 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   --text-base: var(--spice-alt-text) !important;
   --essential-base: var(--spice-alt-text) !important;
   border-radius: 4px;
-  height: auto !important;
-  width: auto !important;
-  padding: 8px;
+  padding: 8px 16px;
   position: absolute;
-  right: 5px;
+  right: 0;
   bottom: 100px;
   color: var(--spice-alt-text) !important;
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
@@ -2195,7 +2156,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-repeatButton-button[aria-checked='false']:not(
       [aria-label='Activer jukebox']
   ):hover,
-.main-shuffleButton-button:hover,
 .MRfNcNMd_djj3KOg_VOB:hover,
 .XGCdw_LcXQHrxmvpxjwi:hover {
   background-color: var(--spice-subtext) !important;
@@ -2216,7 +2176,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-playPauseButton-button,
 .player-controls__buttons button:not(.main-playPauseButton-button) {
-  --button-size: 32px !important;
+  --button-size: 28px !important;
 }
 
 .main-seekBack15sButton-button,
@@ -2243,7 +2203,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .player-controls__left,
 .player-controls__right {
   margin-top: 2px;
-  align-items: center;
 }
 
 .player-controls__buttons button {
@@ -2268,21 +2227,18 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-skipForwardButton-button {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_next_24_filled.svg');
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_next_24_filled.svg');
   background-color: var(--spice-text) !important;
   height: 24px !important;
 }
 
 .main-skipBackButton-button {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_previous_24_filled.svg');
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_previous_24_filled.svg');
   background-color: var(--spice-text) !important;
   height: 24px !important;
 }
 
 .MRfNcNMd_djj3KOg_VOB {
   /* Skip back 15 sec */
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_backward_15_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_backward_15_24_filled.svg');
   background-color: var(--spice-text) !important;
   height: 22px !important;
@@ -2290,7 +2246,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .XGCdw_LcXQHrxmvpxjwi {
   /* Skip forward 15 sec */
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_forward_15_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_forward_15_24_filled.svg');
   background-color: var(--spice-text) !important;
   height: 22px !important;
@@ -2298,7 +2253,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .Ww5ppB6W74laf1c0H_pR {
   /* Speed icon for podcasts */
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_top_speed_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_top_speed_24_filled.svg');
   background-color: var(--spice-text) !important;
   height: 22px !important;
@@ -2310,7 +2264,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Disabled */
 .main-repeatButton-button[aria-checked='false'] {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_off_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_off_24_regular.svg');
   background-color: var(--spice-subtext) !important;
   height: 22px !important;
@@ -2318,7 +2271,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Repeat one */
 .main-repeatButton-button[aria-checked='mixed'] {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_once_24_filled.svg') !important;
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_once_24_filled.svg') !important;
   background-color: var(--spice-accent) !important;
   height: 22px !important;
@@ -2326,7 +2278,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Repeat all */
 .main-repeatButton-button[aria-checked='true'] {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_24_filled.svg');
   background-color: var(--spice-accent) !important;
   height: 22px !important;
@@ -2334,7 +2285,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Shuffle disabled */
 .main-shuffleButton-button {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg');
   background-color: var(--spice-subtext) !important;
   height: 24px !important;
@@ -2342,7 +2292,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Shuffle enabled */
 .main-shuffleButton-button[aria-checked='true'] {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
   background-color: var(--spice-accent) !important;
   height: 24px !important;
@@ -2350,7 +2299,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Eternal Jukebox disabled */
 .main-repeatButton-button[aria-label='Activer jukebox'] {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
   background-color: var(--spice-subtext) !important;
   height: 22px !important;
@@ -2358,7 +2306,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* Eternal Jukebox enabled */
 .main-repeatButton-active[aria-label='Activer jukebox'] {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
   background-color: var(--spice-accent) !important;
   height: 22px !important;
@@ -2378,7 +2325,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-skipBackButton-button path,
 .main-skipForwardButton-button path,
 .main-repeatButton-button path,
-.main-shuffleButton-button path,
 .Ww5ppB6W74laf1c0H_pR path,
 .XGCdw_LcXQHrxmvpxjwi path,
 .MRfNcNMd_djj3KOg_VOB path {
@@ -2395,7 +2341,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .Gw7E7MkWci1ttQhb4EK0:hover,
-.Lgyj1e9c3lrdgVGlMIyV {
+.Lgyj1e9c3lrdgVGlMIyV,
+.npv-exitFullScreenButton-button {
   color: var(--spice-subtext) !important;
 }
 
@@ -2451,7 +2398,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-playButton-PlayButton > button,
 .main-trackList-rowPlayPauseButton {
   background-color: var(--spice-text) !important;
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg');
 }
 
@@ -2524,7 +2470,6 @@ button.arrow-btn {
 }
 
 .main-view-container [class*='ncsDvisualizer'] {
-  top: 64px;
   bottom: 105px;
 }
 
@@ -2776,7 +2721,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 }
 
 .main-view-container__scroll-node-child {
-  padding-bottom: 118px;
+  padding-bottom: 64px;
 }
 
 .view-homeShortcutsGrid-imageContainer {
@@ -2837,7 +2782,8 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Fix lyrics get covered by controls */
 .lyrics-lyrics-contentContainer {
-  margin-bottom: 120px;
+  margin-bottom: 64px;
+  margin-top: 32px;
 }
 
 /* Spicetify power bar */
@@ -2890,14 +2836,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   border-radius: 10% !important;
 }
 
-/* LibraryX */
-
-/* Top container */
-
-.Root__top-container {
-  padding-top: 0 !important;
-}
-
 /* Topbar */
 
 .main-topBar-container
@@ -2924,7 +2862,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__main-view {
   border-radius: var(--border-radius-1) !important;
-  top: 64px;
   height: calc(100% - 48px);
   overflow: visible;
 }
@@ -2933,28 +2870,19 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   height: 64px !important;
 }
 
-.main-entityHeader-background,
-.main-entityHeader-background.main-entityHeader-gradient {
-  margin-top: 64px;
-}
-
 .main-view-container {
   margin-top: -64px;
-}
-
-.main-view-container__scroll-node:has(.lyrics-lyricsContainer-LyricsContainer) {
-  margin-top: 64px;
 }
 
 .contentSpacing:not(
       .artist-artistDiscography-topBar,
       .search-searchCategory-container
   ) {
-  padding-top: 20px;
+  padding-top: 8px;
 }
 
 .main-home-home {
-  padding-top: 16px;
+  padding-top: 8px;
 }
 
 /* Left navbar */
@@ -2981,11 +2909,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 .Root__nav-bar {
   max-width: unset !important;
   height: calc(100% - 48px);
-  top: 64px;
-}
-
-.main-yourLibraryX-libraryContainer {
-  padding-bottom: 0 !important;
 }
 
 .main-yourLibraryX-entryPoints {
@@ -3054,7 +2977,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 .main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
   svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
   background-color: var(--spice-subtext);
 }
 
@@ -3063,7 +2985,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 }
 
 .main-yourLibraryX-collapseButton svg {
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
   background-color: var(--spice-text);
 }
@@ -3080,7 +3001,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 .main-yourLibraryX-libraryContainer {
   --background-highlight: var(--spice-selected-row) !important;
   --text-bright-accent: var(--spice-accent) !important;
-  padding-bottom: 105px !important;
+  padding-bottom: 32px;
 }
 
 .main-yourLibraryX-listRowSubtitleLeadingWrapper svg {
@@ -3098,12 +3019,12 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 }
 
 .main-nowPlayingBar-nowPlayingBar {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .main-nowPlayingBar-left {
-  padding-inline-start: 0px !important;
+  padding-inline-start: 8px;
 }
 
 /* Search */
@@ -3116,13 +3037,11 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 /* Right sidebar */
 
 .main-buddyFeed-scrollBarContainer {
-  height: calc(100% - 105px);
+  height: calc(100% - 95px);
 }
 
 .Root__right-sidebar {
-  height: calc(100% - 48px);
   position: relative;
-  margin-top: 64px;
 }
 
 /* Friends activity */
@@ -3143,11 +3062,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 }
 
 /* Lyrics Cinema*/
-
-.main-lyricsCinema-container .lyrics-lyrics-container {
-  margin-top: 64px;
-}
-
 .main-lyricsCinema-controls {
   top: 74px !important;
 }
@@ -3158,10 +3072,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   bottom: 80px;
 }
 
-.lyrics-lyricsContainer-Provider {
-  padding-bottom: 105px;
-}
-
 .lyrics-lyricsContainer-LyricsUnsyncedPadding {
   height: 15vh;
 }
@@ -3170,4 +3080,21 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
   background: transparent;
+}
+
+.search-searchBrowse-SearchBrowse {
+  margin-top: 0;
+}
+
+.fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb,
+.fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb::after,
+.fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb::before {
+  background: rgba(var(--spice-rgb-player), 0.5) !important;
+  backdrop-filter: blur(50px) saturate(1.5) !important;
+  border-radius: 8px;
+}
+
+.Wrapper-medium-medium-only {
+  top: initial;
+  left: initial;
 }
