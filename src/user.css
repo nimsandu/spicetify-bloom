@@ -577,105 +577,105 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 .main-yourLibraryX-navLink[href='/better-local-files'] path {
   display: none !important;
 }
-.main-yourLibraryX-navLink[href='/']:hover .home-icon,
+.main-yourLibraryX-navLink[href='/']:hover svg,
 .main-yourLibraryX-navLink[href='/search']:hover .search-icon,
-.main-yourLibraryX-navLink[href='/lyrics-plus']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/marketplace']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/eternal-jukebox']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/new-releases']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/stats']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/name-that-tune']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/betterLibrary']:hover .home-icon,
-.main-yourLibraryX-navLink[href='/better-local-files']:hover .home-icon {
+.main-yourLibraryX-navLink[href='/lyrics-plus']:hover svg,
+.main-yourLibraryX-navLink[href='/marketplace']:hover svg,
+.main-yourLibraryX-navLink[href='/eternal-jukebox']:hover svg,
+.main-yourLibraryX-navLink[href='/new-releases']:hover svg,
+.main-yourLibraryX-navLink[href='/stats']:hover svg,
+.main-yourLibraryX-navLink[href='/name-that-tune']:hover svg,
+.main-yourLibraryX-navLink[href='/betterLibrary']:hover svg,
+.main-yourLibraryX-navLink[href='/better-local-files']:hover svg {
   background-color: var(--spice-text) !important;
 }
 
-.main-yourLibraryX-navLink[href='/'] .home-icon {
+.main-yourLibraryX-navLink[href='/'] svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/'] .home-active-icon {
+.main-yourLibraryX-navLink[href='/'].active svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/search'] .search-icon {
+.main-yourLibraryX-navLink[href='/search'] svg{
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/search'] .search-active-icon {
+.main-yourLibraryX-navLink[href='/search'].active svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-icon {
+.main-yourLibraryX-navLink[href='/lyrics-plus'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/lyrics-plus'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/lyrics-plus'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/marketplace'] > .home-icon {
+.main-yourLibraryX-navLink[href='/marketplace'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/marketplace'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/marketplace'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/eternal-jukebox'] > .home-icon {
+.main-yourLibraryX-navLink[href='/eternal-jukebox'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/eternal-jukebox'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/eternal-jukebox'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/new-releases'] > .home-icon {
+.main-yourLibraryX-navLink[href='/new-releases'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/new-releases'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/new-releases'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/stats'] > .home-icon {
+.main-yourLibraryX-navLink[href='/stats'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/stats'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/stats'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/name-that-tune'] > .home-icon {
+.main-yourLibraryX-navLink[href='/name-that-tune'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/name-that-tune'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/name-that-tune'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/betterLibrary'] > .home-icon {
+.main-yourLibraryX-navLink[href='/betterLibrary'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/betterLibrary'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/betterLibrary'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/better-local-files'] > .home-icon {
+.main-yourLibraryX-navLink[href='/better-local-files'] > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg');
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/better-local-files'] > .home-active-icon {
+.main-yourLibraryX-navLink[href='/better-local-files'].active > svg {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg');
   background-color: var(--spice-accent) !important;
 }
@@ -2928,7 +2928,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   transition: all ease 100ms;
 }
 
-.main-yourLibraryX-navLinkActive > .home-active-icon,
+.main-yourLibraryX-navLinkActive.active > svg,
 .main-yourLibraryX-navLinkActive > .search-active-icon {
   animation: bounce 175ms ease-out forwards;
 }
@@ -2961,7 +2961,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   display: none;
 }
 
-.home-icon,
+svg,
 .search-icon {
   transition: background-color linear 200ms;
 }
