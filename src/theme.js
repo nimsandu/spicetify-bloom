@@ -450,18 +450,6 @@
     });
   }
 
-  function moveTopBarContainer(to) {
-    waitForElements(
-      ['.main-topBar-container', '.Root__main-view'],
-      ([topBarContainer, rootMainView]) => {
-        rootMainView.insertAdjacentElement(
-          to === 'up' ? 'beforebegin' : 'afterbegin',
-          topBarContainer
-        );
-      }
-    );
-  }
-
   function addPlayerBackground() {
     waitForElements(['.main-nowPlayingBar-nowPlayingBar'], ([nowPlayingBar]) => {
       const playerBackground = document.createElement('div');
@@ -508,11 +496,10 @@
       if (!lyricsBackdropContainer) {
         initLyricsBackdrop();
       } else {
-        lyricsBackdropContainer.style.display = 'unset';
+        lyricsBackdropContainer.style.display = 'block';
         updateLyricsPageProperties();
       }
     } else {
-      if (lyricsCinema && !isLyricsCinemaVisible) moveTopBarContainer('down');
       if (lyricsBackdropContainer) lyricsBackdropContainer.style.display = 'none';
     }
   }
