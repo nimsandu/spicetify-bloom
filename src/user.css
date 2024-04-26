@@ -212,6 +212,7 @@ html {
 .main-trackList-trackList,
 .main-card-card,
 .main-heroCard-card,
+.main-card-cardContainer,
 .view-homeShortcutsGrid-draggable {
   background-color: var(--spice-card);
   border: 1px var(--spice-contour) solid;
@@ -3102,3 +3103,8 @@ svg,
   left: initial;
 }
 
+/* Cards */
+
+.main-gridContainer-gridContainer {
+  gap: 0.5rem;
+}
