@@ -2993,6 +2993,13 @@ svg,
   background-color: var(--spice-text);
 }
 
+.main-yourLibraryX-button[aria-haspopup="menu"] {
+  padding: 1px;
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/main/assets/More%20Vertical/SVG/ic_fluent_more_vertical_24_regular.svg");
+  background-color: var(--spice-text);
+}
+
+
 .main-rootlist-wrapper {
   padding-left: unset;
   padding-right: unset;
