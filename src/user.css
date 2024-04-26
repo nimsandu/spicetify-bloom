@@ -1115,6 +1115,10 @@ button.switch {
   --text-subdued: var(--spice-subtext);
 }
 
+.main-nowPlayingView-aboutArtistV2Button {
+  background-color: var(--spice-card) !important;
+}
+
 /* tracklist */
 
 .main-trackList-trackList .main-virtualScrollList-wrapper,
