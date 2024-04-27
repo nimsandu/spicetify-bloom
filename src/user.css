@@ -1,7 +1,8 @@
 :root {
-  --border-radius-1: 9px;
-  --border-radius-2: 7px;
-  --border-radius-3: 7px;
+  --border-radius-1: 0.75rem;
+  --border-radius-2: 0.5rem;
+  --border-radius-3: 0.5rem;
+  --card-gap: 0.5rem;
   --glue-font-weight-normal: 400;
   --glue-font-weight-bold: 600;
   --glue-font-weight-black: 700;
@@ -212,6 +213,7 @@ html {
 .main-trackList-trackList,
 .main-card-card,
 .main-heroCard-card,
+.main-card-cardContainer,
 .view-homeShortcutsGrid-draggable {
   background-color: var(--spice-card);
   border: 1px var(--spice-contour) solid;
@@ -384,7 +386,7 @@ h3,
   padding: 5px;
   width: 24px !important;
   height: 24px !important;
-  margin-right: 13px;
+  margin-right: 0.5rem;
 }
 
 .main-userWidget-displayName,
@@ -870,7 +872,7 @@ button.switch {
 .Root__nav-bar {
   z-index: 1 !important;
   max-width: 85px !important;
-  height: calc(100% + 107px);
+  height: calc(100% - (90px + var(--card-gap)));
 }
 
 .main-navBar-navBar {
@@ -1931,8 +1933,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .Root__now-playing-bar {
-  margin: 0px 13px 13px 13px;
-  width: calc(100% - 26px);
+  margin: 0px 0.5rem 0.5rem 0.5rem;
+  width: calc(100% - (0.5rem * 2));
   /* 100% - side padding   */
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
   border-radius: var(--border-radius-1);
@@ -2865,7 +2867,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__main-view {
   border-radius: var(--border-radius-1) !important;
-  height: calc(100% - 48px);
+  height: calc(100% - (90px + var(--card-gap)));
   overflow: visible;
 }
 
@@ -2911,7 +2913,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__nav-bar {
   max-width: unset !important;
-  height: calc(100% - 48px);
+  height: calc(100% - (90px + var(--card-gap)));
 }
 
 .main-yourLibraryX-entryPoints {
@@ -2924,10 +2926,15 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .main-yourLibraryX-navLink {
   border-radius: var(--border-radius-2);
-  min-height: 49px;
-  min-width: 49px;
-  padding-left: 13px;
+  min-height: 50px;
+  min-width: 50px;
+  justify-content: center;
   transition: all ease 100ms;
+}
+
+.main-yourLibraryX-navLink:has(span) {
+  padding-left: 0.5rem;
+  justify-content: flex-start;
 }
 
 .main-yourLibraryX-navLinkActive.active > svg,
@@ -2992,6 +2999,13 @@ svg,
   background-color: var(--spice-text);
 }
 
+.main-yourLibraryX-button[aria-haspopup="menu"] {
+  padding: 1px;
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/main/assets/More%20Vertical/SVG/ic_fluent_more_vertical_24_regular.svg");
+  background-color: var(--spice-text);
+}
+
+
 .main-rootlist-wrapper {
   padding-left: unset;
   padding-right: unset;
@@ -3004,7 +3018,6 @@ svg,
 .main-yourLibraryX-libraryContainer {
   --background-highlight: var(--spice-selected-row) !important;
   --text-bright-accent: var(--spice-accent) !important;
-  padding-bottom: 32px;
 }
 
 .main-yourLibraryX-listRowSubtitleLeadingWrapper svg {
@@ -3040,10 +3053,11 @@ svg,
 /* Right sidebar */
 
 .main-buddyFeed-scrollBarContainer {
-  height: calc(100% - 95px);
+  height: 100%;
 }
 
 .Root__right-sidebar {
+  height: calc(100% - (90px + var(--card-gap)));
   position: relative;
 }
 
@@ -3102,3 +3116,8 @@ svg,
   left: initial;
 }
 
+/* Cards */
+
+.main-gridContainer-gridContainer {
+  gap: 0.5rem;
+}
