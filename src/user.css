@@ -93,7 +93,8 @@ html {
 .main-actionBarBackground-background,
 .main-home-homeHeader,
 .x-entityHeader-overlay,
-.x-actionBarBackground-background {
+.x-actionBarBackground-background,
+.Root__nav-bar {
   background-color: var(--spice-main) !important;
 }
 
