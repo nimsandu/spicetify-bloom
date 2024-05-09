@@ -878,7 +878,6 @@ button.switch {
 .Root__nav-bar {
   z-index: 1 !important;
   max-width: 85px !important;
-  height: calc(100% - (90px + var(--card-gap)));
 }
 
 .main-navBar-navBar {
@@ -1954,8 +1953,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: rgba(var(--spice-rgb-main), 0.1) !important;
-  backdrop-filter: blur(50px) saturate(1.5);
 }
 
 .main-nowPlayingBar-container {
@@ -2734,8 +2731,8 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   color: var(--spice-rgb-subtext);
 }
 
-.main-view-container__scroll-node-child {
-  padding-bottom: 64px;
+.main-view-container__scroll-node-child,.main-yourLibraryX-libraryItemContainer,.main-buddyFeed-content {
+  padding-bottom: 6rem;
 }
 
 .view-homeShortcutsGrid-imageContainer {
@@ -2876,7 +2873,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__main-view {
   border-radius: var(--border-radius-1) !important;
-  height: calc(100% - (90px + var(--card-gap)));
   overflow: visible;
 }
 
@@ -2922,7 +2918,6 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__nav-bar {
   max-width: unset !important;
-  height: calc(100% - (90px + var(--card-gap)));
 }
 
 .main-yourLibraryX-entryPoints {
@@ -3065,7 +3060,6 @@ svg,
 }
 
 .Root__right-sidebar {
-  height: calc(100% - (90px + var(--card-gap)));
   position: relative;
 }
 
@@ -3077,7 +3071,6 @@ svg,
 
 .main-buddyFeed-content {
   margin-top: 0 !important;
-  padding-bottom: 0 !important;
 }
 
 /* Lyrics */
