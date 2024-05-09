@@ -1,7 +1,8 @@
 :root {
-  --border-radius-1: 9px;
-  --border-radius-2: 7px;
-  --border-radius-3: 7px;
+  --border-radius-1: 0.75rem;
+  --border-radius-2: 0.5rem;
+  --border-radius-3: 0.5rem;
+  --card-gap: 0.5rem;
   --glue-font-weight-normal: 400;
   --glue-font-weight-bold: 600;
   --glue-font-weight-black: 700;
@@ -10,21 +11,24 @@
   --filter-brightness: 1;
   --green: #00ffa1;
   --ms-motion-timing-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
-  --noise-texture: url('https://nimsandu.github.io/spicetify-bloom/assets/noise/noise.png');
+  --noise-texture: url("https://nimsandu.github.io/spicetify-bloom/assets/noise/noise.png");
   --noise-opacity: 7.5%;
   /* big thanks to CharlieS and harbassan for providing the svg */
   --equalizer-svg: url("data:image/svg+xml,%3Csvg id='playing-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Cdefs%3E%3Cstyle%3E %23playing-icon %7B fill: %2320BC54; %7D @keyframes play %7B 0%25 %7Btransform: scaleY(1);%7D 3.3%25 %7Btransform: scaleY(0.9583);%7D 6.6%25 %7Btransform: scaleY(0.9166);%7D 9.9%25 %7Btransform: scaleY(0.8333);%7D 13.3%25 %7Btransform: scaleY(0.7083);%7D 16.6%25 %7Btransform: scaleY(0.5416);%7D 19.9%25 %7Btransform: scaleY(0.4166);%7D 23.3%25 %7Btransform: scaleY(0.25);%7D 26.6%25 %7Btransform: scaleY(0.1666);%7D 29.9%25 %7Btransform: scaleY(0.125);%7D 33.3%25 %7Btransform: scaleY(0.125);%7D 36.6%25 %7Btransform: scaleY(0.1666);%7D 39.9%25 %7Btransform: scaleY(0.1666);%7D 43.3%25 %7Btransform: scaleY(0.2083);%7D 46.6%25 %7Btransform: scaleY(0.2916);%7D 49.9%25 %7Btransform: scaleY(0.375);%7D 53.3%25 %7Btransform: scaleY(0.5);%7D 56.6%25 %7Btransform: scaleY(0.5833);%7D 59.9%25 %7Btransform: scaleY(0.625);%7D 63.3%25 %7Btransform: scaleY(0.6666);%7D 66.6%25 %7Btransform: scaleY(0.6666);%7D 69.9%25 %7Btransform: scaleY(0.6666);%7D 73.3%25 %7Btransform: scaleY(0.6666);%7D 76.6%25 %7Btransform: scaleY(0.7083);%7D 79.9%25 %7Btransform: scaleY(0.75);%7D 83.3%25 %7Btransform: scaleY(0.8333);%7D 86.6%25 %7Btransform: scaleY(0.875);%7D 89.9%25 %7Btransform: scaleY(0.9166);%7D 93.3%25 %7Btransform: scaleY(0.9583);%7D 96.6%25 %7Btransform: scaleY(1);%7D %7D %23bar1 %7B transform-origin: bottom; animation: play 0.9s -0.51s infinite; %7D %23bar2 %7B transform-origin: bottom; animation: play 0.9s infinite; %7D %23bar3 %7B transform-origin: bottom; animation: play 0.9s -0.15s infinite; %7D %23bar4 %7B transform-origin: bottom; animation: play 0.9s -0.75s infinite; %7D %3C/style%3E%3C/defs%3E%3Ctitle%3Eplaying-icon%3C/title%3E%3Crect id='bar1' class='cls-1' width='4' height='24'/%3E%3Crect id='bar2' class='cls-1' x='6' width='4' height='24'/%3E%3Crect id='bar3' class='cls-1' x='12' width='4' height='24'/%3E%3Crect id='bar4' class='cls-1' x='18' width='4' height='24'/%3E%3C/svg%3E");
+  --text-subdued: var(--spice-subtext);
 }
 
 * {
-  font-family: 'Segoe UI Variable Display', 'Segoe UI Variable Text',
-      'Segoe UI', 'Microsoft Ya Hei', sans-serif !important;
+  font-family: "Segoe UI Variable Display", "Segoe UI Variable Text", "Segoe UI",
+    "Microsoft Ya Hei", sans-serif !important;
   /* font-family: 'Segoe UI Variable Display','Segoe UI Variable Text', 'Microsoft Ya Hei', sans-serif !important; */
   line-height: normal;
   box-shadow: none !important;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
+  --text-subdued: rgba(var(--spice-rgb-subtext), 0.7) !important;
+  --section-background-base: var(--spice-card) !important;
 }
 
 /* Fix Overflow off Screen */
@@ -91,7 +95,8 @@ html {
 .main-actionBarBackground-background,
 .main-home-homeHeader,
 .x-entityHeader-overlay,
-.x-actionBarBackground-background {
+.x-actionBarBackground-background,
+.Root__nav-bar {
   background-color: var(--spice-main) !important;
 }
 
@@ -101,9 +106,9 @@ html {
 
 .main-entityHeader-overlay {
   background-image: linear-gradient(
-      to bottom,
-      rgb(39 39 39 / 0%),
-      var(--spice-main)
+    to bottom,
+    rgb(39 39 39 / 0%),
+    var(--spice-main)
   );
 }
 
@@ -193,13 +198,13 @@ html {
 
 @keyframes scale-in {
   from {
-      opacity: 0;
-      transform: scale(0);
+    opacity: 0;
+    transform: scale(0);
   }
 
   to {
-      opacity: 1;
-      transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -212,6 +217,7 @@ html {
 .main-trackList-trackList,
 .main-card-card,
 .main-heroCard-card,
+.main-card-cardContainer,
 .view-homeShortcutsGrid-draggable {
   background-color: var(--spice-card);
   border: 1px var(--spice-contour) solid;
@@ -246,7 +252,7 @@ html {
 .x-categoryCard-CategoryCard,
 .main-heroCard-card {
   transition: transform 400ms var(--ms-motion-timing-decelerate),
-      box-shadow 400ms var(--ms-motion-timing-decelerate);
+    box-shadow 400ms var(--ms-motion-timing-decelerate);
 }
 
 .link-subtle {
@@ -255,7 +261,7 @@ html {
 
 /* headers */
 
-[dir='ltr'] .queue-tabBar-header,
+[dir="ltr"] .queue-tabBar-header,
 .marketplace-tabBar-nav {
   text-align: center !important;
 }
@@ -270,7 +276,7 @@ html {
 }
 
 .Root__top-container:not(:has(.main-topBar-container)) .Root__main-view::after {
-  content: '';
+  content: "";
   top: -64px;
   left: calc(var(--left-sidebar-width) * -1);
   position: absolute;
@@ -306,7 +312,7 @@ html {
 }
 
 .main-topBar-background::before {
-  content: '';
+  content: "";
   z-index: -1;
   position: absolute;
   background-image: var(--noise-texture);
@@ -369,7 +375,7 @@ h3,
 }
 
 .main-topBar-historyButtons button:nth-child(1) {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg");
   background-color: var(--spice-text) !important;
   padding: 5px;
   width: 24px !important;
@@ -378,13 +384,13 @@ h3,
 
 .main-topBar-historyButtons button:nth-child(2) {
   display: inline-flex !important;
-  mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg');
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg');
+  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg");
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg");
   background-color: var(--spice-text) !important;
   padding: 5px;
   width: 24px !important;
   height: 24px !important;
-  margin-right: 13px;
+  margin-right: 0.5rem;
 }
 
 .main-userWidget-displayName,
@@ -396,7 +402,7 @@ h3,
 
 div#context-menu::before,
 .main-contextMenu-menu::before {
-  content: '';
+  content: "";
   z-index: -1;
   position: absolute;
   top: 0;
@@ -405,7 +411,7 @@ div#context-menu::before,
   bottom: 0;
   border-radius: var(--border-radius-1);
   backdrop-filter: blur(35px) saturate(3.5);
-  background-image: url('https://nimsandu.github.io/spicetify-bloom/assets/noise/noise_context_menu.png');
+  background-image: url("https://nimsandu.github.io/spicetify-bloom/assets/noise/noise_context_menu.png");
 }
 
 div#context-menu > .main-contextMenu-menu::before,
@@ -445,7 +451,7 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 .main-contextMenu-menuItemButton:hover,
 .main-userWidget-dropDownMenuItemButton:hover,
-.main-contextMenu-menuItemButton[aria-expanded='true'] {
+.main-contextMenu-menuItemButton[aria-expanded="true"] {
   background-color: rgba(var(--spice-rgb-text), 0.1) !important;
   backdrop-filter: luminosity;
 }
@@ -550,22 +556,22 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
 
 @container (max-width: 1599px) {
   .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
-      height: 35px;
-      width: 35px;
+    height: 35px;
+    width: 35px;
   }
 }
 
 @container (max-width: 1141px) {
   .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
-      height: 30px;
-      width: 30px;
+    height: 30px;
+    width: 30px;
   }
 }
 
 @container (max-width: 815px) {
   .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
-      height: 25px;
-      width: 25px;
+    height: 25px;
+    width: 25px;
   }
 }
 
@@ -574,124 +580,126 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   color: var(--spice-accent);
 }
 
-.main-yourLibraryX-navLink[href='/'] path,
-.main-yourLibraryX-navLink[href='/search'] path,
-.main-yourLibraryX-navLink[href='/search'] path,
-.main-yourLibraryX-navLink[href='/lyrics-plus'] path,
-.main-yourLibraryX-navLink[href='/marketplace'] path,
-.main-yourLibraryX-navLink[href='/eternal-jukebox'] path,
-.main-yourLibraryX-navLink[href='/new-releases'] path,
-.main-yourLibraryX-navLink[href='/stats'] path,
-.main-yourLibraryX-navLink[href='/name-that-tune'] path,
-.main-yourLibraryX-navLink[href='/betterLibrary'] path,
-.main-yourLibraryX-navLink[href='/better-local-files'] path {
+.main-yourLibraryX-navLink[href="/"] path,
+.main-yourLibraryX-navLink[href="/search"] path,
+.main-yourLibraryX-navLink[href="/search"] path,
+.main-yourLibraryX-navLink[href="/lyrics-plus"] path,
+.main-yourLibraryX-navLink[href="/marketplace"] path,
+.main-yourLibraryX-navLink[href="/eternal-jukebox"] path,
+.main-yourLibraryX-navLink[href="/new-releases"] path,
+.main-yourLibraryX-navLink[href="/stats"] path,
+.main-yourLibraryX-navLink[href="/name-that-tune"] path,
+.main-yourLibraryX-navLink[href="/betterLibrary"] path,
+.main-yourLibraryX-navLink[href="/better-local-files"] path {
   display: none !important;
 }
-.main-yourLibraryX-navLink[href='/']:hover svg,
-.main-yourLibraryX-navLink[href='/search']:hover .search-icon,
-.main-yourLibraryX-navLink[href='/lyrics-plus']:hover svg,
-.main-yourLibraryX-navLink[href='/marketplace']:hover svg,
-.main-yourLibraryX-navLink[href='/eternal-jukebox']:hover svg,
-.main-yourLibraryX-navLink[href='/new-releases']:hover svg,
-.main-yourLibraryX-navLink[href='/stats']:hover svg,
-.main-yourLibraryX-navLink[href='/name-that-tune']:hover svg,
-.main-yourLibraryX-navLink[href='/betterLibrary']:hover svg,
-.main-yourLibraryX-navLink[href='/better-local-files']:hover svg {
+
+.main-yourLibraryX-navLink[href="/"]:hover svg,
+.main-yourLibraryX-navLink[href="/search"]:hover .search-icon,
+.main-yourLibraryX-navLink[href="/lyrics-plus"]:hover svg,
+.main-yourLibraryX-navLink[href="/marketplace"]:hover svg,
+.main-yourLibraryX-navLink[href="/eternal-jukebox"]:hover svg,
+.main-yourLibraryX-navLink[href="/new-releases"]:hover svg,
+.main-yourLibraryX-navLink[href="/stats"]:hover svg,
+.main-yourLibraryX-navLink[href="/name-that-tune"]:hover svg,
+.main-yourLibraryX-navLink[href="/betterLibrary"]:hover svg,
+.main-yourLibraryX-navLink[href="/better-local-files"]:hover svg {
   background-color: var(--spice-text) !important;
 }
 
-.main-yourLibraryX-navLink[href='/'] svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg');
+.main-yourLibraryX-navLink[href="/"] svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg");
+
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/'].active svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg');
+.main-yourLibraryX-navLink[href="/"].active svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/search'] svg{
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg');
+.main-yourLibraryX-navLink[href="/search"] svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/search'].active svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg');
+.main-yourLibraryX-navLink[href="/search"].active svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/lyrics-plus'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg');
+.main-yourLibraryX-navLink[href="/lyrics-plus"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/lyrics-plus'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg');
+.main-yourLibraryX-navLink[href="/lyrics-plus"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/marketplace'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg');
+.main-yourLibraryX-navLink[href="/marketplace"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/marketplace'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg');
+.main-yourLibraryX-navLink[href="/marketplace"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/eternal-jukebox'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
+.main-yourLibraryX-navLink[href="/eternal-jukebox"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/eternal-jukebox'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
+.main-yourLibraryX-navLink[href="/eternal-jukebox"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/new-releases'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg');
+.main-yourLibraryX-navLink[href="/new-releases"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/new-releases'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg');
+.main-yourLibraryX-navLink[href="/new-releases"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/stats'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg');
+.main-yourLibraryX-navLink[href="/stats"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/stats'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg');
+.main-yourLibraryX-navLink[href="/stats"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/name-that-tune'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg');
+.main-yourLibraryX-navLink[href="/name-that-tune"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/name-that-tune'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg');
+.main-yourLibraryX-navLink[href="/name-that-tune"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/betterLibrary'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
+.main-yourLibraryX-navLink[href="/betterLibrary"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/betterLibrary'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
+.main-yourLibraryX-navLink[href="/betterLibrary"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
-.main-yourLibraryX-navLink[href='/better-local-files'] > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg');
+.main-yourLibraryX-navLink[href="/better-local-files"] > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg");
   background-color: var(--spice-subtext) !important;
 }
-.main-yourLibraryX-navLink[href='/better-local-files'].active > svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg');
+.main-yourLibraryX-navLink[href="/better-local-files"].active > svg {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg");
   background-color: var(--spice-accent) !important;
 }
 
 .main-createPlaylistButton-button {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg");
   background-color: var(--spice-subtext) !important;
   padding: 0px;
   margin: auto;
@@ -725,24 +733,24 @@ div#context-menu > .main-userWidget-dropDownMenu::before,
   border-radius: var(--border-radius-2) !important;
 }
 
-.main-collectionLinkButton-collectionLinkButton[href='/collection/tracks'] {
+.main-collectionLinkButton-collectionLinkButton[href="/collection/tracks"] {
   background: linear-gradient(135deg, #450af5, #c4efd9) !important;
 }
 
-.main-collectionLinkButton-collectionLinkButton[href='/collection/episodes'] {
+.main-collectionLinkButton-collectionLinkButton[href="/collection/episodes"] {
   background-color: #006450 !important;
 }
 
-.main-collectionLinkButton-collectionLinkButton[href='/collection/tracks']
+.main-collectionLinkButton-collectionLinkButton[href="/collection/tracks"]
   .main-collectionLinkButton-icon {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_heart_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_heart_24_filled.svg");
   background-color: white !important;
   margin-right: 0px;
 }
 
-.main-collectionLinkButton-collectionLinkButton[href='/collection/episodes']
+.main-collectionLinkButton-collectionLinkButton[href="/collection/episodes"]
   .main-collectionLinkButton-icon {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_mic_on_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_mic_on_24_filled.svg");
   background-color: #00da6b !important;
   margin-right: 0px;
 }
@@ -870,7 +878,7 @@ button.switch {
 .Root__nav-bar {
   z-index: 1 !important;
   max-width: 85px !important;
-  height: calc(100% + 107px);
+  height: calc(100% - (90px + var(--card-gap)));
 }
 
 .main-navBar-navBar {
@@ -881,9 +889,9 @@ button.switch {
 /* Fade effect when scrolling down playlists */
 .main-rootlist-rootlistDividerGradient {
   background: linear-gradient(
-      180deg,
-      rgba(var(--spice-main), 0.7),
-      transparent
+    180deg,
+    rgba(var(--spice-main), 0.7),
+    transparent
   );
 }
 
@@ -893,7 +901,7 @@ button.switch {
 
 /* Rounded top-left corner + left/top border for main content window */
 .main-navBar-navBar::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 100%;
   width: 100vw;
@@ -1094,6 +1102,10 @@ button.switch {
   margin-left: 0 !important;
 }
 
+.main-nowPlayingView-trackInfo .main-trackInfo-container {
+  margin-left: 0 !important;
+}
+
 .main-nowPlayingView-panelOpenDiv
   .main-nowPlayingView-section:not(.main-nowPlayingView-lyricsGradient) {
   background-color: var(--spice-card) !important;
@@ -1125,7 +1137,6 @@ button.switch {
 }
 
 .main-trackList-trackList {
-  padding: 8px;
   padding-bottom: 24px;
   background-color: var(--spice-card);
   border-radius: var(--border-radius-2);
@@ -1196,6 +1207,9 @@ button.switch {
 }
 
 .main-trackList-trackListHeader {
+  background-color: transparent !important;
+  padding: 0 calc(var(--content-spacing) / 2);
+  margin: 0;
   margin-bottom: 8px;
 }
 
@@ -1336,15 +1350,15 @@ button.switch {
   border-radius: 0;
 }
 
-[class='main-entityHeader-backgroundColor'] {
+[class="main-entityHeader-backgroundColor"] {
   opacity: min(calc(var(--filter-brightness) + 0.4), 1);
 }
 
 .main-entityHeader-container {
   background-image: linear-gradient(
-      to bottom,
-      rgb(255 255 255 / 0%),
-      var(--spice-main)
+    to bottom,
+    rgb(255 255 255 / 0%),
+    var(--spice-main)
   );
 }
 
@@ -1440,15 +1454,15 @@ button.switch {
 
 /* tab bars */
 
-a[class*='-tabBar-active'] {
+a[class*="-tabBar-active"] {
   background-color: rgba(var(--spice-rgb-selected-row), 1) !important;
 }
 
-a[class*='-tabBar-headerItemLink']:hover {
+a[class*="-tabBar-headerItemLink"]:hover {
   background-color: rgba(var(--spice-rgb-selected-row), 0.3);
 }
 
-a[class*='-tabBar-headerItemLink']:active {
+a[class*="-tabBar-headerItemLink"]:active {
   background-color: rgba(var(--spice-rgb-selected-row), 0.5);
 }
 
@@ -1483,7 +1497,7 @@ a[class*='-tabBar-headerItemLink']:active {
 }
 
 .x-searchInput-searchInputSearchIcon {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_16_regular.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_16_regular.svg");
   background-color: var(--spice-subtext) !important;
   flex: 0;
   transform: scaleX(-1);
@@ -1529,7 +1543,7 @@ a[class*='-tabBar-headerItemLink']:active {
 
 /* error */
 
-path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298 23-23C46 10.297 35.703 0 23 0zm0 44C11.421 44 2 34.579 2 23S11.42 2 23 2c11.579 0 21 9.42 21 21 0 11.579-9.42 21-21 21zm1.872-32.065l-.8 16.192h-2.144l-.832-16.192h3.776zm-3.968 20.768c0-.576.203-1.072.608-1.488a1.979 1.979 0 011.472-.624c.576 0 1.072.208 1.488.624.416.416.624.912.624 1.488s-.208 1.067-.624 1.472a2.056 2.056 0 01-1.488.608 2.006 2.006 0 01-1.472-.608 2.002 2.002 0 01-.608-1.472z'],
+path[d="M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298 23-23C46 10.297 35.703 0 23 0zm0 44C11.421 44 2 34.579 2 23S11.42 2 23 2c11.579 0 21 9.42 21 21 0 11.579-9.42 21-21 21zm1.872-32.065l-.8 16.192h-2.144l-.832-16.192h3.776zm-3.968 20.768c0-.576.203-1.072.608-1.488a1.979 1.979 0 011.472-.624c.576 0 1.072.208 1.488.624.416.416.624.912.624 1.488s-.208 1.067-.624 1.472a2.056 2.056 0 01-1.488.608 2.006 2.006 0 01-1.472-.608 2.002 2.002 0 01-.608-1.472z"],
 .spoticon-warning-64::before {
   color: var(--spice-notification-error);
 }
@@ -1566,7 +1580,7 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 
 .GenericModal::before {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1745,13 +1759,13 @@ path[d='M23 0C10.298 0 0 10.297 0 23c0 12.702 10.298 23 23 23 12.703 0 23-10.298
 
 .main-buddyFeed-buddyFeedRoot,
 .main-buddyFeed-buddyFeed,
-aside[aria-label='Friend Activity'] {
+aside[aria-label="Friend Activity"] {
   width: 280px;
   z-index: 0;
 }
 
 .main-buddyFeed-buddyFeedRoot .main-avatar-avatar,
-aside[aria-label='Friend Activity'] .main-avatar-avatar {
+aside[aria-label="Friend Activity"] .main-avatar-avatar {
   margin-right: 8px;
 }
 
@@ -1848,7 +1862,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 /* connect device menu */
 
 .main-devicePicker-header
-  > .main-devicePicker-nowPlayingActiveIcon[src*='equaliser'] {
+  > .main-devicePicker-nowPlayingActiveIcon[src*="equaliser"] {
   -webkit-mask-image: var(--equalizer-svg);
   background: var(--spice-button);
   content-visibility: hidden;
@@ -1870,10 +1884,10 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 /* waking up text */
-.hcuLp8V4uEEfWZ4k6aLV[aria-disabled='true'] ._k3JjF2rHwdYfSPZH09S {
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled="true"] ._k3JjF2rHwdYfSPZH09S {
   color: var(--spice-rgb-subtext);
 }
-.hcuLp8V4uEEfWZ4k6aLV[aria-disabled='true']
+.hcuLp8V4uEEfWZ4k6aLV[aria-disabled="true"]
   .main-devicePicker-nowPlayingActiveIcon {
   fill: var(--spice-rgb-subtext);
 }
@@ -1904,7 +1918,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 /* player */
 
 .player-background::before {
-  content: '';
+  content: "";
   z-index: -1;
   position: absolute;
   top: 0;
@@ -1931,8 +1945,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .Root__now-playing-bar {
-  margin: 0px 13px 13px 13px;
-  width: calc(100% - 26px);
+  margin: 0px 0.5rem 0.5rem 0.5rem;
+  width: calc(100% - (0.5rem * 2));
   /* 100% - side padding   */
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
   border-radius: var(--border-radius-1);
@@ -1990,7 +2004,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .progress-bar__slider::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 10px;
   height: 10px;
@@ -2055,32 +2069,29 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 @keyframes coverExpandedIn {
   99% {
-      visibility: hidden;
+    visibility: hidden;
   }
 
   100% {
-      visibility: visible;
+    visibility: visible;
   }
 }
 
 @keyframes coverExpandedOut {
   99% {
-      visibility: visible;
+    visibility: visible;
   }
 
   100% {
-      visibility: hidden;
+    visibility: hidden;
   }
 }
 
 .main-coverSlotCollapsed-container {
-  position: fixed;
   top: auto;
   left: 0px;
   width: 56px;
   height: 56px;
-  visibility: visible;
-  z-index: 99999 !important;
   border-radius: var(--border-radius-1) !important;
 }
 
@@ -2089,12 +2100,12 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   transform-origin: center;
   transition-timing-function: ease-in;
   transition: width 0.5s 0.2s, height 0.5s 0.2s, top 0.3s, left 0.5s,
-      box-shadow 0.5s;
+    box-shadow 0.5s;
   border-radius: var(--border-radius-1) !important;
   background-color: transparent !important;
 }
 
-.main-coverSlotCollapsed-container[aria-hidden='true'] {
+.main-coverSlotCollapsed-container[aria-hidden="true"] {
   left: calc(100vw - 178px);
   top: -236px;
   width: 200px;
@@ -2105,14 +2116,14 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   border-radius: var(--border-radius-1) !important;
 }
 
-.main-coverSlotCollapsed-container[aria-hidden='false'] {
+.main-coverSlotCollapsed-container[aria-hidden="false"] {
   transition-timing-function: ease-out !important;
   transition: width 0.5s 0.2s, height 0.5s 0.2s, top 0.5s 0.1s, left 0.3s,
-      box-shadow 0.5s !important;
+    box-shadow 0.5s !important;
   border-radius: var(--border-radius-1) !important;
 }
 
-.main-coverSlotCollapsed-container[aria-hidden='true']
+.main-coverSlotCollapsed-container[aria-hidden="true"]
   .cover-art
   .cover-art-image,
 .main-nowPlayingWidget-coverExpanded
@@ -2156,8 +2167,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-skipBackButton-button:hover,
 .main-skipForwardButton-button:hover,
-.main-repeatButton-button[aria-checked='false']:not(
-      [aria-label='Activer jukebox']
+.main-repeatButton-button[aria-checked="false"]:not(
+    [aria-label="Activer jukebox"]
   ):hover,
 .MRfNcNMd_djj3KOg_VOB:hover,
 .XGCdw_LcXQHrxmvpxjwi:hover {
@@ -2229,34 +2240,34 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .main-skipForwardButton-button {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_next_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_next_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 24px !important;
 }
 
 .main-skipBackButton-button {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_previous_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_previous_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 24px !important;
 }
 
 .MRfNcNMd_djj3KOg_VOB {
   /* Skip back 15 sec */
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_backward_15_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_backward_15_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 22px !important;
 }
 
 .XGCdw_LcXQHrxmvpxjwi {
   /* Skip forward 15 sec */
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_forward_15_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_skip_forward_15_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 22px !important;
 }
 
 .Ww5ppB6W74laf1c0H_pR {
   /* Speed icon for podcasts */
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_top_speed_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_top_speed_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 22px !important;
 }
@@ -2266,60 +2277,60 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 /* Disabled */
-.main-repeatButton-button[aria-checked='false'] {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_off_24_regular.svg');
+.main-repeatButton-button[aria-checked="false"] {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_off_24_regular.svg");
   background-color: var(--spice-subtext) !important;
   height: 22px !important;
 }
 
 /* Repeat one */
-.main-repeatButton-button[aria-checked='mixed'] {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_once_24_filled.svg') !important;
+.main-repeatButton-button[aria-checked="mixed"] {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_once_24_filled.svg") !important;
   background-color: var(--spice-accent) !important;
   height: 22px !important;
 }
 
 /* Repeat all */
-.main-repeatButton-button[aria-checked='true'] {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_24_filled.svg');
+.main-repeatButton-button[aria-checked="true"] {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_repeat_all_24_filled.svg");
   background-color: var(--spice-accent) !important;
   height: 22px !important;
 }
 
 /* Shuffle disabled */
 .main-shuffleButton-button {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg");
   background-color: var(--spice-subtext) !important;
   height: 24px !important;
 }
 
 /* Shuffle enabled */
-.main-shuffleButton-button[aria-checked='true'] {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
+.main-shuffleButton-button[aria-checked="true"] {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg");
   background-color: var(--spice-accent) !important;
   height: 24px !important;
 }
 
 /* Eternal Jukebox disabled */
-.main-repeatButton-button[aria-label='Activer jukebox'] {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg');
+.main-repeatButton-button[aria-label="Activer jukebox"] {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg");
   background-color: var(--spice-subtext) !important;
   height: 22px !important;
 }
 
 /* Eternal Jukebox enabled */
-.main-repeatButton-active[aria-label='Activer jukebox'] {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg');
+.main-repeatButton-active[aria-label="Activer jukebox"] {
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg");
   background-color: var(--spice-accent) !important;
   height: 22px !important;
 }
 
 /*Like button*/
-.control-button-heart[aria-checked='true'] {
+.control-button-heart[aria-checked="true"] {
   color: var(--spice-accent);
 }
 
-.control-button-heart[aria-checked='false'] {
+.control-button-heart[aria-checked="false"] {
   color: var(--spice-subtext);
 }
 
@@ -2386,7 +2397,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 /* play buttons */
 
-[dir='ltr'] .main-card-PlayButtonContainer {
+[dir="ltr"] .main-card-PlayButtonContainer {
   filter: drop-shadow(0 0 5px rgba(0 0 0 / 30%));
 }
 
@@ -2401,7 +2412,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 .main-playButton-PlayButton > button,
 .main-trackList-rowPlayPauseButton {
   background-color: var(--spice-text) !important;
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg");
 }
 
 .main-playButton-PlayButton:focus,
@@ -2463,24 +2474,24 @@ button.arrow-btn {
 
 /* eternal-jukebox */
 .main-view-container
-  [class*='container'][class*='eternalDjukebox']:not(
-      [class*='full-size']
-  ):not([class*='empty']) {
+  [class*="container"][class*="eternalDjukebox"]:not([class*="full-size"]):not(
+    [class*="empty"]
+  ) {
   padding-top: 8px;
 }
-.main-view-container [class*='stats'][class*='eternalDjukebox'] {
+.main-view-container [class*="stats"][class*="eternalDjukebox"] {
   padding-bottom: 120px;
 }
 
-.main-view-container [class*='ncsDvisualizer'] {
+.main-view-container [class*="ncsDvisualizer"] {
   bottom: 105px;
 }
 
 /* spicetify extensions */
 
-.main-topBar-button[title='Popup Lyrics'],
-.main-topBar-button[title='Full App Display'],
-.main-topBar-button[title='Bookmark'] {
+.main-topBar-button[title="Popup Lyrics"],
+.main-topBar-button[title="Full App Display"],
+.main-topBar-button[title="Bookmark"] {
   background-color: var(--spice-card) !important;
 }
 
@@ -2490,7 +2501,7 @@ button.arrow-btn {
 }
 
 .UyzJidwrGk3awngSGIwv,
-.main-addButton-button[aria-checked='false'] {
+.main-addButton-button[aria-checked="false"] {
   color: var(--spice-text);
 }
 
@@ -2550,12 +2561,12 @@ button.arrow-btn {
 
 @keyframes reveal {
   from {
-      opacity: 0;
+    opacity: 0;
   }
 
   to {
-      opacity: 1;
-      visibility: visible;
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -2570,20 +2581,20 @@ button.arrow-btn {
 
 @media (min-width: 1920px) {
   .lyrics-lyricsContent-lyric {
-      transition: text-shadow 400ms ease, color 50ms ease;
+    transition: text-shadow 400ms ease, color 50ms ease;
   }
 
   .lyrics-lyricsContent-text {
-      transform: scale(1);
-      transition: transform 400ms ease;
+    transform: scale(1);
+    transition: transform 400ms ease;
   }
 
   .lyrics-lyricsContent-active .lyrics-lyricsContent-text {
-      transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   .lyrics-lyricsContent-isInteractive .lyrics-lyricsContent-text:active {
-      transform: scale(0.9);
+    transform: scale(0.9);
   }
 }
 
@@ -2623,7 +2634,7 @@ button.arrow-btn {
 
 .lyrics-lyricsContainer-Karaoke-Word {
   transition: var(--word-duration) color ease,
-      var(--word-duration) text-shadow ease !important;
+    var(--word-duration) text-shadow ease !important;
   text-shadow: none;
 }
 
@@ -2661,7 +2672,7 @@ button.arrow-btn {
 
 #lyrics-fullscreen-container
   > .lyrics-lyricsContainer-LyricsContainer:has(
-      .lyrics-lyricsContainer-UnsyncedLyricsPage
+    .lyrics-lyricsContainer-UnsyncedLyricsPage
   )
   .lyrics-lyricsContainer-Provider {
   padding-bottom: 35px;
@@ -2751,16 +2762,16 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
   padding-left: 10px;
 }
 
-.main-trackList-rowSectionVariable[aria-colindex='3'] .cPwEdQ,
-.main-trackList-rowSectionVariable[aria-colindex='3'] .main-trackList-text {
+.main-trackList-rowSectionVariable[aria-colindex="3"] .cPwEdQ,
+.main-trackList-rowSectionVariable[aria-colindex="3"] .main-trackList-text {
   padding-left: 8.5px;
 }
 
-.main-trackList-rowSectionVariable[aria-colindex='4'] .eDbSCl {
+.main-trackList-rowSectionVariable[aria-colindex="4"] .eDbSCl {
   padding-left: 14.5px;
 }
 
-.main-trackList-rowSectionVariable[aria-colindex='3']
+.main-trackList-rowSectionVariable[aria-colindex="3"]
   .main-trackList-rowPlayCount {
   padding-left: 0px;
 }
@@ -2793,7 +2804,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 #power-bar-wrapper::before {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -2843,7 +2854,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .main-topBar-container
   > *:not(button):not(.main-topBar-historyButtons):not(
-      .main-topBar-topbarContentRight
+    .main-topBar-topbarContentRight
   ),
 .main-topBar-topbarContent {
   -webkit-app-region: drag !important;
@@ -2853,7 +2864,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* rounded main view container corners */
 .Root__main-view::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2865,7 +2876,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__main-view {
   border-radius: var(--border-radius-1) !important;
-  height: calc(100% - 48px);
+  height: calc(100% - (90px + var(--card-gap)));
   overflow: visible;
 }
 
@@ -2878,8 +2889,8 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 }
 
 .contentSpacing:not(
-      .artist-artistDiscography-topBar,
-      .search-searchCategory-container
+    .artist-artistDiscography-topBar,
+    .search-searchCategory-container
   ) {
   padding-top: 8px;
 }
@@ -2911,7 +2922,7 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .Root__nav-bar {
   max-width: unset !important;
-  height: calc(100% - 48px);
+  height: calc(100% - (90px + var(--card-gap)));
 }
 
 .main-yourLibraryX-entryPoints {
@@ -2924,10 +2935,15 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .main-yourLibraryX-navLink {
   border-radius: var(--border-radius-2);
-  min-height: 49px;
-  min-width: 49px;
-  padding-left: 13px;
+  min-height: 50px;
+  min-width: 50px;
+  justify-content: center;
   transition: all ease 100ms;
+}
+
+.main-yourLibraryX-navLink:has(span) {
+  padding-left: 0.5rem;
+  justify-content: flex-start;
 }
 
 .main-yourLibraryX-navLinkActive.active > svg,
@@ -2937,15 +2953,15 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 @keyframes bounce {
   0% {
-      transform: translate(0, -25%);
+    transform: translate(0, -25%);
   }
 
   50% {
-      transform: translate(0, 25%);
+    transform: translate(0, 25%);
   }
 
   100% {
-      transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 }
 
@@ -2979,7 +2995,7 @@ svg,
 
 .main-yourLibraryX-collapseButton.main-yourLibraryX-collapseButtonIsCollapsed
   svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg");
   background-color: var(--spice-subtext);
 }
 
@@ -2988,7 +3004,13 @@ svg,
 }
 
 .main-yourLibraryX-collapseButton svg {
-  -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg');
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg");
+  background-color: var(--spice-text);
+}
+
+.main-yourLibraryX-button[aria-haspopup="menu"] {
+  padding: 1px;
+  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/main/assets/More%20Vertical/SVG/ic_fluent_more_vertical_24_regular.svg");
   background-color: var(--spice-text);
 }
 
@@ -3004,7 +3026,6 @@ svg,
 .main-yourLibraryX-libraryContainer {
   --background-highlight: var(--spice-selected-row) !important;
   --text-bright-accent: var(--spice-accent) !important;
-  padding-bottom: 32px;
 }
 
 .main-yourLibraryX-listRowSubtitleLeadingWrapper svg {
@@ -3017,7 +3038,7 @@ svg,
 
 /* Player bar */
 
-[dir='ltr'] .main-coverSlotCollapsed-navAltContainer {
+[dir="ltr"] .main-coverSlotCollapsed-navAltContainer {
   transform: none !important;
 }
 
@@ -3040,10 +3061,11 @@ svg,
 /* Right sidebar */
 
 .main-buddyFeed-scrollBarContainer {
-  height: calc(100% - 95px);
+  height: 100%;
 }
 
 .Root__right-sidebar {
+  height: calc(100% - (90px + var(--card-gap)));
   position: relative;
 }
 
@@ -3091,7 +3113,9 @@ svg,
 
 .fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb,
 .fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb::after,
-.fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb::before {
+.fDhpniKuH2iCAIc_ZUeL.rX_OmqCngvY5ZCoYBZgb::before,
+.mjZrvVI3CxfHJXu7y0Lg,
+.mjZrvVI3CxfHJXu7y0Lg::after {
   background: rgba(var(--spice-rgb-player), 0.5) !important;
   backdrop-filter: blur(50px) saturate(1.5) !important;
   border-radius: 8px;
@@ -3100,5 +3124,31 @@ svg,
 .Wrapper-medium-medium-only {
   top: initial;
   left: initial;
+}
+
+/* Cards */
+
+.main-gridContainer-gridContainer {
+  gap: 0.5rem;
+}
+
+/* Play | Pause Btn Alignment */
+.Wrapper-medium-only-medium {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.main-nowPlayingBar-nowPlayingBar > .main-nowPlayingWidget-nowPlaying {
+  margin-left: 3rem;
+}
+
+.Wrapper-medium-only-medium {
+  top: 0;
+  left: 0;
+}
+
+.main-genericButton-button {
+  color: var(--spice-subtext);
 }
 
