@@ -2101,7 +2101,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   transition-timing-function: ease-in;
   transition: width 0.5s 0.2s, height 0.5s 0.2s, top 0.3s, left 0.5s,
     box-shadow 0.5s;
-  border-radius: var(--border-radius-1) !important;
+  border-radius: var(--border-radius-3) !important;
   background-color: transparent !important;
 }
 
