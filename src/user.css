@@ -293,16 +293,15 @@ html {
 }
 
 .Root__main-view .main-topBar-container {
-  margin-left: calc(var(--left-sidebar-width) * -1) !important;
   margin-top: calc(-24px + var(--panel-gap) * -2);
   height: calc(24px + var(--panel-gap) * 2);
 }
 
 .main-topBar-container {
-  position: absolute !important;
-  width: 100vw !important;
+  position: fixed !important;
+  left: 0;
+  width: 100%;
   z-index: 5 !important;
-  padding: 0;
 }
 
 .main-topBar-background {
@@ -2028,12 +2027,6 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 
 .main-playbackBarRemainingTime-container {
   padding-left: 6px;
-}
-
-.main-nowPlayingWidget-nowPlaying > .ellipsis-one-line,
-.main-trackInfo-container {
-  margin-left: 74px;
-  border-radius: var(--border-radius-1) !important;
 }
 
 .cover-art {
