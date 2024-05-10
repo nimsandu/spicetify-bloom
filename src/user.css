@@ -368,7 +368,7 @@ h3,
   align-items: center;
 }
 
-.main-topBar-historyButtons button:nth-child(1) {
+.main-topBar-historyButtons > button:nth-child(1) {
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg');
   background-color: var(--spice-text) !important;
   padding: 5px;
@@ -376,7 +376,7 @@ h3,
   height: 24px !important;
 }
 
-.main-topBar-historyButtons button:nth-child(2) {
+.main-topBar-historyButtons > button:nth-child(2) {
   display: inline-flex !important;
   mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg');
   -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg');
