@@ -12,10 +12,10 @@
   }
 
   function injectScript(source) {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = source;
     script.async = true;
-    script.type = 'text/javascript';
+    script.type = "text/javascript";
     document.head.appendChild(script);
   }
 
@@ -23,23 +23,16 @@
     return Object.keys(object).length === 0;
   }
 
-  waitForElements(['.main-yourLibraryX-navItem'], () => {
-    const navItems = document.getElementsByClassName('main-yourLibraryX-navLink');
-    Array.from(navItems).forEach((navItem) => {
-      const navItemAccent = document.createElement('div');
-      navItemAccent.classList.add('main-yourLibraryX-navLink-accent');
-      navItem.appendChild(navItemAccent);
-    });
-  });
-
-  const textColor = getComputedStyle(document.documentElement).getPropertyValue('--spice-text');
-  if (textColor === ' #000000') {
-    document.documentElement.style.setProperty('--filter-brightness', 0);
+  const textColor = getComputedStyle(document.documentElement).getPropertyValue(
+    "--spice-text"
+  );
+  if (textColor === " #000000") {
+    document.documentElement.style.setProperty("--filter-brightness", 0);
   }
 
   const interval = setInterval(() => {
     function cleanLabel(label) {
-      const cleanedLabel = label.replace(/[{0}{1}«»”“]/g, '').trim();
+      const cleanedLabel = label.replace(/[{0}{1}«»”“]/g, "").trim();
       return cleanedLabel;
     }
 
@@ -47,119 +40,31 @@
     if (!Locale || isObjectEmpty(Locale.getDictionary())) return;
     clearInterval(interval);
 
-    let playlistPlayLabel = Locale.get('playlist.a11y.play');
+    let playlistPlayLabel = Locale.get("playlist.a11y.play");
     playlistPlayLabel = cleanLabel(playlistPlayLabel);
-    let playlistPauseLabel = Locale.get('playlist.a11y.pause');
+    let playlistPauseLabel = Locale.get("playlist.a11y.pause");
     playlistPauseLabel = cleanLabel(playlistPauseLabel);
 
-    const smartShuffleEnableLabel = Locale.get(
-      'web-player.smart-shuffle.button-enable-shuffle-generic'
-    ).substring(1);
-    const smartShuffleDisableLabel = Locale.get(
-      'web-player.smart-shuffle.button-disable-shuffle-generic'
-    ).substring(1);
-
-    const playLabel = Locale.get('play');
-    const pauseLabel = Locale.get('pause');
-
-    const tracklistPlayLabel = Locale.get('tracklist.a11y.play');
+    const tracklistPlayLabel = Locale.get("tracklist.a11y.play");
     let tracklistPlayLabelOne;
     let tracklistPlayLabelTwo;
-    if (['zh-CN', 'zh-TW', 'am', 'fi'].includes(Locale.getLocale())) {
-      [tracklistPlayLabelOne, tracklistPlayLabelTwo] = tracklistPlayLabel.split('{1}');
+    if (["zh-CN", "zh-TW", "am", "fi"].includes(Locale.getLocale())) {
+      [tracklistPlayLabelOne, tracklistPlayLabelTwo] =
+        tracklistPlayLabel.split("{1}");
     } else {
-      [tracklistPlayLabelOne, tracklistPlayLabelTwo] = tracklistPlayLabel.split('{0}');
+      [tracklistPlayLabelOne, tracklistPlayLabelTwo] =
+        tracklistPlayLabel.split("{0}");
     }
     tracklistPlayLabelOne = cleanLabel(tracklistPlayLabelOne);
     tracklistPlayLabelTwo = cleanLabel(tracklistPlayLabelTwo);
-
-    const playButtonStyle = document.createElement('style');
-    playButtonStyle.innerHTML = `
-      .main-playButton-button[aria-label*="${playLabel}"],
-      .main-playButton-PlayButton>button[aria-label*="${playLabel}"],
-      .main-playPauseButton-button[aria-label="${playLabel}"],
-      .main-playPauseButton-button[aria-label="${Locale.get('playback-control.play')}"],
-      .main-trackList-rowPlayPauseButton[aria-label*="${playLabel}"],
-      .main-trackList-rowImagePlayButton[aria-label*="${tracklistPlayLabelOne}"][aria-label*="${tracklistPlayLabelTwo}"],
-      .main-playButton-PlayButton>button[aria-label*="${playlistPlayLabel}"] {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_play_24_filled.svg') !important;
-      }
-      .main-playButton-button[aria-label*="${pauseLabel}"],
-      .main-playButton-PlayButton>button[aria-label*="${pauseLabel}"],
-      .main-playPauseButton-button[aria-label*="${pauseLabel}"],
-      .main-playPauseButton-button[aria-label="${Locale.get('playback-control.pause')}"],
-      .main-trackList-rowPlayPauseButton[aria-label*="${pauseLabel}"],
-      .main-trackList-rowImagePlayButton[aria-label*="${pauseLabel}"],
-      .main-playButton-PlayButton>button[aria-label*="${playlistPauseLabel}"] {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_pause_16_filled.svg') !important;
-      }
-
-      .player-controls button[aria-label*="${smartShuffleDisableLabel}"] {
-        min-block-size: 24px !important;
-        height: 24px !important;
-        background-color: var(--spice-accent) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_filled.svg');
-        margin-right: -5px !important;
-      }
-      .player-controls button[aria-label*="${smartShuffleEnableLabel}"] {
-        min-block-size: 24px !important;
-        height: 24px !important;
-        background-color: var(--spice-subtext) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_shuffle_24_regular.svg');
-        margin-right: -5px !important;
-      }`;
-    document.head.appendChild(playButtonStyle);
-
-    const libraryXButtonsStyle = document.createElement('style');
-    libraryXButtonsStyle.innerHTML = `
-      .main-yourLibraryX-button[aria-label*="${Locale.get(
-        'web-player.your-library-x.enlarge-your-library'
-      )}"] span {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_right_24_filled.svg') !important;
-        width: 18px;
-        height: 18px;
-      }
-      .main-yourLibraryX-button[aria-label*="${Locale.get(
-        'web-player.your-library-x.reduce-your-library'
-      )}"] span {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_arrow_left_24_filled.svg') !important;
-        width: 18px;
-        height: 18px;
-      }
-      .main-yourLibraryX-button[aria-label*="${Locale.get(
-        'web-player.your-library-x.grid-view'
-      )}"] span {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_table_simple_24_regular.svg') !important;
-        width: 18px;
-        height: 18px;
-      }
-      .main-yourLibraryX-button[aria-label*="${Locale.get(
-        'web-player.your-library-x.list-view'
-      )}"] span {
-        background-color: var(--spice-text) !important;
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_text_bullet_list_ltr_24_filled.svg') !important;
-        width: 18px;
-        height: 18px;
-      }
-      .main-yourLibraryX-button[aria-label*="${Locale.get(
-        'web-player.your-library-x.create.button-label'
-      )}"] span {
-        -webkit-mask-image: url('https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_24_filled.svg');
-        background-color: var(--spice-text);
-        width: 18px;
-        height: 18px;
-      }
-    `;
-    document.head.appendChild(libraryXButtonsStyle);
   }, 10);
 
-  injectScript('https://unpkg.com/fast-average-color/dist/index.browser.min.js');
-  injectScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js');
+  injectScript(
+    "https://unpkg.com/fast-average-color/dist/index.browser.min.js"
+  );
+  injectScript(
+    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"
+  );
 
   const blur = 20;
   let lyricsObserver;
@@ -169,25 +74,30 @@
   function updateLyricsPageProperties() {
     function detectTextDirection() {
       // 0, 1 - blank lines
-      const lyric = document.getElementsByClassName('lyrics-lyricsContent-lyric')[2];
+      const lyric = document.getElementsByClassName(
+        "lyrics-lyricsContent-lyric"
+      )[2];
       // https://stackoverflow.com/questions/13731909/how-to-detect-that-text-typed-in-text-area-is-rtl
       const rtlRegExp = /[\u0591-\u07FF]/;
-      return rtlRegExp.test(lyric.innerHTML) ? 'rtl' : 'ltr';
+      return rtlRegExp.test(lyric.innerHTML) ? "rtl" : "ltr";
     }
 
     function setLyricsTransformOrigin(textDirection) {
       const rootStyle = document.documentElement.style;
-      if (textDirection === 'rtl') {
-        rootStyle.setProperty('--lyrics-text-direction', 'right');
+      if (textDirection === "rtl") {
+        rootStyle.setProperty("--lyrics-text-direction", "right");
       } else {
-        rootStyle.setProperty('--lyrics-text-direction', 'left');
+        rootStyle.setProperty("--lyrics-text-direction", "left");
       }
     }
 
     function calculateLyricsMaxWidth(lyricsWrapper, lyricsContainer) {
       const offset =
-        lyricsWrapper.offsetLeft + parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
-      const maxWidth = Math.round(0.95 * (lyricsContainer.clientWidth - offset));
+        lyricsWrapper.offsetLeft +
+        parseInt(window.getComputedStyle(lyricsWrapper).marginRight, 10);
+      const maxWidth = Math.round(
+        0.95 * (lyricsContainer.clientWidth - offset)
+      );
       return maxWidth;
     }
 
@@ -198,11 +108,13 @@
     }
 
     function revealLyricsLines() {
-      const lyricsLines = Array.from(document.getElementsByClassName('lyrics-lyricsContent-lyric'));
-      if (lyricsLines[0].style.animationName === 'reveal') return;
+      const lyricsLines = Array.from(
+        document.getElementsByClassName("lyrics-lyricsContent-lyric")
+      );
+      if (lyricsLines[0].style.animationName === "reveal") return;
       let positionIndex = 0;
       lyricsLines.forEach((lyricsLine) => {
-        if (lyricsLine.innerHTML !== '') {
+        if (lyricsLine.innerHTML !== "") {
           positionIndex += 1;
         }
 
@@ -218,33 +130,39 @@
 
         lyricsLine.style.animationDelay = `${animationDelay}ms`;
         lyricsLine.style.animationDuration = `${animationDuration}ms`;
-        lyricsLine.style.animationTimingFunction = 'ease';
-        lyricsLine.style.animationName = 'reveal';
+        lyricsLine.style.animationTimingFunction = "ease";
+        lyricsLine.style.animationName = "reveal";
       });
     }
 
     function setLyricsPageProperties() {
       const lyricsContentWrapper = document.getElementsByClassName(
-        'lyrics-lyrics-contentWrapper'
+        "lyrics-lyrics-contentWrapper"
       )[0];
       const lyricsContentContainer = document.getElementsByClassName(
-        'lyrics-lyrics-contentContainer'
+        "lyrics-lyrics-contentContainer"
       )[0];
 
-      lyricsContentWrapper.style.maxWidth = '';
-      lyricsContentWrapper.style.width = '';
+      lyricsContentWrapper.style.maxWidth = "";
+      lyricsContentWrapper.style.width = "";
 
       const lyricsTextDirection = detectTextDirection();
       setLyricsTransformOrigin(lyricsTextDirection);
-      const lyricsMaxWidth = calculateLyricsMaxWidth(lyricsContentWrapper, lyricsContentContainer);
-      lyricsContentWrapper.style.setProperty('--lyrics-active-max-width', `${lyricsMaxWidth}px`);
+      const lyricsMaxWidth = calculateLyricsMaxWidth(
+        lyricsContentWrapper,
+        lyricsContentContainer
+      );
+      lyricsContentWrapper.style.setProperty(
+        "--lyrics-active-max-width",
+        `${lyricsMaxWidth}px`
+      );
       lockLyricsWrapperWidth(lyricsContentWrapper);
     }
 
     function lyricsCallback(mutationsList) {
       mutationsList.forEach((mutation) => {
         Array.from(mutation.addedNodes).forEach((addedNode) => {
-          if (addedNode.classList?.contains('lyrics-lyricsContent-provider')) {
+          if (addedNode.classList?.contains("lyrics-lyricsContent-provider")) {
             setLyricsPageProperties();
             revealLyricsLines();
           }
@@ -252,24 +170,32 @@
       });
     }
 
-    waitForElements(['.lyrics-lyrics-contentContainer .lyrics-lyricsContent-provider'], () => {
-      setLyricsPageProperties();
-      revealLyricsLines();
-    });
-
-    waitForElements(['.lyrics-lyrics-contentWrapper'], ([lyricsContentWrapper]) => {
-      if (lyricsObserver instanceof MutationObserver) {
-        lyricsObserver.disconnect();
+    waitForElements(
+      [".lyrics-lyrics-contentContainer .lyrics-lyricsContent-provider"],
+      () => {
+        setLyricsPageProperties();
+        revealLyricsLines();
       }
-      lyricsObserver = new MutationObserver(lyricsCallback);
-      lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
-    });
+    );
+
+    waitForElements(
+      [".lyrics-lyrics-contentWrapper"],
+      ([lyricsContentWrapper]) => {
+        if (lyricsObserver instanceof MutationObserver) {
+          lyricsObserver.disconnect();
+        }
+        lyricsObserver = new MutationObserver(lyricsCallback);
+        lyricsObserver.observe(lyricsContentWrapper, lyricsObserverConfig);
+      }
+    );
   }
 
   function fillBackdrop(backdrop) {
-    const context = backdrop.getContext('2d');
+    const context = backdrop.getContext("2d");
     const rootStyles = getComputedStyle(document.documentElement);
-    const spiceMain = rootStyles.getPropertyValue('--spice-rgb-main').split(',');
+    const spiceMain = rootStyles
+      .getPropertyValue("--spice-rgb-main")
+      .split(",");
     context.fillStyle = `rgb(
       ${spiceMain[0].trim()},
       ${spiceMain[1]},
@@ -328,13 +254,16 @@
       let saturationCoefficient;
 
       if (averageCanvasSaturation < averageOriginalSaturation) {
-        saturationCoefficient = averageOriginalSaturation / averageCanvasSaturation;
+        saturationCoefficient =
+          averageOriginalSaturation / averageCanvasSaturation;
       } else {
         // do not change saturation if backdrop is more saturated than the original artwork or equal
         saturationCoefficient = 1;
       }
 
-      const finalSaturation = (averageCanvasSaturation * saturationCoefficient).toFixed(1);
+      const finalSaturation = (
+        averageCanvasSaturation * saturationCoefficient
+      ).toFixed(1);
 
       // try to detect and fix oversaturated backdrop
       if (finalSaturation > 0.8) {
@@ -379,7 +308,7 @@
       canvas.style.filter = `saturate(${saturationCoefficient}) brightness(${brightnessCoefficient})`;
     }
 
-    waitForElements(['#lyrics-backdrop'], ([lyricsBackdropPrevious]) => {
+    waitForElements(["#lyrics-backdrop"], ([lyricsBackdropPrevious]) => {
       // don't animate backdrop if artwork didn't change
       if (previousAlbumUri === Spicetify.Player.data.item.metadata.album_uri) {
         updateLyricsPageProperties();
@@ -387,28 +316,42 @@
       }
       previousAlbumUri = Spicetify.Player.data.item.metadata.album_uri;
 
-      const contextPrevious = lyricsBackdropPrevious.getContext('2d');
-      contextPrevious.globalCompositeOperation = 'destination-out';
+      const contextPrevious = lyricsBackdropPrevious.getContext("2d");
+      contextPrevious.globalCompositeOperation = "destination-out";
       contextPrevious.filter = `blur(${blur}px)`;
 
-      const lyricsBackdrop = document.createElement('canvas');
-      lyricsBackdrop.id = 'lyrics-backdrop';
+      const lyricsBackdrop = document.createElement("canvas");
+      lyricsBackdrop.id = "lyrics-backdrop";
       fillBackdrop(lyricsBackdrop);
-      lyricsBackdropPrevious.insertAdjacentElement('beforebegin', lyricsBackdrop);
-      const context = lyricsBackdrop.getContext('2d');
+      lyricsBackdropPrevious.insertAdjacentElement(
+        "beforebegin",
+        lyricsBackdrop
+      );
+      const context = lyricsBackdrop.getContext("2d");
       context.imageSmoothingEnabled = false;
       context.filter = `blur(${blur}px)`;
 
       const lyricsBackdropImage = new Image();
-      lyricsBackdropImage.src = Spicetify.Player.data.item.metadata.image_xlarge_url;
+      lyricsBackdropImage.src =
+        Spicetify.Player.data.item.metadata.image_xlarge_url;
 
       lyricsBackdropImage.onload = () => {
-        const [drawWidth, drawHeight, drawX, drawY] = calculateContextDrawValues(lyricsBackdrop);
-        context.drawImage(lyricsBackdropImage, drawX, drawY, drawWidth, drawHeight);
+        const [drawWidth, drawHeight, drawX, drawY] =
+          calculateContextDrawValues(lyricsBackdrop);
+        context.drawImage(
+          lyricsBackdropImage,
+          drawX,
+          drawY,
+          drawWidth,
+          drawHeight
+        );
         updateFilters(lyricsBackdrop, lyricsBackdropImage);
 
         const maxRadius = Math.ceil(
-          Math.sqrt(lyricsBackdropPrevious.width ** 2 + lyricsBackdropPrevious.height ** 2) / 2
+          Math.sqrt(
+            lyricsBackdropPrevious.width ** 2 +
+              lyricsBackdropPrevious.height ** 2
+          ) / 2
         );
         const centerX = lyricsBackdropPrevious.width / 2;
         const centerY = lyricsBackdropPrevious.height / 2;
@@ -427,22 +370,22 @@
             updateLyricsPageProperties();
             lyricsBackdropPrevious.remove();
           },
-          ease: 'sine.out',
+          ease: "sine.out",
         });
       };
     });
   }
 
-  Spicetify.Player.addEventListener('songchange', updateLyricsBackdrop);
+  Spicetify.Player.addEventListener("songchange", updateLyricsBackdrop);
 
   function initLyricsBackdrop() {
-    waitForElements(['.under-main-view'], ([underMainView]) => {
-      const lyricsBackdropContainer = document.createElement('div');
-      lyricsBackdropContainer.id = 'lyrics-backdrop-container';
+    waitForElements([".under-main-view"], ([underMainView]) => {
+      const lyricsBackdropContainer = document.createElement("div");
+      lyricsBackdropContainer.id = "lyrics-backdrop-container";
       underMainView.prepend(lyricsBackdropContainer);
 
-      const lyricsBackdrop = document.createElement('canvas');
-      lyricsBackdrop.id = 'lyrics-backdrop';
+      const lyricsBackdrop = document.createElement("canvas");
+      lyricsBackdrop.id = "lyrics-backdrop";
       lyricsBackdropContainer.appendChild(lyricsBackdrop);
 
       fillBackdrop(lyricsBackdrop);
@@ -450,70 +393,56 @@
     });
   }
 
-  function moveTopBarContainer(to) {
-    waitForElements(
-      ['.main-topBar-container', '.Root__main-view'],
-      ([topBarContainer, rootMainView]) => {
-        rootMainView.insertAdjacentElement(
-          to === 'up' ? 'beforebegin' : 'afterbegin',
-          topBarContainer
-        );
-      }
-    );
-  }
-
-  function addPlayerBackground() {
-    waitForElements(['.main-nowPlayingBar-nowPlayingBar'], ([nowPlayingBar]) => {
-      const playerBackground = document.createElement('div');
-      playerBackground.classList.add('player-background');
-      nowPlayingBar.insertAdjacentElement('afterend', playerBackground);
-    });
-  }
-  addPlayerBackground();
-
   function addCategoryCardBackdrop() {
-    waitForElements(['.x-categoryCard-image'], () => {
-      const cards = Array.from(document.querySelectorAll('.x-categoryCard-CategoryCard'));
+    waitForElements([".x-categoryCard-image"], () => {
+      const cards = Array.from(
+        document.querySelectorAll(".x-categoryCard-CategoryCard")
+      );
       cards.forEach((card) => {
-        const cardImage = card.querySelector('.x-categoryCard-image');
+        const cardImage = card.querySelector(".x-categoryCard-image");
         if (
           card instanceof HTMLElement &&
           cardImage instanceof HTMLImageElement &&
-          cardImage.previousElementSibling?.className !== 'x-categoryCard-backdrop'
+          cardImage.previousElementSibling?.className !==
+            "x-categoryCard-backdrop"
         ) {
-          const cardBackdrop = document.createElement('div');
-          cardBackdrop.classList.add('x-categoryCard-backdrop');
+          const cardBackdrop = document.createElement("div");
+          cardBackdrop.classList.add("x-categoryCard-backdrop");
           cardBackdrop.style.backgroundImage = `url(${cardImage.src})`;
           cardBackdrop.style.backgroundColor = `${card.style.backgroundColor}`;
-          cardImage.insertAdjacentElement('beforebegin', cardBackdrop);
+          cardImage.insertAdjacentElement("beforebegin", cardBackdrop);
         }
       });
     });
   }
 
   function keepCategoryCardBackdrops(currentPath) {
-    if (currentPath === '/search') {
+    if (currentPath === "/search") {
       addCategoryCardBackdrop();
     }
   }
 
   function handleLyricsStatus() {
-    const lyricsBackdropContainer = document.querySelector('#lyrics-backdrop-container');
-    const lyricsCinema = document.querySelector('.Root__lyrics-cinema');
-    const isLyricsPage = Spicetify.Platform.History.location.pathname.includes('lyrics');
-    const isLyricsCinemaVisible = lyricsCinema?.className.includes('lyricsCinemaVisible');
+    const lyricsBackdropContainer = document.querySelector(
+      "#lyrics-backdrop-container"
+    );
+    const lyricsCinema = document.querySelector(".Root__lyrics-cinema");
+    const isLyricsPage =
+      Spicetify.Platform.History.location.pathname.includes("lyrics");
+    const isLyricsCinemaVisible = lyricsCinema?.className.includes(
+      "lyricsCinemaVisible"
+    );
 
     if (isLyricsPage || isLyricsCinemaVisible) {
-      if (isLyricsCinemaVisible) moveTopBarContainer('up');
       if (!lyricsBackdropContainer) {
         initLyricsBackdrop();
       } else {
-        lyricsBackdropContainer.style.display = 'unset';
+        lyricsBackdropContainer.style.display = "unset";
         updateLyricsPageProperties();
       }
     } else {
-      if (lyricsCinema && !isLyricsCinemaVisible) moveTopBarContainer('down');
-      if (lyricsBackdropContainer) lyricsBackdropContainer.style.display = 'none';
+      if (lyricsBackdropContainer)
+        lyricsBackdropContainer.style.display = "none";
     }
   }
 
@@ -534,59 +463,65 @@
     keepCategoryCardBackdrops(Spicetify.Platform.History.location.pathname);
     handleLyricsStatus();
 
-    waitForElements(['.Root__lyrics-cinema'], ([lyricsCinema]) => {
+    waitForElements([".Root__lyrics-cinema"], ([lyricsCinema]) => {
       const lyricsCinemaObserver = new MutationObserver(handleLyricsStatus);
       const lyricsCinemaObserverConfig = {
         attributes: true,
-        attributeFilter: ['class'],
+        attributeFilter: ["class"],
       };
       lyricsCinemaObserver.observe(lyricsCinema, lyricsCinemaObserverConfig);
     });
   });
 
   function centerTopbar() {
-    waitForElements(['.main-topBar-topbarContentWrapper'], ([topBarContentWrapper]) => {
-      const left = topBarContentWrapper.offsetLeft;
-      const right = window.innerWidth - (left + topBarContentWrapper.offsetWidth);
+    waitForElements(
+      [".main-topBar-topbarContentWrapper"],
+      ([topBarContentWrapper]) => {
+        const left = topBarContentWrapper.offsetLeft;
+        const right =
+          window.innerWidth - (left + topBarContentWrapper.offsetWidth);
 
-      const max = window.innerWidth / 2;
-      if (left <= 0 || right <= 0 || left > max || right > max) {
-        return;
-      }
+        const max = window.innerWidth / 2;
+        if (left <= 0 || right <= 0 || left > max || right > max) {
+          return;
+        }
 
-      let diff;
-      if (topBarContentWrapper.style.marginLeft !== '') {
-        diff = right - left + parseInt(topBarContentWrapper.style.marginLeft, 10);
-      } else {
-        diff = right - left;
-      }
+        let diff;
+        if (topBarContentWrapper.style.marginLeft !== "") {
+          diff =
+            right - left + parseInt(topBarContentWrapper.style.marginLeft, 10);
+        } else {
+          diff = right - left;
+        }
 
-      if (diff !== 0) {
-        topBarContentWrapper.style.marginLeft = `${diff}px`;
+        if (diff !== 0) {
+          topBarContentWrapper.style.marginLeft = `${diff}px`;
+        }
       }
-    });
+    );
   }
-  window.addEventListener('load', centerTopbar);
+  window.addEventListener("load", centerTopbar);
 
   function onResize() {
     centerTopbar();
     updateLyricsPageProperties();
   }
-  window.addEventListener('resize', onResize);
+  window.addEventListener("resize", onResize);
 
   function keepNoiseOpacity() {
-    if (Spicetify.Config.color_scheme.includes('light')) {
-      document.documentElement.style.setProperty('--noise-opacity', '3.5%');
+    if (Spicetify.Config.color_scheme.includes("light")) {
+      document.documentElement.style.setProperty("--noise-opacity", "3.5%");
     } else {
-      document.documentElement.style.setProperty('--noise-opacity', '7.5%');
+      document.documentElement.style.setProperty("--noise-opacity", "7.5%");
     }
   }
   keepNoiseOpacity();
 
-  waitForElements(['body'], ([body]) => {
+  waitForElements(["body"], ([body]) => {
     const bodyObserver = new MutationObserver(keepNoiseOpacity);
     const bodyObserverConfig = { childList: true };
     bodyObserver.observe(body, bodyObserverConfig);
     keepNoiseOpacity();
   });
 })();
+
