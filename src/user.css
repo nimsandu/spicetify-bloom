@@ -3262,3 +3262,21 @@ svg,
   background-color: rgba(var(--spice-rgb-main), 0.75);
 }
 
+body::after {
+content: "";
+position: absolute;
+right: 0;
+z-index: 999;
+backdrop-filter: brightness(2.12);
+/* page zoom [ctrl][+] or [ctrl][-]
+edit width and height accordingly
+69% = 194px 45px
+76% = 177px 40.5px
+83% = 162px 37.5px
+91% = 148px 34px
+100% = 135px 40px (default)
+110% = 123px 28.5px
+*/
+width: 135px;
+height: 40px;
+}
