@@ -298,8 +298,8 @@ html {
 }
 
 .spotify__os--is-windows .main-topBar-container {
-  padding-inline-end: 167px !important;
-  padding-inline-start: 80px !important;
+  padding-inline-end: 190px !important;
+  padding-inline-start: 90px !important;
 }
 
 .Root__top-container:not(:has(.main-topBar-container)) .Root__main-view::after {
@@ -324,9 +324,9 @@ html {
 }
 
 .Root__main-view .main-topBar-container {
-  margin-left: calc(var(--left-sidebar-width) * -1) !important;
+  margin-left: calc(var(--left-sidebar-width) * -1px) !important;
   margin-top: calc(-24px + var(--panel-gap) * -2);
-  height: calc(24px + var(--panel-gap) * 2);
+  height: calc(24px + var(--panel-gap) * 3);
 }
 
 .main-topBar-container {
@@ -444,7 +444,7 @@ div#context-menu::before,
   right: 0;
   bottom: 0;
   border-radius: var(--border-radius-1);
-  backdrop-filter: blur(35px) saturate(3.5);
+  backdrop-filter: blur(40px) saturate(3.5);
   background-image: url("https://nimsandu.github.io/spicetify-bloom/assets/noise/noise_context_menu.png");
 }
 
