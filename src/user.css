@@ -2904,12 +2904,14 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Topbar */
 
-.main-topBar-container
-  > *:not(button):not(.main-topBar-historyButtons):not(
-    .main-topBar-topbarContentRight
-  ),
+.main-topBar-container > *,
 .main-topBar-topbarContent {
   -webkit-app-region: drag !important;
+}
+
+.main-topBar-topbarContentRight *,
+.main-topBar-historyButtons * {
+  -webkit-app-region: no-drag;
 }
 
 /* Main view */
