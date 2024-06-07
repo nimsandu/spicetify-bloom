@@ -326,7 +326,7 @@ html {
 .Root__main-view .main-topBar-container {
   margin-left: calc(var(--left-sidebar-width) * -1px) !important;
   margin-top: calc(-24px + var(--panel-gap) * -2);
-  height: calc(24px + var(--panel-gap) * 3);
+  height: calc(24px + var(--panel-gap) * 2);
 }
 
 .main-topBar-container {
@@ -2943,7 +2943,8 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .contentSpacing:not(
     .artist-artistDiscography-topBar,
-    .search-searchCategory-container
+    .search-searchCategory-container,
+    .hV9v6y_uYwdAsoiOHpzk
   ) {
   padding-top: 8px;
 }
