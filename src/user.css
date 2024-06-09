@@ -326,7 +326,7 @@ html {
 .Root__main-view .main-topBar-container {
   margin-left: calc(var(--left-sidebar-width) * -1px) !important;
   margin-top: calc(-24px + var(--panel-gap) * -2);
-  height: calc(24px + var(--panel-gap) * 3);
+  height: calc(24px + var(--panel-gap) * 2);
 }
 
 .main-topBar-container {
@@ -2786,7 +2786,9 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .main-view-container__scroll-node-child,
 .main-yourLibraryX-libraryItemContainer,
-.main-buddyFeed-content {
+.main-buddyFeed-content,
+.nw2W4ZMdICuBo08Tzxg9
+ {
   padding-bottom: 6rem;
 }
 
@@ -2904,12 +2906,14 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 /* Topbar */
 
-.main-topBar-container
-  > *:not(button):not(.main-topBar-historyButtons):not(
-    .main-topBar-topbarContentRight
-  ),
+.main-topBar-container > *,
 .main-topBar-topbarContent {
   -webkit-app-region: drag !important;
+}
+
+.main-topBar-topbarContentRight *,
+.main-topBar-historyButtons * {
+  -webkit-app-region: no-drag;
 }
 
 /* Main view */
@@ -2941,7 +2945,8 @@ body:has(#lyrics-fullscreen-container) > #main > .Root {
 
 .contentSpacing:not(
     .artist-artistDiscography-topBar,
-    .search-searchCategory-container
+    .search-searchCategory-container,
+    .hV9v6y_uYwdAsoiOHpzk
   ) {
   padding-top: 8px;
 }
