@@ -2017,6 +2017,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 .progress-bar__slider {
+  visibility: visible;
   background-color: var(--spice-selected-row) !important;
   border: 6px solid var(--spice-selected-row);
   box-shadow: 0 0 3px 0 var(--spice-player-bar-shadow) !important;
@@ -3253,6 +3254,14 @@ svg,
 
 .npv-up-next__info {
   color: var(--spice-text);
+}
+
+.pO2rsGFqUdaNhpLrif21 a {
+  color: var(--spice-text) !important;
+}
+
+.ellipsis-one-line {
+  color: var(--spice-subtext) !important;
 }
 
 .npv-lyrics__text--credits,
