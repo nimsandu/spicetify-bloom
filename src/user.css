@@ -2213,7 +2213,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   transition: none;
 }
 
-.player-controls__buttons button[data-encore-id="buttonPrimary"],
+.player-controls__buttons button[data-encore-id="buttonPrimary"] path,
 .player-controls__buttons button:not(.player-controls__buttons button[data-encore-id="buttonPrimary"]) {
   --button-size: 28px !important;
 }
