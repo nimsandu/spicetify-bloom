@@ -2213,8 +2213,8 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   transition: none;
 }
 
-.main-playPauseButton-button,
-.player-controls__buttons button:not(.main-playPauseButton-button) {
+.player-controls__buttons button[data-encore-id="buttonPrimary"],
+.player-controls__buttons button:not(.player-controls__buttons button[data-encore-id="buttonPrimary"]) {
   --button-size: 28px !important;
 }
 
@@ -2225,7 +2225,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   color: var(--spice-button);
 }
 
-.main-playPauseButton-button {
+.player-controls__buttons button[data-encore-id="buttonPrimary"] {
   border: none;
   color: var(--spice-text);
   mask-repeat: no-repeat;
@@ -2234,10 +2234,10 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   }
 }
 
-.main-playPauseButton-button[aria-label="Pause"] {
+.player-controls__buttons button[aria-label="Pause"] {
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTcuMjUgM0EzLjI1IDMuMjUgMCAwIDAgNCA2LjI1djE4LjVBMy4yNSAzLjI1IDAgMCAwIDcuMjUgMjhoMy41QTMuMjUgMy4yNSAwIDAgMCAxNCAyNC43NVY2LjI1QTMuMjUgMy4yNSAwIDAgMCAxMC43NSAzem0xNCAwQTMuMjUgMy4yNSAwIDAgMCAxOCA2LjI1djE4LjVBMy4yNSAzLjI1IDAgMCAwIDIxLjI1IDI4aDMuNUEzLjI1IDMuMjUgMCAwIDAgMjggMjQuNzVWNi4yNUEzLjI1IDMuMjUgMCAwIDAgMjQuNzUgM3oiLz48L3N2Zz4=");
 }
-.main-playPauseButton-button[aria-label="Play"] {
+.player-controls__buttons button[aria-label="Pause"] {
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTEyLjIyNSA0LjQ2MkM5Ljg5IDMuMTQyIDcgNC44MjcgNyA3LjUwOFYyNC41YzAgMi42ODIgMi44OTIgNC4zNjggNS4yMjYgMy4wNDVsMTQuOTk3LTguNDk4YzIuMzY3LTEuMzQxIDIuMzY2LTQuNzUxIDAtNi4wOTF6Ii8+PC9zdmc+");
 }
 
@@ -2385,7 +2385,7 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
 }
 
 /* Built-in full screen mode fixes */
-.main-playPauseButton-button path,
+.player-controls__buttons button[data-encore-id="buttonPrimary"] path,
 .main-skipBackButton-button path,
 .main-skipForwardButton-button path,
 .main-repeatButton-button path,
