@@ -2923,7 +2923,15 @@ body:has(#lyrics-fullscreen-container)>#main>.Root {
 }
 
 .npv-background-image__overlay {
-  background-color: rgba(var(--spice-rgb-layer-shadow), 0.7) !important;
+  background-color: rgba(var(--spice-rgb-layer-shadow), 0.5) !important;
+}
+
+.spotifyinternal-artistnpv .npv-background-image {
+  display: none;
+}
+
+.spotifyinternal-artistnpv .npv-background-image--active {
+  opacity: 0;
 }
 
 .main-rootlist-rootlistItemOverlay {
@@ -3315,7 +3323,6 @@ svg,
 /* FullScreen Styles */
 
 .npv-background-image__overlay {
-  backdrop-filter: blur(0.5rem) saturate(1.3) brightness(0.5);
 }
 
 .npv-main-container,
@@ -3366,5 +3373,5 @@ svg,
 }
 
 .Root__globalNav .main-globalNav-link-icon {
-    background-color: var(--spice-card);
+  background-color: var(--spice-card);
 }
