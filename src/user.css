@@ -1536,11 +1536,11 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   background-color: var(--spice-text);
   mask-repeat: no-repeat !important;
   -webkit-mask-repeat: no-repeat !important;
-  mask-position: center center !important; /* Центрируем маску */
+  mask-position: center center !important; 
   -webkit-mask-position: center center !important;
-  mask-size: 60% !important; /* <<< Подбери размер маски (например, 60% от размера кнопки) */
+  mask-size: 60% !important; 
   -webkit-mask-size: 60% !important;
-  background-repeat: no-repeat !important; /* На всякий случай для фона */
+  background-repeat: no-repeat !important;
   background-position: center center !important;
 
 }
@@ -1552,11 +1552,11 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   background-color: var(--spice-text);
   mask-repeat: no-repeat !important;
   -webkit-mask-repeat: no-repeat !important;
-  mask-position: center center !important; /* Центрируем маску */
+  mask-position: center center !important; 
   -webkit-mask-position: center center !important;
-  mask-size: 60% !important; /* <<< Подбери размер маски (например, 60% от размера кнопки) */
+  mask-size: 60% !important; 
   -webkit-mask-size: 60% !important;
-  background-repeat: no-repeat !important; /* На всякий случай для фона */
+  background-repeat: no-repeat !important; 
   background-position: center center !important;
 
 }
@@ -1603,7 +1603,7 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   -webkit-mask-repeat: no-repeat !important;
   mask-position: center center !important;
   -webkit-mask-position: center center !important;
-  mask-size: 80% !important; /* <<< Подбери размер маски (например, 80%) */
+  mask-size: 80% !important; 
   -webkit-mask-size: 80% !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
@@ -1621,7 +1621,7 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   -webkit-mask-repeat: no-repeat !important;
   mask-position: center center !important;
   -webkit-mask-position: center center !important;
-  mask-size: 80% !important; /* <<< Подбери размер маски (например, 80%) */
+  mask-size: 80% !important; 
   -webkit-mask-size: 80% !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
