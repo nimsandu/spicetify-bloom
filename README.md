@@ -205,3 +205,10 @@ In Spotify version 1.2.23 the main app grid has been revamped and the top bar ha
 ## License
 
 [MIT License](LICENSE)
+
+## Notice
+
+Due to immense academic pressure. I wouldn't be able to actively participate in issue resolving and maintenance of the Spicetify Bloom until 10th of December 2025. I'm sorry for the inconvenience and I'm really looking forward for the support of my Bloom Family on active maintenance of Bloom for me and for all of us. Your Contributions will let Bloomers Bloom all around the world, a little better. 
+
+Thank You,
+Nimsandu.
