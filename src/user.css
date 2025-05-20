@@ -39,16 +39,17 @@
   /* font-family: 'Segoe UI Variable Display','Segoe UI Variable Text', 'Microsoft Ya Hei', sans-serif !important; */
   line-height: normal;
   box-shadow: none !important;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
+  /* mask-repeat: no-repeat;*/
+  /* -webkit-mask-repeat: no-repeat;*/
+  /*mask-position: center;*/
+  /*mask-size: contain;*/
+  /*-webkit-mask-position: center;*/
+  /*-webkit-mask-size: contain;*/
   --text-subdued: rgba(var(--spice-rgb-subtext), 0.7) !important;
   --section-background-base: var(--spice-card) !important;
   --lyrics-color-background: rgb(0, 0, 0, 0) !important;
 }
+
 
 /* Fix Overflow off Screen */
 html {
@@ -357,6 +358,7 @@ html {
   right: 0;
   position: fixed;
   height: 2.5rem;
+  background: transparent !important;
 }
 
 .artist-artistDiscography-topBar,
@@ -410,25 +412,18 @@ html {
 }
 
 .main-topBar-background {
+  background-color: var(--spice-sidebar, #F3F3F3) !important;
+  background: var(--spice-sidebar, #F3F3F3) !important;
+  backdrop-filter: none !important;
   opacity: 1 !important;
-  background-color: rgba(var(--spice-rgb-sidebar), 0.85) !important;
-  backdrop-filter: blur(50px) saturate(2.5);
-}
-
-.main-topBar-background {
-  opacity: var(--top-bar-opacity, 1) !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--spice-light-border, #e0e0e0) !important;
 }
 
 .main-topBar-background::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  background-image: var(--noise-texture);
-  opacity: var(--noise-opacity);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  background-image: none !important;
+  opacity: 0 !important;
 }
 
 .main-entityHeader-withBackgroundImage {
@@ -503,1152 +498,347 @@ h3,
   margin-right: 0.5rem;
 }
 
+/* --- 3.  Home, What's New, Friend Activity styles --- */
+/*    (bg = --spice-sidebar, circle, 32x32)     */
+button.main-globalNav-navLink[aria-label="Home"],
+button[aria-label="What's New"],
+button[aria-label="Friend Activity"] {
+  background-color: var(--spice-sidebar, #F3F3F3) !important;
+  background: var(--spice-sidebar, #F3F3F3) !important;
+  border: 1px solid var(--spice-light-border, #e0e0e0) !important;
+  border-radius: 50% !important; /* circle */
+  box-shadow: none !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  color: var(--spice-text) !important;
+}
+
+/* Icons in buttons */
+button.main-globalNav-navLink[aria-label="Home"] svg,
+button[aria-label="What's New"] svg,
+button[aria-label="Friend Activity"] svg {
+  fill: currentColor !important;
+  color: currentColor !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+}
+
+/* Inner containers if exist */
+button.main-globalNav-navLink[aria-label="Home"]>*,
+button[aria-label="What's New"]>*,
+button[aria-label="Friend Activity"]>* {
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 4. Avatar container --- */
+/* Using a general selector for the button on the right that contains an img */
+.main-topBar-topbarContentRight button:has(img),
+button.main-userWidget-box[data-testid="user-widget-link"] /* Adding more specific selector */
+{
+  background-color: var(--spice-sidebar, #F3F3F3) !important; /* ** using var ** */
+  background: var(--spice-sidebar, #F3F3F3) !important;
+  padding: 2px !important; /* padding for img */
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border-radius: 50% !important; /* Added for consistency */
+  border: 1px solid var(--spice-light-border, #e0e0e0) !important; /* Added for consistency */
+  box-shadow: none !important; /* Added for consistency */
+}
+
+/* Inner elements and avatar - make transparent */
+.main-topBar-topbarContentRight button:has(img)>*,
+button.main-userWidget-box[data-testid="user-widget-link"]>*,
+.main-avatar-avatar {
+  background-color: transparent !important;
+  border-radius: 50% !important; /* ** ROUNDED CONTAINER/FIGURE ** */
+  border: none !important; /* Remove border from figure */
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden;
+}
+
+/* The image itself */
+.main-topBar-topbarContentRight button:has(img) img,
+button.main-userWidget-box[data-testid="user-widget-link"] img,
+.main-avatar-image {
+  border-radius: 50% !important; /* ** ROUNDING THE IMAGE ** */
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  background-color: transparent !important;
+}
+
 .main-userWidget-displayName,
 .main-userWidget-chevron {
   display: none !important;
 }
 
+
 /* menus */
 
-div#context-menu::before,
-.main-contextMenu-menu::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: var(--border-radius-1);
-  backdrop-filter: blur(40px) saturate(3.5);
-  background-image: url("https://nimsandu.github.io/spicetify-bloom/assets/noise/noise_context_menu.png");
-}
-
-div#context-menu>.main-contextMenu-menu::before,
-div#context-menu>.main-userWidget-dropDownMenu::before,
-.main-userWidget-dropDownMenu>.main-contextMenu-menu::before {
-  display: none;
-}
-
-.yxf_6IsQEmHjijEBUMTP:focus,
-.yxf_6IsQEmHjijEBUMTP:hover,
-.yxf_6IsQEmHjijEBUMTP.queue-tabBar-active {
-  border-radius: var(--border-radius-1) !important;
-  color: var(--spice-text) !important;
-}
-
-.main-contextMenu-menu,
-.main-contextMenu-tippy,
-.main-devicePicker-tooltip {
-  background-color: rgba(var(--spice-rgb-card), 0.8) !important;
-}
-
-.main-contextMenu-filterPlaylistSearchContainer {
-  height: auto;
-}
-
-.main-contextMenu-menuItemButton,
-.main-userWidget-dropDownMenuItemButton {
-  border-radius: var(--border-radius-3);
-  color: var(--spice-text) !important;
-  height: 32px;
-  padding-left: 8px;
-}
-
-.main-contextMenu-disabled {
-  color: var(--spice-subtext) !important;
-}
-
-.main-contextMenu-menuItemButton:hover,
-.main-userWidget-dropDownMenuItemButton:hover,
-.main-contextMenu-menuItemButton[aria-expanded="true"] {
-  background-color: rgba(var(--spice-rgb-text), 0.1) !important;
-  backdrop-filter: luminosity;
-}
-
-.main-contextMenu-disabled:hover {
-  background-color: transparent !important;
-}
-
-.main-contextMenu-menuItem,
-._60cb742e518d084c3c959007b9463b51-scss>li {
-  margin: 1px 1px;
-}
-
-.main-contextMenu-menuItem:first-child,
-._60cb742e518d084c3c959007b9463b51-scss> :first-child {
-  margin: 1px 1px 1px;
-}
-
-.main-contextMenu-menuItem:last-child {
-  margin: 1px 1px 1px;
-}
-
-._60cb742e518d084c3c959007b9463b51-scss> :last-child {
-  margin: 1px 1px 1px;
-}
-
-.main-contextMenu-menu,
-._60cb742e518d084c3c959007b9463b51-scss {
-  border-radius: var(--border-radius-1);
-  box-shadow: 0 0 2px var(--spice-layer-shadow) !important;
-  background-color: var(--spice-card);
-}
-
-.queue-tabBar-dropdownItemLink {
-  color: var(--spice-text) !important;
-}
-
-/* buttons */
-
-.main-genericButton-buttonActive::after {
-  background-color: var(--spice-accent) !important;
-}
-
-.main-genericButton-buttonActive {
-  color: var(--spice-accent) !important;
-}
-
-.ButtonInner-md {
-  width: auto;
-}
-
-.x-downloadButton-button,
-.x-filterBox-expandButton,
-.x-contributorButton-ContributorButton,
-.x-filterBox-clearButton,
-.playlist-inlineSearchBox-clearButton {
-  color: var(--spice-subtext) !important;
-}
-
-.IAyWaeDamLJLjxuPeVKw {
-  color: var(--spice-text) !important;
-}
-
-.icon,
-.main-navBar-icon {
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  margin: auto;
-  display: block;
-}
-
-.main-addButton-active:focus,
-.main-addButton-active:hover,
-.main-addButton-active {
-  color: var(--spice-accent) !important;
-}
-
-.main-navBar-navBarLink .main-navBar-icon path,
-.icon>svg,
-.x-searchInput-searchInputIconContainer path,
-.show-episodeBlock-playerActions svg,
-.main-playButton-PlayButton polygon,
-.main-playButton-PlayButton rect {
-  display: none !important;
-}
-
-.view-homeShortcutsGrid-shortcut .main-playButton-PlayButton {
-  opacity: 0;
-}
-
-.view-homeShortcutsGrid-shortcut:hover .main-playButton-PlayButton {
-  opacity: 1;
-}
-
-.view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-equaliser {
-  mask-image: var(--equalizer-svg);
-  -webkit-mask-image: var(--equalizer-svg);
-  background: var(--spice-accent);
-  content-visibility: hidden;
-  width: 20px;
-  height: 20px;
-}
-
-@container (max-width: 1599px) {
-  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
-    height: 35px;
-    width: 35px;
-  }
-}
-
-@container (max-width: 1141px) {
-  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
-    height: 30px;
-    width: 30px;
-  }
-}
-
-@container (max-width: 815px) {
-  .view-homeShortcutsGrid-grid .main-playButton-PlayButton button {
-    height: 25px;
-    width: 25px;
-  }
-}
-
-.main-yourLibraryX-navLinkActive .home-active-icon,
-.main-yourLibraryX-navLinkActive .search-active-icon {
-  color: var(--spice-accent);
-}
-
-.main-yourLibraryX-navLink[href="/"] path,
-.main-yourLibraryX-navLink[href="/search"] path,
-.main-yourLibraryX-navLink[href="/search"] path,
-.main-yourLibraryX-navLink[href="/lyrics-plus"] path,
-.main-yourLibraryX-navLink[href="/marketplace"] path,
-.main-yourLibraryX-navLink[href="/eternal-jukebox"] path,
-.main-yourLibraryX-navLink[href="/new-releases"] path,
-.main-yourLibraryX-navLink[href="/stats"] path,
-.main-yourLibraryX-navLink[href="/name-that-tune"] path,
-.main-yourLibraryX-navLink[href="/betterLibrary"] path,
-.main-yourLibraryX-navLink[href="/better-local-files"] path {
-  display: none !important;
-}
-
-.main-yourLibraryX-navLink[href="/"]:hover svg,
-.main-yourLibraryX-navLink[href="/search"]:hover .search-icon,
-.main-yourLibraryX-navLink[href="/lyrics-plus"]:hover svg,
-.main-yourLibraryX-navLink[href="/marketplace"]:hover svg,
-.main-yourLibraryX-navLink[href="/eternal-jukebox"]:hover svg,
-.main-yourLibraryX-navLink[href="/new-releases"]:hover svg,
-.main-yourLibraryX-navLink[href="/stats"]:hover svg,
-.main-yourLibraryX-navLink[href="/name-that-tune"]:hover svg,
-.main-yourLibraryX-navLink[href="/betterLibrary"]:hover svg,
-.main-yourLibraryX-navLink[href="/better-local-files"]:hover svg {
-  background-color: var(--spice-text) !important;
-}
-
-.main-yourLibraryX-navLink[href="/"] svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_regular.svg");
-
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/"].active svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_home_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/search"] svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/search"].active svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_search_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/lyrics-plus"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/lyrics-plus"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_slide_text_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/marketplace"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/marketplace"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_app_store_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/eternal-jukebox"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/eternal-jukebox"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/phosphor-icons/infinity-bold.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/new-releases"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/new-releases"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_alert_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/stats"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/stats"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_chart_multiple_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/name-that-tune"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/name-that-tune"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_music_note_2_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/betterLibrary"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/betterLibrary"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_library_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-yourLibraryX-navLink[href="/better-local-files"]>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-}
-
-.main-yourLibraryX-navLink[href="/better-local-files"].active>svg {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_folder_24_filled.svg");
-  background-color: var(--spice-accent) !important;
-}
-
-.main-createPlaylistButton-button {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_add_circle_24_regular.svg");
-  background-color: var(--spice-subtext) !important;
-  padding: 0px;
-  margin: auto;
-  height: 24px !important;
-  width: 24px !important;
-  display: block !important;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
-}
-
-.main-createPlaylistButton-button svg {
-  display: none !important;
-}
-
-.main-createPlaylistButton-createPlaylistIcon {
-  background-color: var(--spice-subtext) !important;
-  display: block !important;
-}
-
-.main-createPlaylistButton-createPlaylistIcon>svg,
-.main-createPlaylistButton-text {
-  display: none !important;
-}
-
-.main-collectionLinkButton-collectionLinkButton {
-  width: 49px;
-  min-height: 48px;
-  margin: auto;
-  margin-bottom: 8px;
-  justify-content: center;
-  border-radius: var(--border-radius-2) !important;
-}
-
-.main-collectionLinkButton-collectionLinkButton[href="/collection/tracks"] {
-  background: linear-gradient(135deg, #450af5, #c4efd9) !important;
-}
-
-.main-collectionLinkButton-collectionLinkButton[href="/collection/episodes"] {
-  background-color: #006450 !important;
-}
-
-.main-collectionLinkButton-collectionLinkButton[href="/collection/tracks"] .main-collectionLinkButton-icon {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_heart_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_heart_24_filled.svg");
-  background-color: white !important;
-  margin-right: 0px;
-}
-
-.main-collectionLinkButton-collectionLinkButton[href="/collection/episodes"] .main-collectionLinkButton-icon {
-  mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_mic_on_24_filled.svg");
-  -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_mic_on_24_filled.svg");
-  background-color: #00da6b !important;
-  margin-right: 0px;
-}
-
-.main-likedSongsButton-likedSongsIcon,
-.main-yourEpisodesButton-yourEpisodesIcon,
-.main-collectionLinkButton-collectionLinkButton .main-collectionLinkButton-collectionLinkText {
-  display: none !important;
-}
-
-.main-createPlaylistButton-icon,
-.main-collectionLinkButton-icon {
-  margin: auto;
-}
-
-.main-createPlaylistButton-text,
-.main-collectionLinkButton-collectionLinkButton .main-collectionLinkButton-collectionLinkText {
-  display: none;
-}
-
-.main-type-balladBold {
-  font-weight: 500;
-  letter-spacing: 0.2px;
-}
-
-.main-type-minuetBold {
-  text-transform: none;
-  letter-spacing: 0px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 10px;
-}
-
-.main-shelf-seeAll {
-  height: 21px;
-}
-
-style {
-  --nav-bar-width: 62px !important;
-}
-
-.main-playButton-PlayButton.main-playButton-primary,
-.main-pageErrorTemplate-errorButton {
-  color: var(--spice-shadow);
-}
-
-.fpCtYO {
-  background-color: var(--spice-accent);
-}
-
-.main-moreButton-button {
-  color: var(--spice-text);
-}
-
-button.switch {
-  background-color: transparent !important;
-}
-
-#spicetify-home-config button,
-#spicetify-sidebar-config button {
-  background-color: var(--spice-main) !important;
-  color: var(--spice-text) !important;
-  border: none !important;
-}
-
-#spicetify-home-config button {
-  border-radius: var(--border-radius-2) !important;
-}
-
-#spicetify-sidebar-config button {
-  border-radius: var(--border-radius-3) !important;
-}
-
-#spicetify-home-config button:disabled,
-#spicetify-sidebar-config button:disabled {
-  background-color: var(--spice-button-disabled) !important;
-  color: var(--spice-text) !important;
-}
-
-.main-buttons-button,
-.show-followButton-button {
-  background-color: var(--spice-card);
-  font-weight: normal;
-  font-size: 15px;
-  letter-spacing: 0px;
-  text-transform: none;
-  border-radius: var(--border-radius-2);
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.main-button-outlined,
-.main-button-outlined:hover {
-  border: var(--spice-contour) solid 1px !important;
-}
-
-.main-button-primary {
-  color: var(--spice-alt-text) !important;
-}
-
-.main-button-outlined {
-  background-color: var(--spice-card);
-}
-
-.main-button-secondary {
-  color: var(--spice-text);
-}
-
-.main-entityHeader-titleButton {
-  background: none !important;
-}
-
-.x-carousel-button,
-.x-removeButton-RemoveButton {
-  background-color: var(--spice-card);
-}
-
-.x-carousel-button svg {
-  fill: var(--spice-text) !important;
-}
-
-/* sidebar */
-
-.Root__nav-bar {
-  z-index: 1 !important;
-  max-width: 85px !important;
-}
-
-.main-navBar-navBar {
-  width: 85px !important;
-  padding-top: 0;
-}
-
-/* Fade effect when scrolling down playlists */
-.main-rootlist-rootlistDividerGradient {
-  background: linear-gradient(180deg,
-      rgba(var(--spice-main), 0.7),
-      transparent);
-}
-
-.playlist-playlist-playlistDescription {
-  color: var(--spice-subtext) !important;
-}
-
-/* Rounded top-left corner + left/top border for main content window */
-.main-navBar-navBar::before {
-  content: "";
-  position: absolute;
-  left: 100%;
-  width: 100vw;
-  height: 100vh;
-  margin-left: -1px;
-  z-index: 1;
-  border-top-left-radius: var(--border-radius-2);
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  box-shadow: -8px -8px 0 var(--spice-sidebar);
-  border-left: 1px solid var(--spice-dark-border);
-  border-top: 1px solid var(--spice-dark-border);
-  border-right: none;
-  border-bottom: none;
-  pointer-events: none;
-}
-
-.main-navBar-navBarLink {
-  border-radius: var(--border-radius-2);
-  color: var(--spice-text);
-  height: 65px !important;
-  display: block;
-  padding-top: 12px;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-bottom: 4px;
-  text-align: center;
-  position: relative;
-}
-
-.main-navBar-navBarLink span,
-.main-createPlaylistButton-text {
-  font-size: 10.5px !important;
-  margin: auto;
-  display: block;
-  text-align: center;
-  margin-top: 4px;
-  white-space: pre;
-  color: var(--spice-subtext);
-}
-
-.main-navBar-navBarLinkActive span {
-  display: none;
-}
-
-/* Center Icon */
-.main-navBar-navBarLinkActive svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.main-navBar-navBarLinkActive>.icon,
-.main-navBar-navBarLinkActive .main-navBar-icon,
-.main-navBar-navBarLinkActive>.main-navBar-icon {
-  position: relative;
-  top: 50%;
-  transform: translate(0, -50%);
-  margin: auto;
-}
-
-.main-navBar-navBarLinkActive {
-  padding: 0;
-}
-
-.main-navBar-entryPoints {
-  padding-top: 0 !important;
-}
-
-.main-navBar-navBarItem {
-  padding: 0 9px 0 9px;
-}
-
-.main-type-mestoBold {
-  font-weight: normal !important;
-}
-
-.navBar-navBarLink-accent {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 25px;
-  background-color: var(--spice-accent);
-  border-radius: var(--border-radius-2);
-  display: none;
-}
-
-.main-navBar-navBarLinkActive>.navBar-navBarLink-accent,
-.main-yourLibraryX-navLinkActive>.main-yourLibraryX-navLink-accent {
-  display: block !important;
-}
-
-.main-navBar-navBarLinkActive,
-.main-navBar-navBarLinkActive:hover,
-.main-navBar-navBarLinkActive:active,
-.main-navBar-navBarLinkActive:focus {
-  background-color: var(--spice-selected-row);
-  color: var(--spice-not-selected);
-  transition: 167ms ease-out all;
-}
-
-.main-navBar-navBarLink {
-  transition: background-color ease-out 167ms;
-}
-
-/* playlist sidebar */
-
-.main-rootlist-rootlist .os-content {
-  padding: 0px 0px !important;
-}
-
-.main-rootlist-rootlist {
-  --left-sidebar-item-height: 48px;
-  --left-sidebar-padding-left: 10px;
-  --left-sidebar-padding-right: 10px;
-  --left-sidebar-item-indentation-width: 1px;
-  margin-top: 0;
-}
-
-.main-rootlist-rootlistPlaylistsScrollNode {
-  height: calc(100% - 220px);
-}
-
-.main-rootlist-wrapper {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.main-rootlist-rootlistItem {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.main-rootlist-rootlistItemLink {
-  background-position: center;
-}
-
-.main-rootlist-rootlistItemLink:link,
-.main-rootlist-rootlistItemLink:visited,
-.main-rootlist-rootlistPlaylistHeader {
-  color: var(--spice-text);
-  background-color: var(--spice-card);
-  background-size: cover;
-  border-radius: var(--border-radius-2);
-  cursor: pointer;
-}
-
-.main-rootlist-rootlistItemLink:not(:last-child) {
-  margin-bottom: 8px;
-}
-
-.main-rootlist-textWrapper,
-.main-rootlist-statusIcon {
-  display: none;
-}
-
-.main-rootlist-expandArrow {
-  color: var(--spice-text);
-  position: relative;
-  margin-inline-start: -16px;
-  right: -6px;
-  top: 16px;
-  height: 16px;
-}
-
-.main-rootlist-statusIcons {
-  margin-inline-start: -20px;
-  position: relative;
-  right: 8px;
-  right: 17px !important;
-  top: -4px;
-}
-
-.main-rootlist-rootlistItemLink:hover,
-.main-createPlaylistButton-button:hover,
-.main-collectionLinkButton-collectionLinkButton:hover {
-  filter: brightness(50%);
-}
-
-.main-rootlist-statusIcons>button {
-  color: var(--spice-text);
-}
-
-.main-rootlist-rootlistItemLinkActive~.main-rootlist-statusIcons>button {
-  color: var(--spice-shadow);
-}
-
-.main-rootlist-statusIcons>div {
-  margin-left: 8px;
-}
-
-/* Right sidebar  */
-
-.main-nowPlayingView-panelOpenDiv .main-trackInfo-container {
-  margin-left: 0 !important;
-}
-
-.main-nowPlayingView-trackInfo .main-trackInfo-container {
-  margin-left: 0 !important;
-}
-
-.main-nowPlayingWidget-trackInfo {
-  margin-left: 0.5rem;
-  margin-right: 1rem;
-}
-
-.main-nowPlayingView-panelOpenDiv .main-nowPlayingView-section:not(.main-nowPlayingView-lyricsGradient) {
-  background-color: var(--spice-card) !important;
-}
-
-.main-nowPlayingView-panelOpenDiv .artist-artistOnTour-timeAndVenue.artist-artistOnTour-condensed,
-.main-nowPlayingView-panelOpenDiv .main-nowPlayingView-openQueue,
-.main-nowPlayingView-panelOpenDiv .svHFeMC3Ef_TpSdRyvsM {
-  color: var(--spice-subtext) !important;
-}
-
-.main-nowPlayingView-panelOpenDiv .main-nowPlayingView-openQueue:hover,
-.main-nowPlayingView-panelOpenDiv .svHFeMC3Ef_TpSdRyvsM:hover {
-  color: var(--spice-text) !important;
-}
-
-.main-nowPlayingView-content {
-  --text-subdued: var(--spice-subtext);
-}
-
-/* tracklist */
-
-.main-trackList-trackList .main-virtualScrollList-wrapper,
-.main-trackList-trackList .main-rootlist-wrapper {
-  background-color: var(--spice-card);
-  border-radius: var(--border-radius-2);
-  padding: 8px;
-}
-
-.main-trackList-trackList {
-  padding-bottom: 24px;
-  background-color: var(--spice-card);
-  border-radius: var(--border-radius-2);
-}
-
-.main-trackList-trackListHeader.main-trackList-trackListHeaderStuck {
-  padding: 0px;
-  margin: 0px;
-  border-bottom: none;
-  background: var(--spice-card);
-}
-
-.main-trackList-trackListRow {
-  border-radius: var(--border-radius-2);
-}
-
-.main-trackList-trackListRow:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.2);
-}
-
-.main-trackList-trackListRow:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.4);
-}
-
-.main-trackList-trackListRow.main-trackList-selected,
-.main-trackList-trackListRow.main-trackList-selected:hover {
-  background-color: var(--spice-selected-row);
-}
-
-.main-tag-container,
-.main-trackList-rowImage {
-  border-radius: var(--border-radius-3);
-}
-
-.main-trackList-rowTitle {
-  color: var(--spice-text) !important;
-}
-
-.main-trackList-rowDuration {
-  color: var(--spice-subtext) !important;
-}
-
-.main-trackList-trackListRow.main-trackList-selected span:not(.main-tag-container),
-.main-trackList-trackListRow.main-trackList-selected:hover span:not(.main-tag-container),
-.main-trackList-trackListRow.main-trackList-selected:active span:not(.main-tag-container),
-.main-trackList-trackListRow.main-trackList-selected:focus span:not(.main-tag-container),
-.main-trackList-trackListRow.main-trackList-selected a,
-.main-trackList-trackListRow.main-trackList-selected:hover a,
-.main-trackList-trackListRow.main-trackList-selected:active a,
-.main-trackList-trackListRow.main-trackList-selected:focus a,
-.main-trackList-trackListRow.main-trackList-selected button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected:hover button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected:active button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected:focus button:not(.main-trackList-rowHeartButton),
-.main-trackList-trackListRow.main-trackList-selected div,
-.main-trackList-trackListRow.main-trackList-selected:hover div,
-.main-trackList-trackListRow.main-trackList-selected:active div,
-.main-trackList-trackListRow.main-trackList-selected:focus div {
-  color: var(--spice-text) !important;
-}
-
-.main-trackList-trackListHeader {
-  background-color: transparent !important;
-  padding: 0 calc(var(--content-spacing) / 2);
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-._110dbc41d89af63f97cdd8b7cd7fea47-scss {
-  border: 1px solid var(--spice-text);
-}
-
-.main-trackList-trackListRow.main-trackList-selected ._110dbc41d89af63f97cdd8b7cd7fea47-scss,
-.main-trackList-trackListRow.main-trackList-selected:hover ._110dbc41d89af63f97cdd8b7cd7fea47-scss,
-.main-trackList-trackListRow.main-trackList-selected:active ._110dbc41d89af63f97cdd8b7cd7fea47-scss,
-.main-trackList-trackListRow.main-trackList-selected:focus ._110dbc41d89af63f97cdd8b7cd7fea47-scss,
-.main-trackList-trackListRow.main-trackList-selected .main-button-outlined {
-  border: 1px solid var(--spice-text);
-}
-
-.main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
-  border-bottom: none;
-  background: none;
-}
-
-.main-trackList-statusChangeUp {
-  color: var(--green);
-}
-
-.main-trackList-playingIcon {
-  mask-image: var(--equalizer-svg);
-  -webkit-mask-image: var(--equalizer-svg);
-  background: var(--spice-text);
-  content-visibility: hidden;
-}
-
-.main-trackList-selected .main-trackList-playingIcon {
-  background: var(--spice-text);
-}
-
-.main-trackList-rowImageWithPlay .main-trackList-rowPlayPauseButton {
-  width: 24px;
-  height: 24px;
-}
-
-.main-trackList-rowImageWithPlay .main-trackList-rowImagePlayPauseButton {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: var(--border-radius-3);
-}
-
-/* headers */
-
-.main-userWidget-box,
-.main-avatar-avatar,
-.main-avatar-image {
-  border-radius: 8px;
-}
-
-.main-globalNav-searchInputContainer .SFAoASy0S_LZJmYZ3Fh9,
-.main-globalNav-searchInputContainer input {
-  border-radius: 8px !important;
-  background-color: rgba(var(--spice-rgb-card), 0.5) !important;
+/* --- 5. "Create" Button (Plus) - Adaptive Size --- */
+/* Using aria-label and classes to select the button */
+button.main-useDropTarget-base[aria-label="Create"],
+button.l5V7KOO1aHJ4R7jYTQuV[aria-label="Create"] {
+  background-color: var(--spice-sidebar, #F3F3F3) !important; /* ** Background F3F3F3 ** */
+  background: var(--spice-sidebar, #F3F3F3) !important;
+  border: 1px solid var(--spice-light-border, #e0e0e0) !important; /* Thin border */
+  color: var(--spice-text) !important; /* ** Dark color for text and icon ** */
   box-shadow: none !important;
+
+  /* ** REMOVE fixed sizes and round shape ** */
+  /* width: 32px !important; */
+  /* height: 32px !important; */
+  /* min-width: 32px !important; */
+  /* min-height: 32px !important; */
+  /* border-radius: 50% !important; */
+
+  /* ** Keep default styles or minimal overrides ** */
+  /* padding: DO NOT override, let the theme decide */
+  /* display: DO NOT override */
+  /* align-items: DO NOT override */
+  /* justify-content: DO NOT override */
+  /* vertical-align: DO NOT override */
+  box-sizing: border-box !important; /* Keep just in case */
+  /* overflow: hidden !important; */ /* Remove, might interfere with text */
 }
 
-.main-globalNav-searchInputContainer input:hover {
-  background-color: rgba(var(--spice-rgb-card), 0.5) !important;
+/* Style for the SVG icon inside the button */
+button.main-useDropTarget-base[aria-label="Create"] svg,
+button.l5V7KOO1aHJ4R7jYTQuV[aria-label="Create"] svg {
+  fill: currentColor !important; /* Inherit color from the button */
+  /* Do not set size rigidly, let the theme decide */
+  /* width: 18px !important; */
+  /* height: 18px !important; */
+  display: inline-block !important; /* SVG is usually inline-block */
+  vertical-align: middle; /* Align vertically with text */
 }
 
-.x-searchInput-searchInputInput:focus,
-.main-globalNav-searchInputContainer input:focus {
-  background-color: rgba(var(--spice-rgb-card), 0.75) !important;
-  border-bottom: 2px solid var(--spice-accent) !important;
+/* Optionally add style for text if it doesn't inherit the color */
+button.main-useDropTarget-base[aria-label="Create"] span, /* If text is in a span */
+button.l5V7KOO1aHJ4R7jYTQuV[aria-label="Create"] span {
+  color: currentColor !important; /* Inherit color from the button */
 }
 
-.search:focus,
-.search-bar:focus,
-.searchbar-bar:focus,
-.search-container .search:focus {
-  background-color: rgba(var(--spice-rgb-card), 0.5) !important;
-  outline: 2px solid var(--spice-subtext) !important;
-}
-
-.main-globalNav-searchInputContainer:has(.gPP3UTf4KHCpkR7fowu7) input:focus {
-  border-radius: 8px 8px 0 0 !important;
-  background: rgba(var(--spice-rgb-card, var(--spice-rgb-main)), 0.75) !important;
-}
-
-.gPP3UTf4KHCpkR7fowu7 {
-  margin-top: 2px;
-  background-color: rgba(var(--spice-rgb-card), 0.75);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-}
-
-.HnlKe49O7x9B5Vm6aPrV,
-.zuvmONH0Veccf2MUDmno,
-.Button-medium-medium-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle {
-  border-radius: 8px !important;
-}
-
-
-.main-entityHeader-image:not(.main-entityHeader-circle) {
-  border-radius: var(--border-radius-1);
-}
-
-.x-sortBox-sortDropdown,
-.x-filterBox-filterInput,
-.x-filterBox-expandButton:focus,
-.x-filterBox-expandButton:hover {
-  border-radius: var(--border-radius-2) !important;
-}
-
-.x-sortBox-sortDropdown {
-  color: var(--spice-text);
-}
-
-.fIDrcz,
-.ghlXvf {
-  fill: var(--spice-text);
-}
-
-.main-navBar-navBar .fIDrcz {
-  fill: var(--spice-alt-text);
-}
-
-.x-filterBox-filterInput {
-  background-color: rgba(var(--spice-rgb-card), 0.6);
-  color: var(--spice-text);
-}
-
-.playlist-inlineSearchBox-filterInput::placeholder,
-.x-filterBox-filterInput::placeholder {
-  color: var(--spice-subtext);
-}
-
-.x-filterBox-searchIconContainer {
-  color: var(--spice-text);
-}
-
-.x-emptyState-container {
-  height: auto;
-  margin-top: 120px;
-}
-
-/* artist page */
-
-.artist-artistOffers-info .artist-artistOffers-description,
-.artist-popularTrackList-seeMore {
-  color: var(--spice-subtext);
-}
-
-.artist-artistOverview-heading,
-.artist-artistPick-heading,
-.artist-artistAbout-heading,
-.QWAQMuWlIwVfc5Cv7hXp,
-._1CRNzNyAMFxnnS30JUo {
-  margin-bottom: 20px !important;
-}
-
-.artist-artistPick-pinnedImage,
-.artist-artistOffers-item {
-  border-radius: var(--border-radius-2) !important;
-}
-
-.artist-artistAbout-container,
-.main-entityHeader-background,
-.main-entityHeader-background.main-entityHeader-overlay {
-  border-radius: var(--border-radius-1);
-}
-
-.main-entityHeader-background.main-entityHeader-overlay {
-  --bgColor: transparent !important;
-  background: none;
-}
-
-.artist-artistOffers-item:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.05) !important;
-}
-
-.artist-artistOffers-item:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.1) !important;
-}
-
-.main-entityHeader-background,
-.main-entityHeader-background.main-entityHeader-gradient {
-  transform: scale(1) !important;
-  z-index: -1;
-  border-radius: 0;
-}
-
-[class="main-entityHeader-backgroundColor"] {
-  opacity: min(calc(var(--filter-brightness) + 0.4), 1);
-}
-
-.main-entityHeader-container {
-  background-image: linear-gradient(to bottom,
-      rgb(255 255 255 / 0%),
-      var(--spice-main));
-}
-
-.main-entityHeader-metaDataText,
-.main-entityTitle-subtitle,
-.main-entityHeader-metaDataText span {
-  color: var(--spice-text) !important;
-}
-
-._GJZaoUD9ozPvCUDT2Mp {
-  border-radius: var(--border-radius-3);
-}
-
-/* podcasts */
-
-._q93agegdE655O5zPz6l,
-.z7Yl7CIT1AB0y91f_moh,
-.UyzJidwrGk3awngSGIwv,
-.poz9gZKE7xqFwgk231J4,
-.xWm_uA0Co4SXVxaO7wlB {
-  color: var(--spice-subtext);
-}
-
-.show-trailer-container,
-.show-episodeBlock-episodeBlock,
-.show-show-episodes> :last-child {
-  border-radius: var(--border-radius-1) !important;
-}
-
-.show-episodeBlock-episodeBlock:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.05);
-}
-
-.show-episodeBlock-episodeBlock:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.1);
-}
-
-.show-show-episodes> :last-child {
-  padding: 8px 24px;
-}
-
-.show-trailer-container,
-.show-show-episodes> :last-child {
-  background-color: var(--spice-card) !important;
-}
-
-/* top bar */
-
-.main-topBar-button,
-.main-topBar-buddyFeed,
-.main-userWidget-boxCondensed,
-.main-topBar-whatsNewFeed {
-  background-color: var(--spice-selected-row) !important;
-  color: var(--spice-text);
-  width: 28px !important;
-  height: 28px !important;
-  padding: 0;
-}
-
-.Fxnb0xe6bL7I7W8V0p6C,
-.main-topBar-container .main-avatar-avatar,
-.main-topBar-container .main-avatar-avatar div {
-  width: 28px !important;
-  height: 28px !important;
-}
-
-.pEG0W4wkbkrOYURhz82H {
-  margin: 0;
-}
-
-.main-entityHeader-topbarTitle,
-.main-topBar-topbarTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  padding-left: 10px;
-}
-
-.main-playButton-PlayButton {
-  transition: opacity 0.5s, visibility 0.5s !important;
-}
-
-.main-playButton-PlayButton.main-playButton-primary {
-  padding: 12px;
-  padding-bottom: 0px;
-  padding-top: 0px;
-  height: auto;
-}
-
-.main-topBar-topbarContent>.main-playButton-PlayButton.main-playButton-primary {
-  margin-top: 10px;
-}
-
-/* tab bars */
-
-a[class*="-tabBar-active"] {
-  background-color: rgba(var(--spice-rgb-selected-row), 1) !important;
-}
-
-a[class*="-tabBar-headerItemLink"]:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.3);
-}
-
-a[class*="-tabBar-headerItemLink"]:active {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.5);
-}
+/* --- End of Section 5 --- */
 
 /* search */
 
+
+/* --- 2. Search Field (Restoring Working Input State) --- */
+/* Container Width */
 .main-topBar-searchBar {
-  flex: 0 1 400px;
+  flex: 0 1 500px; /* Keep it wide */
+  display: flex;
+  position: relative; /* Set position context for dropdown */
+}
+
+/* Form Styling - NO padding, takes full container width */
+form.e-9812-form-input-icon[role="search"] {
+  background-color: var(--spice-main, #ffffff) !important;
+  border: 1px solid var(--spice-light-border, #cccccc) !important;
+  border-radius: 18px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important; /* NO Form Padding */
+  box-sizing: border-box !important;
+  width: 100% !important; /* Fill the .main-topBar-searchBar */
+  margin: 0 !important;
+  position: relative !important; /* Relative for icons */
+}
+
+/* Leading icon container - Margins from edge */
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading {
+  flex-shrink: 0;
+  display: flex !important; /* Ensure flex is applied */
+  align-items: center !important; /* Ensure vertical centering */
+  justify-content: center !important; /* Horizontal centering within its box */
+  width: 20px !important;
+  height: 100% !important; /* Take full height for align-items */
+  margin-left: 12px !important; /* Trying 16px (was 18px, then 12px) */
+  margin-right: 8px !important; /* Keep right margin from icon */
+  box-sizing: border-box !important;
+  pointer-events: none;
+  overflow: visible !important;
+  padding: 0 !important;
+  /* Remove margin-top/bottom since we center with flex */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Input field - Flex Grow + Min Width, Padding Right only (Corrected) */
+form.e-9812-form-input-icon[role="search"] input.e-9812-form-input {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--spice-text, #000000) !important;
+  height: 100% !important;
+  /* --- USING FLEX GROW --- */
+  flex-grow: 1 !important;
+  /* --- NO width: 100% --- */
+  /* --- NO PADDING-LEFT - Space created by icon's margin-right --- */
+  padding: 0 55px 0 0 !important; /* T:0 R:55 B:0 L:0 */
+  box-sizing: border-box !important;
+  /* --- KEEP min-width FIX --- */
+  min-width: 340px !important; /* Force minimum width */
+  line-height: 36px !important;
+  font-size: 14px;
+  box-shadow: none !important;
+  caret-color: var(--spice-text, #000000) !important;
+  margin: 0 !important;
+  /* Overflow handling */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 0;
+}
+
+/* Placeholder */
+form.e-9812-form-input-icon[role="search"] input.e-9812-form-input::placeholder { color: var(--spice-subtext, #888888) !important; opacity: 1 !important; }
+/* Focus */
+form.e-9812-form-input-icon[role="search"]:focus-within { border: 1px solid var(--spice-accent, #006bba) !important; box-shadow: 0 0 0 1px var(--spice-accent, #006bba) !important; }
+
+/* --- Other icon styles unchanged --- */
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading button.EJttP30F1zYHeAw7ISHb, form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading button.EJttP30F1zYHeAw7ISHb svg { display: none !important; position: absolute !important; width: 0 !important; height: 0 !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: 0 !important; left: -9999px; }
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading svg.M9l40ptEBXPm03dU3X1k { display: block !important; width: 20px !important; height: 20px !important; box-sizing: border-box !important; opacity: 1 !important; visibility: visible !important; fill: var(--spice-subtext, #6d6d6d) !important; mask: none !important; -webkit-mask: none !important; clip-path: none !important; overflow: visible !important; padding: 0 !important; margin: 0 !important; }
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading svg.M9l40ptEBXPm03dU3X1k path { fill: var(--spice-subtext, #6d6d6d) !important; mask: none !important; -webkit-mask: none !important; clip-path: none !important; stroke: none !important; }
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--trailing {
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+  pointer-events: auto;
+  margin: 0;
+  padding: 0;
+}
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--trailing button.MdMAXXFPalD99eigsBug {
+  margin-right: 3px !important; /* Попробуй 3px */
+}
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--trailing div.BV0jjn_h5TtMMl8YKuZ0 {
+   margin-left: 8px !important; /* Попробуй 3px */
+ }
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--trailing button { background-color: transparent !important; padding: 0 !important; border: none !important; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--trailing button svg { fill: var(--spice-subtext, #555555) !important; width: 16px !important; height: 16px !important; display: block; }
+/*.dM_TEJo05MxBvrLzfNrW { display: none !important; }*/
+/* --- End of Section 2 --- */
+
+/* Fix Window Controls Overlap on Windows when narrow */
+
+
+.spotify__container--is-desktop.spotify__os--is-windows .main-topBar-container {
+  padding-inline-end: max(10vw, 150px) !important;
+}
+
+
+.spotify__container--is-desktop.spotify__os--is-windows .Root__top-container--right-sidebar-visible .main-topBar-container {
+
+  padding-inline-end: max(167px, 180px) !important;
+}
+
+
+.main-topBar-topbarContentRight {
+    flex-shrink: 0; 
+}
+
+/* Style Ctrl+K hint - Absolute Position using LEFT offset */
+
+
+.dM_TEJo05MxBvrLzfNrW {
+  position: absolute !important; 
+  left: 170px !important; 
+  top: 50% !important;
+  transform: translateY(-50%) !important; 
+  z-index: 1 !important; 
+  pointer-events: none !important;
+  display: none !important; 
+  align-items: center !important;
+  opacity: 0.6 !important;
+}
+
+
+form.e-9812-form-input-icon[role="search"] input.e-9812-form-input:focus:placeholder-shown + .dM_TEJo05MxBvrLzfNrW {
+  display: flex !important;
+}
+
+
+.dM_TEJo05MxBvrLzfNrW kbd.xlLQHgpip3xYOwRYpwun {
+  background-color: transparent !important; border: 1px solid var(--spice-subtext, #888888) !important; color: var(--spice-subtext, #888888) !important;
+  padding: 2px 4px !important; border-radius: 3px !important; font-size: 11px !important; margin-left: 4px !important; line-height: 1 !important;
+}
+
+.dM_TEJo05MxBvrLzfNrW span.upGmCR5y3yDImbt6sHOl { display: none !important; }
+/* Span wrapper */
+.dM_TEJo05MxBvrLzfNrW span.IYex0sXu8fnCz1FqFbRe { display: contents !important; }
+
+form.e-9812-form-input-icon[role="search"] input.e-9812-form-input {
+
+    position: relative; 
+    z-index: 0 !important;
+}
+
+/* Style Search Dropdown Background AND POSITION */
+
+#recent-searches-dropdown {
+  background-color: transparent !important;
+  border: none !important;
+  position: absolute !important; 
+  left: 0 !important;
+  top: 100% !important; 
+  margin-top: 8px !important; 
+  width: 100% !important; 
+  z-index: 10; 
+  pointer-events: none; 
+}
+
+
+.GimJ6fo6WOYPyWNVpSr1.ZjfaJlGQZ42nCWjD3FDm {
+  background-color: var(--spice-card) !important;
+  border-radius: var(--border-radius-2) !important;
+  border: 1px solid var(--spice-contour) !important;
+  box-shadow: 0 4px 16px rgba(var(--spice-rgb-layer-shadow), 0.5) !important;
+  width: 100% !important;
+  max-height: 400px; 
+  box-sizing: border-box; 
+  pointer-events: auto; 
+ 
+  transform: none !important;
+
 }
 
 .x-searchInput-searchInputInput {
@@ -1710,6 +900,7 @@ a[class*="-tabBar-headerItemLink"]:active {
 .x-searchInput-searchInputClearButton {
   color: var(--spice-text) !important;
 }
+
 
 .x-searchResultsTracks-root .main-gridContainer-gridContainer {
   padding: 8px;
@@ -2343,6 +1534,15 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTcuMjUgM0EzLjI1IDMuMjUgMCAwIDAgNCA2LjI1djE4LjVBMy4yNSAzLjI1IDAgMCAwIDcuMjUgMjhoMy41QTMuMjUgMy4yNSAwIDAgMCAxNCAyNC43NVY2LjI1QTMuMjUgMy4yNSAwIDAgMCAxMC43NSAzem0xNCAwQTMuMjUgMy4yNSAwIDAgMCAxOCA2LjI1djE4LjVBMy4yNSAzLjI1IDAgMCAwIDIxLjI1IDI4aDMuNUEzLjI1IDMuMjUgMCAwIDAgMjggMjQuNzVWNi4yNUEzLjI1IDMuMjUgMCAwIDAgMjQuNzUgM3oiLz48L3N2Zz4=");
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTcuMjUgM0EzLjI1IDMuMjUgMCAwIDAgNCA2LjI1djE4LjVBMy4yNSAzLjI1IDAgMCAwIDcuMjUgMjhoMy41QTMuMjUgMy4yNSAwIDAgMCAxNCAyNC43NVY2LjI1QTMuMjUgMy4yNSAwIDAgMCAxMC43NSAzem0xNCAwQTMuMjUgMy4yNSAwIDAgMCAxOCA2LjI1djE4LjVBMy4yNSAzLjI1IDAgMCAwIDIxLjI1IDI4aDMuNUEzLjI1IDMuMjUgMCAwIDAgMjggMjQuNzVWNi4yNUEzLjI1IDMuMjUgMCAwIDAgMjQuNzUgM3oiLz48L3N2Zz4=");
   background-color: var(--spice-text);
+  mask-repeat: no-repeat !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-position: center center !important; 
+  -webkit-mask-position: center center !important;
+  mask-size: 60% !important; 
+  -webkit-mask-size: 60% !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+
 }
 
 .player-controls button[aria-label="Play"],
@@ -2350,6 +1550,15 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTEyLjIyNSA0LjQ2MkM5Ljg5IDMuMTQyIDcgNC44MjcgNyA3LjUwOFYyNC41YzAgMi42ODIgMi44OTIgNC4zNjggNS4yMjYgMy4wNDVsMTQuOTk3LTguNDk4YzIuMzY3LTEuMzQxIDIuMzY2LTQuNzUxIDAtNi4wOTF6Ii8+PC9zdmc+");
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTEyLjIyNSA0LjQ2MkM5Ljg5IDMuMTQyIDcgNC44MjcgNyA3LjUwOFYyNC41YzAgMi42ODIgMi44OTIgNC4zNjggNS4yMjYgMy4wNDVsMTQuOTk3LTguNDk4YzIuMzY3LTEuMzQxIDIuMzY2LTQuNzUxIDAtNi4wOTF6Ii8+PC9zdmc+");
   background-color: var(--spice-text);
+  mask-repeat: no-repeat !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-position: center center !important; 
+  -webkit-mask-position: center center !important;
+  mask-size: 60% !important; 
+  -webkit-mask-size: 60% !important;
+  background-repeat: no-repeat !important; 
+  background-position: center center !important;
+
 }
 
 .player-controls__buttons {
@@ -2390,6 +1599,15 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_next_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 24px !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-position: center center !important;
+  -webkit-mask-position: center center !important;
+  mask-size: 80% !important; 
+  -webkit-mask-size: 80% !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+
 }
 
 .player-controls__left button[aria-label="Previous"],
@@ -2399,6 +1617,15 @@ input:checked~.x-toggle-indicatorWrapper .x-toggle-indicator {
   -webkit-mask-image: url("https://nimsandu.github.io/spicetify-bloom/assets/fluentui-system-icons/ic_fluent_previous_24_filled.svg");
   background-color: var(--spice-text) !important;
   height: 24px !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-position: center center !important;
+  -webkit-mask-position: center center !important;
+  mask-size: 80% !important; 
+  -webkit-mask-size: 80% !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+
 }
 
 .MRfNcNMd_djj3KOg_VOB {
@@ -3164,6 +2391,10 @@ svg,
   background-color: var(--spice-text);
 }
 
+button.main-yourLibraryX-button[aria-label="Go back"] svg.e-9812-icon { background: none !important; -webkit-mask-image: none !important; mask-image: none !important; fill: currentColor !important; display: block !important; width: 16px !important; height: 16px !important; }
+button.main-yourLibraryX-button[aria-label="Go back"] svg.e-9812-icon path { display: block !important; }
+
+
 .main-rootlist-wrapper {
   padding-left: unset;
   padding-right: unset;
@@ -3374,4 +2605,120 @@ svg,
 
 .Root__globalNav .main-globalNav-link-icon {
   background-color: var(--spice-card);
+}
+
+/* --- Responsive Search Bar --- */
+
+/* --- Breakpoint 1: Medium Screens --- */
+@media (max-width: 1000px) { /* Start shrinking around here */
+  .main-topBar-searchBar {
+    flex-basis: 350px !important; /* Reduce base width */
+    flex-shrink: 1 !important; /* Allow shrinking */
+    min-width: 200px !important; /* But not too much */
+  }
+
+  /* You can also reduce min-width of the input if needed */
+  form.e-9812-form-input-icon[role="search"] input.e-9812-form-input {
+      min-width: 200px !important; /* Reduce minimum input width */
+  }
+}
+
+/* --- Breakpoint 2: Narrow Screens --- */
+@media (max-width: 750px) { /* Hide input field around here */
+
+  /* Search bar container becomes very small, like a button */
+  .main-topBar-searchBar {
+    flex: 0 0 auto !important; /* Remove flexibility, fixed size */
+    width: 36px !important;  /* Width = height for round button */
+    min-width: 36px !important;
+    margin-left: 8px !important; /* Add small left margin */
+  }
+
+  /* Form also becomes small and round */
+  form.e-9812-form-input-icon[role="search"] {
+    width: 100% !important;
+    height: 100% !important; /* Takes full height of 36px container */
+    padding: 0 !important;
+    justify-content: center !important; /* Center icon inside */
+    border-radius: 50% !important; /* Make it round */
+    border: 1px solid transparent !important; /* Remove or make border transparent */
+    /* You can add hover background like a button */
+    transition: background-color 150ms ease;
+  }
+  form.e-9812-form-input-icon[role="search"]:hover {
+      background-color: rgba(var(--spice-rgb-selected-row), 0.6) !important;
+  }
+
+
+  /* Hide text field, right icons, and Ctrl+K hint */
+  form.e-9812-form-input-icon[role="search"] input.e-9812-form-input,
+  form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--trailing,
+  .dM_TEJo05MxBvrLzfNrW {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    opacity: 0 !important;
+  }
+
+  /* Style remaining search icon */
+  form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading {
+    margin: 0 !important; /* Remove margins */
+    width: auto !important; /* Size by SVG */
+    height: 100% !important; /* For vertical centering */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  form.e-9812-form-input-icon[role="search"] .e-9812-form-input-icon__icon--leading svg.M9l40ptEBXPm03dU3X1k {
+      width: 18px !important; /* Icon size */
+      height: 18px !important;
+      fill: var(--spice-text) !important; /* Icon color */
+  }
+}
+/* Align Top Bar Items Vertically - Manual Adjustment */
+
+/* Main top bar container - still using align-items */
+.main-topBar-topbarContent {
+  display: flex !important;
+  align-items: center !important; /* Main alignment method */
+  gap: 8px !important;
+  min-height: 36px; /* Set minimum height to the tallest element */
+}
+
+/* --- Left buttons (Home, etc.) --- */
+button.main-globalNav-navLink[aria-label="Home"],
+button[aria-label="What's New"],
+button[aria-label="Friend Activity"] {
+    position: relative; /* Enable relative positioning */
+    top: 2px; /* <<< Move down by (36-32)/2 pixels */
+    margin: 0 !important; /* Remove external margins */
+}
+
+/* --- Search field --- */
+.main-topBar-searchBar {
+  /* No additional offsets needed, it's 36px */
+  display: flex;
+  align-items: center;
+}
+form.e-9812-form-input-icon[role="search"] {
+    /* Height 36px */
+}
+
+/* --- Right button container --- */
+.main-topBar-topbarContentRight {
+  display: flex !important;
+  align-items: center !important; /* Align buttons inside */
+  gap: 8px !important;
+}
+
+/* --- Right buttons (Profile, Bell, etc.) --- */
+.main-topBar-topbarContentRight button:has(img),
+button.main-userWidget-box[data-testid="user-widget-link"],
+/* Add other selectors for right buttons if they are also 32px */
+.main-topBar-topbarContentRight button[aria-label*="Inbox"],
+.main-topBar-topbarContentRight button[aria-label*="Notifications"]
+{
+    position: relative; /* Enable relative positioning */
+    top: 2px; /* <<< Move down by (36-32)/2 pixels */
+    margin: 0 !important; /* Remove external margins */
 }
